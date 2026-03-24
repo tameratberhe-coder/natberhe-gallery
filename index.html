@@ -92,6 +92,8 @@ input,textarea{font-family:inherit;font-size:inherit}
 .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .hero-btn{font-family:var(--inter);font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 32px;border:1px solid rgba(245,240,232,0.4);color:var(--text);transition:all 0.3s;background:transparent}
 .hero-btn:hover{background:rgba(245,240,232,0.08);border-color:var(--text)}
+.hero-btn-gold{background:var(--gold);color:#0a0a0a;border-color:var(--gold);font-weight:600}
+.hero-btn-gold:hover{background:#d4b45a;border-color:#d4b45a}
 
 /* ============ MARQUEE ============ */
 .marquee{overflow:hidden;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0a0a0a}
@@ -205,6 +207,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 
 /* ============ AUCTION ============ */
 .auction-header{text-align:center;padding:120px 40px 20px;max-width:1200px;margin:0 auto}
+.auction-date{font-family:var(--inter);font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:12px}
 .countdown{display:flex;gap:20px;justify-content:center;margin:32px 0}
 .countdown-item{text-align:center}
 .countdown-value{font-family:var(--oswald);font-size:clamp(36px,6vw,56px);font-weight:700;color:var(--gold);line-height:1}
@@ -222,6 +225,9 @@ input,textarea{font-family:inherit;font-size:inherit}
 .auction-lot-estimate{font-family:var(--oswald);font-size:18px;color:var(--gold);margin-bottom:16px}
 .auction-bid-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border:1px solid var(--gold);color:var(--gold);transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
 .auction-bid-btn:hover{background:var(--gold);color:#0a0a0a}
+.auction-lot-buttons{display:flex;flex-direction:column;gap:8px}
+.auction-buy-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;background:var(--gold);color:#0a0a0a;transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
+.auction-buy-btn:hover{background:#d4b45a}
 @media(max-width:1024px){
   .auction-grid{grid-template-columns:1fr}
 }
@@ -242,8 +248,11 @@ input,textarea{font-family:inherit;font-size:inherit}
 .bidder-submit:hover{background:#d4b45a}
 
 /* ============ ARTIST PAGE ============ */
+.artist-hero{position:relative;width:100%;height:100vh;min-height:500px;overflow:hidden}
+.artist-hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
+.artist-hero-title{position:absolute;bottom:60px;left:40px;font-family:var(--oswald);font-size:clamp(48px,10vw,100px);font-weight:700;text-transform:uppercase;letter-spacing:4px;color:#fff;line-height:1}
 .artist-header{text-align:center;padding:120px 40px 20px}
-.artist-bio{max-width:800px;margin:0 auto;padding:0 40px 60px}
+.artist-bio{max-width:800px;margin:0 auto;padding:60px 40px 60px}
 .artist-bio p{font-family:var(--inter);font-size:16px;line-height:1.8;color:var(--text-muted);margin-bottom:24px}
 .artist-bio .drop-cap{float:left;font-family:var(--playfair);font-size:72px;font-weight:700;color:var(--gold);line-height:0.8;padding:4px 12px 0 0}
 .timeline{max-width:700px;margin:0 auto;padding:40px 40px 80px}
@@ -265,6 +274,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 .contact-form textarea{min-height:120px;resize:vertical}
 .contact-submit{padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.3s}
 .contact-submit:hover{background:#d4b45a}
+.contact-appointment{margin-top:24px;padding:16px 20px;border:1px solid var(--border);font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted)}
 @media(max-width:768px){
   .contact-grid{grid-template-columns:1fr;gap:40px}
   .contact-section{padding:100px 20px 60px}
@@ -373,7 +383,7 @@ input,textarea{font-family:inherit;font-size:inherit}
       <p class="hero-tagline">Figurative&ndash;Abstract Expressionism</p>
       <div class="hero-buttons">
         <a href="#gallery" class="hero-btn" onclick="navigateTo('gallery')">ENTER THE COLLECTION</a>
-        <a href="#auction" class="hero-btn" onclick="navigateTo('auction')">REGISTER TO BID</a>
+        <a href="#auction" class="hero-btn hero-btn-gold" onclick="navigateTo('auction')">REGISTER TO BID</a>
       </div>
     </div>
   </section>
@@ -538,38 +548,43 @@ input,textarea{font-family:inherit;font-size:inherit}
 <!-- ========== PAGE: AUCTION ========== -->
 <div class="page" id="page-auction">
   <div class="auction-header">
-    <p class="section-label">MONTHLY AUCTION EVENT</p>
-    <h1 class="section-title" style="color:var(--gold)">THE EVENING SALE</h1>
-    <div class="section-bar" style="margin:0 auto 24px"></div>
+    <h1 class="section-title" style="color:#fff">THE INAUGURAL AUCTION</h1>
+    <p class="auction-date">JULY 6, 2026 &middot; 7:00 PM PST</p>
     <div class="countdown" id="countdown">
       <div class="countdown-item"><div class="countdown-value" id="cd-days">--</div><div class="countdown-label">Days</div></div>
       <div class="countdown-item"><div class="countdown-value" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
       <div class="countdown-item"><div class="countdown-value" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
       <div class="countdown-item"><div class="countdown-value" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
     </div>
-    <p class="auction-desc">Each month, a curated selection of Nat Berhe&rsquo;s most significant works goes to auction. The Evening Sale features museum-quality originals, each offered with a reserve estimate. Register below to participate in the next live bidding event.</p>
+    <p class="auction-desc">A curated selection of Nat Berhe&rsquo;s most significant works offered at auction. Museum-quality originals, each with a reserve estimate. Register below to participate in the live bidding event.</p>
   </div>
   <div class="auction-grid">
     <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="SIGNAL LOST" loading="lazy">
+      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089" alt="The Witness" loading="lazy">
       <div class="auction-lot-info">
         <div class="auction-lot-label">LOT 1</div>
-        <div class="auction-lot-title">SIGNAL LOST</div>
-        <div class="auction-lot-medium">Oil on Canvas &mdash; 120x72 inches (Two 60x72 Frames Fused)</div>
+        <div class="auction-lot-title">THE WITNESS</div>
+        <div class="auction-lot-medium">Oil on Canvas &mdash; 120&quot; x 72&quot;</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$13,600 &ndash; $22,100</div>
-        <a href="https://natberhegallery.com/products/signal-lost" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$12,000 &ndash; $22,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/the-witness" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089" alt="The Witness" loading="lazy">
+      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="Signal Lost" loading="lazy">
       <div class="auction-lot-info">
         <div class="auction-lot-label">LOT 2</div>
-        <div class="auction-lot-title">THE WITNESS</div>
-        <div class="auction-lot-medium">Oil on Canvas &mdash; 120" X 72"</div>
+        <div class="auction-lot-title">SIGNAL LOST</div>
+        <div class="auction-lot-medium">Oil on Canvas &mdash; 120&quot; x 72&quot;</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$13,600 &ndash; $22,100</div>
-        <a href="https://natberhegallery.com/products/the-witness" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$12,000 &ndash; $22,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/signal-lost" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
@@ -579,8 +594,11 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-title">CRIMSON GLADIATOR</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 120" x 72"</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$12,800 &ndash; $20,800</div>
-        <a href="https://natberhegallery.com/products/crimson-gladiator" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$12,000 &ndash; $20,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/crimson-gladiator" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
@@ -590,8 +608,11 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-title">MIRAGE</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 120x72 inches (Two 60x72 Frames Fused)</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$12,800 &ndash; $20,800</div>
-        <a href="https://natberhegallery.com/products/mirage" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$12,000 &ndash; $20,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/mirage" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
@@ -601,8 +622,11 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-title">COLORFALL</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 60 x 72</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$11,200 &ndash; $18,200</div>
-        <a href="https://natberhegallery.com/products/colorfall" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$10,000 &ndash; $18,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/colorfall" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
@@ -612,8 +636,11 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-title">CRAVE</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 24" x 36"</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$9,600 &ndash; $15,600</div>
-        <a href="https://natberhegallery.com/products/crave" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$9,000 &ndash; $15,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/crave" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
@@ -623,43 +650,47 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-title">SHIMMER</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 36" x 48"</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$9,600 &ndash; $15,600</div>
-        <a href="https://natberhegallery.com/products/shimmer" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$9,000 &ndash; $15,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/shimmer" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
     <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art37.png?v=1763598530" alt="Abstract realms" loading="lazy">
+      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art67.png?v=1763599128" alt="Tandem Minds Beneath a Drowning Sky" loading="lazy">
       <div class="auction-lot-info">
         <div class="auction-lot-label">LOT 8</div>
-        <div class="auction-lot-title">ABSTRACT REALMS</div>
-        <div class="auction-lot-medium">Oil on Canvas &mdash; 36" x 48"</div>
+        <div class="auction-lot-title">TANDEM MINDS BENEATH A DROWNING SKY</div>
+        <div class="auction-lot-medium">Oil on Canvas &mdash; 60&quot; x 72&quot;</div>
         <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$8,000 &ndash; $13,000</div>
-        <a href="https://natberhegallery.com/products/abstract-realms" target="_blank" rel="noopener noreferrer" class="auction-bid-btn">REGISTER TO BID</a>
+        <div class="auction-lot-estimate">$7,000 &ndash; $13,000</div>
+        <div class="auction-lot-buttons">
+          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
+          <a href="https://natberhegallery.com/products/tandem-minds-beneath-a-drowning-sky" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
+        </div>
       </div>
     </div>
   </div>
   <div class="bidder-reg">
     <h3 class="bidder-reg-title">REGISTER TO BID</h3>
-    <p class="bidder-reg-sub">Complete the form below to register for the upcoming Evening Sale.</p>
+    <p class="bidder-reg-sub">Complete the form below to register for the inaugural auction.</p>
     <form class="bidder-form" onsubmit="event.preventDefault()">
       <input type="text" class="bidder-input" placeholder="Full Name" required>
       <input type="email" class="bidder-input" placeholder="Email Address" required>
-      <input type="tel" class="bidder-input" placeholder="Phone Number" required>
-      <button type="submit" class="bidder-submit">REGISTER</button>
+      <button type="submit" class="bidder-submit">REQUEST PADDLE NUMBER</button>
     </form>
   </div>
 </div>
 
 <!-- ========== PAGE: ARTIST ========== -->
 <div class="page" id="page-artist">
-  <div class="artist-header">
-    <p class="section-label">BIOGRAPHY</p>
-    <h1 class="section-title">THE ARTIST</h1>
-    <div class="section-bar" style="margin:0 auto"></div>
+  <div class="artist-hero">
+    <img src="https://nbcsports.brightspotcdn.com/dims4/default/a68ff5c/2147483647/strip/false/crop/1024x576+0+54/resize/1200x675!/quality/90/?url=https%3A%2F%2Fnbc-sports-production-nbc-sports.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fdc%2Fb4%2F5c37d8da3c6a41b15c5fe73d1bb5%2Fgettyimages-1023433652.jpg" alt="Nat Berhe - Pittsburgh Steelers" class="artist-hero-img">
+    <h1 class="artist-hero-title">THE ARTIST</h1>
   </div>
   <div class="artist-bio">
-    <p><span class="drop-cap">N</span>at Berhe (born 1991, San Jose, California) is an American painter working in Southern California. Through bold, expressive oil paintings, he explores themes of identity, memory, and transformation &mdash; building meaning through successive layers of pigment and gesture. His abstract-figurative works feature ghostlike, distorted human forms rendered in vivid, clashing colors that pulse with raw emotional energy.</p>
+    <p><span class="drop-cap">B</span>erhe (born 1991, San Jose, California) is an American painter working in Southern California. Through bold, expressive oil paintings, he explores themes of identity, memory, and transformation &mdash; building meaning through successive layers of pigment and gesture. His abstract-figurative works feature ghostlike, distorted human forms rendered in vivid, clashing colors that pulse with raw emotional energy.</p>
     <p>Before devoting himself to painting full-time, Berhe forged a career as a professional football player. At San Diego State University, he established himself as one of the most dynamic safeties in the Mountain West Conference. In 2014, he made history as the first Eritrean-American drafted into the National Football League, selected by the New York Giants. Over six seasons between the Giants and the Pittsburgh Steelers, he brought the same intensity and discipline that now defines his studio practice.</p>
     <p>In 2025, Berhe&rsquo;s work was featured at the Sasse Museum of Art for the exhibition &ldquo;Colorstraction: A Personal Perspective,&rdquo; marking his first major institutional showing. His paintings draw from post-war abstract expressionism while maintaining a contemporary voice that speaks to cultural identity, resilience, and transformation.</p>
   </div>
@@ -668,23 +699,20 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="timeline-item"><div class="timeline-year">1991</div><div class="timeline-desc">Born in San Jose, CA</div></div>
     <div class="timeline-item"><div class="timeline-year">2010&ndash;2013</div><div class="timeline-desc">San Diego State University</div></div>
     <div class="timeline-item"><div class="timeline-year">2014</div><div class="timeline-desc">NFL Draft &mdash; First Eritrean-American drafted</div></div>
-    <div class="timeline-item"><div class="timeline-year">2014&ndash;2016</div><div class="timeline-desc">New York Giants</div></div>
-    <div class="timeline-item"><div class="timeline-year">2017&ndash;2019</div><div class="timeline-desc">Pittsburgh Steelers</div></div>
-    <div class="timeline-item"><div class="timeline-year">2020</div><div class="timeline-desc">Retired from NFL, began painting full-time</div></div>
+    <div class="timeline-item"><div class="timeline-year">2014&ndash;17</div><div class="timeline-desc">NY Giants</div></div>
+    <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-desc">Steelers</div></div>
+    <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-desc">Gallery Launches</div></div>
     <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-desc">Sasse Museum of Art &mdash; &ldquo;Colorstraction&rdquo; Exhibition</div></div>
-    <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-desc">Nat Berhe Gallery launches online</div></div>
   </div>
 </div>
 
 <!-- ========== PAGE: CONTACT ========== -->
 <div class="page" id="page-contact">
   <div class="contact-section">
-    <p class="section-label">GET IN TOUCH</p>
-    <h1 class="section-title">CONTACT</h1>
+    <h1 class="section-title">INQUIRIES</h1>
     <div class="section-bar"></div>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>REACH US</h3>
         <div class="contact-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
           <a href="mailto:info@natberhegallery.com" target="_blank" rel="noopener noreferrer">info@natberhegallery.com</a>
@@ -696,6 +724,9 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="contact-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           <a href="https://natberhegallery.com" target="_blank" rel="noopener noreferrer">natberhegallery.com</a>
+        </div>
+        <div class="contact-appointment">
+          <p>Private viewings available by appointment.</p>
         </div>
       </div>
       <div>
@@ -824,7 +855,7 @@ function renderGallery(filter) {
     const scarcity = (!p.is_print && !p.sold_out) ? '<div class="gallery-card-scarcity">ONLY 1 AVAILABLE</div>' : '';
     const soldBadge = p.sold_out ? '<div class="sold-badge">SOLD</div>' : '';
     const badge = !p.is_print ? '<span class="featured-badge">ORIGINAL</span>' : '';
-    const btnText = p.sold_out ? 'VIEW WORK' : 'ACQUIRE';
+    const btnText = p.sold_out ? 'VIEW WORK' : 'BUY NOW';
     const btnHref = 'https://natberhegallery.com/products/' + p.handle;
     return '<div class="gallery-card" onclick="openOverlayByIndex(' + i + ')">' +
       '<div class="gallery-card-img-wrap">' +
@@ -901,31 +932,9 @@ function toggleMobile() {
 }
 
 // ============ COUNTDOWN ============
-function getNextFirstSaturday() {
-  const now = new Date();
-  let year = now.getFullYear();
-  let month = now.getMonth();
-  
-  function firstSatOfMonth(y, m) {
-    const d = new Date(y, m, 1);
-    const day = d.getDay();
-    const sat = day === 6 ? 1 : (7 - day) % 7 + 1;
-    // Set to 7pm PST (3am UTC next day... actually 7pm PST = 3am UTC next day)
-    // PST is UTC-8
-    return new Date(Date.UTC(y, m, sat, 3, 0, 0)); // 7pm PST = 03:00 UTC next day
-  }
-  
-  let target = firstSatOfMonth(year, month);
-  if (target <= now) {
-    month++;
-    if (month > 11) { month = 0; year++; }
-    target = firstSatOfMonth(year, month);
-  }
-  return target;
-}
-
 function updateCountdown() {
-  const target = getNextFirstSaturday();
+  // July 6, 2026 at 7:00 PM PST (UTC-7 in PDT = July 7 02:00 UTC)
+  const target = new Date('2026-07-07T02:00:00Z');
   const now = new Date();
   let diff = target - now;
   if (diff < 0) diff = 0;
