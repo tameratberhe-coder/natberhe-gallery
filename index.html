@@ -263,6 +263,27 @@ input,textarea{font-family:inherit;font-size:inherit}
 .timeline-year{font-family:var(--oswald);font-size:18px;font-weight:700;color:var(--gold);min-width:80px}
 .timeline-desc{font-family:var(--inter);font-size:14px;color:var(--text-muted);line-height:1.5}
 
+/* ============ ARTIST PHOTO GALLERY ============ */
+.artist-gallery{max-width:1100px;margin:0 auto;padding:0 40px 80px}
+.artist-gallery-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:12px}
+.artist-gallery-bar{width:60px;height:3px;background:var(--red);margin:0 auto 40px}
+.artist-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.artist-gallery-item{position:relative;overflow:hidden;cursor:pointer;background:var(--card-bg);border:1px solid var(--border)}
+.artist-gallery-item img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.5s,filter 0.5s}
+.artist-gallery-item:hover img{transform:scale(1.05);filter:brightness(0.7)}
+.artist-gallery-item .ag-caption{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,0.85));font-family:var(--inter);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);opacity:0;transition:opacity 0.3s}
+.artist-gallery-item:hover .ag-caption{opacity:1}
+.artist-gallery-item.ag-wide{grid-column:span 2}
+@media(max-width:768px){
+  .artist-gallery{padding:0 16px 60px}
+  .artist-gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .artist-gallery-item.ag-wide{grid-column:span 2}
+}
+@media(max-width:480px){
+  .artist-gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .artist-gallery-item.ag-wide{grid-column:span 2}
+}
+
 /* ============ CONTACT ============ */
 .contact-section{padding:120px 40px 80px;max-width:1000px;margin:0 auto}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px}
@@ -685,6 +706,48 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-desc">Steelers</div></div>
     <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-desc">Gallery Launches</div></div>
     <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-desc">Sasse Museum of Art &mdash; &ldquo;Colorstraction&rdquo; Exhibition</div></div>
+  </div>
+  <div class="artist-gallery">
+    <h3 class="artist-gallery-title">FROM THE FIELD</h3>
+    <div class="artist-gallery-bar"></div>
+    <div class="artist-gallery-grid">
+      <div class="artist-gallery-item ag-wide">
+        <img src="IMG_9025.jpeg" alt="Nat Berhe #31 diving tackle vs Philadelphia Eagles" loading="lazy">
+        <div class="ag-caption">Steelers vs Eagles &mdash; #31</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_9225.jpeg" alt="Nat Berhe #31 Pittsburgh Steelers in-game stance" loading="lazy">
+        <div class="ag-caption">Pittsburgh Steelers &mdash; #31</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_4357.jpeg" alt="Nat Berhe #29 New York Giants celebration" loading="lazy">
+        <div class="ag-caption">NY Giants &mdash; #29</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_7945.jpeg" alt="Nat Berhe #29 interception vs Dallas Cowboys" loading="lazy">
+        <div class="ag-caption">Giants vs Cowboys</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_4085.jpeg" alt="Nat Berhe #29 New York Giants running" loading="lazy">
+        <div class="ag-caption">NY Giants &mdash; #29</div>
+      </div>
+      <div class="artist-gallery-item ag-wide">
+        <img src="IMG_7952.jpeg" alt="Nat Berhe smiling at Steelers practice" loading="lazy" style="aspect-ratio:16/9">
+        <div class="ag-caption">Steelers Training Camp</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_8698.jpeg" alt="Nat Berhe profile at Steelers practice" loading="lazy">
+        <div class="ag-caption">Steelers Practice</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_6588.jpeg" alt="Nat Berhe press conference NY Giants" loading="lazy">
+        <div class="ag-caption">NY Giants &mdash; Press Conference</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_2909.jpeg" alt="Nat Berhe press conference NY Giants" loading="lazy">
+        <div class="ag-caption">NY Giants &mdash; Media Day</div>
+      </div>
+    </div>
   </div>
 </div>
 
