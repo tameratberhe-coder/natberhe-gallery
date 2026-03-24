@@ -109,7 +109,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 @media(max-width:768px){.section{padding:60px 20px}}
 
 /* ============ FEATURED WORKS ============ */
-.featured-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:20px}
+.featured-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:20px}
 .featured-grid-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .featured-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s}
 .featured-card:hover{transform:translateY(-4px);border-color:#333}
@@ -164,7 +164,9 @@ input,textarea{font-family:inherit;font-size:inherit}
 .collectors-submit:hover{background:#d4b45a}
 @media(max-width:600px){
   .collectors{padding:60px 20px}
-  .collectors-form{flex-direction:column;gap:8px}
+  .collectors-form{flex-direction:column;gap:12px}
+  .collectors-input{border-radius:100px;padding:14px 20px;text-align:center}
+  .collectors-submit{border-radius:100px;padding:14px 24px;align-self:center}
 }
 
 /* ============ GALLERY / COLLECTION ============ */
@@ -188,7 +190,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 .gallery-card-info{padding:14px}
 .gallery-card-title{font-family:var(--oswald);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gallery-card-price{font-family:var(--inter);font-size:13px;color:var(--gold);font-weight:500;margin-bottom:2px}
-.gallery-card-meta{font-family:var(--inter);font-size:10px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:3px}
+.gallery-card-meta{font-family:var(--inter);font-size:10px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:3px;text-transform:uppercase}
 .gallery-card-scarcity{font-family:var(--inter);font-size:10px;color:var(--red-light);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px}
 .gallery-card-btn{display:block;width:100%;padding:10px;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;background:transparent;border:1px solid var(--border);color:var(--text);transition:all 0.3s}
 .gallery-card-btn:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
@@ -221,8 +223,8 @@ input,textarea{font-family:inherit;font-size:inherit}
 .auction-lot-label{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
 .auction-lot-title{font-family:var(--oswald);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
 .auction-lot-medium{font-family:var(--inter);font-size:12px;color:var(--text-muted);margin-bottom:12px}
-.auction-lot-estimate-label{font-family:var(--inter);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px}
-.auction-lot-estimate{font-family:var(--oswald);font-size:18px;color:var(--gold);margin-bottom:16px}
+.auction-lot-estimate-label{display:none}
+.auction-lot-estimate{font-family:var(--playfair);font-style:italic;font-size:18px;color:var(--gold);margin-bottom:16px}
 .auction-bid-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border:1px solid var(--gold);color:var(--gold);transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
 .auction-bid-btn:hover{background:var(--gold);color:#0a0a0a}
 .auction-lot-buttons{display:flex;flex-direction:column;gap:8px}
@@ -314,7 +316,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 }
 
 /* ============ FOOTER ============ */
-.footer{border-top:1px solid var(--border);padding:60px 40px 20px;background:#080808}
+.footer{border-top:2px solid var(--red-light);padding:60px 40px 20px;background:#080808}
 .footer-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
 .footer-brand .nav-logo-main{font-size:20px;margin-bottom:2px}
 .footer-brand .nav-logo-sub{font-size:9px}
@@ -400,15 +402,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     <h2 class="section-title">FEATURED WORKS</h2>
     <div class="section-bar"></div>
     <div class="featured-grid">
-      <div class="featured-card" onclick="openOverlay('signal-lost')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="SIGNAL LOST" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">SIGNAL LOST</div>
-          <div class="featured-card-price">$17,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('the-witness')">
+      <div class="featured-card" onclick="openOverlay('the-witness')" style="grid-column:1/-1">
         <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089" alt="The Witness" loading="lazy">
         <span class="featured-badge">ORIGINAL</span>
         <div class="featured-card-info">
@@ -418,36 +412,20 @@ input,textarea{font-family:inherit;font-size:inherit}
       </div>
     </div>
     <div class="featured-grid-bottom">
+      <div class="featured-card" onclick="openOverlay('signal-lost')">
+        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="Signal Lost" loading="lazy">
+        <span class="featured-badge">ORIGINAL</span>
+        <div class="featured-card-info">
+          <div class="featured-card-title">SIGNAL LOST</div>
+          <div class="featured-card-price">$17,000</div>
+        </div>
+      </div>
       <div class="featured-card" onclick="openOverlay('crimson-gladiator')">
         <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art69.png?v=1763599178" alt="Crimson Gladiator" loading="lazy">
         <span class="featured-badge">ORIGINAL</span>
         <div class="featured-card-info">
           <div class="featured-card-title">CRIMSON GLADIATOR</div>
           <div class="featured-card-price">$16,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('mirage')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art51.png?v=1763598848" alt="Mirage" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">MIRAGE</div>
-          <div class="featured-card-price">$16,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('colorfall')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art21.png?v=1763598207" alt="Colorfall" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">COLORFALL</div>
-          <div class="featured-card-price">$14,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('crave')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art33.png?v=1763598427" alt="Crave" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">CRAVE</div>
-          <div class="featured-card-price">$12,000</div>
         </div>
       </div>
       <div class="featured-card" onclick="openOverlay('blush-manhunt')">
@@ -464,6 +442,22 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="featured-card-info">
           <div class="featured-card-title">PROTOCOL: BLUE</div>
           <div class="featured-card-price">$3,400</div>
+        </div>
+      </div>
+      <div class="featured-card" onclick="openOverlay('colorfall')">
+        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art21.png?v=1763598207" alt="Colorfall" loading="lazy">
+        <span class="featured-badge">ORIGINAL</span>
+        <div class="featured-card-info">
+          <div class="featured-card-title">COLORFALL</div>
+          <div class="featured-card-price">$14,000</div>
+        </div>
+      </div>
+      <div class="featured-card" onclick="openOverlay('crave')">
+        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art33.png?v=1763598427" alt="Crave" loading="lazy">
+        <span class="featured-badge">ORIGINAL</span>
+        <div class="featured-card-info">
+          <div class="featured-card-title">CRAVE</div>
+          <div class="featured-card-price">$12,000</div>
         </div>
       </div>
     </div>
@@ -560,8 +554,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 1</div>
         <div class="auction-lot-title">THE WITNESS</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 120&quot; x 72&quot;</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$12,000 &ndash; $22,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $12,000 - $22,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/the-witness" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -574,8 +567,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 2</div>
         <div class="auction-lot-title">SIGNAL LOST</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 120&quot; x 72&quot;</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$12,000 &ndash; $22,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $12,000 - $22,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/signal-lost" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -588,8 +580,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 3</div>
         <div class="auction-lot-title">CRIMSON GLADIATOR</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 120" x 72"</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$12,000 &ndash; $20,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $12,000 - $20,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/crimson-gladiator" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -602,8 +593,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 4</div>
         <div class="auction-lot-title">MIRAGE</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 120x72 inches (Two 60x72 Frames Fused)</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$12,000 &ndash; $20,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $12,000 - $20,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/mirage" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -616,8 +606,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 5</div>
         <div class="auction-lot-title">COLORFALL</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 60 x 72</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$10,000 &ndash; $18,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $10,000 - $18,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/colorfall" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -630,8 +619,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 6</div>
         <div class="auction-lot-title">CRAVE</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 24" x 36"</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$9,000 &ndash; $15,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $9,000 - $15,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/crave" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -644,8 +632,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 7</div>
         <div class="auction-lot-title">SHIMMER</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 36" x 48"</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$9,000 &ndash; $15,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $9,000 - $15,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/shimmer" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -658,8 +645,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div class="auction-lot-label">LOT 8</div>
         <div class="auction-lot-title">TANDEM MINDS BENEATH A DROWNING SKY</div>
         <div class="auction-lot-medium">Oil on Canvas &mdash; 60&quot; x 72&quot;</div>
-        <div class="auction-lot-estimate-label">ESTIMATE</div>
-        <div class="auction-lot-estimate">$7,000 &ndash; $13,000</div>
+        <div class="auction-lot-estimate">ESTIMATE: $7,000 - $13,000</div>
         <div class="auction-lot-buttons">
           <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
           <a href="https://natberhegallery.com/products/tandem-minds-beneath-a-drowning-sky" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
@@ -669,12 +655,13 @@ input,textarea{font-family:inherit;font-size:inherit}
   </div>
   <div class="bidder-reg">
     <h3 class="bidder-reg-title">REGISTER TO BID</h3>
-    <p class="bidder-reg-sub">Complete the form below to register for the inaugural auction.</p>
+    <div class="section-bar" style="margin:0 auto 28px"></div>
     <form class="bidder-form" onsubmit="event.preventDefault()">
       <input type="text" class="bidder-input" placeholder="Full Name" required>
       <input type="email" class="bidder-input" placeholder="Email Address" required>
       <button type="submit" class="bidder-submit">REQUEST PADDLE NUMBER</button>
     </form>
+    <p style="font-family:var(--playfair);font-style:italic;font-size:13px;color:var(--text-muted);margin-top:32px">All lots offered subject to reserve. Conditions of sale apply.</p>
   </div>
 </div>
 
@@ -846,7 +833,8 @@ function renderGallery(filter) {
   grid.innerHTML = products.map((p, i) => {
     const title = p.title.replace(/\n/g, ' ').toUpperCase();
     const priceStr = p.is_print ? 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) : '$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
-    const medium = p.is_print ? 'Canvas Print' : 'Oil on Canvas — ' + p.size;
+    const mediumType = p.is_print ? 'Canvas Print' : 'OIL ON CANVAS';
+    const medium = p.is_print ? mediumType : mediumType + '<br>' + p.size;
     const scarcity = (!p.is_print && !p.sold_out) ? '<div class="gallery-card-scarcity">ONLY 1 AVAILABLE</div>' : '';
     const soldBadge = p.sold_out ? '<div class="sold-badge">SOLD</div>' : '';
     const badge = !p.is_print ? '<span class="featured-badge">ORIGINAL</span>' : '';
@@ -859,8 +847,8 @@ function renderGallery(filter) {
       '</div>' +
       '<div class="gallery-card-info">' +
       '<div class="gallery-card-title">' + title + '</div>' +
-      '<div class="gallery-card-price">' + priceStr + '</div>' +
       '<div class="gallery-card-meta">' + medium + '</div>' +
+      '<div class="gallery-card-price">' + priceStr + '</div>' +
       scarcity +
       '<a href="' + btnHref + '" target="_blank" rel="noopener noreferrer" class="gallery-card-btn" onclick="event.stopPropagation()">' + btnText + '</a>' +
       '</div></div>';
