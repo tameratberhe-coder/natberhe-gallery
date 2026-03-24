@@ -106,7 +106,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 .section-label{font-family:var(--oswald);font-size:13px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
 .section-title{font-family:var(--oswald);font-weight:700;font-size:clamp(32px,5vw,52px);text-transform:uppercase;letter-spacing:2px;line-height:1.1;margin-bottom:8px}
 .section-bar{width:60px;height:3px;background:var(--red);margin-bottom:40px}
-@media(max-width:768px){.section{padding:60px 20px}}
+@media(max-width:768px){.section{padding:40px 20px}}
 
 /* ============ FEATURED WORKS ============ */
 .featured-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:20px}
@@ -357,6 +357,70 @@ input,textarea{font-family:inherit;font-size:inherit}
   .footer{padding:40px 20px 16px}
   .footer-inner{grid-template-columns:1fr;gap:30px}
   .footer-right{text-align:left}
+}
+
+/* ============ MOBILE SPACING TIGHTENING ============ */
+@media(max-width:768px){
+  /* Hero: reduce bottom padding */
+  .hero{min-height:auto;padding:100px 20px 50px}
+  /* Marquee: tighter */
+  .marquee{padding:12px 0}
+  /* Section bar: less bottom margin */
+  .section-bar{margin-bottom:24px}
+  /* Featured works: tighter gap */
+  .featured-grid{gap:12px;margin-bottom:12px}
+  .featured-grid-bottom{gap:10px}
+  /* Artist teaser: less padding */
+  .artist-teaser-content{padding:28px 20px}
+  .artist-teaser-heading{margin-bottom:8px}
+  .artist-teaser-bar{margin-bottom:16px}
+  .artist-teaser-text{margin-bottom:20px}
+  .artist-stats{margin-bottom:20px}
+  /* Quote: less padding */
+  .quote-section{padding:50px 20px}
+  .quote-text{margin-bottom:16px}
+  /* Collectors circle: less padding */
+  .collectors{padding:40px 20px}
+  .collectors-title{margin-bottom:8px}
+  .collectors-sub{margin-bottom:20px}
+  /* Gallery header: less padding */
+  .gallery-header{padding:80px 20px 20px}
+  .gallery-count{margin-bottom:20px}
+  /* Auction header: less padding */
+  .auction-header{padding:80px 20px 12px}
+  .auction-date{margin-top:8px}
+  .countdown{margin:20px 0}
+  .auction-desc{margin:0 auto 30px;font-size:14px}
+  /* Auction lots: tighter */
+  .auction-grid{gap:12px}
+  .auction-lot-info{padding:14px}
+  .auction-lot-label{margin-bottom:4px}
+  .auction-lot-title{margin-bottom:4px;font-size:18px}
+  .auction-lot-medium{margin-bottom:8px}
+  .auction-lot-estimate{margin-bottom:12px;font-size:16px}
+  .auction-lot-buttons{gap:6px}
+  /* Bidder reg: less padding */
+  .bidder-reg{padding:28px 20px 50px}
+  .bidder-reg-title{font-size:24px;margin-bottom:6px}
+  .bidder-form{gap:10px}
+  /* Artist page: tighter */
+  .artist-hero{height:75vh;min-height:400px}
+  .artist-hero-title{bottom:30px;left:20px}
+  .artist-bio{padding:36px 20px 36px}
+  .artist-bio p{font-size:15px;line-height:1.7;margin-bottom:18px}
+  .timeline{padding:24px 20px 40px}
+  .timeline-title{margin-bottom:24px;font-size:24px}
+  .timeline-item{padding:12px 0}
+  /* Artist gallery: tighter */
+  .artist-gallery{padding:0 16px 40px}
+  .artist-gallery-title{font-size:24px;margin-bottom:8px}
+  .artist-gallery-bar{margin:0 auto 24px}
+  /* Contact: less top padding */
+  .contact-section{padding:80px 20px 40px}
+  /* Footer: tighter */
+  .footer{padding:30px 20px 12px}
+  .footer-inner{gap:20px}
+  .footer-bottom{margin-top:24px;padding:16px 0 8px}
 }
 
 /* ============ ANIMATIONS ============ */
