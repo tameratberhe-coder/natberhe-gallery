@@ -250,7 +250,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 .bidder-submit:hover{background:#d4b45a}
 
 /* ============ ARTIST PAGE ============ */
-.artist-hero{position:relative;width:100%;height:100vh;min-height:500px;overflow:hidden}
+.artist-hero{position:relative;width:100%;height:60vh;min-height:400px;overflow:hidden}
 .artist-hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
 .artist-hero-title{position:absolute;bottom:60px;left:40px;font-family:var(--oswald);font-size:clamp(48px,10vw,100px);font-weight:700;text-transform:uppercase;letter-spacing:4px;color:#fff;line-height:1}
 .artist-header{text-align:center;padding:120px 40px 20px}
@@ -404,7 +404,7 @@ input,textarea{font-family:inherit;font-size:inherit}
   .bidder-reg-title{font-size:24px;margin-bottom:6px}
   .bidder-form{gap:10px}
   /* Artist page: tighter */
-  .artist-hero{height:75vh;min-height:400px}
+  .artist-hero{height:50vh;min-height:300px}
   .artist-hero-title{bottom:30px;left:20px}
   .artist-bio{padding:36px 20px 36px}
   .artist-bio p{font-size:15px;line-height:1.7;margin-bottom:18px}
@@ -437,7 +437,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     <span class="nav-logo-sub">GALLERY</span>
   </div>
   <div class="nav-links">
-    <a href="#home" data-page="home" onclick="navigateTo('home')">The Collection</a>
+    <a href="#gallery" data-page="gallery" onclick="navigateTo('gallery')">The Collection</a>
     <a href="#auction" data-page="auction" onclick="navigateTo('auction')">The Auction</a>
     <a href="#artist" data-page="artist" onclick="navigateTo('artist')">The Artist</a>
     <a href="#contact" data-page="contact" onclick="navigateTo('contact')">Contact</a>
@@ -447,7 +447,7 @@ input,textarea{font-family:inherit;font-size:inherit}
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#home" onclick="navigateTo('home');toggleMobile()">The Collection</a>
+  <a href="#gallery" onclick="navigateTo('gallery');toggleMobile()">The Collection</a>
   <a href="#auction" onclick="navigateTo('auction');toggleMobile()">The Auction</a>
   <a href="#artist" onclick="navigateTo('artist');toggleMobile()">The Artist</a>
   <a href="#contact" onclick="navigateTo('contact');toggleMobile()">Contact</a>
@@ -757,7 +757,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     <h1 class="artist-hero-title">THE ARTIST</h1>
   </div>
   <div class="artist-bio">
-    <p><span class="drop-cap">B</span>orn in Fontana, California in 1991, Nathnael &lsquo;Nat&rsquo; Berhe became the first Eritrean-American player drafted in NFL history when the New York Giants selected him in the sixth round of the 2014 NFL Draft. A standout safety at San Diego State University, Berhe earned the nickname &lsquo;The Missile&rsquo; for his fearless hitting style.</p>
+    <p><span class="drop-cap">B</span>orn in Fontana, California in 1991, Natnael &lsquo;Nat&rsquo; Berhe became the first Eritrean-American player drafted in NFL history when the New York Giants selected him in the sixth round of the 2014 NFL Draft. A standout safety at San Diego State University, Berhe earned the nickname &lsquo;The Missile&rsquo; for his fearless hitting style.</p>
     <p>After five seasons in the NFL, four with the New York Giants (2014&ndash;2017) and one with the Pittsburgh Steelers (2018), spanning 42 games, Berhe transitioned from professional football to fine art. His work in oil on canvas channels the same intensity and discipline that defined his athletic career.</p>
     <p>Berhe&rsquo;s paintings are rooted in figurative-abstract expressionism, blending bold composition with subtle texture. Each piece explores themes of identity, struggle, power, and transcendence. The canvases pulse with raw emotional energy, ghostlike figures rendered in vivid, clashing colors. In 2025, his work was featured at the Sasse Museum of Art for the exhibition &ldquo;Colorstraction: A Personal Perspective,&rdquo; marking his first major institutional showing.</p>
   </div>
@@ -895,7 +895,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     </div>
     <div class="footer-right">
       <div class="footer-nav">
-        <a href="#home" onclick="navigateTo('home')">The Collection</a>
+        <a href="#gallery" onclick="navigateTo('gallery')">The Collection</a>
         <a href="#auction" onclick="navigateTo('auction')">The Auction</a>
         <a href="#artist" onclick="navigateTo('artist')">The Artist</a>
         <a href="#contact" onclick="navigateTo('contact')">Contact</a>
