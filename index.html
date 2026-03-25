@@ -1062,6 +1062,9 @@ input,textarea{font-family:inherit;font-size:inherit}
       <p class="overlay-quote" id="overlayQuote"></p>
       <p class="overlay-quote-attr" id="overlayQuoteAttr"></p>
       <p class="overlay-desc" id="overlayDesc"></p>
+      <div id="overlaySizeWrap" style="display:none;margin-bottom:16px">
+        <select id="overlaySizeSelect" style="width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #333;color:#f5f0e8;font-family:var(--inter);font-size:13px;cursor:pointer;outline:none" onchange="updateOverlayPrice()"></select>
+      </div>
       <p class="overlay-price" id="overlayPrice"></p>
       <div class="overlay-viewers">
         <span class="overlay-dot"></span>
@@ -1242,8 +1245,9 @@ function renderGallery(filter) {
   grid.innerHTML = products.map((p, i) => {
     const title = p.title.replace(/\n/g, ' ').toUpperCase();
     const priceStr = p.is_print ? 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) : '$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
-    const mediumType = p.is_print ? 'Canvas Print' : 'OIL ON CANVAS';
-    const medium = p.is_print ? mediumType : mediumType + '<br>' + p.size;
+    const mediumType = p.is_print ? 'CANVAS PRINT' : 'OIL ON CANVAS';
+    const printSizeRange = (p.is_print && p.sizes && p.sizes.length > 0) ? p.sizes[0].label.split(' (')[0] + ' to ' + p.sizes[p.sizes.length-1].label.split(' (')[0] : '';
+    const medium = p.is_print ? mediumType + (printSizeRange ? '<br>' + printSizeRange : '') : mediumType + '<br>' + p.size;
     const scarcity = (!p.is_print && !p.sold_out) ? '<div class="gallery-card-scarcity">ONLY 1 AVAILABLE</div>' : '';
     const soldBadge = p.sold_out ? '<div class="sold-badge">SOLD</div>' : '';
     const badge = !p.is_print ? '<span class="featured-badge">ORIGINAL</span>' : '';
@@ -1287,12 +1291,25 @@ function openOverlayByIndex(idx) {
   document.getElementById('overlayImg').src = p.image;
   document.getElementById('overlayImg').alt = p.title;
   document.getElementById('overlayTitle').textContent = p.title.replace(/\n/g, ' ');
-  document.getElementById('overlayMedium').textContent = (p.is_print ? 'Canvas Print - ' : 'Oil on Canvas, ') + p.size;
+  document.getElementById('overlayMedium').textContent = (p.is_print ? 'Canvas Print' : 'Oil on Canvas, ' + p.size);
+  // Populate size selector for prints
+  const sizeWrap = document.getElementById('overlaySizeWrap');
+  const sizeSelect = document.getElementById('overlaySizeSelect');
+  if (p.is_print && p.sizes && p.sizes.length > 0) {
+    sizeSelect.innerHTML = p.sizes.map((s, i) => 
+      '<option value="' + i + '" data-price="' + s.price + '">' + s.label + ' — $' + s.price.toLocaleString('en-US', {maximumFractionDigits:0}) + '</option>'
+    ).join('');
+    sizeWrap.style.display = 'block';
+    document.getElementById('overlayPrice').textContent = '$' + p.sizes[0].price.toLocaleString('en-US',{maximumFractionDigits:0});
+  } else {
+    sizeWrap.style.display = 'none';
+    document.getElementById('overlayPrice').textContent = '$' + p.price.toLocaleString('en-US',{maximumFractionDigits:0});
+  }
   // Populate description
   const desc = DESCRIPTIONS[p.handle];
   if (desc) {
     document.getElementById('overlayQuote').textContent = '"' + desc.quote + '"';
-    document.getElementById('overlayQuoteAttr').textContent = '- Nat Berhe';
+    document.getElementById('overlayQuoteAttr').textContent = '— Nat Berhe';
     document.getElementById('overlayDesc').textContent = desc.description;
     document.getElementById('overlayQuote').style.display = '';
     document.getElementById('overlayQuoteAttr').style.display = '';
@@ -1302,7 +1319,6 @@ function openOverlayByIndex(idx) {
     document.getElementById('overlayQuoteAttr').style.display = 'none';
     document.getElementById('overlayDesc').style.display = 'none';
   }
-  document.getElementById('overlayPrice').textContent = p.is_print ? 'From $' + p.price.toLocaleString('en-US',{maximumFractionDigits:0}) : '$' + p.price.toLocaleString('en-US',{maximumFractionDigits:0});
   const viewers = Math.floor(Math.random() * 7) + 2;
   document.getElementById('overlayViewers').textContent = viewers + ' people viewing this work';
   document.getElementById('overlayScarcity').textContent = p.is_print ? '' : (p.sold_out ? 'SOLD' : 'ONLY 1 AVAILABLE');
@@ -1311,6 +1327,13 @@ function openOverlayByIndex(idx) {
   acq.textContent = p.sold_out ? 'VIEW WORK' : 'BUY NOW';
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function updateOverlayPrice() {
+  const select = document.getElementById('overlaySizeSelect');
+  const selectedOption = select.options[select.selectedIndex];
+  const price = parseFloat(selectedOption.dataset.price);
+  document.getElementById('overlayPrice').textContent = '$' + price.toLocaleString('en-US', {maximumFractionDigits:0});
 }
 
 function closeOverlay() {
