@@ -629,7 +629,17 @@ input,textarea{font-family:inherit;font-size:inherit}
 .ar-btn{display:none;width:100%;padding:12px;font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:all 0.3s;margin-top:16px;cursor:pointer}
 .ar-btn:hover{background:var(--gold);color:#0a0a0a}
 .ar-btn svg{width:16px;height:16px;vertical-align:middle;margin-right:6px;stroke:currentColor;fill:none;stroke-width:1.5}
-@media(max-width:768px){.ar-btn{display:block}}
+.ar-btn{display:block}
+.ar-size-presets{position:absolute;top:70px;right:12px;z-index:3002;display:flex;flex-direction:column;gap:6px}
+.ar-size-preset{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;color:#fff;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.3);padding:8px 14px;cursor:pointer;backdrop-filter:blur(8px);transition:all 0.2s;text-align:center;min-width:60px}
+.ar-size-preset:hover,.ar-size-preset.active{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+.ar-upload-prompt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#111;z-index:3001;gap:16px}
+.ar-upload-prompt p{font-family:var(--inter);font-size:14px;color:var(--text-muted);text-align:center;max-width:300px;line-height:1.6}
+.ar-upload-btn{font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:#0a0a0a;border:none;cursor:pointer;transition:background 0.3s}
+.ar-upload-btn:hover{background:#d4b45a}
+.ar-change-photo{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;background:rgba(0,0,0,0.5);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;backdrop-filter:blur(8px);transition:all 0.2s}
+.ar-change-photo:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+.ar-room-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 .ar-viewer{position:fixed;inset:0;z-index:3000;background:#000;display:none;flex-direction:column}
 .ar-viewer.open{display:flex}
@@ -793,14 +803,14 @@ input,textarea{font-family:inherit;font-size:inherit}
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/18888867-af17-4b5e-9582-828174e13e92.png?v=1773859259" alt="Ash & Empire, original oil painting by Nat Berhe, figurative abstract expressionism" loading="eager">
+      <img id="heroBgImg" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/18888867-af17-4b5e-9582-828174e13e92.png?v=1773859259" alt="Original oil painting by Nat Berhe, figurative abstract expressionism" loading="eager">
     </div>
     <div class="hero-content">
       <a href="#auction" class="hero-pill" onclick="navigateTo('auction')" style="cursor:pointer">
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         THE INAUGURAL AUCTION
       </a>
-      <p class="hero-subtitle">LOT 1 &middot; FLAG PAINTINGS &middot; OIL ON CANVAS</p>
+      <p class="hero-subtitle" id="heroSubtitle">TODAY&rsquo;S FEATURED WORK &middot; OIL ON CANVAS</p>
       <h1 class="hero-title">NAT BERHE</h1>
       <p class="hero-tagline">Figurative Abstract Expressionism</p>
       <div class="hero-buttons">
@@ -1206,10 +1216,25 @@ input,textarea{font-family:inherit;font-size:inherit}
 <!-- ========== AR ROOM VISUALIZER ========== -->
 <div class="ar-viewer" id="arViewer">
   <video id="arVideo" autoplay playsinline muted></video>
+  <img class="ar-room-bg" id="arRoomBg" style="display:none">
+  <div class="ar-upload-prompt" id="arUploadPrompt" style="display:none">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    <p>Upload a photo of your wall to see the painting in your space</p>
+    <button class="ar-upload-btn" onclick="document.getElementById('arRoomUpload').click()">UPLOAD WALL PHOTO</button>
+    <p style="font-size:12px;color:#555">Or use your camera on mobile</p>
+    <input type="file" id="arRoomUpload" accept="image/*" style="display:none" onchange="loadRoomPhoto(event)">
+  </div>
   <div class="ar-topbar">
     <button class="ar-close" onclick="closeARViewer()">&times;</button>
     <div class="ar-topbar-title" id="arTitle"></div>
+    <button class="ar-change-photo" id="arChangePhoto" style="display:none" onclick="document.getElementById('arRoomUpload').click()">CHANGE PHOTO</button>
     <div class="ar-topbar-spacer"></div>
+  </div>
+  <div class="ar-size-presets" id="arSizePresets">
+    <button class="ar-size-preset" onclick="setARSize('S')">S</button>
+    <button class="ar-size-preset" onclick="setARSize('M')">M</button>
+    <button class="ar-size-preset active" onclick="setARSize('L')">L</button>
+    <button class="ar-size-preset" onclick="setARSize('XL')">XL</button>
   </div>
   <div class="ar-canvas-area" id="arCanvasArea">
     <div class="ar-painting-wrap" id="arPaintingWrap">
@@ -1218,7 +1243,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     </div>
   </div>
   <div class="ar-bottom">
-    <div class="ar-hint">Drag to position, pinch to resize</div>
+    <div class="ar-hint" id="arHint">Drag to position, pinch to resize, or use S/M/L/XL</div>
     <button class="ar-capture-btn" id="arCaptureBtn" onclick="captureARPhoto()"></button>
     <span class="ar-capture-label">TAKE PHOTO</span>
   </div>
@@ -1877,6 +1902,12 @@ let arScale = 1;
 let arPosX = 0;
 let arPosY = 0;
 
+var arIsDesktop = false;
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ('ontouchstart' in window && window.innerWidth < 1024);
+}
+
 function openARViewer() {
   const p = filteredProducts[overlayIndex];
   if (!p) return;
@@ -1884,7 +1915,13 @@ function openARViewer() {
   const viewer = document.getElementById('arViewer');
   const fallback = document.getElementById('arFallback');
   const video = document.getElementById('arVideo');
+  const uploadPrompt = document.getElementById('arUploadPrompt');
+  const roomBg = document.getElementById('arRoomBg');
+  const sizePresets = document.getElementById('arSizePresets');
   fallback.style.display = 'none';
+  uploadPrompt.style.display = 'none';
+  roomBg.style.display = 'none';
+  video.style.display = 'none';
   document.getElementById('arTitle').textContent = p.title.replace(/\n/g, ' ');
   document.getElementById('arPaintingImg').src = p.image;
   document.getElementById('arPaintingImg').alt = p.title;
@@ -1896,21 +1933,88 @@ function openARViewer() {
   updateARPaintingPosition();
   viewer.classList.add('open');
   document.body.style.overflow = 'hidden';
-  // Start camera
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false })
-      .then(function(stream) {
-        arStream = stream;
-        video.srcObject = stream;
-      })
-      .catch(function() {
-        fallback.style.display = 'flex';
-      });
+  // Reset size presets
+  var btns = sizePresets.querySelectorAll('.ar-size-preset');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btns[2].classList.add('active'); // L default
+  setARSize('L');
+  arIsDesktop = !isMobileDevice();
+  var hint = document.getElementById('arHint');
+  if (arIsDesktop) {
+    // Desktop: show upload prompt, hide video
+    video.style.display = 'none';
+    uploadPrompt.style.display = 'flex';
+    sizePresets.style.display = 'flex';
+    document.getElementById('arPaintingWrap').style.display = 'none';
+    if (hint) hint.textContent = 'Drag to position, scroll to resize, or use S/M/L/XL';
   } else {
-    fallback.style.display = 'flex';
+    // Mobile: use camera
+    video.style.display = 'block';
+    sizePresets.style.display = 'flex';
+    document.getElementById('arPaintingWrap').style.display = 'block';
+    if (hint) hint.textContent = 'Drag to position, pinch to resize, or use S/M/L/XL';
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false })
+        .then(function(stream) {
+          arStream = stream;
+          video.srcObject = stream;
+        })
+        .catch(function() {
+          fallback.style.display = 'flex';
+        });
+    } else {
+      fallback.style.display = 'flex';
+    }
   }
-  // Setup touch/mouse events
   setupAREvents();
+}
+
+function loadRoomPhoto(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var roomBg = document.getElementById('arRoomBg');
+    roomBg.src = e.target.result;
+    roomBg.style.display = 'block';
+    document.getElementById('arUploadPrompt').style.display = 'none';
+    document.getElementById('arVideo').style.display = 'none';
+    document.getElementById('arPaintingWrap').style.display = 'block';
+    // Show change photo button
+    var changeBtn = document.getElementById('arChangePhoto');
+    if (changeBtn) changeBtn.style.display = 'block';
+    // Center painting
+    arPosX = window.innerWidth / 2;
+    arPosY = window.innerHeight / 2;
+    updateARPaintingPosition();
+  };
+  reader.readAsDataURL(file);
+}
+
+function setARSize(size) {
+  var sizes = { 'S': 0.2, 'M': 0.35, 'L': 0.55, 'XL': 0.8 };
+  var factor = sizes[size] || 0.55;
+  // Calculate scale based on viewport
+  var vw = window.innerWidth;
+  var vh = window.innerHeight;
+  var minDim = Math.min(vw, vh);
+  var targetWidth = minDim * factor;
+  var img = document.getElementById('arPaintingImg');
+  // Use natural image ratio to determine painting width
+  var naturalW = img.naturalWidth || 300;
+  var naturalH = img.naturalHeight || 400;
+  var imgRatio = naturalW / naturalH;
+  // Set arScale so the painting appears at the right visual size
+  // The painting img is constrained to max-height: 35vh by CSS, so base scale = 1 is about 35vh
+  var baseHeight = vh * 0.35;
+  var targetHeight = vh * factor * 0.7;
+  arScale = targetHeight / baseHeight;
+  arScale = Math.max(0.3, Math.min(3, arScale));
+  updateARPaintingPosition();
+  // Update active button
+  var btns = document.querySelectorAll('.ar-size-preset');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btns.forEach(function(b) { if (b.textContent.trim() === size) b.classList.add('active'); });
 }
 
 function closeARViewer() {
@@ -1922,6 +2026,14 @@ function closeARViewer() {
     arStream = null;
   }
   video.srcObject = null;
+  // Reset room photo state
+  document.getElementById('arRoomBg').style.display = 'none';
+  document.getElementById('arRoomBg').src = '';
+  document.getElementById('arUploadPrompt').style.display = 'none';
+  document.getElementById('arRoomUpload').value = '';
+  var changeBtn = document.getElementById('arChangePhoto');
+  if (changeBtn) changeBtn.style.display = 'none';
+  arIsDesktop = false;
   document.body.style.overflow = 'hidden'; // Keep body locked since overlay is still open
   teardownAREvents();
 }
@@ -2010,6 +2122,15 @@ function arMouseUp() {
   arDragState.dragging = false;
 }
 
+function arWheel(e) {
+  e.preventDefault();
+  var delta = e.deltaY > 0 ? -0.05 : 0.05;
+  arScale = Math.max(0.15, Math.min(3, arScale + delta));
+  updateARPaintingPosition();
+  // Clear active state from size buttons since user is free-scrolling
+  document.querySelectorAll('.ar-size-preset').forEach(function(b) { b.classList.remove('active'); });
+}
+
 function setupAREvents() {
   var area = document.getElementById('arCanvasArea');
   area.addEventListener('touchstart', arTouchStart, { passive: false });
@@ -2018,6 +2139,7 @@ function setupAREvents() {
   area.addEventListener('mousedown', arMouseDown);
   window.addEventListener('mousemove', arMouseMove);
   window.addEventListener('mouseup', arMouseUp);
+  area.addEventListener('wheel', arWheel, { passive: false });
 }
 function teardownAREvents() {
   var area = document.getElementById('arCanvasArea');
@@ -2027,32 +2149,52 @@ function teardownAREvents() {
   area.removeEventListener('mousedown', arMouseDown);
   window.removeEventListener('mousemove', arMouseMove);
   window.removeEventListener('mouseup', arMouseUp);
+  area.removeEventListener('wheel', arWheel);
 }
 
 function captureARPhoto() {
   var video = document.getElementById('arVideo');
+  var roomBg = document.getElementById('arRoomBg');
   var canvas = document.getElementById('arCaptureCanvas');
   var ctx = canvas.getContext('2d');
   var vw = window.innerWidth;
   var vh = window.innerHeight;
   canvas.width = vw;
   canvas.height = vh;
-  // Draw the video frame scaled to cover the viewport
-  var vRatio = video.videoWidth / video.videoHeight;
-  var sRatio = vw / vh;
-  var sw, sh, sx, sy;
-  if (vRatio > sRatio) {
-    sh = video.videoHeight;
-    sw = sh * sRatio;
-    sx = (video.videoWidth - sw) / 2;
-    sy = 0;
+  // Draw background: room photo or video frame
+  if (roomBg.style.display !== 'none' && roomBg.src) {
+    // Room photo background
+    var iRatio = roomBg.naturalWidth / roomBg.naturalHeight;
+    var sRatio = vw / vh;
+    var dw, dh, dx, dy;
+    if (iRatio > sRatio) {
+      dh = vh; dw = vh * iRatio; dx = (vw - dw) / 2; dy = 0;
+    } else {
+      dw = vw; dh = vw / iRatio; dx = 0; dy = (vh - dh) / 2;
+    }
+    ctx.drawImage(roomBg, dx, dy, dw, dh);
+  } else if (video.srcObject) {
+    // Video frame
+    var vRatio = video.videoWidth / video.videoHeight;
+    var sRatio = vw / vh;
+    var sw, sh, sx, sy;
+    if (vRatio > sRatio) {
+      sh = video.videoHeight;
+      sw = sh * sRatio;
+      sx = (video.videoWidth - sw) / 2;
+      sy = 0;
+    } else {
+      sw = video.videoWidth;
+      sh = sw / sRatio;
+      sx = 0;
+      sy = (video.videoHeight - sh) / 2;
+    }
+    ctx.drawImage(video, sx, sy, sw, sh, 0, 0, vw, vh);
   } else {
-    sw = video.videoWidth;
-    sh = sw / sRatio;
-    sx = 0;
-    sy = (video.videoHeight - sh) / 2;
+    // Black background fallback
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, vw, vh);
   }
-  ctx.drawImage(video, sx, sy, sw, sh, 0, 0, vw, vh);
   // Draw the painting image on top
   var paintImg = document.getElementById('arPaintingImg');
   var wrap = document.getElementById('arPaintingWrap');
@@ -2106,7 +2248,20 @@ function captureARPhoto() {
 function renderPrints() {
   const grid = document.getElementById('printsGrid');
   if (!grid) return;
-  const prints = CATALOG.filter(p => p.is_print);
+  const allPrints = CATALOG.filter(p => p.is_print);
+  // Separate prints that have matching originals from print-only pieces
+  const originalTitles = new Set(CATALOG.filter(o => !o.is_print).map(o => o.title.toLowerCase().replace(/[\u2019']/g, '').trim()));
+  const originalHandles = new Set(CATALOG.filter(o => !o.is_print).map(o => o.handle));
+  function hasOriginal(p) {
+    var pTitle = p.title.toLowerCase().replace(/[\u2019']/g, '').trim();
+    if (originalTitles.has(pTitle)) return true;
+    var clean = p.handle.replace(/-print$/, '');
+    if (clean.match(/-\d+$/)) clean = clean.replace(/-\d+$/, '');
+    return originalHandles.has(clean);
+  }
+  var withOrig = allPrints.filter(function(p) { return hasOriginal(p); });
+  var printOnly = allPrints.filter(function(p) { return !hasOriginal(p); });
+  var prints = withOrig.concat(printOnly);
   grid.innerHTML = prints.map((p, i) => {
     const title = p.title.replace(/\n/g, ' ').toUpperCase();
     const priceStr = 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
@@ -2127,8 +2282,33 @@ function renderPrints() {
   }).join('');
 }
 
+function setDailyHero() {
+  // Select originals that aren't sold out for the daily rotation
+  var originals = CATALOG.filter(function(p) { return !p.is_print && !p.sold_out; });
+  if (originals.length === 0) return;
+  // Use day of year as seed for deterministic daily selection
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  var dayOfYear = Math.floor((now - start) / 86400000);
+  var idx = dayOfYear % originals.length;
+  var painting = originals[idx];
+  // Update hero background image
+  var heroImg = document.getElementById('heroBgImg');
+  if (heroImg) {
+    heroImg.src = painting.image;
+    heroImg.alt = painting.title + ', original oil painting by Nat Berhe, figurative abstract expressionism';
+  }
+  // Update subtitle with painting name and size
+  var subtitle = document.getElementById('heroSubtitle');
+  if (subtitle) {
+    var sizeStr = painting.size ? ' \u00B7 ' + painting.size : '';
+    subtitle.innerHTML = painting.title.toUpperCase() + sizeStr + ' \u00B7 OIL ON CANVAS';
+  }
+}
+
 function init() {
   const hash = window.location.hash.replace('#','') || 'home';
+  setDailyHero();
   renderGallery();
   renderPrints();
   aucInit();
