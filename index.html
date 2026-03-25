@@ -893,12 +893,8 @@ input,textarea{font-family:inherit;font-size:inherit}
     <p class="section-label">NAT BERHE GALLERY</p>
     <h1 class="section-title">THE COLLECTION</h1>
     <div class="section-bar"></div>
-    <div class="gallery-filters">
-      <button class="gallery-filter active" data-filter="all" onclick="filterGallery('all',this)">ALL</button>
-      <button class="gallery-filter" data-filter="originals" onclick="filterGallery('originals',this)">ORIGINALS</button>
-      <button class="gallery-filter" data-filter="prints" onclick="filterGallery('prints',this)">PRINTS</button>
-    </div>
-    <p class="gallery-count" id="galleryCount">Showing 147 works</p>
+    <p class="prints-header-desc">Original oil on canvas works by Natnael Berhe. Each piece is one of a kind.</p>
+    <p class="gallery-count" id="galleryCount">Showing 69 works</p>
   </div>
   <div class="gallery-grid" id="galleryGrid"></div>
 </div>
@@ -1262,30 +1258,26 @@ function navigateTo(page) {
 }
 
 // ============ GALLERY RENDERING ============
-function renderGallery(filter) {
+function renderGallery() {
   const grid = document.getElementById('galleryGrid');
-  let products;
-  if (filter === 'originals') products = CATALOG.filter(p => !p.is_print);
-  else if (filter === 'prints') products = CATALOG.filter(p => p.is_print);
-  else products = [...CATALOG];
+  // The Collection shows only originals
+  let products = CATALOG.filter(p => !p.is_print);
   filteredProducts = products;
   
   document.getElementById('galleryCount').textContent = 'Showing ' + products.length + ' works';
   
   grid.innerHTML = products.map((p, i) => {
     const title = p.title.replace(/\n/g, ' ').toUpperCase();
-    const priceStr = p.is_print ? 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) : '$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
-    const mediumType = p.is_print ? 'CANVAS PRINT' : 'OIL ON CANVAS';
-    const printSizeRange = (p.is_print && p.sizes && p.sizes.length > 0) ? p.sizes[0].label.split(' (')[0] + ' to ' + p.sizes[p.sizes.length-1].label.split(' (')[0] : '';
-    const medium = p.is_print ? mediumType + (printSizeRange ? '<br>' + printSizeRange : '') : mediumType + '<br>' + p.size;
-    const scarcity = (!p.is_print && !p.sold_out) ? '<div class="gallery-card-scarcity">ONLY 1 AVAILABLE</div>' : '';
+    const priceStr = '$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
+    const medium = 'OIL ON CANVAS<br>' + p.size;
+    const scarcity = !p.sold_out ? '<div class="gallery-card-scarcity">ONLY 1 AVAILABLE</div>' : '';
     const soldBadge = p.sold_out ? '<div class="sold-badge">SOLD</div>' : '';
-    const badge = !p.is_print ? '<span class="featured-badge">ORIGINAL</span>' : '';
+    const badge = '<span class="featured-badge">ORIGINAL</span>';
     const btnText = p.sold_out ? 'VIEW WORK' : 'BUY NOW';
     const btnHref = 'https://natberhegallery.com/products/' + p.handle;
     return '<div class="gallery-card" onclick="openOverlayByIndex(' + i + ')">' +
       '<div class="gallery-card-img-wrap">' +
-      '<img class="gallery-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g,'&quot;') + ', ' + (p.is_print ? 'canvas print' : 'original oil on canvas') + ' by Nat Berhe" loading="lazy">' +
+      '<img class="gallery-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g,'&quot;') + ', original oil on canvas by Nat Berhe" loading="lazy">' +
       badge + soldBadge +
       '</div>' +
       '<div class="gallery-card-info">' +
@@ -1298,12 +1290,7 @@ function renderGallery(filter) {
   }).join('');
 }
 
-function filterGallery(filter, btn) {
-  currentFilter = filter;
-  document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderGallery(filter);
-}
+
 
 // ============ OVERLAY ============
 function openOverlay(handle) {
@@ -1693,7 +1680,7 @@ function renderPrints() {
 
 function init() {
   const hash = window.location.hash.replace('#','') || 'home';
-  renderGallery('all');
+  renderGallery();
   renderPrints();
   aucInit();
   navigateTo(hash);
