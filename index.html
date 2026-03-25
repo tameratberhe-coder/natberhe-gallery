@@ -219,6 +219,16 @@ input,textarea{font-family:inherit;font-size:inherit}
 .gallery-filter:hover{color:var(--text)}
 .gallery-sort{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto 24px;padding:0 40px}
 .gallery-count{font-family:var(--inter);font-size:12px;color:var(--text-muted);letter-spacing:1px}
+.sort-wrap{position:relative}
+.sort-toggle{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2px;color:var(--text-muted);background:none;border:1px solid #333;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s}
+.sort-toggle:hover,.sort-toggle.open{color:var(--gold);border-color:var(--gold)}
+.sort-toggle svg{transition:transform 0.2s}
+.sort-toggle.open svg{transform:rotate(180deg)}
+.sort-menu{display:none;position:absolute;top:calc(100% + 4px);right:0;background:#111;border:1px solid #333;min-width:200px;z-index:100}
+.sort-menu.open{display:block}
+.sort-option{display:block;width:100%;text-align:left;font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--text-muted);background:none;border:none;border-bottom:1px solid #1a1a1a;padding:12px 16px;cursor:pointer;transition:all 0.15s}
+.sort-option:last-child{border-bottom:none}
+.sort-option:hover{background:#1a1a1a;color:var(--gold)}
 @media(max-width:768px){.gallery-sort{padding:0 16px}}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1400px;margin:0 auto;padding:0 40px 80px}
 .gallery-card{background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:transform 0.3s,border-color 0.3s;cursor:pointer;position:relative}
@@ -926,13 +936,16 @@ input,textarea{font-family:inherit;font-size:inherit}
     <p class="prints-header-desc">Original oil on canvas works by Natnael Berhe. Each piece is one of a kind and includes a Certificate of Authenticity. Starting from $1,000.</p>
     <div class="gallery-sort">
       <span class="gallery-count" id="galleryCount">69 works</span>
-      <select id="gallerySort" onchange="sortGallery(this.value)" style="padding:6px 12px;background:#1a1a1a;border:1px solid #333;color:var(--text-muted);font-family:var(--inter);font-size:12px;letter-spacing:1px;cursor:pointer">
-        <option value="default">SORT BY</option>
-        <option value="price-low">PRICE: LOW TO HIGH</option>
-        <option value="price-high">PRICE: HIGH TO LOW</option>
-        <option value="name">NAME: A TO Z</option>
-        <option value="size">SIZE: LARGEST FIRST</option>
-      </select>
+      <div class="sort-wrap">
+        <button class="sort-toggle" id="sortToggle" onclick="toggleSort()">SORT BY <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="sort-menu" id="sortMenu">
+          <button class="sort-option" onclick="pickSort('default','SORT BY')">DEFAULT</button>
+          <button class="sort-option" onclick="pickSort('price-low','PRICE: LOW TO HIGH')">PRICE: LOW TO HIGH</button>
+          <button class="sort-option" onclick="pickSort('price-high','PRICE: HIGH TO LOW')">PRICE: HIGH TO LOW</button>
+          <button class="sort-option" onclick="pickSort('name','NAME: A TO Z')">NAME: A TO Z</button>
+          <button class="sort-option" onclick="pickSort('size','SIZE: LARGEST')">SIZE: LARGEST FIRST</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="gallery-grid" id="galleryGrid"></div>
@@ -1325,6 +1338,29 @@ function renderGallery() {
 }
 
 
+
+function toggleSort() {
+  const btn = document.getElementById('sortToggle');
+  const menu = document.getElementById('sortMenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+
+function pickSort(value, label) {
+  const btn = document.getElementById('sortToggle');
+  btn.innerHTML = label + ' <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+  btn.classList.remove('open');
+  document.getElementById('sortMenu').classList.remove('open');
+  sortGallery(value);
+}
+
+// Close sort menu when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.sort-wrap')) {
+    document.getElementById('sortToggle').classList.remove('open');
+    document.getElementById('sortMenu').classList.remove('open');
+  }
+});
 
 function sortGallery(sortBy) {
   const grid = document.getElementById('galleryGrid');
