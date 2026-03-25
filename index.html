@@ -426,6 +426,140 @@ input,textarea{font-family:inherit;font-size:inherit}
   .footer-bottom{margin-top:24px;padding:16px 0 8px}
 }
 
+
+/* ============ AUCTION V2 ============ */
+/* -- Hero -- */
+.auc-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;overflow:hidden}
+.auc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06),transparent 70%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(139,26,26,.05),transparent 60%);z-index:0;animation:auc-gradShift 12s ease-in-out infinite alternate}
+@keyframes auc-gradShift{0%{opacity:.7;filter:hue-rotate(0deg)}100%{opacity:1;filter:hue-rotate(8deg)}}
+.auc-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px 128px}
+.auc-hero>*{position:relative;z-index:2}
+.auc-hero-tag{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;opacity:0;animation:auc-fadeUp .8s ease-out .2s forwards}
+.auc-hero-title{font-family:var(--oswald);font-size:clamp(42px,8vw,88px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text);line-height:1.05;margin-bottom:12px;opacity:0;animation:auc-fadeUp .8s ease-out .35s forwards}
+.auc-hero-date{font-family:var(--inter);font-size:clamp(12px,1.5vw,14px);font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;opacity:0;animation:auc-fadeUp .8s ease-out .5s forwards}
+@keyframes auc-fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* -- Countdown V2 -- */
+.auc-cd{display:flex;gap:clamp(12px,4vw,40px);justify-content:center;align-items:center;margin-bottom:32px;opacity:0;animation:auc-fadeUp .8s ease-out .65s forwards;max-width:100%;padding:0 8px}
+.auc-cd-block{text-align:center;min-width:70px}
+.auc-cd-num{font-family:var(--oswald);font-size:clamp(48px,12vw,100px);font-weight:700;color:var(--gold);line-height:1;letter-spacing:-2px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.auc-cd-num.tick{animation:auc-tick .35s ease-out}
+@keyframes auc-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+.auc-cd-label{font-family:var(--inter);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
+.auc-cd-sep{font-family:var(--oswald);font-size:clamp(28px,8vw,72px);color:var(--gold);opacity:.3;line-height:1;margin-top:-10px}
+
+/* -- Live badge -- */
+.auc-live-badge{display:none;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#ff4444;margin-bottom:24px;opacity:0;animation:auc-fadeUp .8s ease-out .7s forwards}
+.auc-live-badge.show{display:inline-flex}
+.auc-live-dot{width:10px;height:10px;background:#ff4444;border-radius:50%;animation:auc-pulse 1.5s ease-in-out infinite}
+@keyframes auc-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.auc-hero-sub{font-family:var(--playfair);font-style:italic;font-size:clamp(14px,1.6vw,17px);color:var(--text-muted);max-width:540px;line-height:1.6;opacity:0;animation:auc-fadeUp .8s ease-out .8s forwards}
+.auc-hero-line{width:60px;height:1px;background:var(--gold);margin:20px auto 0;opacity:0;animation:auc-fadeUp .8s ease-out .9s forwards}
+
+/* -- Lot Carousel -- */
+.auc-lots-section{max-width:1400px;margin:0 auto;padding:0 24px 80px}
+.auc-lots-title-bar{text-align:center;margin-bottom:48px}
+.auc-lots-heading{font-family:var(--oswald);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text)}
+.auc-lots-gold-line{width:60px;height:1px;background:var(--gold);margin:12px auto 0}
+
+.auc-carousel{position:relative;overflow:hidden}
+.auc-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--card-bg);border:1px solid var(--border);min-height:500px;opacity:0;position:absolute;top:0;left:0;right:0;transition:opacity .5s ease-out;pointer-events:none}
+.auc-card.active{opacity:1;position:relative;pointer-events:auto}
+.auc-card-img-wrap{position:relative;overflow:hidden;background:#080808}
+.auc-card-img{width:100%;height:100%;object-fit:cover;min-height:400px;max-height:700px}
+.auc-card-info{padding:clamp(24px,3vw,48px);display:flex;flex-direction:column;justify-content:center}
+.auc-card-lot-num{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.auc-card-lot-num::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.3}
+.auc-card-title{font-family:var(--oswald);font-size:clamp(24px,3vw,40px);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.1;margin-bottom:12px;color:var(--text)}
+.auc-card-medium{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:6px}
+.auc-card-estimate{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:20px}
+.auc-card-estimate span{color:var(--gold);font-weight:600}
+.auc-card-quote{font-family:var(--playfair);font-style:italic;font-size:clamp(14px,1.4vw,16px);color:var(--gold);line-height:1.6;margin-bottom:20px;padding-left:16px;border-left:2px solid rgba(201,168,76,.3)}
+.auc-card-desc-toggle{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);cursor:pointer;background:none;border:none;padding:0;margin-bottom:20px;display:flex;align-items:center;gap:6px;transition:color .3s}
+.auc-card-desc-toggle:hover{color:var(--gold)}
+.auc-card-desc-toggle .arrow{transition:transform .3s;display:inline-block}
+.auc-card-desc-toggle.open .arrow{transform:rotate(90deg)}
+.auc-card-desc{font-family:var(--inter);font-size:13px;color:var(--text-muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .5s ease-out,opacity .3s ease-out;opacity:0;margin-bottom:0}
+.auc-card-desc.open{max-height:400px;opacity:1;margin-bottom:20px}
+.auc-card-status{font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.auc-card-status.open{color:#4caf50}.auc-card-status.closed{color:#f44336}.auc-card-status.coming{color:var(--text-muted)}
+
+/* -- Bid Panel -- */
+.auc-bid-panel{border:1px solid var(--border);background:rgba(17,17,17,.7);padding:20px;margin-bottom:16px}
+.auc-bid-current{font-family:var(--inter);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.auc-bid-amount{font-family:var(--oswald);font-size:clamp(28px,3vw,38px);font-weight:700;color:var(--gold);margin-bottom:12px}
+.auc-bid-paddle{font-family:var(--inter);font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:12px}
+.auc-bid-paddle span{color:var(--gold);font-weight:600}
+.auc-bid-btn{display:block;width:100%;padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s,transform .15s;text-align:center;margin-bottom:8px}
+.auc-bid-btn:hover{background:#d4b45a;transform:translateY(-1px)}
+.auc-bid-btn:active{transform:translateY(0)}
+.auc-bid-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.auc-bid-btn.secondary{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.auc-bid-btn.secondary:hover{background:rgba(201,168,76,.1)}
+.auc-bid-history{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}
+.auc-bid-history-title{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.auc-bid-history-item{font-family:var(--inter);font-size:12px;color:var(--text-muted);padding:4px 0;display:flex;justify-content:space-between}
+.auc-bid-history-item .bid-who{color:var(--text)}
+.auc-bid-history-item .bid-amt{color:var(--gold);font-weight:600}
+.auc-bid-history-item .bid-time{font-size:10px;opacity:.6}
+
+/* -- Buy Now -- */
+.auc-buy-link{display:block;text-align:center;padding:12px;border:1px solid var(--border);font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);transition:all .3s;margin-top:4px}
+.auc-buy-link:hover{border-color:var(--gold);color:var(--gold)}
+
+/* -- Carousel Nav -- */
+.auc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
+.auc-nav-btn{width:48px;height:48px;border:1px solid var(--border);background:rgba(17,17,17,.8);color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:18px}
+.auc-nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+.auc-nav-counter{font-family:var(--oswald);font-size:16px;letter-spacing:2px;color:var(--text-muted);min-width:60px;text-align:center}
+.auc-nav-counter span{color:var(--gold);font-weight:600}
+
+/* -- Thumbnails -- */
+.auc-thumbs{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;padding:0 16px}
+.auc-thumb{width:64px;height:64px;object-fit:cover;border:2px solid transparent;cursor:pointer;opacity:.5;transition:all .3s}
+.auc-thumb.active{border-color:var(--gold);opacity:1}
+.auc-thumb:hover{opacity:.8}
+
+/* -- Registration V2 -- */
+.auc-reg{max-width:600px;margin:0 auto;padding:60px 24px 100px;text-align:center}
+.auc-reg-line{width:60px;height:1px;background:var(--gold);margin:0 auto 32px}
+.auc-reg-title{font-family:var(--oswald);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.auc-reg-sub{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6}
+.auc-reg-form{display:flex;flex-direction:column;gap:12px}
+.auc-reg-input{padding:14px 16px;background:#111;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color .3s}
+.auc-reg-input:focus{border-color:var(--gold)}
+.auc-reg-submit{padding:16px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s}
+.auc-reg-submit:hover{background:#d4b45a}
+.auc-reg-note{font-family:var(--playfair);font-style:italic;font-size:13px;color:var(--text-muted);margin-top:24px;line-height:1.5}
+/* -- Registration confirmed state -- */
+.auc-reg-confirmed{display:none;text-align:center}
+.auc-reg-confirmed.show{display:block}
+.auc-reg-confirmed .paddle-display{font-family:var(--oswald);font-size:clamp(48px,10vw,80px);font-weight:700;color:var(--gold);line-height:1;margin:20px 0 8px}
+.auc-reg-confirmed .paddle-label{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.auc-reg-confirmed .paddle-name{font-family:var(--inter);font-size:14px;color:var(--text);margin-bottom:20px}
+.auc-reg-confirmed .reg-success{font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4caf50;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.auc-reg-confirmed .reg-info{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.6}
+
+/* -- Responsive V2 -- */
+@media(max-width:900px){
+  .auc-card{grid-template-columns:1fr}
+  .auc-card-img{min-height:280px;max-height:400px}
+}
+@media(max-width:600px){
+  .auc-hero{padding:90px 16px 40px;min-height:auto;min-height:100svh}
+  .auc-cd{gap:6px;padding:0 8px}
+  .auc-cd-block{min-width:auto}
+  .auc-cd-num{font-size:clamp(44px,11.5vw,64px);letter-spacing:-1px}
+  .auc-cd-sep{font-size:22px;margin-top:-6px}
+  .auc-cd-label{font-size:8px;letter-spacing:1.5px}
+  .auc-card-info{padding:20px 16px}
+  .auc-nav-btn{width:40px;height:40px}
+  .auc-thumb{width:48px;height:48px}
+  .auc-lots-section{padding:0 12px 60px}
+  .auc-bid-panel{padding:16px}
+}
+
+
 /* ============ ANIMATIONS ============ */
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -624,133 +758,69 @@ input,textarea{font-family:inherit;font-size:inherit}
 
 <!-- ========== PAGE: AUCTION ========== -->
 <div class="page" id="page-auction">
-  <div class="auction-header">
-    <h1 class="section-title" style="color:#fff">THE INAUGURAL AUCTION</h1>
-    <p class="auction-date">JULY 6, 2026 &middot; 7:00 PM PST</p>
-    <div class="countdown" id="countdown">
-      <div class="countdown-item"><div class="countdown-value" id="cd-days">--</div><div class="countdown-label">Days</div></div>
-      <div class="countdown-item"><div class="countdown-value" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
-      <div class="countdown-item"><div class="countdown-value" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
-      <div class="countdown-item"><div class="countdown-value" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
+
+  <!-- === CINEMATIC COUNTDOWN HERO === -->
+  <section class="auc-hero">
+    <div class="auc-grain"></div>
+    <div class="auc-live-badge" id="aucLiveBadge"><span class="auc-live-dot"></span> LIVE</div>
+    <div class="auc-hero-tag">Nat Berhe Gallery Presents</div>
+    <h1 class="auc-hero-title">THE INAUGURAL<br>AUCTION</h1>
+    <p class="auc-hero-date">JULY 6, 2026 &middot; 7:00 PM PST</p>
+    <div class="auc-cd" id="aucCountdown">
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-days">--</div><div class="auc-cd-label">Days</div></div>
+      <div class="auc-cd-sep">:</div>
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-hours">--</div><div class="auc-cd-label">Hours</div></div>
+      <div class="auc-cd-sep">:</div>
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-mins">--</div><div class="auc-cd-label">Minutes</div></div>
+      <div class="auc-cd-sep">:</div>
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-secs">--</div><div class="auc-cd-label">Seconds</div></div>
     </div>
-    <p class="auction-desc">A curated selection of Nat Berhe&rsquo;s most significant works offered at auction. Museum-quality originals, each with a reserve estimate. Register below to participate in the live bidding event.</p>
-  </div>
-  <div class="auction-grid">
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089" alt="The Witness" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 1</div>
-        <div class="auction-lot-title">THE WITNESS</div>
-        <div class="auction-lot-medium">Oil on Canvas, 120&quot; x 72&quot;</div>
-        <div class="auction-lot-estimate">ESTIMATE: $12,000 to $22,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/the-witness" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
+    <p class="auc-hero-sub">Register for a paddle number to bid live</p>
+    <div class="auc-hero-line"></div>
+  </section>
+
+  <!-- === LOT CAROUSEL === -->
+  <section class="auc-lots-section">
+    <div class="auc-lots-title-bar">
+      <h2 class="auc-lots-heading">FEATURED LOTS</h2>
+      <div class="auc-lots-gold-line"></div>
     </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="Signal Lost" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 2</div>
-        <div class="auction-lot-title">SIGNAL LOST</div>
-        <div class="auction-lot-medium">Oil on Canvas, 120&quot; x 72&quot;</div>
-        <div class="auction-lot-estimate">ESTIMATE: $12,000 to $22,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/signal-lost" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
+    <div class="auc-carousel" id="aucCarousel">
+      <!-- Cards rendered by JS -->
     </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art69.png?v=1763599178" alt="Crimson Gladiator" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 3</div>
-        <div class="auction-lot-title">CRIMSON GLADIATOR</div>
-        <div class="auction-lot-medium">Oil on Canvas, 120" x 72"</div>
-        <div class="auction-lot-estimate">ESTIMATE: $12,000 to $20,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/crimson-gladiator" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
+    <div class="auc-nav">
+      <button class="auc-nav-btn" onclick="aucNav(-1)" aria-label="Previous lot">&#8592;</button>
+      <div class="auc-nav-counter"><span id="aucNavCurr">1</span> / <span id="aucNavTotal">8</span></div>
+      <button class="auc-nav-btn" onclick="aucNav(1)" aria-label="Next lot">&#8594;</button>
     </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art51.png?v=1763598848" alt="Mirage" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 4</div>
-        <div class="auction-lot-title">MIRAGE</div>
-        <div class="auction-lot-medium">Oil on Canvas, 120x72 inches (Two 60x72 Frames Fused)</div>
-        <div class="auction-lot-estimate">ESTIMATE: $12,000 to $20,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/mirage" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
+    <div class="auc-thumbs" id="aucThumbs">
+      <!-- Thumbnails rendered by JS -->
     </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art21.png?v=1763598207" alt="Colorfall" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 5</div>
-        <div class="auction-lot-title">COLORFALL</div>
-        <div class="auction-lot-medium">Oil on Canvas, 60 x 72</div>
-        <div class="auction-lot-estimate">ESTIMATE: $10,000 to $18,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/colorfall" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
+  </section>
+
+  <!-- === BIDDER REGISTRATION === -->
+  <section class="auc-reg" id="aucReg">
+    <div class="auc-reg-line"></div>
+    <div id="aucRegForm">
+      <h3 class="auc-reg-title">REGISTER TO BID</h3>
+      <p class="auc-reg-sub">Secure your paddle number and join the live auction event</p>
+      <form class="auc-reg-form" onsubmit="event.preventDefault();aucRegister()">
+        <input class="auc-reg-input" type="text" id="aucRegName" placeholder="Full Name" required>
+        <input class="auc-reg-input" type="email" id="aucRegEmail" placeholder="Email Address" required>
+        <input class="auc-reg-input" type="tel" id="aucRegPhone" placeholder="Phone Number" required>
+        <button type="submit" class="auc-reg-submit">REQUEST PADDLE NUMBER</button>
+      </form>
+      <p class="auc-reg-note">Your paddle number is your bidding identity for the evening. All lots offered subject to reserve. Conditions of sale apply.</p>
     </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art33.png?v=1763598427" alt="Crave" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 6</div>
-        <div class="auction-lot-title">CRAVE</div>
-        <div class="auction-lot-medium">Oil on Canvas, 24" x 36"</div>
-        <div class="auction-lot-estimate">ESTIMATE: $9,000 to $15,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/crave" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
+    <div class="auc-reg-confirmed" id="aucRegConfirmed">
+      <div class="reg-success">&#10003; YOU&rsquo;RE REGISTERED</div>
+      <div class="paddle-label">YOUR PADDLE NUMBER</div>
+      <div class="paddle-display" id="aucPaddleDisplay">#---</div>
+      <div class="paddle-name" id="aucPaddleName"></div>
+      <p class="reg-info">Your paddle number is your bidding identity for the evening. Present this number when placing bids.</p>
     </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art23.png?v=1763598235" alt="Shimmer" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 7</div>
-        <div class="auction-lot-title">SHIMMER</div>
-        <div class="auction-lot-medium">Oil on Canvas, 36" x 48"</div>
-        <div class="auction-lot-estimate">ESTIMATE: $9,000 to $15,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/shimmer" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
-    </div>
-    <div class="auction-lot">
-      <img class="auction-lot-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art67.png?v=1763599128" alt="Tandem Minds Beneath a Drowning Sky" loading="lazy">
-      <div class="auction-lot-info">
-        <div class="auction-lot-label">LOT 8</div>
-        <div class="auction-lot-title">TANDEM MINDS BENEATH A DROWNING SKY</div>
-        <div class="auction-lot-medium">Oil on Canvas, 60&quot; x 72&quot;</div>
-        <div class="auction-lot-estimate">ESTIMATE: $7,000 to $13,000</div>
-        <div class="auction-lot-buttons">
-          <a href="#" class="auction-bid-btn" onclick="event.preventDefault();document.querySelector('.bidder-reg').scrollIntoView({behavior:'smooth'})">REGISTER TO BID</a>
-          <a href="https://natberhegallery.com/products/tandem-minds-beneath-a-drowning-sky" target="_blank" rel="noopener noreferrer" class="auction-buy-btn">BUY NOW AT SET PRICE</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bidder-reg">
-    <h3 class="bidder-reg-title">REGISTER TO BID</h3>
-    <div class="section-bar" style="margin:0 auto 28px"></div>
-    <form class="bidder-form" onsubmit="event.preventDefault()">
-      <input type="text" class="bidder-input" placeholder="Full Name" required>
-      <input type="email" class="bidder-input" placeholder="Email Address" required>
-      <button type="submit" class="bidder-submit">REQUEST PADDLE NUMBER</button>
-    </form>
-    <p style="font-family:var(--playfair);font-style:italic;font-size:13px;color:var(--text-muted);margin-top:32px">All lots offered subject to reserve. Conditions of sale apply.</p>
-  </div>
+  </section>
+
 </div>
 
 <!-- ========== PAGE: ARTIST ========== -->
@@ -1142,21 +1212,267 @@ function toggleMobile() {
 }
 
 // ============ COUNTDOWN ============
-function updateCountdown() {
-  // July 6, 2026 at 7:00 PM PST (UTC-7 in PDT = July 7 02:00 UTC)
-  const target = new Date('2026-07-07T02:00:00Z');
-  const now = new Date();
-  let diff = target - now;
-  if (diff < 0) diff = 0;
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const mins = Math.floor((diff % 3600000) / 60000);
-  const secs = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+
+// ============ AUCTION V2 ============
+const AUCTION_LOTS = [
+  {lot:1,title:"THE WITNESS",medium:'Oil on Canvas, 120" x 72"',est_low:12000,est_high:22000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089",handle:"the-witness",opening:12000},
+  {lot:2,title:"SIGNAL LOST",medium:'Oil on Canvas, 120" x 72"',est_low:12000,est_high:22000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878",handle:"signal-lost",opening:12000},
+  {lot:3,title:"CRIMSON GLADIATOR",medium:'Oil on Canvas, 120" x 72"',est_low:12000,est_high:20000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art69.png?v=1763599178",handle:"crimson-gladiator",opening:12000},
+  {lot:4,title:"MIRAGE",medium:"Oil on Canvas, 120x72 inches (Two 60x72 Frames Fused)",est_low:12000,est_high:20000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art51.png?v=1763598848",handle:"mirage",opening:12000},
+  {lot:5,title:"COLORFALL",medium:"Oil on Canvas, 60 x 72",est_low:10000,est_high:18000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art21.png?v=1763598207",handle:"colorfall",opening:10000},
+  {lot:6,title:"CRAVE",medium:'Oil on Canvas, 24" x 36"',est_low:9000,est_high:15000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art33.png?v=1763598427",handle:"crave",opening:9000},
+  {lot:7,title:"SHIMMER",medium:'Oil on Canvas, 36" x 48"',est_low:9000,est_high:15000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art23.png?v=1763598235",handle:"shimmer",opening:9000},
+  {lot:8,title:"TANDEM MINDS BENEATH A DROWNING SKY",medium:'Oil on Canvas, 60" x 72"',est_low:7000,est_high:13000,image:"https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art67.png?v=1763599128",handle:"tandem-minds-beneath-a-drowning-sky",opening:7000}
+];
+
+let aucCurrentLot = 0;
+let aucLastSecs = -1;
+
+function aucGetBidState(){
+  try{return JSON.parse(localStorage.getItem('auc_bids_v2'))||{}}catch(e){return{}}
 }
+function aucSaveBidState(s){localStorage.setItem('auc_bids_v2',JSON.stringify(s))}
+function aucGetPaddle(){
+  try{return JSON.parse(localStorage.getItem('auc_paddle_v2'))}catch(e){return null}
+}
+function aucSavePaddle(p){localStorage.setItem('auc_paddle_v2',JSON.stringify(p))}
+
+function aucGetCurrentBid(lotIdx){
+  const s=aucGetBidState();
+  const key='lot_'+lotIdx;
+  if(s[key]&&s[key].current) return s[key].current;
+  return AUCTION_LOTS[lotIdx].opening;
+}
+function aucGetBidHistory(lotIdx){
+  const s=aucGetBidState();
+  const key='lot_'+lotIdx;
+  return (s[key]&&s[key].history)||[];
+}
+function aucGetIncrement(amt){
+  if(amt<5000) return 500;
+  if(amt<20000) return 1000;
+  return 2000;
+}
+function aucFmtMoney(n){return '$'+n.toLocaleString('en-US')}
+
+function aucPlaceBid(lotIdx){
+  const paddle=aucGetPaddle();
+  if(!paddle){
+    document.getElementById('aucReg').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  const current=aucGetCurrentBid(lotIdx);
+  const inc=aucGetIncrement(current);
+  const newBid=current+inc;
+  const s=aucGetBidState();
+  const key='lot_'+lotIdx;
+  if(!s[key]) s[key]={current:AUCTION_LOTS[lotIdx].opening,history:[]};
+  s[key].current=newBid;
+  s[key].history.unshift({
+    paddle:paddle.number,
+    name:paddle.name,
+    amount:newBid,
+    time:new Date().toISOString()
+  });
+  if(s[key].history.length>20) s[key].history=s[key].history.slice(0,20);
+  aucSaveBidState(s);
+  aucRenderCurrentCard();
+}
+
+function aucRenderCards(){
+  const carousel=document.getElementById('aucCarousel');
+  const thumbs=document.getElementById('aucThumbs');
+  if(!carousel||!thumbs) return;
+
+  carousel.innerHTML=AUCTION_LOTS.map((lot,i)=>{
+    const desc=DESCRIPTIONS[lot.handle];
+    const quote=desc?desc.quote:'';
+    const fullDesc=desc?desc.description:'';
+    return `<div class="auc-card${i===0?' active':''}" data-lot="${i}">
+      <div class="auc-card-img-wrap">
+        <img class="auc-card-img" src="${lot.image}" alt="${lot.title}" loading="${i===0?'eager':'lazy'}">
+      </div>
+      <div class="auc-card-info">
+        <div class="auc-card-lot-num">LOT ${lot.lot}</div>
+        <div class="auc-card-title">${lot.title}</div>
+        <div class="auc-card-medium">${lot.medium}</div>
+        <div class="auc-card-estimate">Estimate: <span>${aucFmtMoney(lot.est_low)}</span> to <span>${aucFmtMoney(lot.est_high)}</span></div>
+        ${quote?`<div class="auc-card-quote">\u201C${quote}\u201D</div>`:''}
+        ${fullDesc?`<button class="auc-card-desc-toggle" onclick="aucToggleDesc(this)"><span class="arrow">&#9654;</span> VIEW LOT DETAILS</button><div class="auc-card-desc">${fullDesc}</div>`:''}
+        <div class="auc-card-status-area" data-lot="${i}">
+          <div class="auc-card-status open">BIDDING OPEN</div>
+          <div class="auc-bid-panel">
+            <div class="auc-bid-current">CURRENT BID</div>
+            <div class="auc-bid-amount" id="aucBidAmt_${i}">${aucFmtMoney(aucGetCurrentBid(i))}</div>
+            <div class="auc-bid-paddle" id="aucBidPaddle_${i}"></div>
+            <button class="auc-bid-btn" id="aucBidBtn_${i}" onclick="aucPlaceBid(${i})">BID ${aucFmtMoney(aucGetCurrentBid(i)+aucGetIncrement(aucGetCurrentBid(i)))}</button>
+            <a href="https://natberhegallery.com/products/${lot.handle}" target="_blank" rel="noopener noreferrer" class="auc-buy-link">BUY NOW AT SET PRICE</a>
+            <div class="auc-bid-history" id="aucBidHist_${i}">
+              <div class="auc-bid-history-title">BID HISTORY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  thumbs.innerHTML=AUCTION_LOTS.map((lot,i)=>
+    `<img class="auc-thumb${i===0?' active':''}" src="${lot.image}" alt="${lot.title}" onclick="aucGoTo(${i})" loading="lazy">`
+  ).join('');
+
+  document.getElementById('aucNavTotal').textContent=AUCTION_LOTS.length;
+  aucRenderCurrentCard();
+  aucCheckPaddleDisplay();
+}
+
+function aucRenderCurrentCard(){
+  const i=aucCurrentLot;
+  const current=aucGetCurrentBid(i);
+  const inc=aucGetIncrement(current);
+  const amtEl=document.getElementById('aucBidAmt_'+i);
+  const btnEl=document.getElementById('aucBidBtn_'+i);
+  const paddleEl=document.getElementById('aucBidPaddle_'+i);
+  const histEl=document.getElementById('aucBidHist_'+i);
+  if(amtEl) amtEl.textContent=aucFmtMoney(current);
+  if(btnEl) btnEl.textContent='BID '+aucFmtMoney(current+inc);
+  const paddle=aucGetPaddle();
+  if(paddleEl){
+    paddleEl.innerHTML=paddle?'YOUR PADDLE: <span>#'+paddle.number+'</span>':'<a href="#" onclick="event.preventDefault();document.getElementById(\'aucReg\').scrollIntoView({behavior:\'smooth\'})" style="color:var(--gold);text-decoration:underline">Register to bid</a>';
+  }
+  if(histEl){
+    const history=aucGetBidHistory(i).slice(0,5);
+    histEl.innerHTML='<div class="auc-bid-history-title">BID HISTORY</div>'+
+      (history.length===0?'<div style="font-size:12px;color:var(--text-muted);padding:4px 0">No bids yet</div>':
+      history.map(h=>{
+        const t=new Date(h.time);
+        const ts=t.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+        return `<div class="auc-bid-history-item"><span class="bid-who">Paddle #${h.paddle}</span><span class="bid-amt">${aucFmtMoney(h.amount)}</span><span class="bid-time">${ts}</span></div>`;
+      }).join(''));
+  }
+}
+
+function aucCheckPaddleDisplay(){
+  // update all lot paddle displays
+  const paddle=aucGetPaddle();
+  AUCTION_LOTS.forEach((_,i)=>{
+    const el=document.getElementById('aucBidPaddle_'+i);
+    if(el){
+      el.innerHTML=paddle?'YOUR PADDLE: <span>#'+paddle.number+'</span>':'<a href="#" onclick="event.preventDefault();document.getElementById(\'aucReg\').scrollIntoView({behavior:\'smooth\'})" style="color:var(--gold);text-decoration:underline">Register to bid</a>';
+    }
+  });
+}
+
+function aucGoTo(idx){
+  if(idx===aucCurrentLot) return;
+  const cards=document.querySelectorAll('.auc-card');
+  const thumbs=document.querySelectorAll('.auc-thumb');
+  cards.forEach(c=>c.classList.remove('active'));
+  thumbs.forEach(t=>t.classList.remove('active'));
+  aucCurrentLot=idx;
+  cards[idx].classList.add('active');
+  thumbs[idx].classList.add('active');
+  document.getElementById('aucNavCurr').textContent=idx+1;
+  aucRenderCurrentCard();
+}
+
+function aucNav(dir){
+  let next=aucCurrentLot+dir;
+  if(next<0) next=AUCTION_LOTS.length-1;
+  if(next>=AUCTION_LOTS.length) next=0;
+  aucGoTo(next);
+}
+
+function aucToggleDesc(btn){
+  const desc=btn.nextElementSibling;
+  btn.classList.toggle('open');
+  desc.classList.toggle('open');
+  btn.innerHTML=btn.classList.contains('open')?'<span class="arrow">&#9654;</span> HIDE DETAILS':'<span class="arrow">&#9654;</span> VIEW LOT DETAILS';
+}
+
+function aucRegister(){
+  const name=document.getElementById('aucRegName').value.trim();
+  const email=document.getElementById('aucRegEmail').value.trim();
+  const phone=document.getElementById('aucRegPhone').value.trim();
+  if(!name||!email||!phone) return;
+  const number=Math.floor(Math.random()*900)+100;
+  const paddle={name,email,phone,number};
+  aucSavePaddle(paddle);
+  aucShowRegistered(paddle);
+  aucCheckPaddleDisplay();
+}
+
+function aucShowRegistered(paddle){
+  document.getElementById('aucRegForm').style.display='none';
+  const conf=document.getElementById('aucRegConfirmed');
+  conf.classList.add('show');
+  document.getElementById('aucPaddleDisplay').textContent='#'+paddle.number;
+  document.getElementById('aucPaddleName').textContent=paddle.name;
+}
+
+function aucInitRegistration(){
+  const paddle=aucGetPaddle();
+  if(paddle){
+    aucShowRegistered(paddle);
+  }
+}
+
+// ============ COUNTDOWN V2 ============
+function updateCountdown(){
+  const target=new Date('2026-07-07T02:00:00Z');
+  const now=new Date();
+  let diff=target-now;
+  if(diff<0) diff=0;
+  const days=Math.floor(diff/86400000);
+  const hours=Math.floor((diff%86400000)/3600000);
+  const mins=Math.floor((diff%3600000)/60000);
+  const secs=Math.floor((diff%60000)/1000);
+
+  const setVal=(id,val)=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const str=String(val).padStart(2,'0');
+    if(el.textContent!==str){
+      el.textContent=str;
+    }
+  };
+  setVal('auc-days',days);
+  setVal('auc-hours',hours);
+  setVal('auc-mins',mins);
+  setVal('auc-secs',secs);
+
+  // Also update old IDs if they exist (other pages)
+  const oldIds=['cd-days','cd-hours','cd-mins','cd-secs'];
+  const oldVals=[days,hours,mins,secs];
+  oldIds.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(el) el.textContent=String(oldVals[i]).padStart(2,'0');
+  });
+
+  // Tick animation on seconds
+  if(secs!==aucLastSecs){
+    const secEl=document.getElementById('auc-secs');
+    if(secEl){
+      secEl.classList.remove('tick');
+      void secEl.offsetWidth;
+      secEl.classList.add('tick');
+    }
+    aucLastSecs=secs;
+  }
+
+  // Live badge: show within 24 hours
+  const liveBadge=document.getElementById('aucLiveBadge');
+  if(liveBadge){
+    if(diff>0&&diff<86400000) liveBadge.classList.add('show');
+    else liveBadge.classList.remove('show');
+  }
+}
+
+// Init auction on page load
+function aucInit(){
+  aucRenderCards();
+  aucInitRegistration();
+}
+
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
@@ -1174,6 +1490,7 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 function init() {
   const hash = window.location.hash.replace('#','') || 'home';
   renderGallery('all');
+  aucInit();
   navigateTo(hash);
 }
 
