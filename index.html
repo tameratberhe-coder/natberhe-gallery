@@ -763,10 +763,10 @@ input,textarea{font-family:inherit;font-size:inherit}
       <img src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/18888867-af17-4b5e-9582-828174e13e92.png?v=1773859259" alt="Ash & Empire, original oil painting by Nat Berhe, figurative abstract expressionism" loading="eager">
     </div>
     <div class="hero-content">
-      <div class="hero-pill">
+      <a href="#auction" class="hero-pill" onclick="navigateTo('auction')" style="cursor:pointer">
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         THE INAUGURAL AUCTION
-      </div>
+      </a>
       <p class="hero-subtitle">LOT 1 &middot; FLAG PAINTINGS &middot; OIL ON CANVAS</p>
       <h1 class="hero-title">NAT BERHE</h1>
       <p class="hero-tagline">Figurative Abstract Expressionism</p>
@@ -774,7 +774,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <a href="#gallery" class="hero-btn" onclick="navigateTo('gallery')">ENTER THE COLLECTION</a>
         <a href="#auction" class="hero-btn hero-btn-gold" onclick="navigateTo('auction')">REGISTER TO BID</a>
       </div>
-      <div class="scroll-indicator">
+      <div class="scroll-indicator" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})" style="cursor:pointer">
         <span class="scroll-text">SCROLL TO EXPLORE</span>
         <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
