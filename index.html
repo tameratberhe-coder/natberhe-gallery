@@ -119,6 +119,21 @@ input,textarea{font-family:inherit;font-size:inherit}
 .hero-btn-gold{background:var(--gold);color:#0a0a0a;border-color:var(--gold);font-weight:600}
 .hero-btn-gold:hover{background:#d4b45a;border-color:#d4b45a}
 
+/* ============ SCROLL INDICATOR ============ */
+.scroll-indicator{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0.5;animation:scrollBounce 2s ease-in-out infinite}
+.scroll-text{font-family:var(--inter);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted)}
+.scroll-arrow{color:var(--text-muted)}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ============ CREDENTIAL BAR ============ */
+.credential-bar{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 20px;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.credential-text{font-family:var(--inter);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted)}
+.credential-name{font-family:var(--oswald);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.credential-show{font-family:var(--playfair);font-style:italic;font-size:12px;color:var(--text-muted)}
+@media(max-width:768px){
+  .credential-bar{flex-direction:column;gap:4px;padding:12px 20px}
+}
+
 /* ============ MARQUEE ============ */
 .marquee{overflow:hidden;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0a0a0a}
 .marquee-track{display:flex;animation:marqueeScroll 30s linear infinite;width:max-content}
@@ -202,7 +217,9 @@ input,textarea{font-family:inherit;font-size:inherit}
 .gallery-filter{font-family:var(--inter);font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);padding:8px 4px;border-bottom:2px solid transparent;transition:all 0.3s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none}
 .gallery-filter.active{color:var(--gold);border-bottom-color:var(--gold)}
 .gallery-filter:hover{color:var(--text)}
-.gallery-count{font-family:var(--inter);font-size:12px;color:var(--text-muted);text-align:center;margin-bottom:32px;letter-spacing:1px}
+.gallery-sort{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto 24px;padding:0 40px}
+.gallery-count{font-family:var(--inter);font-size:12px;color:var(--text-muted);letter-spacing:1px}
+@media(max-width:768px){.gallery-sort{padding:0 16px}}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1400px;margin:0 auto;padding:0 40px 80px}
 .gallery-card{background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:transform 0.3s,border-color 0.3s;cursor:pointer;position:relative}
 .gallery-card:hover{transform:translateY(-3px);border-color:#333}
@@ -336,7 +353,10 @@ input,textarea{font-family:inherit;font-size:inherit}
 .overlay-viewers{display:flex;align-items:center;gap:8px;font-family:var(--inter);font-size:12px;color:var(--text-muted);margin-bottom:8px}
 .overlay-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.overlay-scarcity{font-family:var(--inter);font-size:12px;color:var(--red-light);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px}
+.overlay-scarcity{font-family:var(--inter);font-size:12px;color:var(--red-light);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.overlay-payment{font-family:var(--inter);font-size:12px;color:var(--gold);letter-spacing:0.5px;margin-bottom:8px}
+.overlay-exhibited{display:inline-flex;align-items:center;gap:6px;font-family:var(--inter);font-size:11px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:16px;padding:6px 12px;border:1px solid #333;background:#161612}
+.overlay-exhibited svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5}
 .size-btn{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 16px;background:#1a1a1a;border:1px solid #333;color:var(--text-muted);font-family:var(--inter);font-size:13px;cursor:pointer;transition:all 0.2s;text-align:left}
 .size-btn:hover{border-color:var(--gold);color:var(--text)}
 .size-btn.size-active{border-color:var(--gold);background:#1f1a0f;color:var(--gold)}
@@ -751,6 +771,13 @@ input,textarea{font-family:inherit;font-size:inherit}
     </div>
   </section>
 
+  <!-- EXHIBITION CREDENTIAL -->
+  <div class="credential-bar">
+    <span class="credential-text">EXHIBITED AT</span>
+    <span class="credential-name">SASSE MUSEUM OF ART</span>
+    <span class="credential-show">Colorstraction: A Personal Perspective, 2025</span>
+  </div>
+
   <!-- MARQUEE 1 -->
   <div class="marquee">
     <div class="marquee-track">
@@ -896,8 +923,17 @@ input,textarea{font-family:inherit;font-size:inherit}
     <p class="section-label">NAT BERHE GALLERY</p>
     <h1 class="section-title">THE COLLECTION</h1>
     <div class="section-bar"></div>
-    <p class="prints-header-desc">Original oil on canvas works by Natnael Berhe. Each piece is one of a kind and includes a Certificate of Authenticity.</p>
-    <p class="gallery-count" id="galleryCount">Showing 69 works</p>
+    <p class="prints-header-desc">Original oil on canvas works by Natnael Berhe. Each piece is one of a kind and includes a Certificate of Authenticity. Starting from $1,000.</p>
+    <div class="gallery-sort">
+      <span class="gallery-count" id="galleryCount">69 works</span>
+      <select id="gallerySort" onchange="sortGallery(this.value)" style="padding:6px 12px;background:#1a1a1a;border:1px solid #333;color:var(--text-muted);font-family:var(--inter);font-size:12px;letter-spacing:1px;cursor:pointer">
+        <option value="default">SORT BY</option>
+        <option value="price-low">PRICE: LOW TO HIGH</option>
+        <option value="price-high">PRICE: HIGH TO LOW</option>
+        <option value="name">NAME: A TO Z</option>
+        <option value="size">SIZE: LARGEST FIRST</option>
+      </select>
+    </div>
   </div>
   <div class="gallery-grid" id="galleryGrid"></div>
 </div>
@@ -987,9 +1023,10 @@ input,textarea{font-family:inherit;font-size:inherit}
     <h1 class="artist-hero-title">THE ARTIST</h1>
   </div>
   <div class="artist-bio">
-    <p><span class="drop-cap">B</span>orn in Fontana, California in 1991, Natnael &lsquo;Nat&rsquo; Berhe became the first Eritrean American player drafted in NFL history when the New York Giants selected him in the sixth round of the 2014 NFL Draft. A standout safety at San Diego State University, Berhe earned the nickname &lsquo;The Missile&rsquo; for his fearless hitting style.</p>
-    <p>After five seasons in the NFL, four with the New York Giants (2014 to 2017) and one with the Pittsburgh Steelers (2018), spanning 42 games, Berhe transitioned from professional football to fine art. His work in oil on canvas channels the same intensity and discipline that defined his athletic career.</p>
-    <p>Berhe&rsquo;s paintings are rooted in figurative abstract expressionism, blending bold composition with subtle texture. Each piece explores themes of identity, struggle, power, and transcendence. The canvases pulse with raw emotional energy, ghostlike figures rendered in vivid, clashing colors. In 2025, his work was featured at the Sasse Museum of Art for the exhibition &ldquo;Colorstraction: A Personal Perspective,&rdquo; marking his first major institutional showing.</p>
+    <p><span class="drop-cap">B</span>orn in Fontana, California in 1991, Natnael &lsquo;Nat&rsquo; Berhe became the first Eritrean American player drafted in NFL history when the New York Giants selected him in the sixth round of the 2014 NFL Draft. A standout safety at San Diego State University, Berhe earned the nickname &lsquo;The Missile&rsquo; for his fearless hitting style. He played 42 games across five NFL seasons with the New York Giants (2014 to 2017) and the Pittsburgh Steelers (2018).</p>
+    <p>The transition from football to art was not a retirement. It was a redirection. Berhe had been painting privately for years, working through the same questions on canvas that he carried onto the field: what does it mean to perform under pressure, to wear a uniform, to be watched by thousands and still feel invisible? When his playing career ended, the studio became the new arena.</p>
+    <p>His work in oil on canvas is rooted in figurative abstract expressionism, blending bold composition with raw, physical texture. The paintings are large, often confrontational, built with thick impasto brushwork that gives every surface a sculptural presence. Ghostlike figures emerge from fields of vivid, clashing color. Skulls wear military regalia. Children hold weapons. Men in suits dissolve into noise. The themes are identity, struggle, power, and transcendence, explored with the same controlled intensity that once defined his play on the field.</p>
+    <p>In 2025, four of Berhe&rsquo;s paintings were selected for exhibition at the Sasse Museum of Art in Pomona, California for the show &ldquo;Colorstraction: A Personal Perspective.&rdquo; It was his first major institutional showing, and it confirmed what collectors had already begun to recognize: this is an artist working at a level that demands attention. His gallery launched in 2024, and the inaugural live auction of eight museum quality originals is scheduled for July 6, 2026.</p>
   </div>
   <div class="timeline">
     <h3 class="timeline-title">CAREER TIMELINE</h3>
@@ -1097,11 +1134,9 @@ input,textarea{font-family:inherit;font-size:inherit}
         <div id="overlaySizeButtons" style="display:flex;flex-direction:column;gap:8px"></div>
       </div>
       <p class="overlay-price" id="overlayPrice"></p>
-      <div class="overlay-viewers">
-        <span class="overlay-dot"></span>
-        <span id="overlayViewers"></span>
-      </div>
       <p class="overlay-scarcity" id="overlayScarcity"></p>
+      <div class="overlay-exhibited" id="overlayExhibited" style="display:none"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span id="overlayExhibitedText"></span></div>
+      <p class="overlay-payment" id="overlayPayment" style="display:none"></p>
       <a class="overlay-acquire" id="overlayAcquire" href="#" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       <div class="overlay-trust">
         <div class="overlay-trust-item">
@@ -1127,7 +1162,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="footer-brand">
       <div class="nav-logo-main">NAT BERHE GALLERY</div>
       <div class="footer-tagline">Figurative Abstract Expressionism</div>
-      <div class="footer-copy">&copy; 2024-2026 Nat Berhe Gallery<br>All lots offered subject to reserve.</div>
+      <div class="footer-copy">Based in Los Angeles, California<br>&copy; 2024 to 2026 Nat Berhe Gallery</div>
     </div>
     <div class="footer-right">
       <div class="footer-nav">
@@ -1291,6 +1326,44 @@ function renderGallery() {
 
 
 
+function sortGallery(sortBy) {
+  const grid = document.getElementById('galleryGrid');
+  let products = CATALOG.filter(p => !p.is_print);
+  if (sortBy === 'price-low') products.sort((a,b) => a.price - b.price);
+  else if (sortBy === 'price-high') products.sort((a,b) => b.price - a.price);
+  else if (sortBy === 'name') products.sort((a,b) => a.title.localeCompare(b.title));
+  else if (sortBy === 'size') {
+    products.sort((a,b) => {
+      const getArea = (s) => { const m = (s||'').match(/(\d+).*?[xX].*?(\d+)/); return m ? parseInt(m[1])*parseInt(m[2]) : 0; };
+      return getArea(b.size) - getArea(a.size);
+    });
+  }
+  filteredProducts = products;
+  document.getElementById('galleryCount').textContent = products.length + ' works';
+  grid.innerHTML = products.map((p, i) => {
+    const title = p.title.replace(/\n/g, ' ').toUpperCase();
+    const priceStr = '$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
+    const medium = 'OIL ON CANVAS<br>' + p.size;
+    const scarcity = !p.sold_out ? '<div class="gallery-card-scarcity">ONLY 1 AVAILABLE</div>' : '';
+    const soldBadge = p.sold_out ? '<div class="sold-badge">SOLD</div>' : '';
+    const badge = '<span class="featured-badge">ORIGINAL</span>';
+    const btnText = p.sold_out ? 'VIEW WORK' : 'BUY NOW';
+    const btnHref = 'https://natberhegallery.com/products/' + p.handle;
+    return '<div class="gallery-card" onclick="openOverlayByIndex(' + i + ')">' +
+      '<div class="gallery-card-img-wrap">' +
+      '<img class="gallery-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g,'&quot;') + ', original oil on canvas by Nat Berhe" loading="lazy">' +
+      badge + soldBadge +
+      '</div>' +
+      '<div class="gallery-card-info">' +
+      '<div class="gallery-card-title">' + title + '</div>' +
+      '<div class="gallery-card-meta">' + medium + '</div>' +
+      '<div class="gallery-card-price">' + priceStr + '</div>' +
+      scarcity +
+      '<a href="' + btnHref + '" target="_blank" rel="noopener noreferrer" class="gallery-card-btn" onclick="event.stopPropagation()">' + btnText + '</a>' +
+      '</div></div>';
+  }).join('');
+}
+
 // ============ OVERLAY ============
 function openOverlay(handle) {
   const idx = CATALOG.findIndex(p => p.handle === handle);
@@ -1338,9 +1411,39 @@ function openOverlayByIndex(idx) {
     document.getElementById('overlayQuoteAttr').style.display = 'none';
     document.getElementById('overlayDesc').style.display = 'none';
   }
-  const viewers = Math.floor(Math.random() * 7) + 2;
-  document.getElementById('overlayViewers').textContent = viewers + ' people viewing this work';
   document.getElementById('overlayScarcity').textContent = p.is_print ? '' : (p.sold_out ? 'SOLD' : 'ONLY 1 AVAILABLE');
+  // Exhibition badge for Sasse Museum pieces
+  const SASSE_EXHIBITED = ['forge', 'colorfall', 'abstract-realms', 'crave'];
+  const exhibitEl = document.getElementById('overlayExhibited');
+  if (SASSE_EXHIBITED.includes(p.handle)) {
+    document.getElementById('overlayExhibitedText').textContent = 'Exhibited: Colorstraction, Sasse Museum of Art, 2025';
+    exhibitEl.style.display = '';
+  } else {
+    exhibitEl.style.display = 'none';
+  }
+  // Payment plan messaging for originals over $3K
+  const paymentEl = document.getElementById('overlayPayment');
+  if (!p.is_print && !p.sold_out && p.price >= 3000) {
+    const monthly = Math.round(p.price / 6);
+    paymentEl.textContent = 'Or $' + monthly.toLocaleString() + '/month for 6 months';
+    paymentEl.style.display = '';
+  } else {
+    paymentEl.style.display = 'none';
+  }
+  // Scale reference
+  const mediumEl = document.getElementById('overlayMedium');
+  if (!p.is_print && p.size) {
+    const match = p.size.match(/(\d+).*?[xX×].*?(\d+)/);
+    if (match) {
+      const w = parseInt(match[1]), h = parseInt(match[2]);
+      let scaleRef = '';
+      if (w >= 96 || h >= 96) scaleRef = ' (wall sized, roughly 8 to 10 feet)';
+      else if (w >= 60 || h >= 60) scaleRef = ' (large format, roughly 5 to 6 feet)';
+      else if (w >= 36 || h >= 36) scaleRef = ' (medium, roughly 3 to 4 feet)';
+      else scaleRef = ' (intimate scale)';
+      mediumEl.textContent = 'Oil on Canvas, ' + p.size + scaleRef;
+    }
+  }
   const acq = document.getElementById('overlayAcquire');
   if (p.is_print && p.sizes && p.sizes.length > 0 && p.sizes[0].vid) {
     acq.href = 'https://natberhegallery.com/cart/' + p.sizes[0].vid + ':1';
