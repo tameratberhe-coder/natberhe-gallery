@@ -386,6 +386,18 @@ input,textarea{font-family:inherit;font-size:inherit}
   .footer-right{text-align:left}
 }
 
+/* ============ PRINTS BANNER ============ */
+.prints-banner{padding:80px 40px;text-align:center;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.prints-banner-inner{max-width:600px;margin:0 auto}
+.prints-banner-title{font-family:var(--oswald);font-weight:700;font-size:clamp(28px,5vw,44px);text-transform:uppercase;color:var(--text);letter-spacing:3px;margin-bottom:8px}
+.prints-banner-text{font-family:var(--inter);font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:28px}
+.prints-banner-btn{display:inline-block;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:14px 36px;background:var(--gold);color:#0a0a0a;transition:all 0.3s}
+.prints-banner-btn:hover{background:#d4b45a}
+.prints-header-desc{font-family:var(--inter);font-size:15px;color:var(--text-muted);max-width:600px;margin:0 auto 32px;text-align:center;line-height:1.7}
+@media(max-width:768px){
+  .prints-banner{padding:50px 20px}
+}
+
 /* ============ MOBILE SPACING TIGHTENING ============ */
 @media(max-width:768px){
   /* Hero: fill viewport */
@@ -697,6 +709,7 @@ input,textarea{font-family:inherit;font-size:inherit}
   </div>
   <div class="nav-links">
     <a href="#gallery" data-page="gallery" onclick="navigateTo('gallery')">The Collection</a>
+    <a href="#prints" data-page="prints" onclick="navigateTo('prints')">Prints</a>
     <a href="#auction" data-page="auction" onclick="navigateTo('auction')">The Auction</a>
     <a href="#artist" data-page="artist" onclick="navigateTo('artist')">The Artist</a>
     <a href="#contact" data-page="contact" onclick="navigateTo('contact')">Contact</a>
@@ -707,6 +720,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#gallery" onclick="navigateTo('gallery');toggleMobile()">The Collection</a>
+  <a href="#prints" onclick="navigateTo('prints');toggleMobile()">Prints</a>
   <a href="#auction" onclick="navigateTo('auction');toggleMobile()">The Auction</a>
   <a href="#artist" onclick="navigateTo('artist');toggleMobile()">The Artist</a>
   <a href="#contact" onclick="navigateTo('contact');toggleMobile()">Contact</a>
@@ -851,6 +865,17 @@ input,textarea{font-family:inherit;font-size:inherit}
     <p class="quote-attr">NAT BERHE</p>
   </section>
 
+  <!-- PRINTS BANNER -->
+  <section class="prints-banner">
+    <div class="prints-banner-inner">
+      <p class="section-label">LIMITED EDITION</p>
+      <h2 class="prints-banner-title">CANVAS PRINTS</h2>
+      <div class="section-bar" style="margin:0 auto 24px"></div>
+      <p class="prints-banner-text">Own a piece of the collection. Museum quality canvas prints available in multiple sizes, starting from $40. Each print is produced on premium stretched canvas with archival inks.</p>
+      <a href="#prints" class="prints-banner-btn" onclick="navigateTo('prints')">SHOP PRINTS</a>
+    </div>
+  </section>
+
   <!-- COLLECTORS CIRCLE -->
   <section class="collectors">
     <h2 class="collectors-title">JOIN THE COLLECTOR&rsquo;S CIRCLE</h2>
@@ -876,6 +901,17 @@ input,textarea{font-family:inherit;font-size:inherit}
     <p class="gallery-count" id="galleryCount">Showing 147 works</p>
   </div>
   <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+
+<!-- ========== PAGE: PRINTS ========== -->
+<div class="page" id="page-prints">
+  <div class="gallery-header">
+    <p class="section-label">LIMITED EDITION</p>
+    <h1 class="section-title">CANVAS PRINTS</h1>
+    <div class="section-bar"></div>
+    <p class="prints-header-desc">Museum quality canvas prints of Nat Berhe&rsquo;s original oil paintings. Each print is produced on premium stretched canvas with archival inks, available in multiple sizes. Starting from $40.</p>
+  </div>
+  <div class="gallery-grid" id="printsGrid"></div>
 </div>
 
 <!-- ========== PAGE: AUCTION ========== -->
@@ -1101,6 +1137,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="footer-right">
       <div class="footer-nav">
         <a href="#gallery" onclick="navigateTo('gallery')">The Collection</a>
+        <a href="#prints" onclick="navigateTo('prints')">Prints</a>
         <a href="#auction" onclick="navigateTo('auction')">The Auction</a>
         <a href="#artist" onclick="navigateTo('artist')">The Artist</a>
         <a href="#contact" onclick="navigateTo('contact')">Contact</a>
@@ -1629,9 +1666,35 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // ============ INIT ============
+function renderPrints() {
+  const grid = document.getElementById('printsGrid');
+  if (!grid) return;
+  const prints = CATALOG.filter(p => p.is_print);
+  grid.innerHTML = prints.map((p, i) => {
+    const title = p.title.replace(/\n/g, ' ').toUpperCase();
+    const priceStr = 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
+    const sizeRange = (p.sizes && p.sizes.length > 0) ? p.sizes[0].label.split(' (')[0] + ' to ' + p.sizes[p.sizes.length-1].label.split(' (')[0] : '';
+    const medium = 'CANVAS PRINT' + (sizeRange ? '<br>' + sizeRange : '');
+    const btnHref = 'https://natberhegallery.com/products/' + p.handle;
+    // Find the index in the full CATALOG for overlay
+    const catIdx = CATALOG.indexOf(p);
+    return '<div class="gallery-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">' +
+      '<div class="gallery-card-img-wrap">' +
+      '<img class="gallery-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g,'&quot;') + ', canvas print by Nat Berhe" loading="lazy">' +
+      '</div>' +
+      '<div class="gallery-card-info">' +
+      '<div class="gallery-card-title">' + title + '</div>' +
+      '<div class="gallery-card-meta">' + medium + '</div>' +
+      '<div class="gallery-card-price">' + priceStr + '</div>' +
+      '<a href="' + btnHref + '" target="_blank" rel="noopener noreferrer" class="gallery-card-btn" onclick="event.stopPropagation()">BUY NOW</a>' +
+      '</div></div>';
+  }).join('');
+}
+
 function init() {
   const hash = window.location.hash.replace('#','') || 'home';
   renderGallery('all');
+  renderPrints();
   aucInit();
   navigateTo(hash);
 }
