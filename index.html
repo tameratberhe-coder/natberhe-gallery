@@ -625,6 +625,39 @@ input,textarea{font-family:inherit;font-size:inherit}
 }
 
 
+/* ============ AR ROOM VISUALIZER ============ */
+.ar-btn{display:none;width:100%;padding:12px;font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:all 0.3s;margin-top:16px;cursor:pointer}
+.ar-btn:hover{background:var(--gold);color:#0a0a0a}
+.ar-btn svg{width:16px;height:16px;vertical-align:middle;margin-right:6px;stroke:currentColor;fill:none;stroke-width:1.5}
+@media(max-width:768px){.ar-btn{display:block}}
+
+.ar-viewer{position:fixed;inset:0;z-index:3000;background:#000;display:none;flex-direction:column}
+.ar-viewer.open{display:flex}
+.ar-viewer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ar-topbar{position:absolute;top:0;left:0;right:0;z-index:3001;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ar-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;border:none;transition:background 0.2s}
+.ar-close:hover{background:rgba(255,255,255,0.25)}
+.ar-topbar-title{font-family:var(--oswald);font-size:14px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#fff;flex:1;text-align:center;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ar-topbar-spacer{width:40px}
+.ar-canvas-area{position:absolute;inset:0;z-index:3001;pointer-events:none}
+.ar-painting-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.ar-painting-wrap:active{cursor:grabbing}
+.ar-painting-img{display:block;max-width:60vw;max-height:40vh;width:auto;height:auto;border:4px solid #fff;box-shadow:0 8px 32px rgba(0,0,0,0.45),0 2px 8px rgba(0,0,0,0.3);pointer-events:none}
+.ar-painting-size{display:block;margin-top:6px;font-family:var(--inter);font-size:11px;font-weight:500;color:#fff;text-align:center;background:rgba(0,0,0,0.6);padding:4px 12px;border-radius:100px;width:fit-content;margin-left:auto;margin-right:auto;letter-spacing:0.5px;pointer-events:none}
+.ar-bottom{position:absolute;bottom:0;left:0;right:0;z-index:3001;display:flex;flex-direction:column;align-items:center;padding:20px 16px 32px;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 100%)}
+.ar-hint{font-family:var(--inter);font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:12px;text-align:center}
+.ar-capture-btn{width:64px;height:64px;border-radius:50%;background:#fff;border:4px solid rgba(255,255,255,0.4);cursor:pointer;position:relative;transition:transform 0.15s}
+.ar-capture-btn:active{transform:scale(0.9)}
+.ar-capture-btn::after{content:'';position:absolute;inset:4px;border-radius:50%;background:#fff;transition:background 0.15s}
+.ar-capture-label{font-family:var(--inter);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:6px}
+.ar-fallback{position:absolute;inset:0;z-index:3002;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.9);padding:40px;text-align:center}
+.ar-fallback-icon{font-size:48px;margin-bottom:16px;opacity:0.5}
+.ar-fallback-text{font-family:var(--inter);font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:24px;max-width:300px}
+.ar-fallback-close{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.3s}
+.ar-fallback-close:hover{background:var(--gold);color:#0a0a0a}
+.ar-flash{position:absolute;inset:0;z-index:3003;background:#fff;opacity:0;pointer-events:none;transition:opacity 0.1s}
+.ar-flash.active{opacity:1}
+
 /* ============ ANIMATIONS ============ */
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -1165,9 +1198,38 @@ input,textarea{font-family:inherit;font-size:inherit}
           14-Day Return Policy
         </div>
       </div>
+      <button class="ar-btn" id="arBtn" onclick="openARViewer()"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>VIEW IN YOUR ROOM</button>
     </div>
   </div>
 </div>
+
+<!-- ========== AR ROOM VISUALIZER ========== -->
+<div class="ar-viewer" id="arViewer">
+  <video id="arVideo" autoplay playsinline muted></video>
+  <div class="ar-topbar">
+    <button class="ar-close" onclick="closeARViewer()">&times;</button>
+    <div class="ar-topbar-title" id="arTitle"></div>
+    <div class="ar-topbar-spacer"></div>
+  </div>
+  <div class="ar-canvas-area" id="arCanvasArea">
+    <div class="ar-painting-wrap" id="arPaintingWrap">
+      <img class="ar-painting-img" id="arPaintingImg" src="" alt="">
+      <span class="ar-painting-size" id="arPaintingSize"></span>
+    </div>
+  </div>
+  <div class="ar-bottom">
+    <div class="ar-hint">Drag to position, pinch to resize</div>
+    <button class="ar-capture-btn" id="arCaptureBtn" onclick="captureARPhoto()"></button>
+    <span class="ar-capture-label">TAKE PHOTO</span>
+  </div>
+  <div class="ar-fallback" id="arFallback" style="display:none">
+    <div class="ar-fallback-icon">📷</div>
+    <p class="ar-fallback-text">Camera access required. Please allow camera permissions and try again.</p>
+    <button class="ar-fallback-close" onclick="closeARViewer()">CLOSE</button>
+  </div>
+  <div class="ar-flash" id="arFlash"></div>
+</div>
+<canvas id="arCaptureCanvas" style="display:none"></canvas>
 
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
@@ -1805,6 +1867,240 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ AR ROOM VISUALIZER ============
+let arCurrentPainting = null;
+let arStream = null;
+let arDragState = { dragging: false, startX: 0, startY: 0, paintX: 0, paintY: 0 };
+let arPinchState = { pinching: false, startDist: 0, startScale: 1 };
+let arScale = 1;
+let arPosX = 0;
+let arPosY = 0;
+
+function openARViewer() {
+  const p = filteredProducts[overlayIndex];
+  if (!p) return;
+  arCurrentPainting = p;
+  const viewer = document.getElementById('arViewer');
+  const fallback = document.getElementById('arFallback');
+  const video = document.getElementById('arVideo');
+  fallback.style.display = 'none';
+  document.getElementById('arTitle').textContent = p.title.replace(/\n/g, ' ');
+  document.getElementById('arPaintingImg').src = p.image;
+  document.getElementById('arPaintingImg').alt = p.title;
+  document.getElementById('arPaintingSize').textContent = p.size || '';
+  // Reset position and scale
+  arScale = 1;
+  arPosX = window.innerWidth / 2;
+  arPosY = window.innerHeight / 2;
+  updateARPaintingPosition();
+  viewer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Start camera
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false })
+      .then(function(stream) {
+        arStream = stream;
+        video.srcObject = stream;
+      })
+      .catch(function() {
+        fallback.style.display = 'flex';
+      });
+  } else {
+    fallback.style.display = 'flex';
+  }
+  // Setup touch/mouse events
+  setupAREvents();
+}
+
+function closeARViewer() {
+  const viewer = document.getElementById('arViewer');
+  const video = document.getElementById('arVideo');
+  viewer.classList.remove('open');
+  if (arStream) {
+    arStream.getTracks().forEach(function(t) { t.stop(); });
+    arStream = null;
+  }
+  video.srcObject = null;
+  document.body.style.overflow = 'hidden'; // Keep body locked since overlay is still open
+  teardownAREvents();
+}
+
+function updateARPaintingPosition() {
+  var wrap = document.getElementById('arPaintingWrap');
+  wrap.style.left = arPosX + 'px';
+  wrap.style.top = arPosY + 'px';
+  wrap.style.transform = 'translate(-50%,-50%) scale(' + arScale + ')';
+}
+
+function arTouchStart(e) {
+  if (e.touches.length === 2) {
+    e.preventDefault();
+    arDragState.dragging = false;
+    arPinchState.pinching = true;
+    arPinchState.startDist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    arPinchState.startScale = arScale;
+  } else if (e.touches.length === 1) {
+    var wrap = document.getElementById('arPaintingWrap');
+    var rect = wrap.getBoundingClientRect();
+    var tx = e.touches[0].clientX;
+    var ty = e.touches[0].clientY;
+    if (tx >= rect.left && tx <= rect.right && ty >= rect.top && ty <= rect.bottom) {
+      e.preventDefault();
+      arDragState.dragging = true;
+      arDragState.startX = tx;
+      arDragState.startY = ty;
+      arDragState.paintX = arPosX;
+      arDragState.paintY = arPosY;
+    }
+  }
+}
+
+function arTouchMove(e) {
+  if (arPinchState.pinching && e.touches.length === 2) {
+    e.preventDefault();
+    var dist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    arScale = Math.max(0.3, Math.min(3, arPinchState.startScale * (dist / arPinchState.startDist)));
+    updateARPaintingPosition();
+  } else if (arDragState.dragging && e.touches.length === 1) {
+    e.preventDefault();
+    var dx = e.touches[0].clientX - arDragState.startX;
+    var dy = e.touches[0].clientY - arDragState.startY;
+    arPosX = arDragState.paintX + dx;
+    arPosY = arDragState.paintY + dy;
+    updateARPaintingPosition();
+  }
+}
+
+function arTouchEnd(e) {
+  if (e.touches.length < 2) arPinchState.pinching = false;
+  if (e.touches.length < 1) arDragState.dragging = false;
+}
+
+// Mouse fallback for desktop testing
+function arMouseDown(e) {
+  var wrap = document.getElementById('arPaintingWrap');
+  var rect = wrap.getBoundingClientRect();
+  if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+    e.preventDefault();
+    arDragState.dragging = true;
+    arDragState.startX = e.clientX;
+    arDragState.startY = e.clientY;
+    arDragState.paintX = arPosX;
+    arDragState.paintY = arPosY;
+  }
+}
+function arMouseMove(e) {
+  if (arDragState.dragging) {
+    e.preventDefault();
+    var dx = e.clientX - arDragState.startX;
+    var dy = e.clientY - arDragState.startY;
+    arPosX = arDragState.paintX + dx;
+    arPosY = arDragState.paintY + dy;
+    updateARPaintingPosition();
+  }
+}
+function arMouseUp() {
+  arDragState.dragging = false;
+}
+
+function setupAREvents() {
+  var area = document.getElementById('arCanvasArea');
+  area.addEventListener('touchstart', arTouchStart, { passive: false });
+  area.addEventListener('touchmove', arTouchMove, { passive: false });
+  area.addEventListener('touchend', arTouchEnd);
+  area.addEventListener('mousedown', arMouseDown);
+  window.addEventListener('mousemove', arMouseMove);
+  window.addEventListener('mouseup', arMouseUp);
+}
+function teardownAREvents() {
+  var area = document.getElementById('arCanvasArea');
+  area.removeEventListener('touchstart', arTouchStart);
+  area.removeEventListener('touchmove', arTouchMove);
+  area.removeEventListener('touchend', arTouchEnd);
+  area.removeEventListener('mousedown', arMouseDown);
+  window.removeEventListener('mousemove', arMouseMove);
+  window.removeEventListener('mouseup', arMouseUp);
+}
+
+function captureARPhoto() {
+  var video = document.getElementById('arVideo');
+  var canvas = document.getElementById('arCaptureCanvas');
+  var ctx = canvas.getContext('2d');
+  var vw = window.innerWidth;
+  var vh = window.innerHeight;
+  canvas.width = vw;
+  canvas.height = vh;
+  // Draw the video frame scaled to cover the viewport
+  var vRatio = video.videoWidth / video.videoHeight;
+  var sRatio = vw / vh;
+  var sw, sh, sx, sy;
+  if (vRatio > sRatio) {
+    sh = video.videoHeight;
+    sw = sh * sRatio;
+    sx = (video.videoWidth - sw) / 2;
+    sy = 0;
+  } else {
+    sw = video.videoWidth;
+    sh = sw / sRatio;
+    sx = 0;
+    sy = (video.videoHeight - sh) / 2;
+  }
+  ctx.drawImage(video, sx, sy, sw, sh, 0, 0, vw, vh);
+  // Draw the painting image on top
+  var paintImg = document.getElementById('arPaintingImg');
+  var wrap = document.getElementById('arPaintingWrap');
+  var rect = paintImg.getBoundingClientRect();
+  // Draw white border (frame)
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(rect.left - 4, rect.top - 4, rect.width + 8, rect.height + 8);
+  // Draw shadow
+  ctx.shadowColor = 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = 24;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 6;
+  ctx.fillRect(rect.left - 4, rect.top - 4, rect.width + 8, rect.height + 8);
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
+  ctx.drawImage(paintImg, rect.left, rect.top, rect.width, rect.height);
+  // Draw size label
+  var sizeLabel = document.getElementById('arPaintingSize').textContent;
+  if (sizeLabel) {
+    ctx.font = '500 11px Inter, sans-serif';
+    var tm = ctx.measureText(sizeLabel);
+    var lx = rect.left + rect.width / 2 - tm.width / 2 - 12;
+    var ly = rect.bottom + 14;
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    var pillW = tm.width + 24;
+    var pillH = 22;
+    ctx.beginPath();
+    ctx.roundRect(lx, ly, pillW, pillH, 11);
+    ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(sizeLabel, lx + 12, ly + 15);
+  }
+  // Flash effect
+  var flash = document.getElementById('arFlash');
+  flash.classList.add('active');
+  setTimeout(function() { flash.classList.remove('active'); }, 150);
+  // Download
+  canvas.toBlob(function(blob) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = (arCurrentPainting ? arCurrentPainting.title.replace(/[^a-zA-Z0-9]/g, '_') : 'room_view') + '_AR.jpg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+  }, 'image/jpeg', 0.92);
+}
 
 // ============ INIT ============
 function renderPrints() {
