@@ -862,16 +862,16 @@ input,textarea{font-family:inherit;font-size:inherit}
     <a href="#artist" data-page="artist" onclick="navigateTo('artist')">The Artist</a>
     <a href="#contact" data-page="contact" onclick="navigateTo('contact')">Contact</a>
   </div>
-  <div class="hamburger" onclick="toggleMobile()">
+  <div class="hamburger" id="hamburgerBtn">
     <span></span><span></span><span></span>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#gallery" onclick="navigateTo('gallery');toggleMobile()">The Collection</a>
-  <a href="#prints" onclick="navigateTo('prints');toggleMobile()">Prints</a>
-  <a href="#auction" onclick="navigateTo('auction');toggleMobile()">The Auction</a>
-  <a href="#artist" onclick="navigateTo('artist');toggleMobile()">The Artist</a>
-  <a href="#contact" onclick="navigateTo('contact');toggleMobile()">Contact</a>
+  <a href="#gallery" data-nav="gallery">The Collection</a>
+  <a href="#prints" data-nav="prints">Prints</a>
+  <a href="#auction" data-nav="auction">The Auction</a>
+  <a href="#artist" data-nav="artist">The Artist</a>
+  <a href="#contact" data-nav="contact">Contact</a>
 </div>
 
 <!-- ========== PAGE: HOME ========== -->
@@ -1705,7 +1705,6 @@ document.addEventListener('keydown', (e) => {
 function toggleMobile() {
   var menu = document.getElementById('mobileMenu');
   menu.classList.toggle('open');
-  // Stop/start Lenis smooth scroll so it doesn't interfere with menu interaction
   if (window.lenis) {
     if (menu.classList.contains('open')) {
       window.lenis.stop();
@@ -1716,6 +1715,38 @@ function toggleMobile() {
     }
   }
 }
+
+// Robust hamburger: use touchend + click with debounce to guarantee response
+(function() {
+  var ham = document.getElementById('hamburgerBtn');
+  if (!ham) return;
+  var lastToggle = 0;
+  function handleHamburger(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var now = Date.now();
+    if (now - lastToggle < 300) return; // debounce
+    lastToggle = now;
+    toggleMobile();
+  }
+  ham.addEventListener('touchend', handleHamburger, { passive: false });
+  ham.addEventListener('click', handleHamburger);
+  
+  // Mobile menu links: use touchend + click
+  document.querySelectorAll('#mobileMenu a[data-nav]').forEach(function(link) {
+    function handleNavLink(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var now = Date.now();
+      if (now - lastToggle < 300) return;
+      lastToggle = now;
+      var page = link.getAttribute('data-nav');
+      navigateTo(page);
+    }
+    link.addEventListener('touchend', handleNavLink, { passive: false });
+    link.addEventListener('click', handleNavLink);
+  });
+})();
 
 // ============ COUNTDOWN ============
 
