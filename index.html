@@ -641,6 +641,51 @@ input,textarea{font-family:inherit;font-size:inherit}
 .ar-change-photo:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
 .ar-room-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
+
+/* ============ CUSTOM CURSOR ============ */
+.cursor-dot{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:width 0.25s cubic-bezier(.23,1,.32,1),height 0.25s cubic-bezier(.23,1,.32,1),opacity 0.2s}
+.cursor-label{position:fixed;pointer-events:none;z-index:9999;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity 0.2s;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cursor-dot.expanded{width:80px;height:80px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4)}
+.cursor-label.visible{opacity:1}
+@media(hover:none),(max-width:1024px){.cursor-dot,.cursor-label{display:none !important}}
+
+/* ============ REVEAL ANIMATIONS ============ */
+.reveal{opacity:0;transform:translateY(40px);will-change:opacity,transform}
+.reveal-left{opacity:0;transform:translateX(-40px);will-change:opacity,transform}
+.reveal-right{opacity:0;transform:translateX(40px);will-change:opacity,transform}
+.img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;transition:none}
+
+/* ============ HERO ENTRANCE ============ */
+.hero-pill,.hero-subtitle,.hero-title,.hero-tagline,.hero-buttons,.scroll-indicator{opacity:0;transform:translateY(30px)}
+
+/* ============ AMBIENT SOUND TOGGLE ============ */
+.ambient-toggle{position:fixed;bottom:24px;right:24px;z-index:2500;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;opacity:0.6}
+.ambient-toggle:hover{opacity:1;border-color:var(--gold)}
+.ambient-toggle svg{width:18px;height:18px;stroke:var(--text-muted);fill:none;stroke-width:1.5;transition:stroke 0.3s}
+.ambient-toggle.playing svg{stroke:var(--gold)}
+.ambient-bars{display:flex;align-items:flex-end;gap:2px;height:14px}
+.ambient-bar{width:2px;background:var(--text-muted);transition:background 0.3s}
+.ambient-toggle.playing .ambient-bar{background:var(--gold)}
+.ambient-bar:nth-child(1){height:4px;animation:none}
+.ambient-bar:nth-child(2){height:8px;animation:none}
+.ambient-bar:nth-child(3){height:6px;animation:none}
+.ambient-bar:nth-child(4){height:10px;animation:none}
+.ambient-toggle.playing .ambient-bar:nth-child(1){animation:ambientPulse 0.8s ease-in-out infinite alternate}
+.ambient-toggle.playing .ambient-bar:nth-child(2){animation:ambientPulse 0.6s ease-in-out infinite alternate 0.1s}
+.ambient-toggle.playing .ambient-bar:nth-child(3){animation:ambientPulse 0.7s ease-in-out infinite alternate 0.2s}
+.ambient-toggle.playing .ambient-bar:nth-child(4){animation:ambientPulse 0.5s ease-in-out infinite alternate 0.15s}
+@keyframes ambientPulse{0%{height:3px}100%{height:14px}}
+
+/* ============ RECOMMENDATIONS ============ */
+.reco-section{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.reco-title{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+.reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.reco-card{cursor:pointer;border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+.reco-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.reco-card-img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.reco-card-title{font-family:var(--inter);font-size:11px;font-weight:500;padding:8px;color:var(--text);text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reco-card-price{font-family:var(--inter);font-size:12px;color:var(--gold);padding:0 8px 8px;font-weight:500}
+
 .ar-viewer{position:fixed;inset:0;z-index:3000;background:#000;display:none;flex-direction:column}
 .ar-viewer.open{display:flex}
 .ar-viewer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -770,8 +815,25 @@ input,textarea{font-family:inherit;font-size:inherit}
   ]
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-label" id="cursorLabel"></div>
+
+<!-- AMBIENT SOUND TOGGLE -->
+<div class="ambient-toggle" id="ambientToggle" onclick="toggleAmbient()" title="Toggle ambient sound">
+  <div class="ambient-bars">
+    <div class="ambient-bar"></div>
+    <div class="ambient-bar"></div>
+    <div class="ambient-bar"></div>
+    <div class="ambient-bar"></div>
+  </div>
+</div>
 
 <!-- ========== NAVIGATION ========== -->
 <nav class="nav">
@@ -825,7 +887,7 @@ input,textarea{font-family:inherit;font-size:inherit}
   </section>
 
   <!-- EXHIBITION CREDENTIAL -->
-  <div class="credential-bar">
+  <div class="credential-bar reveal">
     <span class="credential-text">EXHIBITED AT</span>
     <span class="credential-name">SASSE MUSEUM OF ART</span>
     <span class="credential-show">Colorstraction: A Personal Perspective, 2025</span>
@@ -840,9 +902,9 @@ input,textarea{font-family:inherit;font-size:inherit}
 
   <!-- FEATURED WORKS -->
   <section class="section">
-    <h2 class="section-title">FEATURED WORKS</h2>
+    <h2 class="section-title reveal">FEATURED WORKS</h2>
     <div class="section-bar"></div>
-    <div class="featured-grid">
+    <div class="featured-grid reveal">
       <div class="featured-card" onclick="openOverlay('the-witness')" style="grid-column:1/-1">
         <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089" alt="The Witness, original oil on canvas by Nat Berhe, 120x72 inches" loading="lazy">
         <span class="featured-badge">ORIGINAL</span>
@@ -852,7 +914,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         </div>
       </div>
     </div>
-    <div class="featured-grid-bottom">
+    <div class="featured-grid-bottom reveal">
       <div class="featured-card" onclick="openOverlay('signal-lost')">
         <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="Signal Lost, original oil on canvas by Nat Berhe" loading="lazy">
         <span class="featured-badge">ORIGINAL</span>
@@ -905,7 +967,7 @@ input,textarea{font-family:inherit;font-size:inherit}
   </section>
 
   <!-- PRINTS BANNER -->
-  <section class="prints-banner">
+  <section class="prints-banner reveal">
     <div class="prints-banner-inner">
       <p class="section-label">LIMITED EDITION</p>
       <h2 class="prints-banner-title">CANVAS PRINTS</h2>
@@ -917,10 +979,10 @@ input,textarea{font-family:inherit;font-size:inherit}
 
   <!-- ARTIST TEASER -->
   <section class="artist-teaser">
-    <div class="artist-teaser-img">
+    <div class="artist-teaser-img reveal-left">
       <img src="nat-portrait.jpg" alt="Natnael Nat Berhe, former NFL player and figurative abstract expressionist artist" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <div class="artist-teaser-content">
+    <div class="artist-teaser-content reveal-right">
       <h2 class="artist-teaser-heading">FROM THE FIELD<br>TO THE CANVAS</h2>
       <div class="artist-teaser-bar"></div>
       <p class="artist-teaser-text">Nat Berhe, the first Eritrean American drafted in NFL history, traded the gridiron for the canvas. After 42 games across five seasons with the New York Giants and Pittsburgh Steelers (2014 to 2018), he found a new arena for his intensity: oil on canvas.</p>
@@ -1207,6 +1269,10 @@ input,textarea{font-family:inherit;font-size:inherit}
           <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
           14-Day Return Policy
         </div>
+      </div>
+      <div class="reco-section" id="recoSection" style="display:none">
+        <div class="reco-title">YOU MIGHT ALSO LIKE</div>
+        <div class="reco-grid" id="recoGrid"></div>
       </div>
       <button class="ar-btn" id="arBtn" onclick="openARViewer()"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>VIEW IN YOUR ROOM</button>
     </div>
@@ -2321,6 +2387,397 @@ window.addEventListener('hashchange', () => {
 });
 
 init();
+
+
+// ============ LENIS SMOOTH SCROLL ============
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+  smoothWheel: true,
+  wheelMultiplier: 1
+});
+function lenisRaf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(lenisRaf);
+}
+requestAnimationFrame(lenisRaf);
+// Connect Lenis to GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+// Disable Lenis when overlay or AR viewer is open
+var _origOpenOverlayByIndex = openOverlayByIndex;
+openOverlayByIndex = function(idx) {
+  lenis.stop();
+  _origOpenOverlayByIndex(idx);
+};
+var _origCloseOverlay = closeOverlay;
+closeOverlay = function() {
+  _origCloseOverlay();
+  lenis.start();
+};
+var _origOpenAR = openARViewer;
+openARViewer = function() {
+  lenis.stop();
+  _origOpenAR();
+};
+var _origCloseAR = closeARViewer;
+closeARViewer = function() {
+  _origCloseAR();
+  lenis.start();
+};
+
+// ============ GSAP SCROLL ANIMATIONS ============
+gsap.registerPlugin(ScrollTrigger);
+
+// Cinematic hero entrance
+function heroEntrance() {
+  var tl = gsap.timeline({ delay: 0.3 });
+  tl.to('.hero-pill', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+    .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-title', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-buttons', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+    .to('.scroll-indicator', { opacity: 0.5, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3');
+}
+
+// Dynamic hero title text scramble
+function heroTitleScramble() {
+  var el = document.querySelector('.hero-title');
+  if (!el) return;
+  var finalText = el.textContent;
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var iterations = 0;
+  var interval = setInterval(function() {
+    el.textContent = finalText.split('').map(function(c, i) {
+      if (c === ' ') return ' ';
+      if (i < iterations) return finalText[i];
+      return chars[Math.floor(Math.random() * chars.length)];
+    }).join('');
+    iterations += 1/3;
+    if (iterations >= finalText.length) {
+      el.textContent = finalText;
+      clearInterval(interval);
+    }
+  }, 30);
+}
+
+// Reveal animations for all .reveal, .reveal-left, .reveal-right elements
+function setupRevealAnimations() {
+  gsap.utils.toArray('.reveal').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.reveal-left').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.reveal-right').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+}
+
+// Image clip-reveal for featured cards
+function setupImageReveals() {
+  gsap.utils.toArray('.featured-card-img').forEach(function(img) {
+    gsap.fromTo(img, 
+      { clipPath: 'inset(100% 0 0 0)' },
+      { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'power3.inOut',
+        scrollTrigger: { trigger: img, start: 'top 85%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+}
+
+// Gallery card stagger reveal when page becomes active
+function setupGalleryCardReveals() {
+  // Use MutationObserver to detect when gallery page becomes visible
+  var observer = new MutationObserver(function() {
+    var galleryPage = document.getElementById('page-gallery');
+    if (galleryPage && galleryPage.classList.contains('active')) {
+      var cards = galleryPage.querySelectorAll('.gallery-card');
+      gsap.fromTo(cards, 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.05, overwrite: true }
+      );
+    }
+    var printsPage = document.getElementById('page-prints');
+    if (printsPage && printsPage.classList.contains('active')) {
+      var pCards = printsPage.querySelectorAll('.gallery-card');
+      gsap.fromTo(pCards,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.05, overwrite: true }
+      );
+    }
+  });
+  document.querySelectorAll('.page').forEach(function(page) {
+    observer.observe(page, { attributes: true, attributeFilter: ['class'] });
+  });
+}
+
+// Parallax on hero background
+function setupParallax() {
+  gsap.to('.hero-bg img', {
+    yPercent: 20, ease: 'none',
+    scrollTrigger: {
+      trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true
+    }
+  });
+  // Subtle parallax on featured section title
+  gsap.to('.section-title', {
+    y: -20, ease: 'none',
+    scrollTrigger: {
+      trigger: '.section', start: 'top bottom', end: 'bottom top', scrub: true
+    }
+  });
+}
+
+// ============ CUSTOM CURSOR ============
+var cursorDot = document.getElementById('cursorDot');
+var cursorLabel = document.getElementById('cursorLabel');
+var cursorX = 0, cursorY = 0, dotX = 0, dotY = 0;
+var cursorVisible = false;
+
+if (window.matchMedia('(hover: hover)').matches && window.innerWidth > 1024) {
+  document.addEventListener('mousemove', function(e) {
+    cursorX = e.clientX;
+    cursorY = e.clientY;
+    if (!cursorVisible) {
+      cursorDot.style.opacity = '1';
+      cursorVisible = true;
+    }
+  });
+  
+  // Smooth cursor follow
+  function updateCursor() {
+    dotX += (cursorX - dotX) * 0.15;
+    dotY += (cursorY - dotY) * 0.15;
+    cursorDot.style.left = dotX + 'px';
+    cursorDot.style.top = dotY + 'px';
+    cursorDot.style.transform = 'translate(-50%, -50%)';
+    cursorLabel.style.left = cursorX + 'px';
+    cursorLabel.style.top = (cursorY - 36) + 'px';
+    requestAnimationFrame(updateCursor);
+  }
+  updateCursor();
+
+  // Expand cursor on interactive elements
+  function setupCursorHovers() {
+    // Gallery cards: VIEW
+    document.querySelectorAll('.gallery-card, .featured-card, .reco-card').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        cursorDot.classList.add('expanded');
+        cursorLabel.textContent = 'VIEW';
+        cursorLabel.classList.add('visible');
+      });
+      el.addEventListener('mouseleave', function() {
+        cursorDot.classList.remove('expanded');
+        cursorLabel.classList.remove('visible');
+      });
+    });
+    // Buy buttons: BUY
+    document.querySelectorAll('.hero-btn-gold, .gallery-card-btn, .overlay-acquire, .prints-banner-btn').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        cursorDot.classList.add('expanded');
+        cursorLabel.textContent = 'BUY';
+        cursorLabel.classList.add('visible');
+      });
+      el.addEventListener('mouseleave', function() {
+        cursorDot.classList.remove('expanded');
+        cursorLabel.classList.remove('visible');
+      });
+    });
+    // Nav links: subtle expand only
+    document.querySelectorAll('.nav-links a, .hero-btn, .hero-pill').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        cursorDot.classList.add('expanded');
+      });
+      el.addEventListener('mouseleave', function() {
+        cursorDot.classList.remove('expanded');
+        cursorLabel.classList.remove('visible');
+      });
+    });
+  }
+  // Initial setup + re-setup after gallery renders
+  setTimeout(setupCursorHovers, 500);
+  // Re-attach after gallery/prints render
+  var _origRenderGallery = renderGallery;
+  renderGallery = function() { _origRenderGallery(); setTimeout(setupCursorHovers, 100); };
+  var _origRenderPrints = renderPrints;
+  renderPrints = function() { _origRenderPrints(); setTimeout(setupCursorHovers, 100); };
+}
+
+// ============ AMBIENT SOUND ============
+var ambientAudio = null;
+var ambientPlaying = false;
+
+function createAmbientAudio() {
+  // Create ambient texture using Web Audio API (no external file needed)
+  var ctx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Brown noise for warm studio atmosphere
+  var bufferSize = ctx.sampleRate * 4;
+  var buffer = ctx.createBuffer(2, bufferSize, ctx.sampleRate);
+  for (var ch = 0; ch < 2; ch++) {
+    var data = buffer.getChannelData(ch);
+    var lastOut = 0;
+    for (var i = 0; i < bufferSize; i++) {
+      var white = Math.random() * 2 - 1;
+      data[i] = (lastOut + (0.02 * white)) / 1.02;
+      lastOut = data[i];
+      data[i] *= 3.5;
+    }
+  }
+  
+  var source = ctx.createBufferSource();
+  source.buffer = buffer;
+  source.loop = true;
+  
+  // Filter to make it warmer
+  var filter = ctx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = 200;
+  filter.Q.value = 0.7;
+  
+  var gain = ctx.createGain();
+  gain.gain.value = 0;
+  
+  source.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+  source.start(0);
+  
+  return { ctx: ctx, gain: gain };
+}
+
+function toggleAmbient() {
+  var btn = document.getElementById('ambientToggle');
+  if (!ambientAudio) {
+    ambientAudio = createAmbientAudio();
+  }
+  if (ambientPlaying) {
+    // Fade out
+    ambientAudio.gain.gain.linearRampToValueAtTime(0, ambientAudio.ctx.currentTime + 0.5);
+    ambientPlaying = false;
+    btn.classList.remove('playing');
+  } else {
+    // Fade in
+    if (ambientAudio.ctx.state === 'suspended') ambientAudio.ctx.resume();
+    ambientAudio.gain.gain.linearRampToValueAtTime(0.3, ambientAudio.ctx.currentTime + 1);
+    ambientPlaying = true;
+    btn.classList.add('playing');
+  }
+}
+
+// ============ RECOMMENDATIONS ============
+function showRecommendations(currentProduct) {
+  var recoSection = document.getElementById('recoSection');
+  var recoGrid = document.getElementById('recoGrid');
+  if (!recoSection || !recoGrid) return;
+  
+  // Get similar products (same type, different piece, similar price range)
+  var candidates = CATALOG.filter(function(p) {
+    return p.is_print === currentProduct.is_print && 
+           p.handle !== currentProduct.handle && 
+           !p.sold_out;
+  });
+  
+  // Score by price proximity
+  candidates.sort(function(a, b) {
+    return Math.abs(a.price - currentProduct.price) - Math.abs(b.price - currentProduct.price);
+  });
+  
+  // Take top 6, then randomize and pick 3
+  var top = candidates.slice(0, 6);
+  for (var i = top.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = top[i]; top[i] = top[j]; top[j] = temp;
+  }
+  var picks = top.slice(0, 3);
+  
+  if (picks.length < 3) { recoSection.style.display = 'none'; return; }
+  
+  recoGrid.innerHTML = picks.map(function(p) {
+    var catIdx = CATALOG.indexOf(p);
+    return '<div class="reco-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">' +
+      '<img class="reco-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy">' +
+      '<div class="reco-card-title">' + p.title + '</div>' +
+      '<div class="reco-card-price">$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) + '</div>' +
+    '</div>';
+  }).join('');
+  recoSection.style.display = '';
+  
+  // Re-setup cursor hovers for new reco cards
+  if (window.matchMedia('(hover: hover)').matches && window.innerWidth > 1024) {
+    setTimeout(setupCursorHovers, 100);
+  }
+}
+
+// Hook recommendations into overlay open
+var _origOpenOverlayByIndex2 = openOverlayByIndex;
+openOverlayByIndex = function(idx) {
+  _origOpenOverlayByIndex2(idx);
+  var p = filteredProducts[idx];
+  if (p) showRecommendations(p);
+};
+
+// ============ FLIP ANIMATION FOR OVERLAY ============
+var _origOpenOverlayByIndex3 = openOverlayByIndex;
+openOverlayByIndex = function(idx) {
+  // Find the clicked card image for FLIP
+  var clickedImg = null;
+  var cards = document.querySelectorAll('.gallery-card, .featured-card');
+  var p = filteredProducts[idx];
+  if (p) {
+    cards.forEach(function(card) {
+      var img = card.querySelector('img');
+      if (img && img.src === p.image) {
+        clickedImg = img;
+      }
+    });
+  }
+  
+  _origOpenOverlayByIndex3(idx);
+  
+  var overlayImg = document.getElementById('overlayImg');
+  if (clickedImg && overlayImg) {
+    // Get card image position
+    var fromRect = clickedImg.getBoundingClientRect();
+    // Set overlay image to start from card position
+    overlayImg.style.transition = 'none';
+    overlayImg.style.transform = 'scale(0.8)';
+    overlayImg.style.opacity = '0';
+    // Animate to final position
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        overlayImg.style.transition = 'transform 0.5s cubic-bezier(.23,1,.32,1), opacity 0.4s ease';
+        overlayImg.style.transform = 'scale(1)';
+        overlayImg.style.opacity = '1';
+      });
+    });
+  }
+};
+
+// ============ INIT ALL CUTTING EDGE FEATURES ============
+function initCuttingEdge() {
+  heroEntrance();
+  setTimeout(heroTitleScramble, 800);
+  setupRevealAnimations();
+  setupImageReveals();
+  setupGalleryCardReveals();
+  setupParallax();
+}
+
+// Run after main init
+setTimeout(initCuttingEdge, 100);
 </script>
 </body>
 </html>
