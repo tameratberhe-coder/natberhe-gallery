@@ -2464,7 +2464,33 @@ gsap.ticker.lagSmoothing(0);
 var _origOpenOverlayByIndex = openOverlayByIndex;
 openOverlayByIndex = function(idx) {
   lenis.stop();
+  // FLIP: find clicked card image before overlay opens
+  var clickedImg = null;
+  var cards = document.querySelectorAll('.gallery-card, .featured-card');
+  var p = filteredProducts[idx];
+  if (p) {
+    cards.forEach(function(card) {
+      var img = card.querySelector('img');
+      if (img && img.src === p.image) clickedImg = img;
+    });
+  }
   _origOpenOverlayByIndex(idx);
+  // Recommendations
+  if (p) showRecommendations(p);
+  // FLIP animation
+  var overlayImg = document.getElementById('overlayImg');
+  if (clickedImg && overlayImg) {
+    overlayImg.style.transition = 'none';
+    overlayImg.style.transform = 'scale(0.8)';
+    overlayImg.style.opacity = '0';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        overlayImg.style.transition = 'transform 0.5s cubic-bezier(.23,1,.32,1), opacity 0.4s ease';
+        overlayImg.style.transform = 'scale(1)';
+        overlayImg.style.opacity = '1';
+      });
+    });
+  }
 };
 var _origCloseOverlay = closeOverlay;
 closeOverlay = function() {
@@ -2775,50 +2801,7 @@ function showRecommendations(currentProduct) {
   }
 }
 
-// Hook recommendations into overlay open
-var _origOpenOverlayByIndex2 = openOverlayByIndex;
-openOverlayByIndex = function(idx) {
-  _origOpenOverlayByIndex2(idx);
-  var p = filteredProducts[idx];
-  if (p) showRecommendations(p);
-};
-
-// ============ FLIP ANIMATION FOR OVERLAY ============
-var _origOpenOverlayByIndex3 = openOverlayByIndex;
-openOverlayByIndex = function(idx) {
-  // Find the clicked card image for FLIP
-  var clickedImg = null;
-  var cards = document.querySelectorAll('.gallery-card, .featured-card');
-  var p = filteredProducts[idx];
-  if (p) {
-    cards.forEach(function(card) {
-      var img = card.querySelector('img');
-      if (img && img.src === p.image) {
-        clickedImg = img;
-      }
-    });
-  }
-  
-  _origOpenOverlayByIndex3(idx);
-  
-  var overlayImg = document.getElementById('overlayImg');
-  if (clickedImg && overlayImg) {
-    // Get card image position
-    var fromRect = clickedImg.getBoundingClientRect();
-    // Set overlay image to start from card position
-    overlayImg.style.transition = 'none';
-    overlayImg.style.transform = 'scale(0.8)';
-    overlayImg.style.opacity = '0';
-    // Animate to final position
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        overlayImg.style.transition = 'transform 0.5s cubic-bezier(.23,1,.32,1), opacity 0.4s ease';
-        overlayImg.style.transform = 'scale(1)';
-        overlayImg.style.opacity = '1';
-      });
-    });
-  }
-};
+// Recommendations and FLIP consolidated into main overlay override above
 
 // ============ INIT ALL CUTTING EDGE FEATURES ============
 function initCuttingEdge() {
