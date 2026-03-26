@@ -1452,6 +1452,12 @@ function navigateTo(page) {
   if (page === 'gallery' || page === 'home') {
     // Map "The Collection" nav link
   }
+  // Ensure clean scroll state: restart Lenis, clear body overflow
+  if (window.lenis) { try { window.lenis.start(); } catch(e){} }
+  document.body.style.overflow = '';
+  // Close mobile menu if open
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (mobileMenu && mobileMenu.classList.contains('open')) mobileMenu.classList.remove('open');
   document.querySelectorAll('.page').forEach(p => {
     p.classList.remove('active');
     p.style.opacity = '0';
@@ -1700,12 +1706,12 @@ function toggleMobile() {
   var menu = document.getElementById('mobileMenu');
   menu.classList.toggle('open');
   // Stop/start Lenis smooth scroll so it doesn't interfere with menu interaction
-  if (typeof lenis !== 'undefined') {
+  if (window.lenis) {
     if (menu.classList.contains('open')) {
-      lenis.stop();
+      window.lenis.stop();
       document.body.style.overflow = 'hidden';
     } else {
-      lenis.start();
+      window.lenis.start();
       document.body.style.overflow = '';
     }
   }
@@ -2455,26 +2461,26 @@ init();
 
 
 // ============ LENIS SMOOTH SCROLL ============
-const lenis = new Lenis({
+window.lenis = new Lenis({
   duration: 1.2,
   easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
   smoothWheel: true,
   wheelMultiplier: 1
 });
 function lenisRaf(time) {
-  lenis.raf(time);
+  window.lenis.raf(time);
   requestAnimationFrame(lenisRaf);
 }
 requestAnimationFrame(lenisRaf);
 // Connect Lenis to GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+window.lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(function(time) { window.lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
 // Disable Lenis when overlay or AR viewer is open
 var _origOpenOverlayByIndex = openOverlayByIndex;
 openOverlayByIndex = function(idx) {
-  lenis.stop();
+  window.lenis.stop();
   // FLIP: find clicked card image before overlay opens
   var clickedImg = null;
   var cards = document.querySelectorAll('.gallery-card, .featured-card');
@@ -2506,17 +2512,17 @@ openOverlayByIndex = function(idx) {
 var _origCloseOverlay = closeOverlay;
 closeOverlay = function() {
   _origCloseOverlay();
-  lenis.start();
+  window.lenis.start();
 };
 var _origOpenAR = openARViewer;
 openARViewer = function() {
-  lenis.stop();
+  window.lenis.stop();
   _origOpenAR();
 };
 var _origCloseAR = closeARViewer;
 closeARViewer = function() {
   _origCloseAR();
-  lenis.start();
+  window.lenis.start();
 };
 
 // ============ GSAP SCROLL ANIMATIONS ============
