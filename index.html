@@ -664,12 +664,7 @@ input,textarea{font-family:inherit;font-size:inherit}
 .ar-room-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 
-/* ============ CUSTOM CURSOR ============ */
-.cursor-dot{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:width 0.25s cubic-bezier(.23,1,.32,1),height 0.25s cubic-bezier(.23,1,.32,1),opacity 0.2s}
-.cursor-label{position:fixed;pointer-events:none;z-index:9999;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity 0.2s;transform:translate(-50%,-50%);mix-blend-mode:difference}
-.cursor-dot.expanded{width:80px;height:80px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4)}
-.cursor-label.visible{opacity:1}
-@media(hover:none),(max-width:1024px){.cursor-dot,.cursor-label{display:none !important}}
+
 
 /* ============ REVEAL ANIMATIONS ============ */
 .reveal{opacity:0;transform:translateY(40px);will-change:opacity,transform}
@@ -843,9 +838,6 @@ input,textarea{font-family:inherit;font-size:inherit}
 </head>
 <body>
 
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-label" id="cursorLabel"></div>
 
 <!-- AMBIENT SOUND TOGGLE -->
 <div class="ambient-toggle" id="ambientToggle" onclick="toggleAmbient()" title="Toggle ambient sound">
@@ -2700,80 +2692,6 @@ function setupParallax() {
   });
 }
 
-// ============ CUSTOM CURSOR ============
-var cursorDot = document.getElementById('cursorDot');
-var cursorLabel = document.getElementById('cursorLabel');
-var cursorX = 0, cursorY = 0, dotX = 0, dotY = 0;
-var cursorVisible = false;
-
-if (window.matchMedia('(hover: hover)').matches && window.innerWidth > 1024) {
-  document.addEventListener('mousemove', function(e) {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    if (!cursorVisible) {
-      cursorDot.style.opacity = '1';
-      cursorVisible = true;
-    }
-  });
-  
-  // Smooth cursor follow
-  function updateCursor() {
-    dotX += (cursorX - dotX) * 0.15;
-    dotY += (cursorY - dotY) * 0.15;
-    cursorDot.style.left = dotX + 'px';
-    cursorDot.style.top = dotY + 'px';
-    cursorDot.style.transform = 'translate(-50%, -50%)';
-    cursorLabel.style.left = cursorX + 'px';
-    cursorLabel.style.top = (cursorY - 36) + 'px';
-    requestAnimationFrame(updateCursor);
-  }
-  updateCursor();
-
-  // Expand cursor on interactive elements
-  function setupCursorHovers() {
-    // Gallery cards: VIEW
-    document.querySelectorAll('.gallery-card, .featured-card, .reco-card').forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        cursorDot.classList.add('expanded');
-        cursorLabel.textContent = 'VIEW';
-        cursorLabel.classList.add('visible');
-      });
-      el.addEventListener('mouseleave', function() {
-        cursorDot.classList.remove('expanded');
-        cursorLabel.classList.remove('visible');
-      });
-    });
-    // Buy buttons: BUY
-    document.querySelectorAll('.hero-btn-gold, .gallery-card-btn, .overlay-acquire, .prints-banner-btn').forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        cursorDot.classList.add('expanded');
-        cursorLabel.textContent = 'BUY';
-        cursorLabel.classList.add('visible');
-      });
-      el.addEventListener('mouseleave', function() {
-        cursorDot.classList.remove('expanded');
-        cursorLabel.classList.remove('visible');
-      });
-    });
-    // Nav links: subtle expand only
-    document.querySelectorAll('.nav-links a, .hero-btn, .hero-pill').forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        cursorDot.classList.add('expanded');
-      });
-      el.addEventListener('mouseleave', function() {
-        cursorDot.classList.remove('expanded');
-        cursorLabel.classList.remove('visible');
-      });
-    });
-  }
-  // Initial setup + re-setup after gallery renders
-  setTimeout(setupCursorHovers, 500);
-  // Re-attach after gallery/prints render
-  var _origRenderGallery = renderGallery;
-  renderGallery = function() { _origRenderGallery(); setTimeout(setupCursorHovers, 100); };
-  var _origRenderPrints = renderPrints;
-  renderPrints = function() { _origRenderPrints(); setTimeout(setupCursorHovers, 100); };
-}
 
 // ============ AMBIENT SOUND ============
 var ambientAudio = null;
