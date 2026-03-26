@@ -2392,13 +2392,26 @@ function renderPrintsShowcase() {
   var grid = document.getElementById('printsShowcase');
   if (!grid) return;
   var prints = CATALOG.filter(function(p) { return p.is_print && !p.sold_out && p.sizes && p.sizes.length > 0; });
-  // Pick 6 diverse prints: sort by price, pick from different price tiers
-  prints.sort(function(a, b) { return a.price - b.price; });
-  var step = Math.floor(prints.length / 6);
+  // Curated picks: exclude Blurred Messages, ensure After the Human is included
+  var exclude = ['blurred-messages-print'];
+  var mustInclude = ['after-the-human-print'];
+  var filtered = prints.filter(function(p) { return exclude.indexOf(p.handle) === -1; });
+  filtered.sort(function(a, b) { return a.price - b.price; });
   var picks = [];
-  for (var i = 0; i < 6; i++) {
-    picks.push(prints[Math.min(i * step, prints.length - 1)]);
+  // Add must-includes first
+  mustInclude.forEach(function(h) {
+    var found = filtered.find(function(p) { return p.handle === h; });
+    if (found) picks.push(found);
+  });
+  // Fill remaining slots from price tiers
+  var remaining = filtered.filter(function(p) { return picks.indexOf(p) === -1; });
+  var step = Math.floor(remaining.length / (6 - picks.length));
+  for (var i = 0; picks.length < 6 && i < remaining.length; i += step) {
+    picks.push(remaining[Math.min(i, remaining.length - 1)]);
   }
+  picks = picks.slice(0, 6);
+  // Sort final picks by price for display
+  picks.sort(function(a, b) { return a.price - b.price; });
   grid.innerHTML = picks.map(function(p) {
     var catIdx = CATALOG.indexOf(p);
     var maxSize = p.sizes[p.sizes.length - 1].label.split(' (')[0];
