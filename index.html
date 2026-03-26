@@ -308,6 +308,14 @@ input,textarea{font-family:inherit;font-size:inherit}
 .artist-bio{max-width:800px;margin:0 auto;padding:60px 40px 60px}
 .artist-bio p{font-family:var(--inter);font-size:16px;line-height:1.8;color:var(--text-muted);margin-bottom:24px}
 .artist-bio .drop-cap{float:left;font-family:var(--playfair);font-size:72px;font-weight:700;color:var(--gold);line-height:0.8;padding:4px 12px 0 0}
+.artist-portrait-section{max-width:1100px;margin:0 auto;padding:60px 40px}
+.artist-portrait-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:12px}
+.artist-portrait-bar{width:60px;height:3px;background:var(--gold);margin:0 auto 40px}
+.artist-portrait-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.artist-portrait-item{position:relative;overflow:hidden;border:1px solid var(--border)}
+.artist-portrait-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.artist-portrait-item:hover img{transform:scale(1.03)}
+@media(max-width:768px){.artist-portrait-section{padding:40px 20px}.artist-portrait-grid{gap:10px}}
 .timeline{max-width:700px;margin:0 auto;padding:40px 40px 80px}
 .timeline-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:40px}
 .timeline-item{display:flex;gap:24px;padding:16px 0;border-bottom:1px solid var(--border)}
@@ -1162,6 +1170,18 @@ input,textarea{font-family:inherit;font-size:inherit}
     <p>His work in oil on canvas is rooted in figurative abstract expressionism, blending bold composition with raw, physical texture. The paintings are large, often confrontational, built with thick impasto brushwork that gives every surface a sculptural presence. Ghostlike figures emerge from fields of vivid, clashing color. Skulls wear military regalia. Children hold weapons. Men in suits dissolve into noise. The themes are identity, struggle, power, and transcendence, explored with the same controlled intensity that once defined his play on the field.</p>
     <p>In 2025, four of Berhe&rsquo;s paintings were selected for exhibition at the Sasse Museum of Art in Pomona, California for the show &ldquo;Colorstraction: A Personal Perspective.&rdquo; It was his first major institutional showing, and it confirmed what collectors had already begun to recognize: this is an artist working at a level that demands attention. His gallery launched in 2024, and the inaugural live auction of eight museum quality originals is scheduled for July 6, 2026.</p>
   </div>
+  <div class="artist-portrait-section reveal">
+    <h3 class="artist-portrait-title">BEYOND THE CANVAS</h3>
+    <div class="artist-portrait-bar"></div>
+    <div class="artist-portrait-grid">
+      <div class="artist-portrait-item">
+        <img src="IMG_4138.jpeg" alt="Natnael Nat Berhe, artist and former NFL safety, editorial portrait" loading="lazy">
+      </div>
+      <div class="artist-portrait-item">
+        <img src="IMG_8692.jpeg" alt="Nat Berhe relaxing, lifestyle portrait" loading="lazy">
+      </div>
+    </div>
+  </div>
   <div class="timeline">
     <h3 class="timeline-title">CAREER TIMELINE</h3>
     <div class="timeline-item"><div class="timeline-year">1991</div><div class="timeline-desc">Born in Fontana, CA</div></div>
@@ -1211,6 +1231,10 @@ input,textarea{font-family:inherit;font-size:inherit}
       <div class="artist-gallery-item">
         <img src="IMG_8698.jpeg" alt="Nat Berhe profile at Steelers practice" loading="lazy">
         <div class="ag-caption">Steelers Practice</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="IMG_8443.jpeg" alt="Nat Berhe at the 2018 DC Eritrean Festival, Pittsburgh Steelers" loading="lazy">
+        <div class="ag-caption">DC Eritrean Festival, 2018</div>
       </div>
     </div>
   </div>
