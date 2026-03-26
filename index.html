@@ -416,12 +416,26 @@ input,textarea{font-family:inherit;font-size:inherit}
 }
 
 /* ============ PRINTS BANNER ============ */
-.prints-banner{padding:50px 40px;text-align:center;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.prints-banner-inner{max-width:600px;margin:0 auto}
+.prints-banner{padding:60px 40px;text-align:center;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.prints-banner-inner{max-width:1100px;margin:0 auto}
 .prints-banner-title{font-family:var(--oswald);font-weight:700;font-size:clamp(28px,5vw,44px);text-transform:uppercase;color:var(--text);letter-spacing:3px;margin-bottom:8px}
-.prints-banner-text{font-family:var(--inter);font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:28px}
+.prints-banner-text{font-family:var(--inter);font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:12px;max-width:600px;margin-left:auto;margin-right:auto}
+.prints-banner-price-hook{font-family:var(--oswald);font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:32px}
+.prints-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.prints-showcase-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s}
+.prints-showcase-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.prints-showcase-img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 0.6s}
+.prints-showcase-card:hover .prints-showcase-img{transform:scale(1.03)}
+.prints-showcase-info{padding:12px 14px}
+.prints-showcase-title{font-family:var(--oswald);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prints-showcase-meta{font-family:var(--inter);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.prints-showcase-price{font-family:var(--inter);font-size:13px;color:var(--gold);font-weight:600}
 .prints-banner-btn{display:inline-block;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:14px 36px;background:var(--gold);color:#0a0a0a;transition:all 0.3s}
 .prints-banner-btn:hover{background:#d4b45a}
+@media(max-width:768px){
+  .prints-showcase{grid-template-columns:repeat(2,1fr);gap:10px}
+  .prints-showcase-card:nth-child(5),.prints-showcase-card:nth-child(6){display:none}
+}
 .prints-header-desc{font-family:var(--inter);font-size:15px;color:var(--text-muted);max-width:600px;margin:0 auto 32px;text-align:center;line-height:1.7}
 @media(max-width:768px){
   .prints-banner{padding:32px 20px}
@@ -971,9 +985,11 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="prints-banner-inner">
       <p class="section-label">LIMITED EDITION</p>
       <h2 class="prints-banner-title">CANVAS PRINTS</h2>
-      <div class="section-bar" style="margin:0 auto 24px"></div>
-      <p class="prints-banner-text">Own a piece of the collection. Museum quality canvas prints available in multiple sizes, starting from $40. Each print is produced on premium stretched canvas with archival inks.</p>
-      <a href="#prints" class="prints-banner-btn" onclick="navigateTo('prints')">SHOP PRINTS</a>
+      <div class="section-bar" style="margin:0 auto 16px"></div>
+      <p class="prints-banner-text">Own a piece of the collection. Museum quality canvas prints available in multiple sizes. Produced on premium stretched canvas with archival inks.</p>
+      <p class="prints-banner-price-hook">STARTING FROM $40</p>
+      <div class="prints-showcase reveal" id="printsShowcase"></div>
+      <a href="#prints" class="prints-banner-btn" onclick="navigateTo('prints')">VIEW ALL 78 PRINTS</a>
     </div>
   </section>
 
@@ -2372,11 +2388,36 @@ function setDailyHero() {
   }
 }
 
+function renderPrintsShowcase() {
+  var grid = document.getElementById('printsShowcase');
+  if (!grid) return;
+  var prints = CATALOG.filter(function(p) { return p.is_print && !p.sold_out && p.sizes && p.sizes.length > 0; });
+  // Pick 6 diverse prints: sort by price, pick from different price tiers
+  prints.sort(function(a, b) { return a.price - b.price; });
+  var step = Math.floor(prints.length / 6);
+  var picks = [];
+  for (var i = 0; i < 6; i++) {
+    picks.push(prints[Math.min(i * step, prints.length - 1)]);
+  }
+  grid.innerHTML = picks.map(function(p) {
+    var catIdx = CATALOG.indexOf(p);
+    var maxSize = p.sizes[p.sizes.length - 1].label.split(' (')[0];
+    return '<div class="prints-showcase-card" onclick="navigateTo(\'prints\');setTimeout(function(){filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')},300)">' +
+      '<img class="prints-showcase-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + ' canvas print by Nat Berhe" loading="lazy">' +
+      '<div class="prints-showcase-info">' +
+      '<div class="prints-showcase-title">' + p.title.toUpperCase() + '</div>' +
+      '<div class="prints-showcase-meta">Up to ' + maxSize + '</div>' +
+      '<div class="prints-showcase-price">From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
 function init() {
   const hash = window.location.hash.replace('#','') || 'home';
   setDailyHero();
   renderGallery();
   renderPrints();
+  renderPrintsShowcase();
   aucInit();
   navigateTo(hash);
 }
