@@ -832,7 +832,6 @@ input,textarea{font-family:inherit;font-size:inherit}
   ]
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
@@ -1477,8 +1476,6 @@ function navigateTo(page) {
   if (page === 'gallery' || page === 'home') {
     // Map "The Collection" nav link
   }
-  // Ensure clean scroll state: restart Lenis, clear body overflow
-  if (window.lenis) { try { window.lenis.start(); } catch(e){} }
   document.body.style.overflow = '';
   // Close mobile menu if open
   var mobileMenu = document.getElementById('mobileMenu');
@@ -1730,14 +1727,10 @@ document.addEventListener('keydown', (e) => {
 function toggleMobile() {
   var menu = document.getElementById('mobileMenu');
   menu.classList.toggle('open');
-  if (window.lenis) {
-    if (menu.classList.contains('open')) {
-      window.lenis.stop();
-      document.body.style.overflow = 'hidden';
-    } else {
-      window.lenis.start();
-      document.body.style.overflow = '';
-    }
+  if (menu.classList.contains('open')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
   }
 }
 
@@ -2515,27 +2508,11 @@ window.addEventListener('hashchange', () => {
 init();
 
 
-// ============ LENIS SMOOTH SCROLL ============
-window.lenis = new Lenis({
-  duration: 1.2,
-  easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-  smoothWheel: true,
-  wheelMultiplier: 1
-});
-function lenisRaf(time) {
-  window.lenis.raf(time);
-  requestAnimationFrame(lenisRaf);
-}
-requestAnimationFrame(lenisRaf);
-// Connect Lenis to GSAP ScrollTrigger
-window.lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add(function(time) { window.lenis.raf(time * 1000); });
-gsap.ticker.lagSmoothing(0);
+
 
 // Disable Lenis when overlay or AR viewer is open
 var _origOpenOverlayByIndex = openOverlayByIndex;
 openOverlayByIndex = function(idx) {
-  window.lenis.stop();
   // FLIP: find clicked card image before overlay opens
   var clickedImg = null;
   var cards = document.querySelectorAll('.gallery-card, .featured-card');
@@ -2567,17 +2544,14 @@ openOverlayByIndex = function(idx) {
 var _origCloseOverlay = closeOverlay;
 closeOverlay = function() {
   _origCloseOverlay();
-  window.lenis.start();
 };
 var _origOpenAR = openARViewer;
 openARViewer = function() {
-  window.lenis.stop();
   _origOpenAR();
 };
 var _origCloseAR = closeARViewer;
 closeARViewer = function() {
   _origCloseAR();
-  window.lenis.start();
 };
 
 // ============ GSAP SCROLL ANIMATIONS ============
