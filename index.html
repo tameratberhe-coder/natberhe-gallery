@@ -885,7 +885,7 @@ input,textarea{font-family:inherit;font-size:inherit}
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         THE INAUGURAL AUCTION
       </a>
-      <p class="hero-subtitle" id="heroSubtitle">TODAY&rsquo;S FEATURED WORK &middot; OIL ON CANVAS</p>
+      <p class="hero-subtitle" id="heroSubtitle">FEATURED WORK &middot; OIL ON CANVAS</p>
       <h1 class="hero-title">NAT BERHE</h1>
       <p class="hero-tagline">Figurative Abstract Expressionism</p>
       <div class="hero-buttons">
@@ -917,66 +917,8 @@ input,textarea{font-family:inherit;font-size:inherit}
   <section class="section">
     <h2 class="section-title reveal">FEATURED WORKS</h2>
     <div class="section-bar"></div>
-    <div class="featured-grid reveal">
-      <div class="featured-card" onclick="openOverlay('the-witness')" style="grid-column:1/-1">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089" alt="The Witness, original oil on canvas by Nat Berhe, 120x72 inches" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">THE WITNESS</div>
-          <div class="featured-card-price">$17,000</div>
-        </div>
-      </div>
-    </div>
-    <div class="featured-grid-bottom reveal">
-      <div class="featured-card" onclick="openOverlay('signal-lost')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art53.png?v=1763598878" alt="Signal Lost, original oil on canvas by Nat Berhe" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">SIGNAL LOST</div>
-          <div class="featured-card-price">$17,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('crimson-gladiator')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art69.png?v=1763599178" alt="Crimson Gladiator, original oil on canvas by Nat Berhe" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">CRIMSON GLADIATOR</div>
-          <div class="featured-card-price">$16,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('blush-manhunt')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/blush-manhunt.jpeg?v=1774480709" alt="Blush Manhunt, original oil on canvas by Nat Berhe" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">BLUSH MANHUNT</div>
-          <div class="featured-card-price">$3,500</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('protocol-blue')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/8971bf7b-99b3-4fe7-bd08-1d12056dfaa1.png?v=1769028959" alt="Protocol Blue, original oil on canvas by Nat Berhe" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">PROTOCOL: BLUE</div>
-          <div class="featured-card-price">$3,400</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('colorfall')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art21.png?v=1763598207" alt="Colorfall, original oil on canvas by Nat Berhe" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">COLORFALL</div>
-          <div class="featured-card-price">$14,000</div>
-        </div>
-      </div>
-      <div class="featured-card" onclick="openOverlay('crave')">
-        <img class="featured-card-img" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art33.png?v=1763598427" alt="Crave, original oil on canvas by Nat Berhe" loading="lazy">
-        <span class="featured-badge">ORIGINAL</span>
-        <div class="featured-card-info">
-          <div class="featured-card-title">CRAVE</div>
-          <div class="featured-card-price">$12,000</div>
-        </div>
-      </div>
-    </div>
+    <div class="featured-grid reveal" id="featuredHero"></div>
+    <div class="featured-grid-bottom reveal" id="featuredBottom"></div>
   </section>
 
   <!-- PRINTS BANNER -->
@@ -2429,23 +2371,24 @@ function renderPrints() {
   }).join('');
 }
 
-function setDailyHero() {
-  // Select originals that aren't sold out for the daily rotation
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = a[i]; a[i] = a[j]; a[j] = temp;
+  }
+  return a;
+}
+
+function setHero() {
   var originals = CATALOG.filter(function(p) { return !p.is_print && !p.sold_out; });
   if (originals.length === 0) return;
-  // Use day of year as seed for deterministic daily selection
-  var now = new Date();
-  var start = new Date(now.getFullYear(), 0, 0);
-  var dayOfYear = Math.floor((now - start) / 86400000);
-  var idx = dayOfYear % originals.length;
-  var painting = originals[idx];
-  // Update hero background image
+  var painting = originals[Math.floor(Math.random() * originals.length)];
   var heroImg = document.getElementById('heroBgImg');
   if (heroImg) {
     heroImg.src = painting.image;
     heroImg.alt = painting.title + ', original oil painting by Nat Berhe, figurative abstract expressionism';
   }
-  // Update subtitle with painting name and size
   var subtitle = document.getElementById('heroSubtitle');
   if (subtitle) {
     var sizeStr = painting.size ? ' \u00B7 ' + painting.size : '';
@@ -2453,29 +2396,38 @@ function setDailyHero() {
   }
 }
 
+function renderFeaturedWorks() {
+  var originals = shuffle(CATALOG.filter(function(p) { return !p.is_print && !p.sold_out; }));
+  // Pick 7: 1 hero + 6 bottom grid
+  var picks = originals.slice(0, 7);
+  var heroGrid = document.getElementById('featuredHero');
+  var bottomGrid = document.getElementById('featuredBottom');
+  if (!heroGrid || !bottomGrid) return;
+  // Hero card (full width)
+  var h = picks[0];
+  heroGrid.innerHTML = '<div class="featured-card" onclick="openOverlay(\'' + h.handle + '\')" style="grid-column:1/-1">' +
+    '<img class="featured-card-img" src="' + h.image + '" alt="' + h.title + ', original oil on canvas by Nat Berhe" loading="lazy">' +
+    '<span class="featured-badge">' + (h.sold_out ? 'SOLD' : 'ORIGINAL') + '</span>' +
+    '<div class="featured-card-info"><div class="featured-card-title">' + h.title.toUpperCase() + '</div>' +
+    '<div class="featured-card-price">$' + h.price.toLocaleString('en-US',{maximumFractionDigits:0}) + '</div></div></div>';
+  // Bottom 6 cards
+  bottomGrid.innerHTML = picks.slice(1, 7).map(function(p) {
+    return '<div class="featured-card" onclick="openOverlay(\'' + p.handle + '\')">' +
+      '<img class="featured-card-img" src="' + p.image + '" alt="' + p.title + ', original oil on canvas by Nat Berhe" loading="lazy">' +
+      '<span class="featured-badge">' + (p.sold_out ? 'SOLD' : 'ORIGINAL') + '</span>' +
+      '<div class="featured-card-info"><div class="featured-card-title">' + p.title.toUpperCase() + '</div>' +
+      '<div class="featured-card-price">$' + p.price.toLocaleString('en-US',{maximumFractionDigits:0}) + '</div></div></div>';
+  }).join('');
+}
+
 function renderPrintsShowcase() {
   var grid = document.getElementById('printsShowcase');
   if (!grid) return;
   var prints = CATALOG.filter(function(p) { return p.is_print && !p.sold_out && p.sizes && p.sizes.length > 0; });
-  // Curated picks: exclude Blurred Messages, ensure After the Human is included
   var exclude = ['blurred-messages-print'];
-  var mustInclude = ['after-the-human-print'];
   var filtered = prints.filter(function(p) { return exclude.indexOf(p.handle) === -1; });
-  filtered.sort(function(a, b) { return a.price - b.price; });
-  var picks = [];
-  // Add must-includes first
-  mustInclude.forEach(function(h) {
-    var found = filtered.find(function(p) { return p.handle === h; });
-    if (found) picks.push(found);
-  });
-  // Fill remaining slots from price tiers
-  var remaining = filtered.filter(function(p) { return picks.indexOf(p) === -1; });
-  var step = Math.floor(remaining.length / (6 - picks.length));
-  for (var i = 0; picks.length < 6 && i < remaining.length; i += step) {
-    picks.push(remaining[Math.min(i, remaining.length - 1)]);
-  }
-  picks = picks.slice(0, 6);
-  // Sort final picks by price for display
+  // Randomize and pick 6
+  var picks = shuffle(filtered).slice(0, 6);
   picks.sort(function(a, b) { return a.price - b.price; });
   grid.innerHTML = picks.map(function(p) {
     var catIdx = CATALOG.indexOf(p);
@@ -2492,7 +2444,8 @@ function renderPrintsShowcase() {
 
 function init() {
   const hash = window.location.hash.replace('#','') || 'home';
-  setDailyHero();
+  setHero();
+  renderFeaturedWorks();
   renderGallery();
   renderPrints();
   renderPrintsShowcase();
