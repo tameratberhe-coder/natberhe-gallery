@@ -2897,10 +2897,7 @@ function showRecommendations(currentProduct) {
   }).join('');
   recoSection.style.display = '';
   
-  // Re-setup cursor hovers for new reco cards
-  if (window.matchMedia('(hover: hover)').matches && window.innerWidth > 1024) {
-    setTimeout(setupCursorHovers, 100);
-  }
+  // Cursor hover setup removed (custom cursor disabled for performance)
 }
 
 // Recommendations and FLIP consolidated into main overlay override above
