@@ -603,5 +603,13 @@ function updateCountdown(){
       el.textContent=str;
     }
   };
+  setVal('countdown-days',days);
+  setVal('countdown-hours',hours);
+  setVal('countdown-mins',mins);
+  setVal('countdown-secs',secs);
+}
+try{updateCountdown();setInterval(updateCountdown,1000);}catch(e){}
+
 window.CATALOG = CATALOG;
 window.DESCRIPTIONS = DESCRIPTIONS;
+
