@@ -349,9 +349,12 @@ function toggleMobile() {
 }
 
 // Robust hamburger: use touchend + click with debounce to guarantee response
-(function() {
+// Wait for DOM ready because catalog.js loads in <head> before body exists
+function setupHamburger() {
   var ham = document.getElementById('hamburgerBtn');
   if (!ham) return;
+  if (ham.dataset.bound === '1') return; // idempotent
+  ham.dataset.bound = '1';
   var lastToggle = 0;
   function handleHamburger(e) {
     e.preventDefault();
@@ -363,9 +366,11 @@ function toggleMobile() {
   }
   ham.addEventListener('touchend', handleHamburger, { passive: false });
   ham.addEventListener('click', handleHamburger);
-  
+
   // Mobile menu links: use touchend + click
   document.querySelectorAll('#mobileMenu a[data-nav]').forEach(function(link) {
+    if (link.dataset.bound === '1') return;
+    link.dataset.bound = '1';
     function handleNavLink(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -373,12 +378,20 @@ function toggleMobile() {
       if (now - lastToggle < 300) return;
       lastToggle = now;
       var page = link.getAttribute('data-nav');
-      navigateTo(page);
+      if (typeof navigateTo === 'function') navigateTo(page);
+      else { try { toggleMobile(); } catch(e){} window.location.href = '#' + page; }
     }
     link.addEventListener('touchend', handleNavLink, { passive: false });
     link.addEventListener('click', handleNavLink);
   });
-})();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupHamburger);
+} else {
+  setupHamburger();
+}
+// Also retry after full load in case DOM changed
+window.addEventListener('load', setupHamburger);
 
 // ============ COUNTDOWN ============
 

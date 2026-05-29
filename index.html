@@ -1508,48 +1508,11 @@ setTimeout(wrapNavigateTo, 100);
 // ============ CATALOG DATA ============
 // CATALOG and DESCRIPTIONS loaded from /assets/catalog.js
 
-
-
-  setVal('auc-days',days);
-  setVal('auc-hours',hours);
-  setVal('auc-mins',mins);
-  setVal('auc-secs',secs);
-
-  // Also update old IDs if they exist (other pages)
-  const oldIds=['cd-days','cd-hours','cd-mins','cd-secs'];
-  const oldVals=[days,hours,mins,secs];
-  oldIds.forEach((id,i)=>{
-    const el=document.getElementById(id);
-    if(el) el.textContent=String(oldVals[i]).padStart(2,'0');
-  });
-
-  // Tick animation on seconds
-  if(secs!==aucLastSecs){
-    const secEl=document.getElementById('auc-secs');
-    if(secEl){
-      secEl.classList.remove('tick');
-      void secEl.offsetWidth;
-      secEl.classList.add('tick');
-    }
-    aucLastSecs=secs;
-  }
-
-  // Live badge: show within 24 hours
-  const liveBadge=document.getElementById('aucLiveBadge');
-  if(liveBadge){
-    if(diff>0&&diff<86400000) liveBadge.classList.add('show');
-    else liveBadge.classList.remove('show');
-  }
-}
-
-// Init auction on page load
+// ============ AUCTION INIT ============
 function aucInit(){
-  aucRenderCards();
-  aucInitRegistration();
+  try { if(typeof aucRenderCards==='function') aucRenderCards(); } catch(e){}
+  try { if(typeof aucInitRegistration==='function') aucInitRegistration(); } catch(e){}
 }
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
 
 // ============ SCROLL ANIMATIONS ============
 const observer = new IntersectionObserver((entries) => {
