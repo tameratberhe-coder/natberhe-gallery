@@ -348,12 +348,13 @@ function toggleMobile() {
   }
 }
 
-// Robust hamburger: use touchend + click with debounce to guarantee response
-// Wait for DOM ready because catalog.js loads in <head> before body exists
-function setupHamburger() {
+// Robust hamburger: DISABLED in catalog.js, handled exclusively by layout/theme.liquid
+// to avoid double-binding which causes immediate close after open.
+function setupHamburger_DISABLED() {
   var ham = document.getElementById('hamburgerBtn');
   if (!ham) return;
   if (ham.dataset.bound === '1') return; // idempotent
+  if (ham.dataset.fixBound === '1') return; // layout already bound it
   ham.dataset.bound = '1';
   var lastToggle = 0;
   function handleHamburger(e) {
@@ -370,6 +371,7 @@ function setupHamburger() {
   // Mobile menu links: use touchend + click
   document.querySelectorAll('#mobileMenu a[data-nav]').forEach(function(link) {
     if (link.dataset.bound === '1') return;
+    if (link.dataset.fixBound === '1') return;
     link.dataset.bound = '1';
     function handleNavLink(e) {
       e.preventDefault();
@@ -385,13 +387,7 @@ function setupHamburger() {
     link.addEventListener('click', handleNavLink);
   });
 }
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupHamburger);
-} else {
-  setupHamburger();
-}
-// Also retry after full load in case DOM changed
-window.addEventListener('load', setupHamburger);
+// setupHamburger NOT called - handled by layout
 
 // ============ COUNTDOWN ============
 
