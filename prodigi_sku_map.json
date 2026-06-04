@@ -1,0 +1,178 @@
+{
+  "8x8": {
+    "sku": "GLOBAL-CAN-8x8",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 8x8\" / 20x20cm",
+    "supports_imagewrap": true
+  },
+  "10x10": {
+    "sku": "GLOBAL-CAN-10x10",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 10x10\" / 25x25cm",
+    "supports_imagewrap": true
+  },
+  "12x12": {
+    "sku": "GLOBAL-CAN-12x12",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 12x12\" / 31x31cm",
+    "supports_imagewrap": true
+  },
+  "12x16": {
+    "sku": "GLOBAL-CAN-12x16",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 12x16\" / 31x41cm",
+    "supports_imagewrap": true
+  },
+  "12x18": {
+    "sku": "GLOBAL-CAN-12x18",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 12x18\" / 30x46cm",
+    "supports_imagewrap": true
+  },
+  "14x14": {
+    "sku": "GLOBAL-CAN-14x14",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 14x14\" / 36x36cm",
+    "supports_imagewrap": true
+  },
+  "16x16": {
+    "sku": "GLOBAL-CAN-16x16",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 16x16\" / 41x41cm",
+    "supports_imagewrap": true
+  },
+  "16x20": {
+    "sku": "GLOBAL-CAN-16x20",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 16x20\" / 41x51cm",
+    "supports_imagewrap": true
+  },
+  "16x24": {
+    "sku": "GLOBAL-CAN-16x24",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 16x24\" / 41x61cm",
+    "supports_imagewrap": true
+  },
+  "18x24": {
+    "sku": "GLOBAL-CAN-18x24",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 18x24\" / 46x61cm",
+    "supports_imagewrap": true
+  },
+  "20x20": {
+    "sku": "GLOBAL-CAN-20x20",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 20x20\" / 51x51cm",
+    "supports_imagewrap": true
+  },
+  "20x24": {
+    "sku": "GLOBAL-CAN-20x24",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 20x24\" / 51x61cm",
+    "supports_imagewrap": true
+  },
+  "20x30": {
+    "sku": "GLOBAL-CAN-20x30",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 20x30\" / 51x76cm",
+    "supports_imagewrap": true
+  },
+  "24x24": {
+    "sku": "GLOBAL-CAN-24x24",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 24x24\" / 61x61cm",
+    "supports_imagewrap": true
+  },
+  "24x30": {
+    "sku": "GLOBAL-CAN-24x30",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 24x30\" / 61x76cm",
+    "supports_imagewrap": true
+  },
+  "24x32": {
+    "sku": "GLOBAL-CAN-24x32",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 24x32\" / 61x81cm",
+    "supports_imagewrap": true
+  },
+  "24x36": {
+    "sku": "GLOBAL-CAN-24x36",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 24x36\" / 61x91cm",
+    "supports_imagewrap": true
+  },
+  "30x30": {
+    "sku": "GLOBAL-CAN-30x30",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 30x30\" / 76x76cm",
+    "supports_imagewrap": true
+  },
+  "30x40": {
+    "sku": "GLOBAL-CAN-30x40",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 30x40\" / 76x102cm",
+    "supports_imagewrap": true
+  },
+  "32x32": {
+    "sku": "GLOBAL-CAN-32x32",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 32x32\" / 81x81cm",
+    "supports_imagewrap": true
+  },
+  "36x36": {
+    "sku": "GLOBAL-CAN-36x36",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 36x36\" / 91x91cm",
+    "supports_imagewrap": true
+  },
+  "36x48": {
+    "sku": "GLOBAL-CAN-36x48",
+    "desc": "Stretched Canvas on a 38mm Standard Stretcher Bar, 36x48\" / 91x122cm",
+    "supports_imagewrap": true
+  },
+  "16x12": {
+    "sku": "GLOBAL-CAN-12x16",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "18x12": {
+    "sku": "GLOBAL-CAN-12x18",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "20x12": {
+    "sku": "GLOBAL-CAN-12x20",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "20x16": {
+    "sku": "GLOBAL-CAN-16x20",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "24x16": {
+    "sku": "GLOBAL-CAN-16x24",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "24x18": {
+    "sku": "GLOBAL-CAN-18x24",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "24x20": {
+    "sku": "GLOBAL-CAN-20x24",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "30x20": {
+    "sku": "GLOBAL-CAN-20x30",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "30x24": {
+    "sku": "GLOBAL-CAN-24x30",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "36x24": {
+    "sku": "GLOBAL-CAN-24x36",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "40x30": {
+    "sku": "GLOBAL-CAN-30x40",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "48x32": {
+    "sku": "GLOBAL-CAN-32x48",
+    "rotate": true,
+    "supports_imagewrap": true
+  },
+  "30x18": {
+    "sku": "GLOBAL-CAN-20x30",
+    "rotate": true,
+    "supports_imagewrap": true,
+    "note": "No exact Prodigi match, fallback to 20x30"
+  }
+}
