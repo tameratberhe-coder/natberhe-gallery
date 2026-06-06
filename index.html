@@ -1,3 +1,4 @@
+{%- comment -%}Cart={{ cart.item_count }}{%- endcomment -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,14 +24,14 @@
 <meta name="author" content="Nat Berhe Gallery">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://natberhegallery.com">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32.png' | asset_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ 'favicon-512.png' | asset_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
 <!-- Open Graph -->
 <meta property="og:title" content="Nat Berhe Gallery | Original Oil Paintings & Prints from $55">
 <meta property="og:description" content="Buy original oil paintings and canvas prints by former NFL player Nat Berhe. 69 originals, 78 prints from $55. Live auction July 6, 2026. Los Angeles contemporary art gallery.">
-<meta property="og:image" content="og-image-landscape.png">
+<meta property="og:image" content="{{ 'og-image-landscape.png' | asset_url }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Nat Berhe Gallery, Figurative Abstract Expressionism">
@@ -42,7 +43,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nat Berhe Gallery | Oil Paintings & Prints from $55">
 <meta name="twitter:description" content="Buy original oil paintings and canvas prints by NFL player turned artist Nat Berhe. Los Angeles contemporary art. Live auction July 6, 2026.">
-<meta name="twitter:image" content="og-image-landscape.png">
+<meta name="twitter:image" content="{{ 'og-image-landscape.png' | asset_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -218,6 +219,65 @@ input,textarea{font-family:inherit;font-size:inherit}
 .gallery-filter.active{color:var(--gold);border-bottom-color:var(--gold)}
 .gallery-filter:hover{color:var(--text)}
 .gallery-sort{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto 24px;padding:0 40px}
+
+/* Catalog search + filter controls */
+.catalog-controls{max-width:1400px;margin:0 auto 32px;padding:0 40px}
+.catalog-search-wrap{position:relative;max-width:520px;margin:0 auto 20px}
+.catalog-search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none}
+.catalog-search{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:14px 44px 14px 44px;font-family:var(--inter);font-size:14px;letter-spacing:.02em;border-radius:0;transition:border-color .2s,background .2s;outline:none}
+.catalog-search:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
+.catalog-search::placeholder{color:var(--text-muted);opacity:.7}
+.catalog-search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;display:none}
+.catalog-search-clear.visible{display:block}
+.catalog-search-clear:hover{color:var(--gold)}
+.catalog-filter-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.filter-chip{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text-muted);padding:8px 16px;font-family:var(--inter);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:0}
+.filter-chip:hover{border-color:var(--gold);color:var(--gold)}
+.filter-chip.active{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+@media(max-width:768px){.catalog-controls{padding:0 16px}.filter-chip{font-size:10px;padding:7px 12px}}
+
+/* Trust strip */
+.trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32px;padding:16px 24px;border-top:1px solid rgba(218,165,32,.18);border-bottom:1px solid rgba(218,165,32,.18)}
+.trust-strip span{display:inline-flex;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.trust-strip svg{color:var(--gold)}
+@media(max-width:600px){.trust-strip{gap:14px;padding:12px 16px}.trust-strip span{font-size:10px}}
+
+/* Empty state */
+.empty-state{text-align:center;padding:80px 20px;color:var(--text-muted);font-family:var(--inter)}
+.empty-state p{font-size:16px;margin-bottom:20px}
+.empty-reset{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:12px 28px;font-family:var(--inter);font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.empty-reset:hover{background:var(--gold);color:var(--bg)}
+
+/* Exit-intent modal */
+.exit-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease}
+.exit-modal-overlay.show{display:flex}
+.exit-modal{background:var(--bg);max-width:480px;width:100%;padding:48px 32px;border:1px solid rgba(218,165,32,.25);position:relative;text-align:center;font-family:var(--inter)}
+.exit-modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text-muted);font-size:28px;cursor:pointer;line-height:1;padding:4px 8px}
+.exit-modal-close:hover{color:var(--gold)}
+.exit-modal-eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;text-transform:uppercase}
+.exit-modal-title{font-family:var(--display);font-size:32px;font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.15;letter-spacing:-.01em}
+.exit-modal-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6}
+.exit-modal-form{display:flex;flex-direction:column;gap:12px}
+.exit-modal-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.15);color:var(--text);padding:14px 16px;font-family:var(--inter);font-size:14px;outline:none;transition:border-color .2s}
+.exit-modal-input:focus{border-color:var(--gold)}
+.exit-modal-submit{background:var(--gold);color:var(--bg);border:none;padding:14px;font-family:var(--inter);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:opacity .2s}
+.exit-modal-submit:hover{opacity:.9}
+.exit-modal-fineprint{font-size:11px;color:var(--text-muted);margin-top:14px}
+.exit-modal-success{display:none;text-align:center}
+.exit-modal-success.show{display:block}
+.exit-modal-success-icon{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* How-to-bid section */
+.auc-howto{max-width:1100px;margin:80px auto 60px;padding:0 40px;text-align:center}
+.auc-howto-title{font-family:var(--display);font-size:36px;font-weight:900;color:var(--text);margin-bottom:14px;letter-spacing:-.01em}
+.auc-howto-line{width:64px;height:1px;background:var(--gold);margin:0 auto 40px}
+.auc-howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:left}
+.auc-howto-step{padding:24px;border-left:2px solid rgba(218,165,32,.3)}
+.auc-howto-step-num{font-family:var(--display);font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:12px}
+.auc-howto-step-title{font-family:var(--inter);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:12px;font-weight:600}
+.auc-howto-step-body{font-family:var(--inter);font-size:14px;color:var(--text-muted);line-height:1.7}
+@media(max-width:768px){.auc-howto-grid{grid-template-columns:1fr;gap:20px}.auc-howto{padding:0 20px;margin:60px auto 40px}}
 .gallery-count{font-family:var(--inter);font-size:12px;color:var(--text-muted);letter-spacing:1px}
 .sort-wrap{position:relative}
 .sort-toggle{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2px;color:var(--text-muted);background:none;border:1px solid #333;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s}
@@ -894,7 +954,10 @@ input,textarea{font-family:inherit;font-size:inherit}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="{{ 'catalog.js' | asset_url }}"></script>
+<script src="{{ 'catalog-v4.js' | asset_url }}"></script>
+
+
+<meta name="cache-version" content="1779983750">
 </head>
 <body>
 
@@ -998,7 +1061,7 @@ input,textarea{font-family:inherit;font-size:inherit}
   <!-- ARTIST TEASER -->
   <section class="artist-teaser">
     <div class="artist-teaser-img reveal-left">
-      <img src="nat-portrait.jpg" alt="Natnael Nat Berhe, former NFL player and figurative abstract expressionist artist" style="width:100%;height:100%;object-fit:cover">
+      <img src="{{ 'nat-portrait.jpg' | asset_url }}" alt="Natnael Nat Berhe, former NFL player and figurative abstract expressionist artist" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div class="artist-teaser-content reveal-right">
       <h2 class="artist-teaser-heading">FROM THE FIELD<br>TO THE CANVAS</h2>
@@ -1058,6 +1121,23 @@ input,textarea{font-family:inherit;font-size:inherit}
     <h1 class="section-title">THE COLLECTION</h1>
     <div class="section-bar"></div>
     <p class="prints-header-desc">Original oil on canvas works by Natnael Berhe. Each piece is one of a kind and includes a Certificate of Authenticity. Starting from $1,000.</p>
+
+    <div class="catalog-controls">
+      <div class="catalog-search-wrap">
+        <svg class="catalog-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg>
+        <input type="text" class="catalog-search" id="gallerySearch" placeholder="Search paintings, e.g. Witness, Crimson, Colorfall" aria-label="Search paintings">
+        <button class="catalog-search-clear" id="gallerySearchClear" aria-label="Clear search" type="button">&times;</button>
+      </div>
+      <div class="catalog-filter-row">
+        <button class="filter-chip active" data-filter-grid="galleryGrid" data-filter="all">All</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-under-2k">Under $2K</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-2k-5k">$2K to $5K</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-over-5k">$5K+</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="size-small">Small (under 30")</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="size-large">Large (60"+)</button>
+      </div>
+    </div>
+
     <div class="gallery-sort">
       <span class="gallery-count" id="galleryCount">69 works</span>
       <div class="sort-wrap">
@@ -1073,6 +1153,10 @@ input,textarea{font-family:inherit;font-size:inherit}
     </div>
   </div>
   <div class="gallery-grid" id="galleryGrid"></div>
+  <div class="empty-state" id="galleryEmpty" style="display:none">
+    <p>No works match your search.</p>
+    <button class="empty-reset" onclick="resetCatalogFilters('galleryGrid')">Clear filters</button>
+  </div>
 </div>
 
 <!-- ========== PAGE: PRINTS ========== -->
@@ -1082,8 +1166,36 @@ input,textarea{font-family:inherit;font-size:inherit}
     <h1 class="section-title">CANVAS PRINTS</h1>
     <div class="section-bar"></div>
     <p class="prints-header-desc">Museum quality canvas prints of Nat Berhe&rsquo;s original oil paintings. Each print is produced on premium stretched canvas with archival inks, available in multiple sizes. Starting from $55.</p>
+
+    <div class="trust-strip">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Archival Inks</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Borderless Wrap</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ships from US</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Made to Order</span>
+    </div>
+
+    <div class="catalog-controls">
+      <div class="catalog-search-wrap">
+        <svg class="catalog-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg>
+        <input type="text" class="catalog-search" id="printsSearch" placeholder="Search prints, e.g. Witness, Crimson, Colorfall" aria-label="Search prints">
+        <button class="catalog-search-clear" id="printsSearchClear" aria-label="Clear search" type="button">&times;</button>
+      </div>
+      <div class="catalog-filter-row">
+        <button class="filter-chip active" data-filter-grid="printsGrid" data-filter="all">All</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="price-under-100">Under $100</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="price-100-200">$100 to $200</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="price-over-200">$200+</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="shape-square">Square</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="shape-portrait">Portrait</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="shape-landscape">Landscape</button>
+      </div>
+    </div>
   </div>
   <div class="gallery-grid" id="printsGrid"></div>
+  <div class="empty-state" id="printsEmpty" style="display:none">
+    <p>No prints match your search.</p>
+    <button class="empty-reset" onclick="resetCatalogFilters('printsGrid')">Clear filters</button>
+  </div>
 </div>
 
 <!-- ========== PAGE: AUCTION ========== -->
@@ -1151,12 +1263,50 @@ input,textarea{font-family:inherit;font-size:inherit}
     </div>
   </section>
 
+  <!-- === HOW TO BID === -->
+  <section class="auc-howto">
+    <h2 class="auc-howto-title">How to Bid</h2>
+    <div class="auc-howto-line"></div>
+    <div class="auc-howto-grid">
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">01</div>
+        <div class="auc-howto-step-title">Register</div>
+        <p class="auc-howto-step-body">Request your paddle number above. Registration takes one minute and closes one hour before the auction begins on July 6 at 7PM PST.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">02</div>
+        <div class="auc-howto-step-title">Preview</div>
+        <p class="auc-howto-step-body">Browse the seven featured lots above. Each comes with an estimate range. Email questions about condition, dimensions, or provenance to info@natberhegallery.com.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">03</div>
+        <div class="auc-howto-step-title">Place Your Bid</div>
+        <p class="auc-howto-step-body">Bid live in our online auction room with your paddle number. Bids increase in $500 increments. The hammer falls when bidding pauses for ten seconds.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">04</div>
+        <div class="auc-howto-step-title">Buyer's Premium</div>
+        <p class="auc-howto-step-body">A 15 percent buyer's premium is added to the hammer price. California sales tax applies to in-state buyers. All lots include a Certificate of Authenticity.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">05</div>
+        <div class="auc-howto-step-title">Payment</div>
+        <p class="auc-howto-step-body">Winners receive an invoice by email within 24 hours. Payment is due within seven days via wire transfer, credit card, or Affirm financing for amounts over $5,000.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">06</div>
+        <div class="auc-howto-step-title">White Glove Delivery</div>
+        <p class="auc-howto-step-body">Each winning lot ships with white-glove handling, insured to the hammer price, with installation available on request in Los Angeles, New York, and Miami.</p>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- ========== PAGE: ARTIST ========== -->
 <div class="page" id="page-artist">
   <div class="artist-hero">
-    <img src="steelers-action.jpg" alt="Natnael Nat Berhe, Pittsburgh Steelers safety #31, NFL career before becoming an artist" class="artist-hero-img">
+    <img src="{{ 'steelers-action.jpg' | asset_url }}" alt="Natnael Nat Berhe, Pittsburgh Steelers safety #31, NFL career before becoming an artist" class="artist-hero-img">
     <h1 class="artist-hero-title">THE ARTIST</h1>
   </div>
   <div class="artist-bio">
@@ -1170,7 +1320,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="artist-portrait-bar"></div>
     <div style="max-width:500px;margin:0 auto">
       <div class="artist-portrait-item">
-        <img src="IMG_4138.jpeg" alt="Natnael Nat Berhe, artist and former NFL safety, editorial portrait" loading="lazy">
+        <img src="{{ 'IMG_4138.jpeg' | asset_url }}" alt="Natnael Nat Berhe, artist and former NFL safety, editorial portrait" loading="lazy">
       </div>
     </div>
   </div>
@@ -1189,43 +1339,43 @@ input,textarea{font-family:inherit;font-size:inherit}
     <div class="artist-gallery-bar"></div>
     <div class="artist-gallery-grid">
       <div class="artist-gallery-item">
-        <img src="IMG_4253.jpeg" alt="Nat Berhe, San Diego State Aztecs #20" loading="lazy">
+        <img src="{{ 'IMG_4253.jpeg' | asset_url }}" alt="Nat Berhe, San Diego State Aztecs #20" loading="lazy">
         <div class="ag-caption">San Diego State, #20</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_4252.jpeg" alt="Nat Berhe #29 tackle vs New England Patriots" loading="lazy">
+        <img src="{{ 'IMG_4252.jpeg' | asset_url }}" alt="Nat Berhe #29 tackle vs New England Patriots" loading="lazy">
         <div class="ag-caption">Giants vs Patriots, #29</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_9025.jpeg" alt="Nat Berhe #31 diving tackle vs Philadelphia Eagles" loading="lazy">
+        <img src="{{ 'IMG_9025.jpeg' | asset_url }}" alt="Nat Berhe #31 diving tackle vs Philadelphia Eagles" loading="lazy">
         <div class="ag-caption">Steelers vs Eagles, #31</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_9225.jpeg" alt="Nat Berhe #31 Pittsburgh Steelers in-game stance" loading="lazy">
+        <img src="{{ 'IMG_9225.jpeg' | asset_url }}" alt="Nat Berhe #31 Pittsburgh Steelers in-game stance" loading="lazy">
         <div class="ag-caption">Pittsburgh Steelers, #31</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_4357.jpeg" alt="Nat Berhe #29 New York Giants celebration" loading="lazy">
+        <img src="{{ 'IMG_4357.jpeg' | asset_url }}" alt="Nat Berhe #29 New York Giants celebration" loading="lazy">
         <div class="ag-caption">NY Giants, #29</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_7945.jpeg" alt="Nat Berhe #29 interception vs Dallas Cowboys" loading="lazy">
+        <img src="{{ 'IMG_7945.jpeg' | asset_url }}" alt="Nat Berhe #29 interception vs Dallas Cowboys" loading="lazy">
         <div class="ag-caption">Giants vs Cowboys</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_4085.jpeg" alt="Nat Berhe #29 New York Giants running" loading="lazy">
+        <img src="{{ 'IMG_4085.jpeg' | asset_url }}" alt="Nat Berhe #29 New York Giants running" loading="lazy">
         <div class="ag-caption">NY Giants, #29</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_7952.jpeg" alt="Nat Berhe smiling at Steelers practice" loading="lazy">
+        <img src="{{ 'IMG_7952.jpeg' | asset_url }}" alt="Nat Berhe smiling at Steelers practice" loading="lazy">
         <div class="ag-caption">Steelers Training Camp</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_8698.jpeg" alt="Nat Berhe profile at Steelers practice" loading="lazy">
+        <img src="{{ 'IMG_8698.jpeg' | asset_url }}" alt="Nat Berhe profile at Steelers practice" loading="lazy">
         <div class="ag-caption">Steelers Practice</div>
       </div>
       <div class="artist-gallery-item">
-        <img src="IMG_8443.jpeg" alt="Nat Berhe at the 2018 DC Eritrean Festival, Pittsburgh Steelers" loading="lazy">
+        <img src="{{ 'IMG_8443.jpeg' | asset_url }}" alt="Nat Berhe at the 2018 DC Eritrean Festival, Pittsburgh Steelers" loading="lazy">
         <div class="ag-caption">DC Eritrean Festival, 2018</div>
       </div>
     </div>
@@ -2279,6 +2429,201 @@ function initCuttingEdge() {
 
 // Run after main init
 setTimeout(initCuttingEdge, 100);
+
+// ============ CATALOG SEARCH + FILTER ============
+(function(){
+  // Helpers to read painting data from rendered cards
+  function getCardData(card){
+    var t = card.querySelector('.card-title, .product-title, h3, h4');
+    var p = card.querySelector('.card-price, .product-price, [class*="price"]');
+    var s = card.querySelector('.card-size, .product-size, [class*="size"]');
+    var title = t ? t.textContent.trim() : '';
+    var priceText = p ? p.textContent.replace(/[^0-9.]/g,'') : '0';
+    var price = parseFloat(priceText) || 0;
+    var sizeText = s ? s.textContent : (card.getAttribute('data-size') || '');
+    var imgEl = card.querySelector('img');
+    var sizeNums = sizeText.match(/\d+/g) || [];
+    var w = parseFloat(sizeNums[0]) || 0;
+    var h = parseFloat(sizeNums[1]) || w;
+    var maxDim = Math.max(w,h);
+    var ratio = w && h ? Math.max(w,h)/Math.min(w,h) : 1;
+    var isPortrait = h > w * 1.05;
+    var isLandscape = w > h * 1.05;
+    var isSquare = !isPortrait && !isLandscape;
+    return {title: title.toLowerCase(), price: price, maxDim: maxDim,
+            shape: isSquare ? 'square' : (isPortrait ? 'portrait' : 'landscape')};
+  }
+
+  var state = {galleryGrid: {search:'', filter:'all'}, printsGrid: {search:'', filter:'all'}};
+
+  function applyFilters(gridId){
+    var grid = document.getElementById(gridId);
+    if(!grid) return;
+    var s = state[gridId] || {search:'', filter:'all'};
+    var query = s.search.toLowerCase().trim();
+    var filter = s.filter;
+    var shown = 0;
+    Array.prototype.forEach.call(grid.children, function(card){
+      var d = getCardData(card);
+      var matchSearch = !query || d.title.indexOf(query) !== -1;
+      var matchFilter = true;
+      if(filter === 'all'){ matchFilter = true; }
+      else if(filter === 'price-under-2k'){ matchFilter = d.price < 2000; }
+      else if(filter === 'price-2k-5k'){ matchFilter = d.price >= 2000 && d.price <= 5000; }
+      else if(filter === 'price-over-5k'){ matchFilter = d.price > 5000; }
+      else if(filter === 'price-under-100'){ matchFilter = d.price < 100; }
+      else if(filter === 'price-100-200'){ matchFilter = d.price >= 100 && d.price <= 200; }
+      else if(filter === 'price-over-200'){ matchFilter = d.price > 200; }
+      else if(filter === 'size-small'){ matchFilter = d.maxDim > 0 && d.maxDim < 30; }
+      else if(filter === 'size-large'){ matchFilter = d.maxDim >= 60; }
+      else if(filter === 'shape-square'){ matchFilter = d.shape === 'square'; }
+      else if(filter === 'shape-portrait'){ matchFilter = d.shape === 'portrait'; }
+      else if(filter === 'shape-landscape'){ matchFilter = d.shape === 'landscape'; }
+      var visible = matchSearch && matchFilter;
+      card.style.display = visible ? '' : 'none';
+      if(visible) shown++;
+    });
+    // Empty state
+    var emptyId = gridId === 'galleryGrid' ? 'galleryEmpty' : 'printsEmpty';
+    var empty = document.getElementById(emptyId);
+    if(empty) empty.style.display = shown === 0 ? 'block' : 'none';
+    // Update count if gallery
+    var countEl = document.getElementById('galleryCount');
+    if(countEl && gridId === 'galleryGrid'){
+      countEl.textContent = shown + (shown === 1 ? ' work' : ' works');
+    }
+  }
+  window.applyCatalogFilters = applyFilters;
+
+  window.resetCatalogFilters = function(gridId){
+    state[gridId] = {search:'', filter:'all'};
+    var inputId = gridId === 'galleryGrid' ? 'gallerySearch' : 'printsSearch';
+    var input = document.getElementById(inputId);
+    if(input) input.value = '';
+    var clearBtn = document.getElementById(inputId + 'Clear');
+    if(clearBtn) clearBtn.classList.remove('visible');
+    document.querySelectorAll('[data-filter-grid="'+gridId+'"]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-filter') === 'all');
+    });
+    applyFilters(gridId);
+  };
+
+  function bindControls(){
+    // Wire up search inputs
+    ['gallerySearch', 'printsSearch'].forEach(function(id){
+      var input = document.getElementById(id);
+      if(!input || input.dataset.bound) return;
+      input.dataset.bound = '1';
+      var gridId = id === 'gallerySearch' ? 'galleryGrid' : 'printsGrid';
+      var clearBtn = document.getElementById(id + 'Clear');
+      input.addEventListener('input', function(){
+        state[gridId].search = input.value;
+        if(clearBtn) clearBtn.classList.toggle('visible', input.value.length > 0);
+        applyFilters(gridId);
+      });
+      if(clearBtn){
+        clearBtn.addEventListener('click', function(){
+          input.value = '';
+          state[gridId].search = '';
+          clearBtn.classList.remove('visible');
+          applyFilters(gridId);
+        });
+      }
+    });
+    // Wire up filter chips
+    document.querySelectorAll('.filter-chip').forEach(function(btn){
+      if(btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', function(){
+        var gridId = btn.getAttribute('data-filter-grid');
+        var filter = btn.getAttribute('data-filter');
+        state[gridId].filter = filter;
+        document.querySelectorAll('[data-filter-grid="'+gridId+'"]').forEach(function(b){
+          b.classList.toggle('active', b === btn);
+        });
+        applyFilters(gridId);
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bindControls);
+  } else {
+    bindControls();
+  }
+  // Re-bind in case grids render after initial DOM ready
+  setTimeout(bindControls, 500);
+  setTimeout(bindControls, 1500);
+})();
+
+// ============ EXIT-INTENT MODAL ============
+(function(){
+  if(localStorage.getItem('nbg_modal_dismissed') === '1') return;
+  var shown = false;
+  function showModal(){
+    if(shown) return;
+    var m = document.getElementById('exitModal');
+    if(!m) return;
+    shown = true;
+    m.classList.add('show');
+  }
+  // Trigger on exit intent (desktop): mouse leaves toward top
+  document.addEventListener('mouseleave', function(e){
+    if(e.clientY < 5) showModal();
+  });
+  // Trigger on mobile: after 30 seconds OR on scroll past 60%
+  setTimeout(showModal, 30000);
+  window.addEventListener('scroll', function(){
+    if((window.scrollY + window.innerHeight) / document.body.scrollHeight > 0.6) showModal();
+  }, {passive: true});
+  // Wire up close
+  document.addEventListener('click', function(e){
+    if(e.target.closest('#exitModalClose') || e.target.id === 'exitModalOverlay'){
+      var m = document.getElementById('exitModal');
+      if(m){ m.classList.remove('show'); localStorage.setItem('nbg_modal_dismissed','1'); }
+    }
+  });
+  // Wire up form submit (stores in localStorage; integrate with Klaviyo/Shopify later)
+  document.addEventListener('submit', function(e){
+    if(e.target.id !== 'exitModalForm') return;
+    e.preventDefault();
+    var email = document.getElementById('exitModalEmail').value.trim();
+    if(!email) return;
+    var subs = [];
+    try { subs = JSON.parse(localStorage.getItem('nbg_subscribers') || '[]'); } catch(_){}
+    subs.push({email: email, at: new Date().toISOString(), source: 'exit_modal'});
+    localStorage.setItem('nbg_subscribers', JSON.stringify(subs));
+    localStorage.setItem('nbg_modal_dismissed','1');
+    document.getElementById('exitModalContent').style.display = 'none';
+    document.getElementById('exitModalSuccess').classList.add('show');
+    setTimeout(function(){
+      var m = document.getElementById('exitModal');
+      if(m) m.classList.remove('show');
+    }, 2500);
+  });
+})();
 </script>
+
+<!-- ========== EXIT-INTENT MODAL ========== -->
+<div class="exit-modal-overlay" id="exitModal">
+  <div class="exit-modal">
+    <button class="exit-modal-close" id="exitModalClose" aria-label="Close">&times;</button>
+    <div id="exitModalContent">
+      <div class="exit-modal-eyebrow">COLLECTOR'S CIRCLE</div>
+      <h2 class="exit-modal-title">Auction previews,<br>by email first.</h2>
+      <p class="exit-modal-sub">Get the July 6 auction preview pack seven days before it goes public. Lot details, estimate ranges, and a private viewing invitation.</p>
+      <form class="exit-modal-form" id="exitModalForm">
+        <input type="email" class="exit-modal-input" id="exitModalEmail" placeholder="Your email address" required>
+        <button type="submit" class="exit-modal-submit">Join the Circle</button>
+      </form>
+      <p class="exit-modal-fineprint">No spam. Unsubscribe anytime. We send 2 to 4 emails a month around new work and auctions.</p>
+    </div>
+    <div class="exit-modal-success" id="exitModalSuccess">
+      <div class="exit-modal-success-icon">&#10003;</div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--text);margin-bottom:8px">You're in.</h3>
+      <p class="exit-modal-sub">Watch your inbox for the auction preview.</p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

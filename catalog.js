@@ -616,6 +616,18 @@ function updateCountdown(){
   setVal('countdown-hours',hours);
   setVal('countdown-mins',mins);
   setVal('countdown-secs',secs);
+  // Auction page IDs
+  setVal('auc-days',days);
+  setVal('auc-hours',hours);
+  setVal('auc-mins',mins);
+  setVal('auc-secs',secs);
+
+  // Live badge: show within 24 hours of auction
+  const liveBadge=document.getElementById('aucLiveBadge');
+  if(liveBadge){
+    if(diff>0 && diff<86400000) liveBadge.classList.add('show');
+    else liveBadge.classList.remove('show');
+  }
 }
 try{updateCountdown();setInterval(updateCountdown,1000);}catch(e){}
 
