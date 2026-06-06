@@ -793,6 +793,61 @@ input,textarea{font-family:inherit;font-size:inherit}
 /* ============ ANIMATIONS ============ */
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ============ PROCESS PAGE ============ */
+.process-hero{max-width:900px;margin:120px auto 60px;padding:0 24px;text-align:center}
+.process-intro{font-family:var(--inter);font-size:16px;line-height:1.7;color:var(--text-muted);max-width:680px;margin:24px auto 0}
+.process-grid{max-width:1100px;margin:0 auto 80px;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.process-step{background:rgba(255,255,255,.02);border:1px solid rgba(218,165,32,.12);padding:32px 28px;border-radius:0;transition:border-color .3s,background .3s}
+.process-step:hover{border-color:rgba(218,165,32,.35);background:rgba(255,255,255,.04)}
+.process-num{font-family:var(--oswald);font-size:42px;font-weight:300;color:var(--gold);letter-spacing:.05em;margin-bottom:8px}
+.process-title{font-family:var(--oswald);font-size:14px;letter-spacing:.22em;color:var(--text);margin-bottom:14px;font-weight:600}
+.process-body{font-family:var(--inter);font-size:14px;line-height:1.75;color:var(--text-muted)}
+.process-cta{text-align:center;padding:0 24px 100px}
+@media(max-width:768px){.process-hero{margin-top:90px}.process-grid{gap:20px;margin-bottom:60px}.process-step{padding:24px 20px}.process-num{font-size:32px}}
+
+/* ============ TRACK ORDER PAGE ============ */
+.track-hero{max-width:900px;margin:120px auto 50px;padding:0 24px;text-align:center}
+.track-intro{font-family:var(--inter);font-size:15px;line-height:1.7;color:var(--text-muted);max-width:600px;margin:20px auto 0}
+.track-grid{max-width:1100px;margin:0 auto 100px;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px}
+@media(max-width:900px){.track-grid{grid-template-columns:1fr;gap:40px}}
+.track-form{display:flex;flex-direction:column;gap:14px}
+.track-label{font-family:var(--inter);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:8px}
+.track-form input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:14px 16px;font-family:var(--inter);font-size:14px;border-radius:0;outline:none;transition:border-color .2s}
+.track-form input:focus{border-color:var(--gold)}
+.track-submit{background:var(--gold);color:#0a0a0a;border:none;padding:16px 24px;font-family:var(--oswald);font-size:13px;letter-spacing:.22em;font-weight:600;cursor:pointer;margin-top:12px;transition:background .2s}
+.track-submit:hover{background:#dfb968}
+.track-result{margin-top:24px;padding:20px;border:1px solid rgba(218,165,32,.25);background:rgba(218,165,32,.05);font-family:var(--inter);font-size:14px;color:var(--text);line-height:1.7}
+.track-result.error{border-color:rgba(255,90,90,.4);background:rgba(255,90,90,.05)}
+.track-side-title{font-family:var(--oswald);font-size:14px;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:24px}
+.track-step{display:grid;grid-template-columns:48px 1fr;gap:18px;margin-bottom:22px}
+.track-step-num{width:36px;height:36px;border:1px solid rgba(218,165,32,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--oswald);font-size:14px;color:var(--gold);font-weight:600}
+.track-step-title{font-family:var(--oswald);font-size:12px;letter-spacing:.18em;color:var(--text);margin-bottom:6px;font-weight:600}
+.track-step-body{font-family:var(--inter);font-size:13px;line-height:1.6;color:var(--text-muted)}
+.track-help{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-family:var(--inter);font-size:13px;color:var(--text-muted);line-height:1.6}
+.track-help a{color:var(--gold)}
+
+/* ============ PRESS PAGE ============ */
+.press-hero{max-width:900px;margin:120px auto 50px;padding:0 24px;text-align:center}
+.press-intro{font-family:var(--inter);font-size:16px;line-height:1.7;color:var(--text-muted);max-width:680px;margin:20px auto 0}
+.press-bio-block,.press-quickfacts,.press-contact-block,.press-coverage-block{max-width:900px;margin:0 auto 50px;padding:0 24px}
+.press-section-title{font-family:var(--oswald);font-size:14px;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(218,165,32,.18)}
+.press-body{font-family:var(--inter);font-size:15px;line-height:1.8;color:var(--text)}
+.press-body-muted{color:var(--text-muted)}
+.press-facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 32px}
+.press-fact{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.press-fact-label{font-family:var(--inter);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted)}
+.press-fact-value{font-family:var(--inter);font-size:14px;color:var(--text);line-height:1.5}
+.press-contact-info{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+.press-contact-info > div{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline}
+.press-contact-info a{color:var(--gold)}
+@media(max-width:768px){.press-hero{margin-top:90px}.press-contact-info > div{grid-template-columns:1fr;gap:4px}}
+
+/* ============ FOOTER ADDITIONAL LINKS ============ */
+.footer-utility-links{display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-top:12px;font-family:var(--inter);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.footer-utility-links a{color:var(--text-muted);transition:color .2s}
+.footer-utility-links a:hover{color:var(--gold)}
+
 </style>
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -1417,6 +1472,151 @@ input,textarea{font-family:inherit;font-size:inherit}
   </div>
 </div>
 
+<!-- ========== PAGE: PROCESS ========== -->
+<div class="page" id="page-process">
+  <div class="process-hero">
+    <p class="section-label">INSIDE THE STUDIO</p>
+    <h1 class="section-title">THE PROCESS</h1>
+    <div class="section-bar"></div>
+    <p class="process-intro">Each painting begins with raw canvas, oil, and a question Natnael wants to answer in paint. No two works share the same path. What follows is a glimpse into how these pieces come to life.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <h3 class="process-title">THE SPARK</h3>
+      <p class="process-body">Every work starts with a feeling, a memory, a fragment from the locker room or a quiet moment at home. Natnael calls these the unfinished conversations, the ones that need paint to be resolved.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <h3 class="process-title">RAW CANVAS</h3>
+      <p class="process-body">Linen or cotton, stretched and primed by hand. The size of each piece is chosen to match the weight of the subject. Some works demand a 60 inch field. Others sit best at 16 inches.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <h3 class="process-title">FIRST MARKS</h3>
+      <p class="process-body">Loose gestures in burnt sienna or ultramarine establish the composition. Natnael works fast at this stage, the way a defensive back reads a route, decisions made in fractions of seconds.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <h3 class="process-title">LAYERS AND WEIGHT</h3>
+      <p class="process-body">Oil paint built up in passes, sometimes a dozen layers thick. Color sits on color. Texture earns its place. A painting is finished when nothing else can be added or removed without losing the truth of it.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">05</div>
+      <h3 class="process-title">REST AND RETURN</h3>
+      <p class="process-body">Every piece sits for at least two weeks before it is declared finished. Natnael returns with fresh eyes. Sometimes the painting tells him it is done. Sometimes it asks for one more season of attention.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">06</div>
+      <h3 class="process-title">SIGNATURE AND COA</h3>
+      <p class="process-body">Signed, dated, photographed in the studio. A Certificate of Authenticity is prepared with the work, including the painting's title, dimensions, medium, and a personal note from the artist.</p>
+    </div>
+  </div>
+  <div class="process-cta">
+    <a href="#gallery" class="hero-btn hero-btn-gold" onclick="navigateTo('gallery')">VIEW THE FINISHED WORKS</a>
+  </div>
+</div>
+
+<!-- ========== PAGE: TRACK ORDER ========== -->
+<div class="page" id="page-track">
+  <div class="track-hero">
+    <p class="section-label">ORDER LOOKUP</p>
+    <h1 class="section-title">TRACK YOUR ORDER</h1>
+    <div class="section-bar"></div>
+    <p class="track-intro">Enter your order number and email below, or use the tracking link emailed to you at the time of shipment.</p>
+  </div>
+  <div class="track-grid">
+    <div class="track-form-wrap">
+      <form class="track-form" onsubmit="event.preventDefault(); trackOrderSubmit();">
+        <label class="track-label">ORDER NUMBER</label>
+        <input type="text" id="trackOrderInput" placeholder="e.g. 1024" required>
+        <label class="track-label">EMAIL ADDRESS</label>
+        <input type="email" id="trackEmailInput" placeholder="the email used at checkout" required>
+        <button type="submit" class="track-submit">LOOK UP ORDER</button>
+      </form>
+      <div class="track-result" id="trackResult" style="display:none"></div>
+    </div>
+    <div class="track-side">
+      <h3 class="track-side-title">PRODUCTION AND SHIPPING</h3>
+      <div class="track-step">
+        <div class="track-step-num">1</div>
+        <div>
+          <div class="track-step-title">ORDER RECEIVED</div>
+          <p class="track-step-body">Confirmation email within minutes of checkout.</p>
+        </div>
+      </div>
+      <div class="track-step">
+        <div class="track-step-num">2</div>
+        <div>
+          <div class="track-step-title">PRODUCTION</div>
+          <p class="track-step-body">Prints are made to order, 3 to 5 business days. Originals ship from the studio within 2 days.</p>
+        </div>
+      </div>
+      <div class="track-step">
+        <div class="track-step-num">3</div>
+        <div>
+          <div class="track-step-title">SHIPPED</div>
+          <p class="track-step-body">UPS Ground, typically 3 to 7 business days in the US. Tracking number sent by email when the package leaves the facility.</p>
+        </div>
+      </div>
+      <div class="track-step">
+        <div class="track-step-num">4</div>
+        <div>
+          <div class="track-step-title">DELIVERED</div>
+          <p class="track-step-body">Signature not required. Originals over $5,000 ship with insurance and require an adult signature.</p>
+        </div>
+      </div>
+      <div class="track-help">
+        <p>Need help? Email <a href="mailto:info@natberhegallery.com">info@natberhegallery.com</a> with your order number.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE: PRESS ========== -->
+<div class="page" id="page-press">
+  <div class="press-hero">
+    <p class="section-label">FOR JOURNALISTS AND CURATORS</p>
+    <h1 class="section-title">PRESS</h1>
+    <div class="section-bar"></div>
+    <p class="press-intro">Natnael Berhe, former NFL safety turned figurative abstract expressionist, is available for select interviews, gallery features, and editorial opportunities.</p>
+  </div>
+
+  <div class="press-bio-block">
+    <h2 class="press-section-title">ARTIST STATEMENT</h2>
+    <p class="press-body">Natnael Berhe is an Eritrean American figurative abstract expressionist based in Los Angeles. After a six year career as a safety in the National Football League with the New York Giants and Pittsburgh Steelers, Berhe turned full time to oil painting in 2022. His work investigates identity, memory, and the body in motion, drawing on his lived experience between two cultures and two careers. His first solo auction takes place July 6, 2026.</p>
+  </div>
+
+  <div class="press-quickfacts">
+    <h2 class="press-section-title">FAST FACTS</h2>
+    <div class="press-facts-grid">
+      <div class="press-fact"><span class="press-fact-label">Full name</span><span class="press-fact-value">Natnael Berhe</span></div>
+      <div class="press-fact"><span class="press-fact-label">Based</span><span class="press-fact-value">Los Angeles, California</span></div>
+      <div class="press-fact"><span class="press-fact-label">Discipline</span><span class="press-fact-value">Figurative Abstract Expressionism, oil on canvas</span></div>
+      <div class="press-fact"><span class="press-fact-label">Heritage</span><span class="press-fact-value">Eritrean American</span></div>
+      <div class="press-fact"><span class="press-fact-label">NFL career</span><span class="press-fact-value">Safety, NY Giants and Pittsburgh Steelers, 2014 to 2019</span></div>
+      <div class="press-fact"><span class="press-fact-label">Studio output</span><span class="press-fact-value">69 originals, 78 canvas prints to date</span></div>
+      <div class="press-fact"><span class="press-fact-label">First auction</span><span class="press-fact-value">July 6, 2026, 7:00 PM PST, 7 lots</span></div>
+      <div class="press-fact"><span class="press-fact-label">Instagram</span><span class="press-fact-value">@natberhe</span></div>
+    </div>
+  </div>
+
+  <div class="press-contact-block">
+    <h2 class="press-section-title">PRESS CONTACT</h2>
+    <p class="press-body">For interviews, image requests, studio visits, or feature inquiries, please reach out directly.</p>
+    <div class="press-contact-info">
+      <div><span class="press-fact-label">Email</span><a href="mailto:info@natberhegallery.com">info@natberhegallery.com</a></div>
+      <div><span class="press-fact-label">Studio</span><span>1845 Business Center Drive, Suite 208, San Bernardino, CA 92408</span></div>
+      <div><span class="press-fact-label">Instagram</span><a href="https://instagram.com/natberhe" target="_blank" rel="noopener">@natberhe</a></div>
+    </div>
+  </div>
+
+  <div class="press-coverage-block">
+    <h2 class="press-section-title">COVERAGE AND RECOGNITION</h2>
+    <p class="press-body press-body-muted">Recent appearances and features will be listed here as they are published. To request inclusion or coverage rights, please contact the studio.</p>
+  </div>
+</div>
+
 <!-- ========== OVERLAY ========== -->
 <div class="overlay" id="overlay">
   <div class="overlay-close" onclick="closeOverlay()">&times;</div>
@@ -1519,6 +1719,11 @@ input,textarea{font-family:inherit;font-size:inherit}
       <div class="nav-logo-main">NAT BERHE GALLERY</div>
       <div class="footer-tagline">Figurative Abstract Expressionism</div>
       <div class="footer-copy">Based in Los Angeles, California<br>&copy; 2024 to 2026 Nat Berhe Gallery</div>
+      <div class="footer-utility-links">
+        <a href="#track" onclick="navigateTo('track')">Track Order</a>
+        <a href="#process" onclick="navigateTo('process')">Studio Process</a>
+        <a href="#press" onclick="navigateTo('press')">Press Kit</a>
+      </div>
     </div>
     <div class="footer-right">
       <div class="footer-nav">
@@ -1526,6 +1731,9 @@ input,textarea{font-family:inherit;font-size:inherit}
         <a href="#prints" onclick="navigateTo('prints')">Prints</a>
         <a href="#auction" onclick="navigateTo('auction')">The Auction</a>
         <a href="#artist" onclick="navigateTo('artist')">The Artist</a>
+        <a href="#process" onclick="navigateTo('process')">Process</a>
+        <a href="#press" onclick="navigateTo('press')">Press</a>
+        <a href="#track" onclick="navigateTo('track')">Track Order</a>
         <a href="#contact" onclick="navigateTo('contact')">Contact</a>
       </div>
       <div class="footer-contact">
@@ -1535,7 +1743,7 @@ input,textarea{font-family:inherit;font-size:inherit}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2024-2026 Nat Berhe Gallery &middot; <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+    <p>&copy; 2024 to 2026 Nat Berhe Gallery &middot; <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
   </div>
 </footer>
 
@@ -1654,6 +1862,28 @@ function wrapNavigateTo() {
   }
 }
 setTimeout(wrapNavigateTo, 100);
+
+// ============ TRACK ORDER LOOKUP ============
+function trackOrderSubmit(){
+  var orderInput = document.getElementById('trackOrderInput');
+  var emailInput = document.getElementById('trackEmailInput');
+  var resultDiv = document.getElementById('trackResult');
+  if(!orderInput || !emailInput || !resultDiv) return;
+  var orderNum = (orderInput.value||'').trim().replace(/^#/, '');
+  var email = (emailInput.value||'').trim();
+  if(!orderNum || !email){
+    resultDiv.className = 'track-result error';
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = 'Please enter both your order number and the email used at checkout.';
+    return;
+  }
+  resultDiv.className = 'track-result';
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = 'We received your request for order #' + orderNum + '. ' +
+    'For the fastest response, please email <a href="mailto:info@natberhegallery.com?subject=Order%20Status%20%23' + encodeURIComponent(orderNum) + '" style="color:var(--gold)">info@natberhegallery.com</a> ' +
+    'with your order number. Tracking links are also automatically emailed to you the moment your package ships.';
+}
+window.trackOrderSubmit = trackOrderSubmit;
 
 // ============ CATALOG DATA ============
 // CATALOG and DESCRIPTIONS loaded from /assets/catalog.js
