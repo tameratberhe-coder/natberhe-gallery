@@ -255,6 +255,49 @@ def main():
                 "response": response if len(json.dumps(response)) < 800 else "(truncated)",
             })
 
+
+    # Check Prodigi for newly-shipped orders (tracking writeback notification)
+    newly_shipped = []
+    for sid, info in routed.items():
+        if info.get('status') != 'routed':
+            continue
+        pid = info.get('prodigi_id')
+        if not pid or info.get('notified_shipped'):
+            continue
+        try:
+            code_p, body_p = http_request(
+                "GET",
+                f"{PRODIGI_BASE}/orders/{pid}",
+                headers={"X-API-Key": PRODIGI_KEY},
+            )
+            if code_p == 200:
+                pdata = json.loads(body_p).get('order', {})
+                shipments = pdata.get('shipments', [])
+                for s in shipments:
+                    if s.get('status') == 'Shipped':
+                        tracking = (s.get('tracking') or {}).get('number')
+                        url = (s.get('tracking') or {}).get('url')
+                        carrier = (s.get('carrier') or {}).get('name', 'UPS')
+                        if tracking:
+                            newly_shipped.append({
+                                'shopify_name': info.get('name'),
+                                'shopify_id': sid,
+                                'prodigi_id': pid,
+                                'tracking': tracking,
+                                'tracking_url': url,
+                                'carrier': carrier,
+                            })
+                            info['notified_shipped'] = True
+                            info['tracking'] = tracking
+                            info['tracking_url'] = url
+                            info['carrier'] = carrier
+                            info['shipped_at'] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+                            break
+        except Exception as e:
+            pass  # Don't fail the whole run on a single order lookup
+
+    result['newly_shipped'] = newly_shipped
+
     save_state(state)
     print(json.dumps(result))
 
