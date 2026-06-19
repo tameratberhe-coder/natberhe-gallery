@@ -1016,7 +1016,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="{{ 'catalog-v4.js' | asset_url }}"></script>
+<script src="{{  'catalog-v6.js' | asset_url }}"></script>
 
 
 <meta name="cache-version" content="1779983750">
@@ -1192,9 +1192,9 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
       </div>
       <div class="catalog-filter-row">
         <button class="filter-chip active" data-filter-grid="galleryGrid" data-filter="all">All</button>
-        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-under-2k">Under $2K</button>
-        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-2k-5k">$2K to $5K</button>
-        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-over-5k">$5K+</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-under-25k">Under $25K</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-25k-75k">$25K to $75K</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-over-75k">$75K+</button>
         <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="size-small">Small (under 30")</button>
         <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="size-large">Large (60"+)</button>
       </div>
@@ -1893,7 +1893,7 @@ function trackOrderSubmit(){
 window.trackOrderSubmit = trackOrderSubmit;
 
 // ============ CATALOG DATA ============
-// CATALOG and DESCRIPTIONS loaded from /assets/catalog.js
+// CATALOG and DESCRIPTIONS loaded from /assets/catalog.js (v=10x prices)
 
 // ============ AUCTION INIT ============
 function aucInit(){
@@ -2726,9 +2726,9 @@ setTimeout(function(){
       var matchSearch = !query || d.title.indexOf(query) !== -1;
       var matchFilter = true;
       if(filter === 'all'){ matchFilter = true; }
-      else if(filter === 'price-under-2k'){ matchFilter = d.price < 2000; }
-      else if(filter === 'price-2k-5k'){ matchFilter = d.price >= 2000 && d.price <= 5000; }
-      else if(filter === 'price-over-5k'){ matchFilter = d.price > 5000; }
+      else if(filter === 'price-under-25k'){ matchFilter = d.price < 25000; }
+      else if(filter === 'price-25k-75k'){ matchFilter = d.price >= 25000 && d.price <= 75000; }
+      else if(filter === 'price-over-75k'){ matchFilter = d.price > 75000; }
       else if(filter === 'price-under-100'){ matchFilter = d.price < 100; }
       else if(filter === 'price-100-200'){ matchFilter = d.price >= 100 && d.price <= 200; }
       else if(filter === 'price-over-200'){ matchFilter = d.price > 200; }

@@ -51,9 +51,10 @@ for tid in THEMES:
     r1 = requests.put(base, headers=HEADERS, json={"asset": {"key": "templates/index.liquid", "value": shopify_html}})
     s1 = "OK" if r1.status_code == 200 else f"FAIL ({r1.status_code})"
 
-    # Push catalog.js as multiple known asset names (theme variants reference it differently)
+    # Push catalog.js to all known asset names. Live theme currently loads catalog-v6.js.
+    # We mirror to v4/v5/v6 + plain catalog.js so any rollback still works.
     js_results = []
-    for key in ["assets/catalog.js"]:
+    for key in ["assets/catalog.js", "assets/catalog-v4.js", "assets/catalog-v5.js", "assets/catalog-v6.js"]:
         r2 = requests.put(base, headers=HEADERS, json={"asset": {"key": key, "value": catalog_js}})
         js_results.append(f"{key}={'OK' if r2.status_code == 200 else f'FAIL({r2.status_code})'}")
 
