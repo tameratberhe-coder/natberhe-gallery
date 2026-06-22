@@ -20,11 +20,9 @@ import time
 import urllib.request
 import urllib.error
 
-SHOP = os.environ.get("SHOPIFY_SHOP", "fbea3c-0e.myshopify.com")
-SHOPIFY_TOKEN = os.environ.get("SHOPIFY_ADMIN_TOKEN")
-PRODIGI_KEY = os.environ.get("PRODIGI_API_KEY")
-if not SHOPIFY_TOKEN or not PRODIGI_KEY:
-    raise SystemExit("Missing SHOPIFY_ADMIN_TOKEN or PRODIGI_API_KEY env vars")
+SHOP = "fbea3c-0e.myshopify.com"
+SHOPIFY_TOKEN = os.environ.get("SHOPIFY_ADMIN_TOKEN", "")
+PRODIGI_KEY = os.environ.get("PRODIGI_API_KEY", "")
 PRODIGI_BASE = "https://api.prodigi.com/v4.0"
 
 STATE_DIR = "/home/user/workspace/cron_tracking/auto_router"
@@ -279,6 +277,57 @@ def main():
                         url = (s.get('tracking') or {}).get('url')
                         carrier = (s.get('carrier') or {}).get('name', 'UPS')
                         if tracking:
+                            # Auto-push fulfillment to Shopify with tracking number.
+                            # This marks the order fulfilled and triggers Shopify's standard
+                            # customer shipping email with the carrier tracking link.
+                            fulfilled_in_shopify = False
+                            shopify_error = None
+                            try:
+                                code_fo, body_fo = http_request(
+                                    "GET",
+                                    f"https://{SHOPIFY_SHOP}/admin/api/2024-01/orders/{sid}/fulfillment_orders.json",
+                                    headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN},
+                                )
+                                if code_fo == 200:
+                                    fos = json.loads(body_fo).get('fulfillment_orders', [])
+                                    open_fos = [fo for fo in fos if fo.get('status') in ('open', 'in_progress')]
+                                    if open_fos:
+                                        fulfillment_body = {
+                                            "fulfillment": {
+                                                "message": f"Shipped from Prodigi production. Tracking: {tracking}",
+                                                "notify_customer": True,
+                                                "tracking_info": {
+                                                    "number": tracking,
+                                                    "url": url or f"https://www.ups.com/track?loc=en_US&tracknum={tracking}",
+                                                    "company": carrier or "UPS",
+                                                },
+                                                "line_items_by_fulfillment_order": [
+                                                    {"fulfillment_order_id": fo['id']} for fo in open_fos
+                                                ],
+                                            }
+                                        }
+                                        code_f, body_f = http_request(
+                                            "POST",
+                                            f"https://{SHOPIFY_SHOP}/admin/api/2024-01/fulfillments.json",
+                                            headers={
+                                                "X-Shopify-Access-Token": SHOPIFY_TOKEN,
+                                                "Content-Type": "application/json",
+                                            },
+                                            body=json.dumps(fulfillment_body).encode(),
+                                        )
+                                        if code_f in (200, 201):
+                                            fulfilled_in_shopify = True
+                                            f_data = json.loads(body_f)
+                                            info['shopify_fulfillment_id'] = f_data.get('fulfillment', {}).get('id')
+                                        else:
+                                            shopify_error = f"HTTP {code_f}: {body_f[:200]}"
+                                    else:
+                                        shopify_error = "no open fulfillment_orders (already fulfilled?)"
+                                else:
+                                    shopify_error = f"GET fulfillment_orders HTTP {code_fo}"
+                            except Exception as e:
+                                shopify_error = f"exception: {e}"
+
                             newly_shipped.append({
                                 'shopify_name': info.get('name'),
                                 'shopify_id': sid,
@@ -286,12 +335,17 @@ def main():
                                 'tracking': tracking,
                                 'tracking_url': url,
                                 'carrier': carrier,
+                                'fulfilled_in_shopify': fulfilled_in_shopify,
+                                'shopify_error': shopify_error,
                             })
                             info['notified_shipped'] = True
                             info['tracking'] = tracking
                             info['tracking_url'] = url
                             info['carrier'] = carrier
                             info['shipped_at'] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+                            info['fulfilled_in_shopify'] = fulfilled_in_shopify
+                            if shopify_error:
+                                info['shopify_fulfillment_error'] = shopify_error
                             break
         except Exception as e:
             pass  # Don't fail the whole run on a single order lookup
