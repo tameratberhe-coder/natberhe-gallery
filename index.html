@@ -1016,7 +1016,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="{{  'catalog-v7.js' | asset_url }}"></script>
+<script src="{{  'catalog-v10.js' | asset_url }}"></script>
 
 
 <meta name="cache-version" content="1779983750">
@@ -1052,11 +1052,11 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#gallery" data-nav="gallery">The Collection</a>
-  <a href="#prints" data-nav="prints">Prints</a>
-  <a href="#auction" data-nav="auction">The Auction</a>
-  <a href="#artist" data-nav="artist">The Artist</a>
-  <a href="#contact" data-nav="contact">Contact</a>
+  <a href="javascript:void(0)" data-nav="gallery" onclick="navigateTo('gallery');return false;">The Collection</a>
+  <a href="javascript:void(0)" data-nav="prints" onclick="navigateTo('prints');return false;">Prints</a>
+  <a href="javascript:void(0)" data-nav="auction" onclick="navigateTo('auction');return false;">The Auction</a>
+  <a href="javascript:void(0)" data-nav="artist" onclick="navigateTo('artist');return false;">The Artist</a>
+  <a href="javascript:void(0)" data-nav="contact" onclick="navigateTo('contact');return false;">Contact</a>
 </div>
 
 <!-- ========== PAGE: HOME ========== -->
@@ -1891,6 +1891,43 @@ function trackOrderSubmit(){
     'with your order number. Tracking links are also automatically emailed to you the moment your package ships.';
 }
 window.trackOrderSubmit = trackOrderSubmit;
+
+// ============ HASH ROUTER SAFETY NET ============
+// Catches any link with href="#page-name" that doesn't have an explicit onclick.
+// Auto-routes to the matching SPA page via navigateTo().
+var HASH_PAGES = ['home','gallery','prints','auction','artist','contact','process','press','track'];
+var _lastRoutedHash = null;
+function handleHashRoute(){
+  var hash = (location.hash || '').replace(/^#/, '').split('?')[0];
+  // Skip if we just routed to this same hash (avoids double-navigate from onclick + hashchange)
+  if(hash === _lastRoutedHash) return;
+  if(hash && HASH_PAGES.indexOf(hash) !== -1 && typeof navigateTo === 'function'){
+    _lastRoutedHash = hash;
+    navigateTo(hash);
+  }
+}
+window.addEventListener('hashchange', handleHashRoute);
+// Run once on load in case page opened with #gallery in URL
+if(location.hash) setTimeout(handleHashRoute, 200);
+// Delegated handler — catches ANY link with href="#page-name" or data-nav="page-name"
+// (mobile menu, footer, hero buttons). Uses touchend on mobile so navigation fires
+// BEFORE the menu closes and steals the click. Falls back to click on desktop.
+function _handleNavEvent(e){
+  var a = e.target.closest && e.target.closest('a[href^="#"], a[data-nav]');
+  if(!a) return;
+  var hash = (a.getAttribute('data-nav') || (a.getAttribute('href') || '').replace(/^#/, '')).split('?')[0];
+  if(HASH_PAGES.indexOf(hash) === -1) return;
+  e.preventDefault();
+  e.stopPropagation();
+  if(typeof navigateTo === 'function'){
+    _lastRoutedHash = hash;
+    navigateTo(hash);
+  }
+}
+// Touchend fires before the menu-close logic can change the click target.
+document.addEventListener('touchend', _handleNavEvent, true);
+// Click fallback for desktop and non-touch browsers.
+document.addEventListener('click', _handleNavEvent, true);
 
 // ============ CATALOG DATA ============
 // CATALOG and DESCRIPTIONS loaded from /assets/catalog.js (v=10x prices)
