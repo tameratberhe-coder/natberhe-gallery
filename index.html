@@ -1909,7 +1909,7 @@ function handleHashRoute(){
 window.addEventListener('hashchange', handleHashRoute);
 // Run once on load in case page opened with #gallery in URL
 if(location.hash) setTimeout(handleHashRoute, 200);
-// Delegated handler — catches ANY link with href="#page-name" or data-nav="page-name"
+// Delegated handler, catches ANY link with href="#page-name" or data-nav="page-name"
 // (mobile menu, footer, hero buttons). Uses touchend on mobile so navigation fires
 // BEFORE the menu closes and steals the click. Falls back to click on desktop.
 function _handleNavEvent(e){
