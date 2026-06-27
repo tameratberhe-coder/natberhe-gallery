@@ -1025,7 +1025,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 
 
 <!-- AMBIENT SOUND TOGGLE -->
-<div class="ambient-toggle" id="ambientToggle" onclick="toggleAmbient()" title="Toggle ambient sound">
+<div class="ambient-toggle" id="ambientToggle" role="button" tabindex="0" aria-label="Toggle ambient sound" title="Toggle ambient sound">
   <div class="ambient-bars">
     <div class="ambient-bar"></div>
     <div class="ambient-bar"></div>
@@ -1036,7 +1036,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 
 <!-- ========== NAVIGATION ========== -->
 <nav class="nav">
-  <div class="nav-logo" onclick="navigateTo('home')">
+  <div class="nav-logo" role="button" tabindex="0" aria-label="Home">
     <span class="nav-logo-main">NAT BERHE</span>
     <span class="nav-logo-sub">GALLERY</span>
   </div>
@@ -1840,7 +1840,37 @@ window.addEventListener('load', function() {
   }
 });
 
-// 6. Image error fallback: if a product image fails, try reloading it once
+// 6. Global error handler, prevents uncaught exceptions from breaking interactivity
+window.addEventListener('error', function(e) {
+  try {
+    console.warn('Global error:', (e && e.message) ? e.message : 'Unknown error');
+    try { selfHeal(); } catch(_) {}
+  } catch(_) {}
+});
+window.addEventListener('unhandledrejection', function(e) {
+  try {
+    console.warn('Unhandled promise rejection:', e && e.reason ? e.reason : 'Unknown reason');
+    try { selfHeal(); } catch(_) {}
+  } catch(_) {}
+});
+
+// 7. Touch safe controls, avoids inline onclick for key buttons
+window.addEventListener('DOMContentLoaded', function() {
+  var navLogo = document.querySelector('.nav-logo');
+  if (navLogo) {
+    navLogo.addEventListener('touchend', function(e) { e.preventDefault(); if (typeof navigateTo === 'function') navigateTo('home'); }, { passive: false });
+    navLogo.addEventListener('click', function() { if (typeof navigateTo === 'function') navigateTo('home'); });
+    navLogo.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (typeof navigateTo === 'function') navigateTo('home'); } });
+  }
+  var ambientToggle = document.getElementById('ambientToggle');
+  if (ambientToggle) {
+    ambientToggle.addEventListener('touchend', function(e) { e.preventDefault(); if (typeof toggleAmbient === 'function') toggleAmbient(); }, { passive: false });
+    ambientToggle.addEventListener('click', function() { if (typeof toggleAmbient === 'function') toggleAmbient(); });
+    ambientToggle.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (typeof toggleAmbient === 'function') toggleAmbient(); } });
+  }
+});
+
+// 8. Image error fallback: if a product image fails, try reloading it once
 document.addEventListener('error', function(e) {
   if (e.target.tagName === 'IMG' && e.target.dataset.retried !== 'true') {
     e.target.dataset.retried = 'true';
