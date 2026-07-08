@@ -87,8 +87,9 @@ let overlayIndex = -1;
 let filteredProducts = [];
 
 function navigateTo(page) {
-  if (page === 'gallery' || page === 'home') {
-    // Map "The Collection" nav link
+  if (page === 'auction') {
+    // Auction page removed after the event concluded, redirect to home
+    page = 'home';
   }
   document.body.style.overflow = '';
   // Close mobile menu if open
@@ -435,7 +436,8 @@ function aucFmtMoney(n){return '$'+n.toLocaleString('en-US')}
 function aucPlaceBid(lotIdx){
   const paddle=aucGetPaddle();
   if(!paddle){
-    document.getElementById('aucReg').scrollIntoView({behavior:'smooth'});
+    const aucRegEl=document.getElementById('aucReg');
+    if(aucRegEl) aucRegEl.scrollIntoView({behavior:'smooth'});
     return;
   }
   const current=aucGetCurrentBid(lotIdx);
@@ -497,7 +499,8 @@ function aucRenderCards(){
     `<img class="auc-thumb${i===0?' active':''}" src="${lot.image}" alt="${lot.title}" onclick="aucGoTo(${i})" loading="lazy">`
   ).join('');
 
-  document.getElementById('aucNavTotal').textContent=AUCTION_LOTS.length;
+  const aucNavTotalEl=document.getElementById('aucNavTotal');
+  if(aucNavTotalEl) aucNavTotalEl.textContent=AUCTION_LOTS.length;
   aucRenderCurrentCard();
   aucCheckPaddleDisplay();
 }
@@ -543,12 +546,14 @@ function aucGoTo(idx){
   if(idx===aucCurrentLot) return;
   const cards=document.querySelectorAll('.auc-card');
   const thumbs=document.querySelectorAll('.auc-thumb');
+  if(!cards.length||!thumbs.length||!cards[idx]||!thumbs[idx]) return;
   cards.forEach(c=>c.classList.remove('active'));
   thumbs.forEach(t=>t.classList.remove('active'));
   aucCurrentLot=idx;
   cards[idx].classList.add('active');
   thumbs[idx].classList.add('active');
-  document.getElementById('aucNavCurr').textContent=idx+1;
+  const aucNavCurrEl=document.getElementById('aucNavCurr');
+  if(aucNavCurrEl) aucNavCurrEl.textContent=idx+1;
   aucRenderCurrentCard();
 }
 
@@ -567,9 +572,13 @@ function aucToggleDesc(btn){
 }
 
 function aucRegister(){
-  const name=document.getElementById('aucRegName').value.trim();
-  const email=document.getElementById('aucRegEmail').value.trim();
-  const phone=document.getElementById('aucRegPhone').value.trim();
+  const nameEl=document.getElementById('aucRegName');
+  const emailEl=document.getElementById('aucRegEmail');
+  const phoneEl=document.getElementById('aucRegPhone');
+  if(!nameEl||!emailEl||!phoneEl) return;
+  const name=nameEl.value.trim();
+  const email=emailEl.value.trim();
+  const phone=phoneEl.value.trim();
   if(!name||!email||!phone) return;
   const number=Math.floor(Math.random()*900)+100;
   const paddle={name,email,phone,number};
@@ -579,11 +588,14 @@ function aucRegister(){
 }
 
 function aucShowRegistered(paddle){
-  document.getElementById('aucRegForm').style.display='none';
+  const formEl=document.getElementById('aucRegForm');
+  if(formEl) formEl.style.display='none';
   const conf=document.getElementById('aucRegConfirmed');
-  conf.classList.add('show');
-  document.getElementById('aucPaddleDisplay').textContent='#'+paddle.number;
-  document.getElementById('aucPaddleName').textContent=paddle.name;
+  if(conf) conf.classList.add('show');
+  const displayEl=document.getElementById('aucPaddleDisplay');
+  if(displayEl) displayEl.textContent='#'+paddle.number;
+  const nameDisplayEl=document.getElementById('aucPaddleName');
+  if(nameDisplayEl) nameDisplayEl.textContent=paddle.name;
 }
 
 function aucInitRegistration(){
