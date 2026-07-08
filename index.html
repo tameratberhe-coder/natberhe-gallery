@@ -1,4 +1,4 @@
-{%- comment -%}Cart={{ cart.item_count }} cache-bust-auction-removal-1783552109{%- endcomment -%}
+{%- comment -%}Cart={{ cart.item_count }} cache-bust-cleanup-1783552109{%- endcomment -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -321,48 +321,6 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
   .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 12px 60px}
 }
 
-/* ============ AUCTION ============ */
-.auction-header{text-align:center;padding:120px 40px 20px;max-width:1200px;margin:0 auto}
-.auction-date{font-family:var(--inter);font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:12px}
-.countdown{display:flex;gap:20px;justify-content:center;margin:32px 0}
-.countdown-item{text-align:center}
-.countdown-value{font-family:var(--oswald);font-size:clamp(36px,6vw,56px);font-weight:700;color:var(--gold);line-height:1}
-.countdown-label{font-family:var(--inter);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
-.auction-desc{font-family:var(--inter);font-size:15px;color:var(--text-muted);max-width:700px;margin:0 auto 50px;text-align:center;line-height:1.7}
-.auction-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1200px;margin:0 auto;padding:0 40px 60px}
-.auction-lot{display:grid;grid-template-columns:1fr 1fr;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s}
-.auction-lot:hover{border-color:#333}
-.auction-lot-img{width:100%;aspect-ratio:1;object-fit:cover}
-.auction-lot-info{padding:24px;display:flex;flex-direction:column;justify-content:center}
-.auction-lot-label{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-.auction-lot-title{font-family:var(--oswald);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.auction-lot-medium{font-family:var(--inter);font-size:12px;color:var(--text-muted);margin-bottom:12px}
-.auction-lot-estimate-label{display:none}
-.auction-lot-estimate{font-family:var(--playfair);font-style:italic;font-size:18px;color:var(--gold);margin-bottom:16px}
-.auction-bid-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border:1px solid var(--gold);color:var(--gold);transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
-.auction-bid-btn:hover{background:var(--gold);color:#0a0a0a}
-.auction-lot-buttons{display:flex;flex-direction:column;gap:8px}
-.auction-buy-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;background:var(--gold);color:#0a0a0a;transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
-.auction-buy-btn:hover{background:#d4b45a}
-@media(max-width:1024px){
-  .auction-grid{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  .auction-lot{grid-template-columns:1fr}
-  .auction-grid{padding:0 16px 60px}
-  .auction-lot-info{padding:16px}
-}
-
-/* Bidder Registration */
-.bidder-reg{max-width:600px;margin:0 auto;padding:40px 40px 80px;text-align:center}
-.bidder-reg-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
-.bidder-reg-sub{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:28px}
-.bidder-form{display:flex;flex-direction:column;gap:12px}
-.bidder-input{padding:12px 16px;background:#111;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color 0.3s}
-.bidder-input:focus{border-color:var(--gold)}
-.bidder-submit{padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.3s}
-.bidder-submit:hover{background:#d4b45a}
-
 /* ============ ARTIST PAGE ============ */
 .artist-hero{position:relative;width:100%;height:70vh;min-height:450px;overflow:hidden}
 .artist-hero-img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:brightness(0.35)}
@@ -539,23 +497,6 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
   /* Gallery header: less padding */
   .gallery-header{padding:80px 20px 20px}
   .gallery-count{margin-bottom:20px}
-  /* Auction header: less padding */
-  .auction-header{padding:80px 20px 12px}
-  .auction-date{margin-top:8px}
-  .countdown{margin:20px 0}
-  .auction-desc{margin:0 auto 30px;font-size:14px}
-  /* Auction lots: tighter */
-  .auction-grid{gap:12px}
-  .auction-lot-info{padding:14px}
-  .auction-lot-label{margin-bottom:4px}
-  .auction-lot-title{margin-bottom:4px;font-size:18px}
-  .auction-lot-medium{margin-bottom:8px}
-  .auction-lot-estimate{margin-bottom:12px;font-size:16px}
-  .auction-lot-buttons{gap:6px}
-  /* Bidder reg: less padding */
-  .bidder-reg{padding:28px 20px 50px}
-  .bidder-reg-title{font-size:24px;margin-bottom:6px}
-  .bidder-form{gap:10px}
   /* Artist page: tighter */
   .artist-hero{height:65vh;min-height:350px}
   .artist-hero-title{bottom:30px;left:20px}
@@ -574,139 +515,6 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
   .footer{padding:30px 20px 12px}
   .footer-inner{gap:20px}
   .footer-bottom{margin-top:24px;padding:16px 0 8px}
-}
-
-
-/* ============ AUCTION V2 ============ */
-/* -- Hero -- */
-.auc-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;overflow:hidden}
-.auc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06),transparent 70%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(139,26,26,.05),transparent 60%);z-index:0;animation:auc-gradShift 12s ease-in-out infinite alternate}
-@keyframes auc-gradShift{0%{opacity:.7;filter:hue-rotate(0deg)}100%{opacity:1;filter:hue-rotate(8deg)}}
-.auc-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px 128px}
-.auc-hero>*{position:relative;z-index:2}
-.auc-hero-tag{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;opacity:0;animation:auc-fadeUp .8s ease-out .2s forwards}
-.auc-hero-title{font-family:var(--oswald);font-size:clamp(42px,8vw,88px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text);line-height:1.05;margin-bottom:12px;opacity:0;animation:auc-fadeUp .8s ease-out .35s forwards}
-.auc-hero-date{font-family:var(--inter);font-size:clamp(12px,1.5vw,14px);font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;opacity:0;animation:auc-fadeUp .8s ease-out .5s forwards}
-@keyframes auc-fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-/* -- Countdown V2 -- */
-.auc-cd{display:flex;gap:clamp(12px,4vw,40px);justify-content:center;align-items:center;margin-bottom:32px;opacity:0;animation:auc-fadeUp .8s ease-out .65s forwards;max-width:100%;padding:0 8px}
-.auc-cd-block{text-align:center;min-width:70px}
-.auc-cd-num{font-family:var(--oswald);font-size:clamp(48px,12vw,100px);font-weight:700;color:var(--gold);line-height:1;letter-spacing:-2px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
-.auc-cd-num.tick{animation:auc-tick .35s ease-out}
-@keyframes auc-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
-.auc-cd-label{font-family:var(--inter);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
-.auc-cd-sep{font-family:var(--oswald);font-size:clamp(28px,8vw,72px);color:var(--gold);opacity:.3;line-height:1;margin-top:-10px}
-
-/* -- Live badge -- */
-.auc-live-badge{display:none;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#ff4444;margin-bottom:24px;opacity:0;animation:auc-fadeUp .8s ease-out .7s forwards}
-.auc-live-badge.show{display:inline-flex}
-.auc-live-dot{width:10px;height:10px;background:#ff4444;border-radius:50%;animation:auc-pulse 1.5s ease-in-out infinite}
-@keyframes auc-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.auc-hero-sub{font-family:var(--playfair);font-style:italic;font-size:clamp(14px,1.6vw,17px);color:var(--text-muted);max-width:540px;line-height:1.6;opacity:0;animation:auc-fadeUp .8s ease-out .8s forwards}
-.auc-hero-line{width:60px;height:1px;background:var(--gold);margin:20px auto 0;opacity:0;animation:auc-fadeUp .8s ease-out .9s forwards}
-
-/* -- Lot Carousel -- */
-.auc-lots-section{max-width:1400px;margin:0 auto;padding:0 24px 80px}
-.auc-lots-title-bar{text-align:center;margin-bottom:48px}
-.auc-lots-heading{font-family:var(--oswald);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text)}
-.auc-lots-gold-line{width:60px;height:1px;background:var(--gold);margin:12px auto 0}
-
-.auc-carousel{position:relative;overflow:hidden}
-.auc-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--card-bg);border:1px solid var(--border);min-height:500px;opacity:0;position:absolute;top:0;left:0;right:0;transition:opacity .5s ease-out;pointer-events:none}
-.auc-card.active{opacity:1;position:relative;pointer-events:auto}
-.auc-card-img-wrap{position:relative;overflow:hidden;background:#080808}
-.auc-card-img{width:100%;height:100%;object-fit:cover;min-height:400px;max-height:700px}
-.auc-card-info{padding:clamp(24px,3vw,48px);display:flex;flex-direction:column;justify-content:center}
-.auc-card-lot-num{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.auc-card-lot-num::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.3}
-.auc-card-title{font-family:var(--oswald);font-size:clamp(24px,3vw,40px);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.1;margin-bottom:12px;color:var(--text)}
-.auc-card-medium{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:6px}
-.auc-card-estimate{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:20px}
-.auc-card-estimate span{color:var(--gold);font-weight:600}
-.auc-card-quote{font-family:var(--playfair);font-style:italic;font-size:clamp(14px,1.4vw,16px);color:var(--gold);line-height:1.6;margin-bottom:20px;padding-left:16px;border-left:2px solid rgba(201,168,76,.3)}
-.auc-card-desc-toggle{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);cursor:pointer;background:none;border:none;padding:0;margin-bottom:20px;display:flex;align-items:center;gap:6px;transition:color .3s}
-.auc-card-desc-toggle:hover{color:var(--gold)}
-.auc-card-desc-toggle .arrow{transition:transform .3s;display:inline-block}
-.auc-card-desc-toggle.open .arrow{transform:rotate(90deg)}
-.auc-card-desc{font-family:var(--inter);font-size:13px;color:var(--text-muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .5s ease-out,opacity .3s ease-out;opacity:0;margin-bottom:0}
-.auc-card-desc.open{max-height:400px;opacity:1;margin-bottom:20px}
-.auc-card-status{font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-.auc-card-status.open{color:#4caf50}.auc-card-status.closed{color:#f44336}.auc-card-status.coming{color:var(--text-muted)}
-
-/* -- Bid Panel -- */
-.auc-bid-panel{border:1px solid var(--border);background:rgba(17,17,17,.7);padding:20px;margin-bottom:16px}
-.auc-bid-current{font-family:var(--inter);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
-.auc-bid-amount{font-family:var(--oswald);font-size:clamp(28px,3vw,38px);font-weight:700;color:var(--gold);margin-bottom:12px}
-.auc-bid-paddle{font-family:var(--inter);font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:12px}
-.auc-bid-paddle span{color:var(--gold);font-weight:600}
-.auc-bid-btn{display:block;width:100%;padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s,transform .15s;text-align:center;margin-bottom:8px}
-.auc-bid-btn:hover{background:#d4b45a;transform:translateY(-1px)}
-.auc-bid-btn:active{transform:translateY(0)}
-.auc-bid-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.auc-bid-btn.secondary{background:transparent;border:1px solid var(--gold);color:var(--gold)}
-.auc-bid-btn.secondary:hover{background:rgba(201,168,76,.1)}
-.auc-bid-history{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}
-.auc-bid-history-title{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
-.auc-bid-history-item{font-family:var(--inter);font-size:12px;color:var(--text-muted);padding:4px 0;display:flex;justify-content:space-between}
-.auc-bid-history-item .bid-who{color:var(--text)}
-.auc-bid-history-item .bid-amt{color:var(--gold);font-weight:600}
-.auc-bid-history-item .bid-time{font-size:10px;opacity:.6}
-
-/* -- Buy Now -- */
-.auc-buy-link{display:block;text-align:center;padding:12px;border:1px solid var(--border);font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);transition:all .3s;margin-top:4px}
-.auc-buy-link:hover{border-color:var(--gold);color:var(--gold)}
-
-/* -- Carousel Nav -- */
-.auc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
-.auc-nav-btn{width:48px;height:48px;border:1px solid var(--border);background:rgba(17,17,17,.8);color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:18px}
-.auc-nav-btn:hover{border-color:var(--gold);color:var(--gold)}
-.auc-nav-counter{font-family:var(--oswald);font-size:16px;letter-spacing:2px;color:var(--text-muted);min-width:60px;text-align:center}
-.auc-nav-counter span{color:var(--gold);font-weight:600}
-
-/* -- Thumbnails -- */
-.auc-thumbs{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;padding:0 16px}
-.auc-thumb{width:64px;height:64px;object-fit:cover;border:2px solid transparent;cursor:pointer;opacity:.5;transition:all .3s}
-.auc-thumb.active{border-color:var(--gold);opacity:1}
-.auc-thumb:hover{opacity:.8}
-
-/* -- Registration V2 -- */
-.auc-reg{max-width:600px;margin:0 auto;padding:60px 24px 100px;text-align:center}
-.auc-reg-line{width:60px;height:1px;background:var(--gold);margin:0 auto 32px}
-.auc-reg-title{font-family:var(--oswald);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
-.auc-reg-sub{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6}
-.auc-reg-form{display:flex;flex-direction:column;gap:12px}
-.auc-reg-input{padding:14px 16px;background:#111;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color .3s}
-.auc-reg-input:focus{border-color:var(--gold)}
-.auc-reg-submit{padding:16px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s}
-.auc-reg-submit:hover{background:#d4b45a}
-.auc-reg-note{font-family:var(--playfair);font-style:italic;font-size:13px;color:var(--text-muted);margin-top:24px;line-height:1.5}
-/* -- Registration confirmed state -- */
-.auc-reg-confirmed{display:none;text-align:center}
-.auc-reg-confirmed.show{display:block}
-.auc-reg-confirmed .paddle-display{font-family:var(--oswald);font-size:clamp(48px,10vw,80px);font-weight:700;color:var(--gold);line-height:1;margin:20px 0 8px}
-.auc-reg-confirmed .paddle-label{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
-.auc-reg-confirmed .paddle-name{font-family:var(--inter);font-size:14px;color:var(--text);margin-bottom:20px}
-.auc-reg-confirmed .reg-success{font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4caf50;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:8px}
-.auc-reg-confirmed .reg-info{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.6}
-
-/* -- Responsive V2 -- */
-@media(max-width:900px){
-  .auc-card{grid-template-columns:1fr}
-  .auc-card-img{min-height:280px;max-height:400px}
-}
-@media(max-width:600px){
-  .auc-hero{padding:90px 16px 40px;min-height:auto;min-height:100svh}
-  .auc-cd{gap:6px;padding:0 8px}
-  .auc-cd-block{min-width:auto}
-  .auc-cd-num{font-size:clamp(44px,11.5vw,64px);letter-spacing:-1px}
-  .auc-cd-sep{font-size:22px;margin-top:-6px}
-  .auc-cd-label{font-size:8px;letter-spacing:1.5px}
-  .auc-card-info{padding:20px 16px}
-  .auc-nav-btn{width:40px;height:40px}
-  .auc-thumb{width:48px;height:48px}
-  .auc-lots-section{padding:0 12px 60px}
-  .auc-bid-panel{padding:16px}
 }
 
 
@@ -1814,12 +1622,6 @@ document.addEventListener('click', _handleNavEvent, true);
 // ============ CATALOG DATA ============
 // CATALOG and DESCRIPTIONS loaded from /assets/catalog.js (v=10x prices)
 
-// ============ AUCTION INIT ============
-function aucInit(){
-  try { if(typeof aucRenderCards==='function') aucRenderCards(); } catch(e){}
-  try { if(typeof aucInitRegistration==='function') aucInitRegistration(); } catch(e){}
-}
-
 // ============ SCROLL ANIMATIONS ============
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -2297,7 +2099,6 @@ function init() {
   renderGallery();
   renderPrints();
   renderPrintsShowcase();
-  aucInit();
   navigateTo(hash);
 }
 
