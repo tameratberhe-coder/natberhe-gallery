@@ -1,0 +1,2954 @@
+{%- comment -%}Cart={{ cart.item_count }}{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nat Berhe Gallery | Buy Original Oil Paintings & Canvas Prints</title>
+<meta name="description" content="Buy original oil paintings and affordable canvas prints by Nat Berhe, former NFL player turned Los Angeles artist. 69 originals from $15,000. Prints from $55. Live auction July 6, 2026.">
+<meta name="keywords" content="Nat Berhe, Natnael Berhe, buy original oil paintings, oil paintings for sale, canvas prints for sale, affordable art prints, contemporary art gallery Los Angeles, NFL player artist, NFL artist paintings, figurative abstract expressionism, Eritrean American artist, art auction 2026, buy original art online, modern oil paintings, large abstract paintings for sale, expressionist art for sale, Los Angeles artist, buy canvas prints online">
+<meta name="author" content="Nat Berhe Gallery">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://natberhegallery.com">
+<link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32.png' | asset_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ 'favicon-512.png' | asset_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+<!-- Open Graph -->
+<meta property="og:title" content="Nat Berhe Gallery | Original Oil Paintings & Prints from $55">
+<meta property="og:description" content="Buy original oil paintings and canvas prints by former NFL player Nat Berhe. 69 originals, 78 prints from $55. Live auction July 6, 2026. Los Angeles contemporary art gallery.">
+<meta property="og:image" content="{{ 'og-image-landscape.png' | asset_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nat Berhe Gallery, Figurative Abstract Expressionism">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://natberhegallery.com">
+<meta property="og:site_name" content="Nat Berhe Gallery">
+<meta property="og:locale" content="en_US">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nat Berhe Gallery | Oil Paintings & Prints from $55">
+<meta name="twitter:description" content="Buy original oil paintings and canvas prints by NFL player turned artist Nat Berhe. Los Angeles contemporary art. Live auction July 6, 2026.">
+<meta name="twitter:image" content="{{ 'og-image-landscape.png' | asset_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:#0a0a0a;color:#f5f0e8;font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+input,textarea{font-family:inherit;font-size:inherit}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+
+/* ============ VARIABLES ============ */
+:root{
+  --bg:#0a0a0a;
+  --text:#f5f0e8;
+  --text-muted:#a09888;
+  --gold:#c9a84c;
+  --red:#8b1a1a;
+  --red-light:#a52020;
+  --card-bg:#111;
+  --card-hover:#1a1a1a;
+  --border:#222;
+  --oswald:'Oswald',sans-serif;
+  --playfair:'Playfair Display',serif;
+  --inter:'Inter',sans-serif;
+}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.3s}
+.nav-logo{display:flex;flex-direction:column;align-items:flex-start;cursor:pointer}
+.nav-logo-main{font-family:var(--oswald);font-weight:700;font-size:22px;letter-spacing:4px;color:var(--gold);line-height:1.1;text-transform:uppercase}
+.nav-logo-sub{font-family:var(--oswald);font-weight:400;font-size:10px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;opacity:0.8}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s;position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--gold);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:16px;min-width:48px;min-height:48px;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1001}
+.hamburger span{width:22px;height:1.5px;background:var(--text);transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .2s ease,background .25s ease;pointer-events:none;transform-origin:center}
+body.menu-open .hamburger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--gold)}
+body.menu-open .hamburger span:nth-child(2){opacity:0}
+body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--gold)}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:#0a0a0a;z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;transition:opacity .25s ease}
+.mobile-menu.open{display:flex;opacity:1}
+.mobile-menu a{font-family:var(--oswald);font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s;padding:8px 20px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--gold)}
+
+@media(max-width:768px){
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+
+/* ============ PAGES ============ */
+.page{display:none;opacity:0;transition:opacity 0.5s ease}
+.page.active{display:block;opacity:1}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.35}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.5) 0%,rgba(10,10,10,0.3) 40%,rgba(10,10,10,0.7) 70%,rgba(10,10,10,1) 100%)}
+.hero-content{position:relative;z-index:1;max-width:900px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:100px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);margin-bottom:20px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#fff;font-weight:500;backdrop-filter:blur(8px)}
+.hero-pill svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.hero-subtitle{font-family:var(--inter);font-size:11px;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:24px}
+.hero-title{font-family:var(--oswald);font-weight:700;font-size:clamp(60px,12vw,140px);line-height:0.9;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:20px}
+.hero-tagline{font-family:var(--playfair);font-style:italic;font-size:clamp(18px,2.5vw,26px);color:var(--text-muted);margin-bottom:40px;font-weight:400}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-btn{font-family:var(--inter);font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 32px;border:1px solid rgba(245,240,232,0.4);color:var(--text);transition:all 0.3s;background:transparent}
+.hero-btn:hover{background:rgba(245,240,232,0.08);border-color:var(--text)}
+.hero-btn-gold{background:var(--gold);color:#0a0a0a;border-color:var(--gold);font-weight:600}
+.hero-btn-gold:hover{background:#d4b45a;border-color:#d4b45a}
+
+/* ============ SCROLL INDICATOR ============ */
+.scroll-indicator{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0.5;animation:scrollBounce 2s ease-in-out infinite}
+.scroll-text{font-family:var(--inter);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted)}
+.scroll-arrow{color:var(--text-muted)}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ============ CREDENTIAL BAR ============ */
+.credential-bar{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 20px;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.credential-text{font-family:var(--inter);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted)}
+.credential-name{font-family:var(--oswald);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.credential-show{font-family:var(--playfair);font-style:italic;font-size:12px;color:var(--text-muted)}
+@media(max-width:768px){
+  .credential-bar{flex-direction:column;gap:4px;padding:12px 20px}
+}
+
+/* ============ MARQUEE ============ */
+.marquee{overflow:hidden;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0a0a0a}
+.marquee-track{display:flex;animation:marqueeScroll 30s linear infinite;width:max-content}
+.marquee-text{font-family:var(--inter);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;padding-right:0}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ============ SECTION COMMON ============ */
+.section{padding:100px 40px;max-width:1400px;margin:0 auto}
+.section-label{font-family:var(--oswald);font-size:13px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
+.section-title{font-family:var(--oswald);font-weight:700;font-size:clamp(32px,5vw,52px);text-transform:uppercase;letter-spacing:2px;line-height:1.1;margin-bottom:8px}
+.section-bar{width:60px;height:3px;background:var(--red);margin-bottom:40px}
+@media(max-width:768px){.section{padding:40px 20px}}
+
+/* ============ FEATURED WORKS ============ */
+.featured-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:20px}
+.featured-grid-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.featured-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s}
+.featured-card:hover{transform:translateY(-4px);border-color:#333}
+.featured-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 0.6s}
+.featured-card:hover .featured-card-img{transform:scale(1.03)}
+.featured-badge{position:absolute;top:12px;left:12px;padding:4px 12px;background:var(--red);color:#fff;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;z-index:2}
+.featured-card-info{padding:16px}
+.featured-card-title{font-family:var(--oswald);font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.featured-card-price{font-family:var(--inter);font-size:14px;color:var(--gold);font-weight:500}
+@media(max-width:1024px){
+  .featured-grid{grid-template-columns:1fr}
+  .featured-grid-bottom{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .featured-grid-bottom{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============ ARTIST TEASER ============ */
+.artist-teaser{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px}
+.artist-teaser-img{background:#1a1511;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.artist-teaser-img-placeholder{width:100%;height:100%;min-height:500px;background:linear-gradient(135deg,#1a1511 0%,#2a2018 50%,#1a1511 100%);display:flex;align-items:center;justify-content:center}
+.artist-teaser-content{padding:60px 50px;display:flex;flex-direction:column;justify-content:center;background:#0f0f0f}
+.artist-teaser-heading{font-family:var(--oswald);font-weight:700;font-size:clamp(32px,4vw,48px);text-transform:uppercase;color:var(--gold);line-height:1.1;letter-spacing:2px;margin-bottom:12px}
+.artist-teaser-bar{width:50px;height:3px;background:var(--red);margin-bottom:24px}
+.artist-teaser-text{font-family:var(--inter);font-size:15px;line-height:1.7;color:var(--text-muted);margin-bottom:32px}
+.artist-stats{display:flex;gap:0;margin-bottom:32px}
+.artist-stat{flex:1;text-align:center;padding:12px 0;border-right:1px solid var(--border)}
+.artist-stat:last-child{border-right:none}
+.artist-stat-value{font-family:var(--oswald);font-size:28px;font-weight:700;color:var(--text);letter-spacing:1px}
+.artist-stat-label{font-family:var(--inter);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:2px}
+.artist-btn{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:12px 28px;border:1px solid var(--gold);color:var(--gold);transition:all 0.3s;display:inline-block;width:fit-content}
+.artist-btn:hover{background:var(--gold);color:#0a0a0a}
+@media(max-width:900px){
+  .artist-teaser{grid-template-columns:1fr}
+  .artist-teaser-img-placeholder{min-height:300px}
+  .artist-teaser-content{padding:40px 20px}
+}
+
+/* ============ QUOTE ============ */
+.quote-section{padding:100px 40px;text-align:center;max-width:900px;margin:0 auto}
+.quote-text{font-family:var(--playfair);font-style:italic;font-size:clamp(22px,3vw,34px);line-height:1.5;color:var(--text);margin-bottom:24px;font-weight:400}
+.quote-attr{font-family:var(--inter);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted)}
+
+/* ============ COLLECTORS CIRCLE ============ */
+.collectors{padding:80px 40px;text-align:center;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.collectors-title{font-family:var(--oswald);font-weight:700;font-size:clamp(24px,4vw,36px);text-transform:uppercase;color:var(--gold);letter-spacing:3px;margin-bottom:12px}
+.collectors-sub{font-family:var(--inter);font-size:14px;color:var(--text-muted);margin-bottom:28px}
+.collectors-form{display:flex;gap:0;max-width:480px;margin:0 auto}
+.collectors-input{flex:1;padding:12px 16px;background:#1a1a1a;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color 0.3s}
+.collectors-input:focus{border-color:var(--gold)}
+.collectors-submit{padding:12px 24px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.3s}
+.collectors-submit:hover{background:#d4b45a}
+@media(max-width:600px){
+  .collectors{padding:60px 20px}
+  .collectors-form{flex-direction:column;gap:12px}
+  .collectors-input{border-radius:100px;padding:14px 20px;text-align:center}
+  .collectors-submit{border-radius:100px;padding:14px 24px;align-self:center}
+}
+
+/* ============ GALLERY / COLLECTION ============ */
+.gallery-header{text-align:center;padding:120px 40px 40px;max-width:1400px;margin:0 auto}
+.gallery-header .section-label{margin-bottom:16px}
+.gallery-header .section-title{font-size:clamp(36px,7vw,72px);margin-bottom:8px}
+.gallery-header .section-bar{margin:0 auto 32px}
+.gallery-filters{display:flex;gap:24px;justify-content:center;margin-bottom:8px}
+.gallery-filter{font-family:var(--inter);font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);padding:8px 4px;border-bottom:2px solid transparent;transition:all 0.3s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none}
+.gallery-filter.active{color:var(--gold);border-bottom-color:var(--gold)}
+.gallery-filter:hover{color:var(--text)}
+.gallery-sort{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto 24px;padding:0 40px}
+
+/* Catalog search + filter controls */
+.catalog-controls{max-width:1400px;margin:0 auto 32px;padding:0 40px}
+.catalog-search-wrap{position:relative;max-width:520px;margin:0 auto 20px}
+.catalog-search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none}
+.catalog-search{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:14px 44px 14px 44px;font-family:var(--inter);font-size:14px;letter-spacing:.02em;border-radius:0;transition:border-color .2s,background .2s;outline:none}
+.catalog-search:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
+.catalog-search::placeholder{color:var(--text-muted);opacity:.7}
+.catalog-search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;display:none}
+.catalog-search-clear.visible{display:block}
+.catalog-search-clear:hover{color:var(--gold)}
+.catalog-filter-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.filter-chip{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text-muted);padding:8px 16px;font-family:var(--inter);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:0}
+.filter-chip:hover{border-color:var(--gold);color:var(--gold)}
+.filter-chip.active{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+@media(max-width:768px){.catalog-controls{padding:0 16px}.filter-chip{font-size:10px;padding:7px 12px}}
+
+/* Trust strip */
+.trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32px;padding:16px 24px;border-top:1px solid rgba(218,165,32,.18);border-bottom:1px solid rgba(218,165,32,.18)}
+.trust-strip span{display:inline-flex;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.trust-strip svg{color:var(--gold)}
+@media(max-width:600px){.trust-strip{gap:14px;padding:12px 16px}.trust-strip span{font-size:10px}}
+
+/* Empty state */
+.empty-state{text-align:center;padding:80px 20px;color:var(--text-muted);font-family:var(--inter)}
+.empty-state p{font-size:16px;margin-bottom:20px}
+.empty-reset{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:12px 28px;font-family:var(--inter);font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.empty-reset:hover{background:var(--gold);color:var(--bg)}
+
+/* Exit-intent modal */
+.exit-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease}
+.exit-modal-overlay.show{display:flex}
+.exit-modal{background:var(--bg);max-width:480px;width:100%;padding:48px 32px;border:1px solid rgba(218,165,32,.25);position:relative;text-align:center;font-family:var(--inter)}
+.exit-modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text-muted);font-size:28px;cursor:pointer;line-height:1;padding:4px 8px}
+.exit-modal-close:hover{color:var(--gold)}
+.exit-modal-eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;text-transform:uppercase}
+.exit-modal-title{font-family:var(--display);font-size:32px;font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.15;letter-spacing:-.01em}
+.exit-modal-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6}
+.exit-modal-form{display:flex;flex-direction:column;gap:12px}
+.exit-modal-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.15);color:var(--text);padding:14px 16px;font-family:var(--inter);font-size:14px;outline:none;transition:border-color .2s}
+.exit-modal-input:focus{border-color:var(--gold)}
+.exit-modal-submit{background:var(--gold);color:var(--bg);border:none;padding:14px;font-family:var(--inter);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:opacity .2s}
+.exit-modal-submit:hover{opacity:.9}
+.exit-modal-fineprint{font-size:11px;color:var(--text-muted);margin-top:14px}
+.exit-modal-success{display:none;text-align:center}
+.exit-modal-success.show{display:block}
+.exit-modal-success-icon{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* How-to-bid section */
+.auc-howto{max-width:1100px;margin:80px auto 60px;padding:0 40px;text-align:center}
+.auc-howto-title{font-family:var(--display);font-size:36px;font-weight:900;color:var(--text);margin-bottom:14px;letter-spacing:-.01em}
+.auc-howto-line{width:64px;height:1px;background:var(--gold);margin:0 auto 40px}
+.auc-howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:left}
+.auc-howto-step{padding:24px;border-left:2px solid rgba(218,165,32,.3)}
+.auc-howto-step-num{font-family:var(--display);font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:12px}
+.auc-howto-step-title{font-family:var(--inter);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:12px;font-weight:600}
+.auc-howto-step-body{font-family:var(--inter);font-size:14px;color:var(--text-muted);line-height:1.7}
+@media(max-width:768px){.auc-howto-grid{grid-template-columns:1fr;gap:20px}.auc-howto{padding:0 20px;margin:60px auto 40px}}
+.gallery-count{font-family:var(--inter);font-size:12px;color:var(--text-muted);letter-spacing:1px}
+.sort-wrap{position:relative}
+.sort-toggle{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2px;color:var(--text-muted);background:none;border:1px solid #333;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s}
+.sort-toggle:hover,.sort-toggle.open{color:var(--gold);border-color:var(--gold)}
+.sort-toggle svg{transition:transform 0.2s}
+.sort-toggle.open svg{transform:rotate(180deg)}
+.sort-menu{display:none;position:absolute;top:calc(100% + 4px);right:0;background:#111;border:1px solid #333;min-width:200px;z-index:100}
+.sort-menu.open{display:block}
+.sort-option{display:block;width:100%;text-align:left;font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--text-muted);background:none;border:none;border-bottom:1px solid #1a1a1a;padding:12px 16px;cursor:pointer;transition:all 0.15s}
+.sort-option:last-child{border-bottom:none}
+.sort-option:hover{background:#1a1a1a;color:var(--gold)}
+@media(max-width:768px){.gallery-sort{padding:0 16px}}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1400px;margin:0 auto;padding:0 40px 80px}
+.gallery-card{background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:transform 0.3s,border-color 0.3s;cursor:pointer;position:relative}
+.gallery-card:hover{transform:translateY(-3px);border-color:#333}
+.gallery-card-img-wrap{position:relative;overflow:hidden}
+.gallery-card-img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.5s}
+.gallery-card:hover .gallery-card-img{transform:scale(1.04)}
+.gallery-card .featured-badge{position:absolute;top:8px;left:8px}
+.sold-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,10,0.85);color:var(--text);font-family:var(--oswald);font-size:18px;letter-spacing:4px;padding:10px 24px;z-index:2}
+.gallery-card-info{padding:14px}
+.gallery-card-title{font-family:var(--oswald);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gallery-card-price{font-family:var(--inter);font-size:13px;color:var(--gold);font-weight:500;margin-bottom:2px}
+.gallery-card-meta{font-family:var(--inter);font-size:10px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:3px;text-transform:uppercase}
+.gallery-card-scarcity{font-family:var(--inter);font-size:10px;color:var(--red-light);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px}
+.gallery-card-btn{display:block;width:100%;padding:10px;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;background:transparent;border:1px solid var(--border);color:var(--text);transition:all 0.3s}
+.gallery-card-btn:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+
+@media(max-width:1024px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px 60px}
+  .gallery-header{padding:100px 20px 30px}
+  .gallery-card-info{padding:10px}
+  .gallery-card-title{font-size:12px}
+  .gallery-card-price{font-size:12px}
+}
+@media(max-width:390px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 12px 60px}
+}
+
+/* ============ AUCTION ============ */
+.auction-header{text-align:center;padding:120px 40px 20px;max-width:1200px;margin:0 auto}
+.auction-date{font-family:var(--inter);font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:12px}
+.countdown{display:flex;gap:20px;justify-content:center;margin:32px 0}
+.countdown-item{text-align:center}
+.countdown-value{font-family:var(--oswald);font-size:clamp(36px,6vw,56px);font-weight:700;color:var(--gold);line-height:1}
+.countdown-label{font-family:var(--inter);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
+.auction-desc{font-family:var(--inter);font-size:15px;color:var(--text-muted);max-width:700px;margin:0 auto 50px;text-align:center;line-height:1.7}
+.auction-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1200px;margin:0 auto;padding:0 40px 60px}
+.auction-lot{display:grid;grid-template-columns:1fr 1fr;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s}
+.auction-lot:hover{border-color:#333}
+.auction-lot-img{width:100%;aspect-ratio:1;object-fit:cover}
+.auction-lot-info{padding:24px;display:flex;flex-direction:column;justify-content:center}
+.auction-lot-label{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.auction-lot-title{font-family:var(--oswald);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.auction-lot-medium{font-family:var(--inter);font-size:12px;color:var(--text-muted);margin-bottom:12px}
+.auction-lot-estimate-label{display:none}
+.auction-lot-estimate{font-family:var(--playfair);font-style:italic;font-size:18px;color:var(--gold);margin-bottom:16px}
+.auction-bid-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border:1px solid var(--gold);color:var(--gold);transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
+.auction-bid-btn:hover{background:var(--gold);color:#0a0a0a}
+.auction-lot-buttons{display:flex;flex-direction:column;gap:8px}
+.auction-buy-btn{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;background:var(--gold);color:#0a0a0a;transition:all 0.3s;text-align:center;display:inline-block;width:fit-content}
+.auction-buy-btn:hover{background:#d4b45a}
+@media(max-width:1024px){
+  .auction-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .auction-lot{grid-template-columns:1fr}
+  .auction-grid{padding:0 16px 60px}
+  .auction-lot-info{padding:16px}
+}
+
+/* Bidder Registration */
+.bidder-reg{max-width:600px;margin:0 auto;padding:40px 40px 80px;text-align:center}
+.bidder-reg-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.bidder-reg-sub{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:28px}
+.bidder-form{display:flex;flex-direction:column;gap:12px}
+.bidder-input{padding:12px 16px;background:#111;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color 0.3s}
+.bidder-input:focus{border-color:var(--gold)}
+.bidder-submit{padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.3s}
+.bidder-submit:hover{background:#d4b45a}
+
+/* ============ ARTIST PAGE ============ */
+.artist-hero{position:relative;width:100%;height:70vh;min-height:450px;overflow:hidden}
+.artist-hero-img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:brightness(0.35)}
+.artist-hero-title{position:absolute;bottom:60px;left:40px;font-family:var(--oswald);font-size:clamp(48px,10vw,100px);font-weight:700;text-transform:uppercase;letter-spacing:4px;color:#fff;line-height:1}
+.artist-header{text-align:center;padding:120px 40px 20px}
+.artist-bio{max-width:800px;margin:0 auto;padding:60px 40px 60px}
+.artist-bio p{font-family:var(--inter);font-size:16px;line-height:1.8;color:var(--text-muted);margin-bottom:24px}
+.artist-bio .drop-cap{float:left;font-family:var(--playfair);font-size:72px;font-weight:700;color:var(--gold);line-height:0.8;padding:4px 12px 0 0}
+.artist-portrait-section{max-width:1100px;margin:0 auto;padding:60px 40px}
+.artist-portrait-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:12px}
+.artist-portrait-bar{width:60px;height:3px;background:var(--gold);margin:0 auto 40px}
+.artist-portrait-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.artist-portrait-item{position:relative;overflow:hidden;border:1px solid var(--border)}
+.artist-portrait-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.artist-portrait-item:hover img{transform:scale(1.03)}
+@media(max-width:768px){.artist-portrait-section{padding:40px 20px}.artist-portrait-grid{gap:10px}}
+.timeline{max-width:700px;margin:0 auto;padding:40px 40px 80px}
+.timeline-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:40px}
+.timeline-item{display:flex;gap:24px;padding:16px 0;border-bottom:1px solid var(--border)}
+.timeline-year{font-family:var(--oswald);font-size:18px;font-weight:700;color:var(--gold);min-width:80px}
+.timeline-desc{font-family:var(--inter);font-size:14px;color:var(--text-muted);line-height:1.5}
+
+/* ============ ARTIST PHOTO GALLERY ============ */
+.artist-gallery{max-width:1100px;margin:0 auto;padding:0 40px 80px}
+.artist-gallery-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:12px}
+.artist-gallery-bar{width:60px;height:3px;background:var(--red);margin:0 auto 40px}
+.artist-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.artist-gallery-item{position:relative;overflow:hidden;cursor:pointer;background:var(--card-bg);border:1px solid var(--border)}
+.artist-gallery-item img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.5s,filter 0.5s}
+.artist-gallery-item:hover img{transform:scale(1.05);filter:brightness(0.7)}
+.artist-gallery-item .ag-caption{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,0.85));font-family:var(--inter);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);opacity:0;transition:opacity 0.3s}
+.artist-gallery-item:hover .ag-caption{opacity:1}
+@media(max-width:768px){
+  .artist-gallery{padding:0 16px 60px}
+  .artist-gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+}
+
+/* ============ CONTACT ============ */
+.contact-section{padding:120px 40px 80px;max-width:1000px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px}
+.contact-info h3{font-family:var(--oswald);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px}
+.contact-item{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-family:var(--inter);font-size:14px;color:var(--text-muted)}
+.contact-item a{color:var(--gold);transition:color 0.3s}
+.contact-item a:hover{color:#d4b45a}
+.contact-form{display:flex;flex-direction:column;gap:12px}
+.contact-form input,.contact-form textarea{padding:12px 16px;background:#111;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color 0.3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold)}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-submit{padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.3s}
+.contact-submit:hover{background:#d4b45a}
+.contact-appointment{margin-top:24px;padding:16px 20px;border:1px solid var(--border);font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted)}
+@media(max-width:768px){
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .contact-section{padding:100px 20px 60px}
+}
+
+/* ============ OVERLAY ============ */
+.overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,10,10,0.95);display:none;align-items:center;justify-content:center;overflow-y:auto;padding:40px}
+.overlay.open{display:flex}
+.overlay-inner{display:grid;grid-template-columns:1fr 1fr;max-width:1100px;width:100%;background:#111;border:1px solid var(--border);max-height:90vh;overflow-y:auto}
+.overlay-img{width:100%;height:100%;object-fit:contain;background:#0a0a0a;max-height:80vh;pointer-events:none}
+.overlay-details{padding:40px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto}
+.overlay-title{font-family:var(--oswald);font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.overlay-medium{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:16px}
+.overlay-quote{font-family:var(--playfair);font-style:italic;font-size:16px;color:var(--gold);line-height:1.5;margin-bottom:4px}
+.overlay-quote-attr{font-family:var(--inter);font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:12px}
+.overlay-desc{font-family:var(--inter);font-size:13px;line-height:1.7;color:var(--text-muted);margin-bottom:20px}
+.overlay-price{font-family:var(--oswald);font-size:26px;color:var(--gold);margin-bottom:16px}
+.overlay-viewers{display:flex;align-items:center;gap:8px;font-family:var(--inter);font-size:12px;color:var(--text-muted);margin-bottom:8px}
+.overlay-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.overlay-scarcity{font-family:var(--inter);font-size:12px;color:var(--red-light);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.overlay-payment{font-family:var(--inter);font-size:12px;color:var(--gold);letter-spacing:0.5px;margin-bottom:8px}
+.overlay-exhibited{display:inline-flex;align-items:center;gap:6px;font-family:var(--inter);font-size:11px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:16px;padding:6px 12px;border:1px solid #333;background:#161612}
+.overlay-exhibited svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.size-btn{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 16px;background:#1a1a1a;border:1px solid #333;color:var(--text-muted);font-family:var(--inter);font-size:13px;cursor:pointer;transition:all 0.2s;text-align:left}
+.size-btn:hover{border-color:var(--gold);color:var(--text)}
+.size-btn.size-active{border-color:var(--gold);background:#1f1a0f;color:var(--gold)}
+.size-btn-label{font-weight:500}
+.size-btn-price{font-weight:600;color:var(--gold)}
+.overlay-acquire{display:block;width:100%;padding:14px;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;background:var(--gold);color:#0a0a0a;transition:background 0.3s;margin-bottom:24px}
+.overlay-acquire:hover{background:#d4b45a}
+.overlay-trust{display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid var(--border)}
+.overlay-trust-item{display:flex;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;color:var(--text-muted)}
+.overlay-trust-item svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.overlay-close{position:fixed;top:20px;right:24px;z-index:2001;font-size:28px;color:var(--text);cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.6);border-radius:50%;transition:background 0.3s}
+.overlay-close:hover{background:rgba(255,255,255,0.1)}
+.overlay-nav{position:fixed;top:50%;z-index:2001;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.6);border-radius:50%;cursor:pointer;color:var(--text);font-size:20px;transition:background 0.3s;transform:translateY(-50%)}
+.overlay-nav:hover{background:rgba(255,255,255,0.1)}
+.overlay-prev{left:16px}
+.overlay-next{right:16px}
+@media(max-width:768px){
+  .overlay{padding:0}
+  .overlay-inner{grid-template-columns:1fr;max-height:100vh}
+  .overlay-img{max-height:50vh}
+  .overlay-details{padding:24px}
+  .overlay-close{top:12px;right:12px}
+  .overlay-nav{display:none}
+}
+
+/* ============ FOOTER ============ */
+.footer{border-top:2px solid var(--red-light);padding:60px 40px 20px;background:#080808}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand .nav-logo-main{font-size:20px;margin-bottom:2px}
+.footer-brand .nav-logo-sub{font-size:9px}
+.footer-tagline{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);margin-top:8px}
+.footer-copy{font-family:var(--inter);font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.6}
+.footer-right{text-align:right}
+.footer-nav{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.footer-nav a{font-family:var(--inter);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}
+.footer-nav a:hover{color:var(--gold)}
+.footer-contact{font-family:var(--inter);font-size:12px;color:var(--text-muted);line-height:2}
+.footer-contact a{color:var(--gold)}
+.footer-bottom{text-align:center;padding:20px 0 12px;margin-top:40px;border-top:1px solid var(--border);max-width:1200px;margin-left:auto;margin-right:auto}
+.footer-bottom p{font-family:var(--inter);font-size:10px;color:#555;letter-spacing:0.5px}
+.footer-bottom a{color:#666;transition:color 0.3s}
+.footer-bottom a:hover{color:var(--gold)}
+@media(max-width:768px){
+  .footer{padding:40px 20px 16px}
+  .footer-inner{grid-template-columns:1fr;gap:30px}
+  .footer-right{text-align:left}
+}
+
+/* ============ PRINTS BANNER ============ */
+.prints-banner{padding:60px 40px;text-align:center;background:#0f0f0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.prints-banner-inner{max-width:1100px;margin:0 auto}
+.prints-banner-title{font-family:var(--oswald);font-weight:700;font-size:clamp(28px,5vw,44px);text-transform:uppercase;color:var(--text);letter-spacing:3px;margin-bottom:8px}
+.prints-banner-text{font-family:var(--inter);font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:12px;max-width:600px;margin-left:auto;margin-right:auto}
+.prints-banner-price-hook{font-family:var(--oswald);font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:32px}
+.prints-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.prints-showcase-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s}
+.prints-showcase-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.prints-showcase-img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 0.6s}
+.prints-showcase-card:hover .prints-showcase-img{transform:scale(1.03)}
+.prints-showcase-info{padding:12px 14px}
+.prints-showcase-title{font-family:var(--oswald);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prints-showcase-meta{font-family:var(--inter);font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.prints-showcase-price{font-family:var(--inter);font-size:13px;color:var(--gold);font-weight:600}
+.prints-banner-btn{display:inline-block;font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:14px 36px;background:var(--gold);color:#0a0a0a;transition:all 0.3s}
+.prints-banner-btn:hover{background:#d4b45a}
+@media(max-width:768px){
+  .prints-showcase{grid-template-columns:repeat(2,1fr);gap:10px}
+  .prints-showcase-card:nth-child(5),.prints-showcase-card:nth-child(6){display:none}
+}
+.prints-header-desc{font-family:var(--inter);font-size:15px;color:var(--text-muted);max-width:600px;margin:0 auto 32px;text-align:center;line-height:1.7}
+@media(max-width:768px){
+  .prints-banner{padding:32px 20px}
+}
+
+/* ============ MOBILE SPACING TIGHTENING ============ */
+@media(max-width:768px){
+  /* Hero: fill viewport */
+  .hero{min-height:100vh;padding:90px 20px 40px;justify-content:center}
+  /* Marquee: tighter */
+  .marquee{padding:12px 0}
+  /* Section bar: less bottom margin */
+  .section-bar{margin-bottom:24px}
+  /* Featured works: tighter gap */
+  .featured-grid{gap:12px;margin-bottom:12px}
+  .featured-grid-bottom{gap:10px}
+  /* Artist teaser: less padding */
+  .artist-teaser-content{padding:28px 20px}
+  .artist-teaser-heading{margin-bottom:8px}
+  .artist-teaser-bar{margin-bottom:16px}
+  .artist-teaser-text{margin-bottom:20px}
+  .artist-stats{margin-bottom:20px}
+  /* Quote: less padding */
+  .quote-section{padding:50px 20px}
+  .quote-text{margin-bottom:16px}
+  /* Collectors circle: less padding */
+  .collectors{padding:40px 20px}
+  .collectors-title{margin-bottom:8px}
+  .collectors-sub{margin-bottom:20px}
+  /* Gallery header: less padding */
+  .gallery-header{padding:80px 20px 20px}
+  .gallery-count{margin-bottom:20px}
+  /* Auction header: less padding */
+  .auction-header{padding:80px 20px 12px}
+  .auction-date{margin-top:8px}
+  .countdown{margin:20px 0}
+  .auction-desc{margin:0 auto 30px;font-size:14px}
+  /* Auction lots: tighter */
+  .auction-grid{gap:12px}
+  .auction-lot-info{padding:14px}
+  .auction-lot-label{margin-bottom:4px}
+  .auction-lot-title{margin-bottom:4px;font-size:18px}
+  .auction-lot-medium{margin-bottom:8px}
+  .auction-lot-estimate{margin-bottom:12px;font-size:16px}
+  .auction-lot-buttons{gap:6px}
+  /* Bidder reg: less padding */
+  .bidder-reg{padding:28px 20px 50px}
+  .bidder-reg-title{font-size:24px;margin-bottom:6px}
+  .bidder-form{gap:10px}
+  /* Artist page: tighter */
+  .artist-hero{height:65vh;min-height:350px}
+  .artist-hero-title{bottom:30px;left:20px}
+  .artist-bio{padding:36px 20px 36px}
+  .artist-bio p{font-size:15px;line-height:1.7;margin-bottom:18px}
+  .timeline{padding:24px 20px 40px}
+  .timeline-title{margin-bottom:24px;font-size:24px}
+  .timeline-item{padding:12px 0}
+  /* Artist gallery: tighter */
+  .artist-gallery{padding:0 16px 40px}
+  .artist-gallery-title{font-size:24px;margin-bottom:8px}
+  .artist-gallery-bar{margin:0 auto 24px}
+  /* Contact: less top padding */
+  .contact-section{padding:80px 20px 40px}
+  /* Footer: tighter */
+  .footer{padding:30px 20px 12px}
+  .footer-inner{gap:20px}
+  .footer-bottom{margin-top:24px;padding:16px 0 8px}
+}
+
+
+/* ============ AUCTION V2 ============ */
+/* -- Hero -- */
+.auc-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;overflow:hidden}
+.auc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06),transparent 70%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(139,26,26,.05),transparent 60%);z-index:0;animation:auc-gradShift 12s ease-in-out infinite alternate}
+@keyframes auc-gradShift{0%{opacity:.7;filter:hue-rotate(0deg)}100%{opacity:1;filter:hue-rotate(8deg)}}
+.auc-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px 128px}
+.auc-hero>*{position:relative;z-index:2}
+.auc-hero-tag{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;opacity:0;animation:auc-fadeUp .8s ease-out .2s forwards}
+.auc-hero-title{font-family:var(--oswald);font-size:clamp(42px,8vw,88px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text);line-height:1.05;margin-bottom:12px;opacity:0;animation:auc-fadeUp .8s ease-out .35s forwards}
+.auc-hero-date{font-family:var(--inter);font-size:clamp(12px,1.5vw,14px);font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;opacity:0;animation:auc-fadeUp .8s ease-out .5s forwards}
+@keyframes auc-fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* -- Countdown V2 -- */
+.auc-cd{display:flex;gap:clamp(12px,4vw,40px);justify-content:center;align-items:center;margin-bottom:32px;opacity:0;animation:auc-fadeUp .8s ease-out .65s forwards;max-width:100%;padding:0 8px}
+.auc-cd-block{text-align:center;min-width:70px}
+.auc-cd-num{font-family:var(--oswald);font-size:clamp(48px,12vw,100px);font-weight:700;color:var(--gold);line-height:1;letter-spacing:-2px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.auc-cd-num.tick{animation:auc-tick .35s ease-out}
+@keyframes auc-tick{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+.auc-cd-label{font-family:var(--inter);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
+.auc-cd-sep{font-family:var(--oswald);font-size:clamp(28px,8vw,72px);color:var(--gold);opacity:.3;line-height:1;margin-top:-10px}
+
+/* -- Live badge -- */
+.auc-live-badge{display:none;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#ff4444;margin-bottom:24px;opacity:0;animation:auc-fadeUp .8s ease-out .7s forwards}
+.auc-live-badge.show{display:inline-flex}
+.auc-live-dot{width:10px;height:10px;background:#ff4444;border-radius:50%;animation:auc-pulse 1.5s ease-in-out infinite}
+@keyframes auc-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.auc-hero-sub{font-family:var(--playfair);font-style:italic;font-size:clamp(14px,1.6vw,17px);color:var(--text-muted);max-width:540px;line-height:1.6;opacity:0;animation:auc-fadeUp .8s ease-out .8s forwards}
+.auc-hero-line{width:60px;height:1px;background:var(--gold);margin:20px auto 0;opacity:0;animation:auc-fadeUp .8s ease-out .9s forwards}
+
+/* -- Lot Carousel -- */
+.auc-lots-section{max-width:1400px;margin:0 auto;padding:0 24px 80px}
+.auc-lots-title-bar{text-align:center;margin-bottom:48px}
+.auc-lots-heading{font-family:var(--oswald);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text)}
+.auc-lots-gold-line{width:60px;height:1px;background:var(--gold);margin:12px auto 0}
+
+.auc-carousel{position:relative;overflow:hidden}
+.auc-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--card-bg);border:1px solid var(--border);min-height:500px;opacity:0;position:absolute;top:0;left:0;right:0;transition:opacity .5s ease-out;pointer-events:none}
+.auc-card.active{opacity:1;position:relative;pointer-events:auto}
+.auc-card-img-wrap{position:relative;overflow:hidden;background:#080808}
+.auc-card-img{width:100%;height:100%;object-fit:cover;min-height:400px;max-height:700px}
+.auc-card-info{padding:clamp(24px,3vw,48px);display:flex;flex-direction:column;justify-content:center}
+.auc-card-lot-num{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.auc-card-lot-num::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.3}
+.auc-card-title{font-family:var(--oswald);font-size:clamp(24px,3vw,40px);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.1;margin-bottom:12px;color:var(--text)}
+.auc-card-medium{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:6px}
+.auc-card-estimate{font-family:var(--inter);font-size:13px;color:var(--text-muted);margin-bottom:20px}
+.auc-card-estimate span{color:var(--gold);font-weight:600}
+.auc-card-quote{font-family:var(--playfair);font-style:italic;font-size:clamp(14px,1.4vw,16px);color:var(--gold);line-height:1.6;margin-bottom:20px;padding-left:16px;border-left:2px solid rgba(201,168,76,.3)}
+.auc-card-desc-toggle{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);cursor:pointer;background:none;border:none;padding:0;margin-bottom:20px;display:flex;align-items:center;gap:6px;transition:color .3s}
+.auc-card-desc-toggle:hover{color:var(--gold)}
+.auc-card-desc-toggle .arrow{transition:transform .3s;display:inline-block}
+.auc-card-desc-toggle.open .arrow{transform:rotate(90deg)}
+.auc-card-desc{font-family:var(--inter);font-size:13px;color:var(--text-muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .5s ease-out,opacity .3s ease-out;opacity:0;margin-bottom:0}
+.auc-card-desc.open{max-height:400px;opacity:1;margin-bottom:20px}
+.auc-card-status{font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.auc-card-status.open{color:#4caf50}.auc-card-status.closed{color:#f44336}.auc-card-status.coming{color:var(--text-muted)}
+
+/* -- Bid Panel -- */
+.auc-bid-panel{border:1px solid var(--border);background:rgba(17,17,17,.7);padding:20px;margin-bottom:16px}
+.auc-bid-current{font-family:var(--inter);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.auc-bid-amount{font-family:var(--oswald);font-size:clamp(28px,3vw,38px);font-weight:700;color:var(--gold);margin-bottom:12px}
+.auc-bid-paddle{font-family:var(--inter);font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:12px}
+.auc-bid-paddle span{color:var(--gold);font-weight:600}
+.auc-bid-btn{display:block;width:100%;padding:14px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s,transform .15s;text-align:center;margin-bottom:8px}
+.auc-bid-btn:hover{background:#d4b45a;transform:translateY(-1px)}
+.auc-bid-btn:active{transform:translateY(0)}
+.auc-bid-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.auc-bid-btn.secondary{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.auc-bid-btn.secondary:hover{background:rgba(201,168,76,.1)}
+.auc-bid-history{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}
+.auc-bid-history-title{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.auc-bid-history-item{font-family:var(--inter);font-size:12px;color:var(--text-muted);padding:4px 0;display:flex;justify-content:space-between}
+.auc-bid-history-item .bid-who{color:var(--text)}
+.auc-bid-history-item .bid-amt{color:var(--gold);font-weight:600}
+.auc-bid-history-item .bid-time{font-size:10px;opacity:.6}
+
+/* -- Buy Now -- */
+.auc-buy-link{display:block;text-align:center;padding:12px;border:1px solid var(--border);font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);transition:all .3s;margin-top:4px}
+.auc-buy-link:hover{border-color:var(--gold);color:var(--gold)}
+
+/* -- Carousel Nav -- */
+.auc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px}
+.auc-nav-btn{width:48px;height:48px;border:1px solid var(--border);background:rgba(17,17,17,.8);color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:18px}
+.auc-nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+.auc-nav-counter{font-family:var(--oswald);font-size:16px;letter-spacing:2px;color:var(--text-muted);min-width:60px;text-align:center}
+.auc-nav-counter span{color:var(--gold);font-weight:600}
+
+/* -- Thumbnails -- */
+.auc-thumbs{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;padding:0 16px}
+.auc-thumb{width:64px;height:64px;object-fit:cover;border:2px solid transparent;cursor:pointer;opacity:.5;transition:all .3s}
+.auc-thumb.active{border-color:var(--gold);opacity:1}
+.auc-thumb:hover{opacity:.8}
+
+/* -- Registration V2 -- */
+.auc-reg{max-width:600px;margin:0 auto;padding:60px 24px 100px;text-align:center}
+.auc-reg-line{width:60px;height:1px;background:var(--gold);margin:0 auto 32px}
+.auc-reg-title{font-family:var(--oswald);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.auc-reg-sub{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6}
+.auc-reg-form{display:flex;flex-direction:column;gap:12px}
+.auc-reg-input{padding:14px 16px;background:#111;border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:border-color .3s}
+.auc-reg-input:focus{border-color:var(--gold)}
+.auc-reg-submit{padding:16px;background:var(--gold);color:#0a0a0a;font-family:var(--inter);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s}
+.auc-reg-submit:hover{background:#d4b45a}
+.auc-reg-note{font-family:var(--playfair);font-style:italic;font-size:13px;color:var(--text-muted);margin-top:24px;line-height:1.5}
+/* -- Registration confirmed state -- */
+.auc-reg-confirmed{display:none;text-align:center}
+.auc-reg-confirmed.show{display:block}
+.auc-reg-confirmed .paddle-display{font-family:var(--oswald);font-size:clamp(48px,10vw,80px);font-weight:700;color:var(--gold);line-height:1;margin:20px 0 8px}
+.auc-reg-confirmed .paddle-label{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.auc-reg-confirmed .paddle-name{font-family:var(--inter);font-size:14px;color:var(--text);margin-bottom:20px}
+.auc-reg-confirmed .reg-success{font-family:var(--inter);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4caf50;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.auc-reg-confirmed .reg-info{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.6}
+
+/* -- Responsive V2 -- */
+@media(max-width:900px){
+  .auc-card{grid-template-columns:1fr}
+  .auc-card-img{min-height:280px;max-height:400px}
+}
+@media(max-width:600px){
+  .auc-hero{padding:90px 16px 40px;min-height:auto;min-height:100svh}
+  .auc-cd{gap:6px;padding:0 8px}
+  .auc-cd-block{min-width:auto}
+  .auc-cd-num{font-size:clamp(44px,11.5vw,64px);letter-spacing:-1px}
+  .auc-cd-sep{font-size:22px;margin-top:-6px}
+  .auc-cd-label{font-size:8px;letter-spacing:1.5px}
+  .auc-card-info{padding:20px 16px}
+  .auc-nav-btn{width:40px;height:40px}
+  .auc-thumb{width:48px;height:48px}
+  .auc-lots-section{padding:0 12px 60px}
+  .auc-bid-panel{padding:16px}
+}
+
+
+/* ============ AR ROOM VISUALIZER ============ */
+.ar-btn{display:none;width:100%;padding:12px;font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;border:1px solid var(--gold);color:var(--gold);background:transparent;transition:all 0.3s;margin-top:16px;cursor:pointer}
+.ar-btn:hover{background:var(--gold);color:#0a0a0a}
+.ar-btn svg{width:16px;height:16px;vertical-align:middle;margin-right:6px;stroke:currentColor;fill:none;stroke-width:1.5}
+.ar-btn{display:block}
+.ar-size-presets{position:absolute;top:70px;right:12px;z-index:3002;display:flex;flex-direction:column;gap:6px}
+.ar-size-preset{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;color:#fff;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.3);padding:8px 14px;cursor:pointer;backdrop-filter:blur(8px);transition:all 0.2s;text-align:center;min-width:60px}
+.ar-size-preset:hover,.ar-size-preset.active{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+.ar-upload-prompt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#111;z-index:3001;gap:16px}
+.ar-upload-prompt p{font-family:var(--inter);font-size:14px;color:var(--text-muted);text-align:center;max-width:300px;line-height:1.6}
+.ar-upload-btn{font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:#0a0a0a;border:none;cursor:pointer;transition:background 0.3s}
+.ar-upload-btn:hover{background:#d4b45a}
+.ar-change-photo{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;background:rgba(0,0,0,0.5);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;backdrop-filter:blur(8px);transition:all 0.2s}
+.ar-change-photo:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+.ar-room-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+
+
+
+/* ============ REVEAL ANIMATIONS ============ */
+/* Reveal elements: visible by default. .js-loaded class on html element hides for animation */
+.reveal,.reveal-left,.reveal-right{will-change:opacity,transform;transition:opacity .6s ease,transform .6s ease}
+html.js-anim .reveal{opacity:0;transform:translateY(40px)}
+html.js-anim .reveal-left{opacity:0;transform:translateX(-40px)}
+html.js-anim .reveal-right{opacity:0;transform:translateX(40px)}
+html.js-anim .reveal.visible,html.js-anim .reveal-left.visible,html.js-anim .reveal-right.visible{opacity:1;transform:none}
+html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;transition:none}
+
+/* ============ HERO ENTRANCE ============ */
+/* Hero elements: visible by default. JS adds .hero-anim-pending to hide for animation if GSAP loaded */
+.hero-anim-pending .hero-pill,.hero-anim-pending .hero-subtitle,.hero-anim-pending .hero-title,.hero-anim-pending .hero-tagline,.hero-anim-pending .hero-buttons,.hero-anim-pending .scroll-indicator{opacity:0;transform:translateY(30px)}
+
+/* ============ AMBIENT SOUND TOGGLE ============ */
+.ambient-toggle{position:fixed;bottom:24px;right:24px;z-index:2500;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;opacity:0.6}
+.ambient-toggle:hover{opacity:1;border-color:var(--gold)}
+.ambient-toggle svg{width:18px;height:18px;stroke:var(--text-muted);fill:none;stroke-width:1.5;transition:stroke 0.3s}
+.ambient-toggle.playing svg{stroke:var(--gold)}
+.ambient-bars{display:flex;align-items:flex-end;gap:2px;height:14px}
+.ambient-bar{width:2px;background:var(--text-muted);transition:background 0.3s}
+.ambient-toggle.playing .ambient-bar{background:var(--gold)}
+.ambient-bar:nth-child(1){height:4px;animation:none}
+.ambient-bar:nth-child(2){height:8px;animation:none}
+.ambient-bar:nth-child(3){height:6px;animation:none}
+.ambient-bar:nth-child(4){height:10px;animation:none}
+.ambient-toggle.playing .ambient-bar:nth-child(1){animation:ambientPulse 0.8s ease-in-out infinite alternate}
+.ambient-toggle.playing .ambient-bar:nth-child(2){animation:ambientPulse 0.6s ease-in-out infinite alternate 0.1s}
+.ambient-toggle.playing .ambient-bar:nth-child(3){animation:ambientPulse 0.7s ease-in-out infinite alternate 0.2s}
+.ambient-toggle.playing .ambient-bar:nth-child(4){animation:ambientPulse 0.5s ease-in-out infinite alternate 0.15s}
+@keyframes ambientPulse{0%{height:3px}100%{height:14px}}
+
+/* ============ RECOMMENDATIONS ============ */
+.reco-section{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.reco-title{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+.reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.reco-card{cursor:pointer;border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+.reco-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.reco-card-img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.reco-card-title{font-family:var(--inter);font-size:11px;font-weight:500;padding:8px;color:var(--text);text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reco-card-price{font-family:var(--inter);font-size:12px;color:var(--gold);padding:0 8px 8px;font-weight:500}
+
+.ar-viewer{position:fixed;inset:0;z-index:3000;background:#000;display:none;flex-direction:column}
+.ar-viewer.open{display:flex}
+.ar-viewer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ar-topbar{position:absolute;top:0;left:0;right:0;z-index:3001;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ar-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;border:none;transition:background 0.2s}
+.ar-close:hover{background:rgba(255,255,255,0.25)}
+.ar-topbar-title{font-family:var(--oswald);font-size:14px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#fff;flex:1;text-align:center;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ar-topbar-spacer{width:40px}
+.ar-canvas-area{position:absolute;inset:0;z-index:3001;pointer-events:none}
+.ar-painting-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.ar-painting-wrap:active{cursor:grabbing}
+.ar-painting-img{display:block;max-width:60vw;max-height:40vh;width:auto;height:auto;border:4px solid #fff;box-shadow:0 8px 32px rgba(0,0,0,0.45),0 2px 8px rgba(0,0,0,0.3);pointer-events:none}
+.ar-painting-size{display:block;margin-top:6px;font-family:var(--inter);font-size:11px;font-weight:500;color:#fff;text-align:center;background:rgba(0,0,0,0.6);padding:4px 12px;border-radius:100px;width:fit-content;margin-left:auto;margin-right:auto;letter-spacing:0.5px;pointer-events:none}
+.ar-bottom{position:absolute;bottom:0;left:0;right:0;z-index:3001;display:flex;flex-direction:column;align-items:center;padding:20px 16px 32px;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 100%)}
+.ar-hint{font-family:var(--inter);font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:12px;text-align:center}
+.ar-capture-btn{width:64px;height:64px;border-radius:50%;background:#fff;border:4px solid rgba(255,255,255,0.4);cursor:pointer;position:relative;transition:transform 0.15s}
+.ar-capture-btn:active{transform:scale(0.9)}
+.ar-capture-btn::after{content:'';position:absolute;inset:4px;border-radius:50%;background:#fff;transition:background 0.15s}
+.ar-capture-label{font-family:var(--inter);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:6px}
+.ar-fallback{position:absolute;inset:0;z-index:3002;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.9);padding:40px;text-align:center}
+.ar-fallback-icon{font-size:48px;margin-bottom:16px;opacity:0.5}
+.ar-fallback-text{font-family:var(--inter);font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:24px;max-width:300px}
+.ar-fallback-close{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.3s}
+.ar-fallback-close:hover{background:var(--gold);color:#0a0a0a}
+.ar-flash{position:absolute;inset:0;z-index:3003;background:#fff;opacity:0;pointer-events:none;transition:opacity 0.1s}
+.ar-flash.active{opacity:1}
+
+/* ============ ANIMATIONS ============ */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ============ PROCESS PAGE ============ */
+.process-hero{max-width:900px;margin:120px auto 60px;padding:0 24px;text-align:center}
+.process-intro{font-family:var(--inter);font-size:16px;line-height:1.7;color:var(--text-muted);max-width:680px;margin:24px auto 0}
+.process-grid{max-width:1100px;margin:0 auto 80px;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.process-step{background:rgba(255,255,255,.02);border:1px solid rgba(218,165,32,.12);padding:32px 28px;border-radius:0;transition:border-color .3s,background .3s}
+.process-step:hover{border-color:rgba(218,165,32,.35);background:rgba(255,255,255,.04)}
+.process-num{font-family:var(--oswald);font-size:42px;font-weight:300;color:var(--gold);letter-spacing:.05em;margin-bottom:8px}
+.process-title{font-family:var(--oswald);font-size:14px;letter-spacing:.22em;color:var(--text);margin-bottom:14px;font-weight:600}
+.process-body{font-family:var(--inter);font-size:14px;line-height:1.75;color:var(--text-muted)}
+.process-cta{text-align:center;padding:0 24px 100px}
+@media(max-width:768px){.process-hero{margin-top:90px}.process-grid{gap:20px;margin-bottom:60px}.process-step{padding:24px 20px}.process-num{font-size:32px}}
+
+/* ============ TRACK ORDER PAGE ============ */
+.track-hero{max-width:900px;margin:120px auto 50px;padding:0 24px;text-align:center}
+.track-intro{font-family:var(--inter);font-size:15px;line-height:1.7;color:var(--text-muted);max-width:600px;margin:20px auto 0}
+.track-grid{max-width:1100px;margin:0 auto 100px;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px}
+@media(max-width:900px){.track-grid{grid-template-columns:1fr;gap:40px}}
+.track-form{display:flex;flex-direction:column;gap:14px}
+.track-label{font-family:var(--inter);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:8px}
+.track-form input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:14px 16px;font-family:var(--inter);font-size:14px;border-radius:0;outline:none;transition:border-color .2s}
+.track-form input:focus{border-color:var(--gold)}
+.track-submit{background:var(--gold);color:#0a0a0a;border:none;padding:16px 24px;font-family:var(--oswald);font-size:13px;letter-spacing:.22em;font-weight:600;cursor:pointer;margin-top:12px;transition:background .2s}
+.track-submit:hover{background:#dfb968}
+.track-result{margin-top:24px;padding:20px;border:1px solid rgba(218,165,32,.25);background:rgba(218,165,32,.05);font-family:var(--inter);font-size:14px;color:var(--text);line-height:1.7}
+.track-result.error{border-color:rgba(255,90,90,.4);background:rgba(255,90,90,.05)}
+.track-side-title{font-family:var(--oswald);font-size:14px;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:24px}
+.track-step{display:grid;grid-template-columns:48px 1fr;gap:18px;margin-bottom:22px}
+.track-step-num{width:36px;height:36px;border:1px solid rgba(218,165,32,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--oswald);font-size:14px;color:var(--gold);font-weight:600}
+.track-step-title{font-family:var(--oswald);font-size:12px;letter-spacing:.18em;color:var(--text);margin-bottom:6px;font-weight:600}
+.track-step-body{font-family:var(--inter);font-size:13px;line-height:1.6;color:var(--text-muted)}
+.track-help{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-family:var(--inter);font-size:13px;color:var(--text-muted);line-height:1.6}
+.track-help a{color:var(--gold)}
+
+/* ============ PRESS PAGE ============ */
+.press-hero{max-width:900px;margin:120px auto 50px;padding:0 24px;text-align:center}
+.press-intro{font-family:var(--inter);font-size:16px;line-height:1.7;color:var(--text-muted);max-width:680px;margin:20px auto 0}
+.press-bio-block,.press-quickfacts,.press-contact-block,.press-coverage-block{max-width:900px;margin:0 auto 50px;padding:0 24px}
+.press-section-title{font-family:var(--oswald);font-size:14px;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(218,165,32,.18)}
+.press-body{font-family:var(--inter);font-size:15px;line-height:1.8;color:var(--text)}
+.press-body-muted{color:var(--text-muted)}
+.press-facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 32px}
+.press-fact{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.press-fact-label{font-family:var(--inter);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted)}
+.press-fact-value{font-family:var(--inter);font-size:14px;color:var(--text);line-height:1.5}
+.press-contact-info{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+.press-contact-info > div{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline}
+.press-contact-info a{color:var(--gold)}
+@media(max-width:768px){.press-hero{margin-top:90px}.press-contact-info > div{grid-template-columns:1fr;gap:4px}}
+
+/* ============ FOOTER ADDITIONAL LINKS ============ */
+.footer-utility-links{display:flex;flex-wrap:wrap;gap:18px 24px;justify-content:center;margin-top:12px;font-family:var(--inter);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.footer-utility-links a{color:var(--text-muted);transition:color .2s}
+.footer-utility-links a:hover{color:var(--gold)}
+
+</style>
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ArtGallery",
+      "@id": "https://natberhegallery.com/#gallery",
+      "name": "Nat Berhe Gallery",
+      "description": "Original oil paintings and canvas prints by Natnael 'Nat' Berhe. Figurative Abstract Expressionism. Former NFL player turned contemporary artist.",
+      "url": "https://natberhegallery.com",
+      "email": "info@natberhegallery.com",
+      "sameAs": [
+        "https://instagram.com/natberhe"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://natberhegallery.com/#artist",
+        "name": "Natnael Berhe",
+        "alternateName": "Nat Berhe",
+        "description": "Former NFL safety (NY Giants, Pittsburgh Steelers) turned figurative abstract expressionist painter. First Eritrean American player drafted in NFL history.",
+        "jobTitle": "Artist",
+        "knowsAbout": ["Oil Painting", "Figurative Abstract Expressionism", "Contemporary Art"],
+        "birthDate": "1991",
+        "birthPlace": {
+          "@type": "Place",
+          "name": "Fontana, California"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "San Diego State University"
+        },
+        "sameAs": [
+          "https://instagram.com/natberhe",
+          "https://en.wikipedia.org/wiki/Nat_Berhe"
+        ]
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Nat Berhe Original Paintings",
+        "numberOfItems": 69
+      },
+      "creator": {
+        "@type": "SoftwareApplication",
+        "name": "Perplexity Computer",
+        "url": "https://www.perplexity.ai/computer"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://natberhegallery.com/#auction",
+      "name": "The Inaugural Auction",
+      "description": "Live auction of 7 original oil paintings by Nat Berhe. Museum quality figurative abstract expressionist works with estimates from $70,000 to $220,000.",
+      "startDate": "2026-07-06T19:00:00-07:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://natberhegallery.com/#auction"
+      },
+      "organizer": {
+        "@type": "ArtGallery",
+        "name": "Nat Berhe Gallery",
+        "url": "https://natberhegallery.com"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "7000",
+        "highPrice": "22000",
+        "priceCurrency": "USD",
+        "offerCount": 7
+      },
+      "image": "https://cdn.shopify.com/s/files/1/0871/6959/7740/files/art65.png?v=1763599089"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://natberhegallery.com/#website",
+      "url": "https://natberhegallery.com",
+      "name": "Nat Berhe Gallery",
+      "description": "Original oil paintings and canvas prints by Nat Berhe",
+      "publisher": {
+        "@type": "ArtGallery",
+        "name": "Nat Berhe Gallery"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://natberhegallery.com"},
+        {"@type": "ListItem", "position": 2, "name": "The Collection", "item": "https://natberhegallery.com/#gallery"},
+        {"@type": "ListItem", "position": 3, "name": "The Auction", "item": "https://natberhegallery.com/#auction"},
+        {"@type": "ListItem", "position": 4, "name": "The Artist", "item": "https://natberhegallery.com/#artist"},
+        {"@type": "ListItem", "position": 5, "name": "Canvas Prints", "item": "https://natberhegallery.com/#prints"},
+        {"@type": "ListItem", "position": 6, "name": "Contact", "item": "https://natberhegallery.com/#contact"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much do Nat Berhe canvas prints cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Canvas prints start from $55 for smaller sizes and go up to $350 for large 36x48 inch and 48x36 inch formats. All prints are museum quality stretched canvas with archival inks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do Nat Berhe original paintings cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Original oil paintings range from $15,000 to $170,000 depending on size and subject. Each original is one of a kind and includes a Certificate of Authenticity. Payment plans are available on originals over $30,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the Nat Berhe Gallery auction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Inaugural Auction takes place July 6, 2026 at 7:00 PM PST. It features 7 museum quality original oil paintings with estimates from $70,000 to $220,000. Register to bid at natberhegallery.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is Nat Berhe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Natnael Nat Berhe is the first Eritrean American player drafted in NFL history. He played 42 games as a safety with the New York Giants (2014 to 2017) and Pittsburgh Steelers (2018). He is now a Los Angeles based figurative abstract expressionist painter whose work has been exhibited at the Sasse Museum of Art."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Nat Berhe Gallery ship internationally?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Nat Berhe Gallery ships canvas prints worldwide through Printify. Original paintings ship with insured, secure packaging. Contact info@natberhegallery.com for international original shipping quotes."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Nat Berhe Original Oil Paintings for Sale",
+      "description": "Browse 69 original oil paintings for sale by contemporary Los Angeles artist Nat Berhe",
+      "numberOfItems": 69,
+      "url": "https://natberhegallery.com/#gallery"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Nat Berhe Canvas Prints for Sale",
+      "description": "Buy affordable museum quality canvas prints of Nat Berhe paintings, starting from $55",
+      "numberOfItems": 78,
+      "url": "https://natberhegallery.com/#prints"
+    }
+  ]
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script src="{{  'catalog-v11.js' | asset_url }}"></script>
+
+
+<meta name="cache-version" content="1779983750">
+</head>
+<body>
+
+
+<!-- AMBIENT SOUND TOGGLE -->
+<div class="ambient-toggle" id="ambientToggle" role="button" tabindex="0" aria-label="Toggle ambient sound" title="Toggle ambient sound">
+  <div class="ambient-bars">
+    <div class="ambient-bar"></div>
+    <div class="ambient-bar"></div>
+    <div class="ambient-bar"></div>
+    <div class="ambient-bar"></div>
+  </div>
+</div>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="nav">
+  <div class="nav-logo" role="button" tabindex="0" aria-label="Home">
+    <span class="nav-logo-main">NAT BERHE</span>
+    <span class="nav-logo-sub">GALLERY</span>
+  </div>
+  <div class="nav-links">
+    <a href="#gallery" data-page="gallery" onclick="navigateTo('gallery')">The Collection</a>
+    <a href="#prints" data-page="prints" onclick="navigateTo('prints')">Prints</a>
+    <a href="#auction" data-page="auction" onclick="navigateTo('auction')">The Auction</a>
+    <a href="#artist" data-page="artist" onclick="navigateTo('artist')">The Artist</a>
+    <a href="#contact" data-page="contact" onclick="navigateTo('contact')">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburgerBtn">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="javascript:void(0)" data-nav="gallery" onclick="navigateTo('gallery');return false;">The Collection</a>
+  <a href="javascript:void(0)" data-nav="prints" onclick="navigateTo('prints');return false;">Prints</a>
+  <a href="javascript:void(0)" data-nav="auction" onclick="navigateTo('auction');return false;">The Auction</a>
+  <a href="javascript:void(0)" data-nav="artist" onclick="navigateTo('artist');return false;">The Artist</a>
+  <a href="javascript:void(0)" data-nav="contact" onclick="navigateTo('contact');return false;">Contact</a>
+</div>
+
+<!-- ========== PAGE: HOME ========== -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img id="heroBgImg" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/18888867-af17-4b5e-9582-828174e13e92.png?v=1773859259" alt="Original oil painting by Nat Berhe, figurative abstract expressionism" loading="eager">
+    </div>
+    <div class="hero-content">
+      <a href="#auction" class="hero-pill" onclick="navigateTo('auction')" style="cursor:pointer">
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        THE INAUGURAL AUCTION
+      </a>
+      <p class="hero-subtitle" id="heroSubtitle">FEATURED WORK &middot; OIL ON CANVAS</p>
+      <h1 class="hero-title">NAT BERHE</h1>
+      <p class="hero-tagline">Figurative Abstract Expressionism</p>
+      <div class="hero-buttons">
+        <a href="#gallery" class="hero-btn" onclick="navigateTo('gallery')">ENTER THE COLLECTION</a>
+        <a href="#auction" class="hero-btn hero-btn-gold" onclick="navigateTo('auction')">REGISTER TO BID</a>
+      </div>
+      <div class="scroll-indicator" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})" style="cursor:pointer">
+        <span class="scroll-text">SCROLL TO EXPLORE</span>
+        <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXHIBITION CREDENTIAL -->
+  <div class="credential-bar reveal">
+    <span class="credential-text">EXHIBITED AT</span>
+    <span class="credential-name">SASSE MUSEUM OF ART</span>
+    <span class="credential-show">Colorstraction: A Personal Perspective, 2025</span>
+  </div>
+
+  <!-- MARQUEE 1 -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-text">FIGURATIVE ABSTRACT EXPRESSIONISM &nbsp;&middot;&nbsp; OIL ON CANVAS &nbsp;&middot;&nbsp; FROM THE FIELD TO THE CANVAS &nbsp;&middot;&nbsp; EST. 2024 &nbsp;&middot;&nbsp; FIGURATIVE ABSTRACT EXPRESSIONISM &nbsp;&middot;&nbsp; OIL ON CANVAS &nbsp;&middot;&nbsp; FROM THE FIELD TO THE CANVAS &nbsp;&middot;&nbsp; EST. 2024 &nbsp;&middot;&nbsp; FIGURATIVE ABSTRACT EXPRESSIONISM &nbsp;&middot;&nbsp; OIL ON CANVAS &nbsp;&middot;&nbsp; FROM THE FIELD TO THE CANVAS &nbsp;&middot;&nbsp; EST. 2024 &nbsp;&middot;&nbsp; FIGURATIVE ABSTRACT EXPRESSIONISM &nbsp;&middot;&nbsp; OIL ON CANVAS &nbsp;&middot;&nbsp; FROM THE FIELD TO THE CANVAS &nbsp;&middot;&nbsp; EST. 2024 &nbsp;&middot;&nbsp; </span>
+    </div>
+  </div>
+
+  <!-- FEATURED WORKS -->
+  <section class="section">
+    <h2 class="section-title reveal">FEATURED WORKS</h2>
+    <div class="section-bar"></div>
+    <div class="featured-grid reveal" id="featuredHero"></div>
+    <div class="featured-grid-bottom reveal" id="featuredBottom"></div>
+  </section>
+
+  <!-- PRINTS BANNER -->
+  <section class="prints-banner reveal">
+    <div class="prints-banner-inner">
+      <p class="section-label">LIMITED EDITION</p>
+      <h2 class="prints-banner-title">CANVAS PRINTS</h2>
+      <div class="section-bar" style="margin:0 auto 16px"></div>
+      <p class="prints-banner-text">Own a piece of the collection. Museum quality canvas prints available in multiple sizes. Produced on premium stretched canvas with archival inks.</p>
+      <p class="prints-banner-price-hook">STARTING FROM $55</p>
+      <div class="prints-showcase reveal" id="printsShowcase"></div>
+      <a href="#prints" class="prints-banner-btn" onclick="navigateTo('prints')">VIEW ALL 78 PRINTS</a>
+    </div>
+  </section>
+
+  <!-- ARTIST TEASER -->
+  <section class="artist-teaser">
+    <div class="artist-teaser-img reveal-left">
+      <img src="{{ 'nat-portrait.jpg' | asset_url }}" alt="Natnael Nat Berhe, former NFL player and figurative abstract expressionist artist" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <div class="artist-teaser-content reveal-right">
+      <h2 class="artist-teaser-heading">FROM THE FIELD<br>TO THE CANVAS</h2>
+      <div class="artist-teaser-bar"></div>
+      <p class="artist-teaser-text">Nat Berhe, the first Eritrean American drafted in NFL history, traded the gridiron for the canvas. After 42 games across five seasons with the New York Giants and Pittsburgh Steelers (2014 to 2018), he found a new arena for his intensity: oil on canvas.</p>
+      <p class="artist-teaser-text">Working in Figurative Abstract Expressionism, Berhe paints large, confrontational pieces built with thick impasto brushwork and vivid, clashing color. Ghostlike figures emerge from chaos, dissolving the line between power and vulnerability. In 2025, four of his works were exhibited at the Sasse Museum of Art. Based in Los Angeles, his studio practice carries the same discipline that defined his career on the field.</p>
+      <div class="artist-stats">
+        <div class="artist-stat">
+          <div class="artist-stat-value">42</div>
+          <div class="artist-stat-label">Games</div>
+        </div>
+        <div class="artist-stat">
+          <div class="artist-stat-value">5</div>
+          <div class="artist-stat-label">Seasons</div>
+        </div>
+        <div class="artist-stat">
+          <div class="artist-stat-value">2014 to 18</div>
+          <div class="artist-stat-label">Career</div>
+        </div>
+        <div class="artist-stat">
+          <div class="artist-stat-value">1st</div>
+          <div class="artist-stat-label">Eritrean American Drafted</div>
+        </div>
+      </div>
+      <a href="#artist" class="artist-btn" onclick="navigateTo('artist')">DISCOVER THE ARTIST</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE 2 - Credibility -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-text">SASSE MUSEUM OF ART &nbsp;&middot;&nbsp; SAN DIEGO STATE &nbsp;&middot;&nbsp; NY GIANTS &nbsp;&middot;&nbsp; PITTSBURGH STEELERS &nbsp;&middot;&nbsp; SASSE MUSEUM OF ART &nbsp;&middot;&nbsp; SAN DIEGO STATE &nbsp;&middot;&nbsp; NY GIANTS &nbsp;&middot;&nbsp; PITTSBURGH STEELERS &nbsp;&middot;&nbsp; SASSE MUSEUM OF ART &nbsp;&middot;&nbsp; SAN DIEGO STATE &nbsp;&middot;&nbsp; NY GIANTS &nbsp;&middot;&nbsp; PITTSBURGH STEELERS &nbsp;&middot;&nbsp; SASSE MUSEUM OF ART &nbsp;&middot;&nbsp; SAN DIEGO STATE &nbsp;&middot;&nbsp; NY GIANTS &nbsp;&middot;&nbsp; PITTSBURGH STEELERS &nbsp;&middot;&nbsp; </span>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <section class="quote-section fade-up">
+    <p class="quote-text">&ldquo;Every painting is a controlled collision. The discipline of the field meets the freedom of the canvas.&rdquo;</p>
+    <p class="quote-attr">NAT BERHE</p>
+  </section>
+
+  <!-- COLLECTORS CIRCLE -->
+  <section class="collectors">
+    <h2 class="collectors-title">JOIN THE COLLECTOR&rsquo;S CIRCLE</h2>
+    <p class="collectors-sub">Be first to know about new works, private viewings, and auction previews.</p>
+    <div class="collectors-form">
+      <input type="email" class="collectors-input" placeholder="Your email address">
+      <button class="collectors-submit">SUBSCRIBE</button>
+    </div>
+  </section>
+</div>
+
+<!-- ========== PAGE: GALLERY ========== -->
+<div class="page" id="page-gallery">
+  <div class="gallery-header">
+    <p class="section-label">NAT BERHE GALLERY</p>
+    <h1 class="section-title">THE COLLECTION</h1>
+    <div class="section-bar"></div>
+    <p class="prints-header-desc">Original oil on canvas works by Natnael Berhe. Each piece is one of a kind and includes a Certificate of Authenticity. Starting from $15,000.</p>
+
+    <div class="catalog-controls">
+      <div class="catalog-search-wrap">
+        <svg class="catalog-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg>
+        <input type="text" class="catalog-search" id="gallerySearch" placeholder="Search paintings, e.g. Witness, Crimson, Colorfall" aria-label="Search paintings">
+        <button class="catalog-search-clear" id="gallerySearchClear" aria-label="Clear search" type="button">&times;</button>
+      </div>
+      <div class="catalog-filter-row">
+        <button class="filter-chip active" data-filter-grid="galleryGrid" data-filter="all">All</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-under-25k">Under $25K</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-25k-75k">$25K to $75K</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="price-over-75k">$75K+</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="size-small">Small (under 30")</button>
+        <button class="filter-chip" data-filter-grid="galleryGrid" data-filter="size-large">Large (60"+)</button>
+      </div>
+    </div>
+
+    <div class="gallery-sort">
+      <span class="gallery-count" id="galleryCount">69 works</span>
+      <div class="sort-wrap">
+        <button class="sort-toggle" id="sortToggle" onclick="toggleSort()">SORT BY <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="sort-menu" id="sortMenu">
+          <button class="sort-option" onclick="pickSort('default','SORT BY')">DEFAULT</button>
+          <button class="sort-option" onclick="pickSort('price-low','PRICE: LOW TO HIGH')">PRICE: LOW TO HIGH</button>
+          <button class="sort-option" onclick="pickSort('price-high','PRICE: HIGH TO LOW')">PRICE: HIGH TO LOW</button>
+          <button class="sort-option" onclick="pickSort('name','NAME: A TO Z')">NAME: A TO Z</button>
+          <button class="sort-option" onclick="pickSort('size','SIZE: LARGEST')">SIZE: LARGEST FIRST</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+  <div class="empty-state" id="galleryEmpty" style="display:none">
+    <p>No works match your search.</p>
+    <button class="empty-reset" onclick="resetCatalogFilters('galleryGrid')">Clear filters</button>
+  </div>
+</div>
+
+<!-- ========== PAGE: PRINTS ========== -->
+<div class="page" id="page-prints">
+  <div class="gallery-header">
+    <p class="section-label">LIMITED EDITION</p>
+    <h1 class="section-title">CANVAS PRINTS</h1>
+    <div class="section-bar"></div>
+    <p class="prints-header-desc">Museum quality canvas prints of Nat Berhe&rsquo;s original oil paintings. Each print is produced on premium stretched canvas with archival inks, available in multiple sizes. Starting from $55.</p>
+
+    <div class="trust-strip">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Archival Inks</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Borderless Wrap</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ships from US</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Made to Order</span>
+    </div>
+
+    <div class="catalog-controls">
+      <div class="catalog-search-wrap">
+        <svg class="catalog-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg>
+        <input type="text" class="catalog-search" id="printsSearch" placeholder="Search prints, e.g. Witness, Crimson, Colorfall" aria-label="Search prints">
+        <button class="catalog-search-clear" id="printsSearchClear" aria-label="Clear search" type="button">&times;</button>
+      </div>
+      <div class="catalog-filter-row">
+        <button class="filter-chip active" data-filter-grid="printsGrid" data-filter="all">All</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="price-under-100">Under $100</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="price-100-200">$100 to $200</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="price-over-200">$200+</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="shape-square">Square</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="shape-portrait">Portrait</button>
+        <button class="filter-chip" data-filter-grid="printsGrid" data-filter="shape-landscape">Landscape</button>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-grid" id="printsGrid"></div>
+  <div class="empty-state" id="printsEmpty" style="display:none">
+    <p>No prints match your search.</p>
+    <button class="empty-reset" onclick="resetCatalogFilters('printsGrid')">Clear filters</button>
+  </div>
+</div>
+
+<!-- ========== PAGE: AUCTION ========== -->
+<div class="page" id="page-auction">
+
+  <!-- === CINEMATIC COUNTDOWN HERO === -->
+  <section class="auc-hero">
+    <div class="auc-grain"></div>
+    <div class="auc-live-badge" id="aucLiveBadge"><span class="auc-live-dot"></span> LIVE</div>
+    <div class="auc-hero-tag">Nat Berhe Gallery Presents</div>
+    <h1 class="auc-hero-title">THE INAUGURAL<br>AUCTION</h1>
+    <p class="auc-hero-date">JULY 6, 2026 &middot; 7:00 PM PST</p>
+    <div class="auc-cd" id="aucCountdown">
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-days">--</div><div class="auc-cd-label">Days</div></div>
+      <div class="auc-cd-sep">:</div>
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-hours">--</div><div class="auc-cd-label">Hours</div></div>
+      <div class="auc-cd-sep">:</div>
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-mins">--</div><div class="auc-cd-label">Minutes</div></div>
+      <div class="auc-cd-sep">:</div>
+      <div class="auc-cd-block"><div class="auc-cd-num" id="auc-secs">--</div><div class="auc-cd-label">Seconds</div></div>
+    </div>
+    <p class="auc-hero-sub">Register for a paddle number to bid live</p>
+    <div class="auc-hero-line"></div>
+  </section>
+
+  <!-- === LOT CAROUSEL === -->
+  <section class="auc-lots-section">
+    <div class="auc-lots-title-bar">
+      <h2 class="auc-lots-heading">FEATURED LOTS</h2>
+      <div class="auc-lots-gold-line"></div>
+    </div>
+    <div class="auc-carousel" id="aucCarousel">
+      <!-- Cards rendered by JS -->
+    </div>
+    <div class="auc-nav">
+      <button class="auc-nav-btn" onclick="aucNav(-1)" aria-label="Previous lot">&#8592;</button>
+      <div class="auc-nav-counter"><span id="aucNavCurr">1</span> / <span id="aucNavTotal">8</span></div>
+      <button class="auc-nav-btn" onclick="aucNav(1)" aria-label="Next lot">&#8594;</button>
+    </div>
+    <div class="auc-thumbs" id="aucThumbs">
+      <!-- Thumbnails rendered by JS -->
+    </div>
+  </section>
+
+  <!-- === BIDDER REGISTRATION === -->
+  <section class="auc-reg" id="aucReg">
+    <div class="auc-reg-line"></div>
+    <div id="aucRegForm">
+      <h3 class="auc-reg-title">REGISTER TO BID</h3>
+      <p class="auc-reg-sub">Secure your paddle number and join the live auction event</p>
+      <form class="auc-reg-form" onsubmit="event.preventDefault();aucRegister()">
+        <input class="auc-reg-input" type="text" id="aucRegName" placeholder="Full Name" required>
+        <input class="auc-reg-input" type="email" id="aucRegEmail" placeholder="Email Address" required>
+        <input class="auc-reg-input" type="tel" id="aucRegPhone" placeholder="Phone Number" required>
+        <button type="submit" class="auc-reg-submit">REQUEST PADDLE NUMBER</button>
+      </form>
+      <p class="auc-reg-note">Your paddle number is your bidding identity for the evening. All lots offered subject to reserve. Conditions of sale apply.</p>
+    </div>
+    <div class="auc-reg-confirmed" id="aucRegConfirmed">
+      <div class="reg-success">&#10003; YOU&rsquo;RE REGISTERED</div>
+      <div class="paddle-label">YOUR PADDLE NUMBER</div>
+      <div class="paddle-display" id="aucPaddleDisplay">#---</div>
+      <div class="paddle-name" id="aucPaddleName"></div>
+      <p class="reg-info">Your paddle number is your bidding identity for the evening. Present this number when placing bids.</p>
+    </div>
+  </section>
+
+  <!-- === HOW TO BID === -->
+  <section class="auc-howto">
+    <h2 class="auc-howto-title">How to Bid</h2>
+    <div class="auc-howto-line"></div>
+    <div class="auc-howto-grid">
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">01</div>
+        <div class="auc-howto-step-title">Register</div>
+        <p class="auc-howto-step-body">Request your paddle number above. Registration takes one minute and closes one hour before the auction begins on July 6 at 7PM PST.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">02</div>
+        <div class="auc-howto-step-title">Preview</div>
+        <p class="auc-howto-step-body">Browse the seven featured lots above. Each comes with an estimate range. Email questions about condition, dimensions, or provenance to info@natberhegallery.com.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">03</div>
+        <div class="auc-howto-step-title">Place Your Bid</div>
+        <p class="auc-howto-step-body">Bid live in our online auction room with your paddle number. Bids increase in $500 increments. The hammer falls when bidding pauses for ten seconds.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">04</div>
+        <div class="auc-howto-step-title">Buyer's Premium</div>
+        <p class="auc-howto-step-body">A 15 percent buyer's premium is added to the hammer price. California sales tax applies to in-state buyers. All lots include a Certificate of Authenticity.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">05</div>
+        <div class="auc-howto-step-title">Payment</div>
+        <p class="auc-howto-step-body">Winners receive an invoice by email within 24 hours. Payment is due within seven days via wire transfer, credit card, or Affirm financing for amounts over $50,000.</p>
+      </div>
+      <div class="auc-howto-step">
+        <div class="auc-howto-step-num">06</div>
+        <div class="auc-howto-step-title">White Glove Delivery</div>
+        <p class="auc-howto-step-body">Each winning lot ships with white-glove handling, insured to the hammer price, with installation available on request in Los Angeles, New York, and Miami.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========== PAGE: ARTIST ========== -->
+<div class="page" id="page-artist">
+  <div class="artist-hero">
+    <img src="{{ 'steelers-action.jpg' | asset_url }}" alt="Natnael Nat Berhe, Pittsburgh Steelers safety #31, NFL career before becoming an artist" class="artist-hero-img">
+    <h1 class="artist-hero-title">THE ARTIST</h1>
+  </div>
+  <div class="artist-bio">
+    <p><span class="drop-cap">B</span>orn in Fontana, California in 1991, Natnael &lsquo;Nat&rsquo; Berhe became the first Eritrean American player drafted in NFL history when the New York Giants selected him in the sixth round of the 2014 NFL Draft. A standout safety at San Diego State University, Berhe earned the nickname &lsquo;The Missile&rsquo; for his fearless hitting style. He played 42 games across five NFL seasons with the New York Giants (2014 to 2017) and the Pittsburgh Steelers (2018).</p>
+    <p>The transition from football to art was not a retirement. It was a redirection. Berhe had been painting privately for years, working through the same questions on canvas that he carried onto the field: what does it mean to perform under pressure, to wear a uniform, to be watched by thousands and still feel invisible? When his playing career ended, the studio became the new arena.</p>
+    <p>His work in oil on canvas is rooted in figurative abstract expressionism, blending bold composition with raw, physical texture. The paintings are large, often confrontational, built with thick impasto brushwork that gives every surface a sculptural presence. Ghostlike figures emerge from fields of vivid, clashing color. Skulls wear military regalia. Children hold weapons. Men in suits dissolve into noise. The themes are identity, struggle, power, and transcendence, explored with the same controlled intensity that once defined his play on the field.</p>
+    <p>In 2025, four of Berhe&rsquo;s paintings were selected for exhibition at the Sasse Museum of Art in Pomona, California for the show &ldquo;Colorstraction: A Personal Perspective.&rdquo; It was his first major institutional showing, and it confirmed what collectors had already begun to recognize: this is an artist working at a level that demands attention. His gallery launched in 2024, and the inaugural live auction of eight museum quality originals is scheduled for July 6, 2026.</p>
+  </div>
+  <div class="artist-portrait-section reveal">
+    <h3 class="artist-portrait-title">BEYOND THE CANVAS</h3>
+    <div class="artist-portrait-bar"></div>
+    <div style="max-width:500px;margin:0 auto">
+      <div class="artist-portrait-item">
+        <img src="{{ 'IMG_4138.jpeg' | asset_url }}" alt="Natnael Nat Berhe, artist and former NFL safety, editorial portrait" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="timeline">
+    <h3 class="timeline-title">CAREER TIMELINE</h3>
+    <div class="timeline-item"><div class="timeline-year">1991</div><div class="timeline-desc">Born in Fontana, CA</div></div>
+    <div class="timeline-item"><div class="timeline-year">2010 to 2013</div><div class="timeline-desc">San Diego State University</div></div>
+    <div class="timeline-item"><div class="timeline-year">2014</div><div class="timeline-desc">NFL Draft, First Eritrean American drafted</div></div>
+    <div class="timeline-item"><div class="timeline-year">2014 to 17</div><div class="timeline-desc">NY Giants</div></div>
+    <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-desc">Steelers</div></div>
+    <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-desc">Gallery Launches</div></div>
+    <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-desc">Sasse Museum of Art, &ldquo;Colorstraction&rdquo; Exhibition</div></div>
+  </div>
+  <div class="artist-gallery">
+    <h3 class="artist-gallery-title">FROM THE FIELD</h3>
+    <div class="artist-gallery-bar"></div>
+    <div class="artist-gallery-grid">
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_4253.jpeg' | asset_url }}" alt="Nat Berhe, San Diego State Aztecs #20" loading="lazy">
+        <div class="ag-caption">San Diego State, #20</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_4252.jpeg' | asset_url }}" alt="Nat Berhe #29 tackle vs New England Patriots" loading="lazy">
+        <div class="ag-caption">Giants vs Patriots, #29</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_9025.jpeg' | asset_url }}" alt="Nat Berhe #31 diving tackle vs Philadelphia Eagles" loading="lazy">
+        <div class="ag-caption">Steelers vs Eagles, #31</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_9225.jpeg' | asset_url }}" alt="Nat Berhe #31 Pittsburgh Steelers in-game stance" loading="lazy">
+        <div class="ag-caption">Pittsburgh Steelers, #31</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_4357.jpeg' | asset_url }}" alt="Nat Berhe #29 New York Giants celebration" loading="lazy">
+        <div class="ag-caption">NY Giants, #29</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_7945.jpeg' | asset_url }}" alt="Nat Berhe #29 interception vs Dallas Cowboys" loading="lazy">
+        <div class="ag-caption">Giants vs Cowboys</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_4085.jpeg' | asset_url }}" alt="Nat Berhe #29 New York Giants running" loading="lazy">
+        <div class="ag-caption">NY Giants, #29</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_7952.jpeg' | asset_url }}" alt="Nat Berhe smiling at Steelers practice" loading="lazy">
+        <div class="ag-caption">Steelers Training Camp</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_8698.jpeg' | asset_url }}" alt="Nat Berhe profile at Steelers practice" loading="lazy">
+        <div class="ag-caption">Steelers Practice</div>
+      </div>
+      <div class="artist-gallery-item">
+        <img src="{{ 'IMG_8443.jpeg' | asset_url }}" alt="Nat Berhe at the 2018 DC Eritrean Festival, Pittsburgh Steelers" loading="lazy">
+        <div class="ag-caption">DC Eritrean Festival, 2018</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE: CONTACT ========== -->
+<div class="page" id="page-contact">
+  <div class="contact-section">
+    <h1 class="section-title">INQUIRIES</h1>
+    <div class="section-bar"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          <a href="mailto:info@natberhegallery.com" target="_blank" rel="noopener noreferrer">info@natberhegallery.com</a>
+        </div>
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <a href="https://instagram.com/natberhe" target="_blank" rel="noopener noreferrer">@natberhe</a>
+        </div>
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <a href="https://natberhegallery.com" target="_blank" rel="noopener noreferrer">natberhegallery.com</a>
+        </div>
+        <div class="contact-appointment">
+          <p>Private viewings available by appointment.</p>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="event.preventDefault()">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="contact-submit">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE: PROCESS ========== -->
+<div class="page" id="page-process">
+  <div class="process-hero">
+    <p class="section-label">INSIDE THE STUDIO</p>
+    <h1 class="section-title">THE PROCESS</h1>
+    <div class="section-bar"></div>
+    <p class="process-intro">Each painting begins with raw canvas, oil, and a question Natnael wants to answer in paint. No two works share the same path. What follows is a glimpse into how these pieces come to life.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <h3 class="process-title">THE SPARK</h3>
+      <p class="process-body">Every work starts with a feeling, a memory, a fragment from the locker room or a quiet moment at home. Natnael calls these the unfinished conversations, the ones that need paint to be resolved.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <h3 class="process-title">RAW CANVAS</h3>
+      <p class="process-body">Linen or cotton, stretched and primed by hand. The size of each piece is chosen to match the weight of the subject. Some works demand a 60 inch field. Others sit best at 16 inches.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <h3 class="process-title">FIRST MARKS</h3>
+      <p class="process-body">Loose gestures in burnt sienna or ultramarine establish the composition. Natnael works fast at this stage, the way a defensive back reads a route, decisions made in fractions of seconds.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <h3 class="process-title">LAYERS AND WEIGHT</h3>
+      <p class="process-body">Oil paint built up in passes, sometimes a dozen layers thick. Color sits on color. Texture earns its place. A painting is finished when nothing else can be added or removed without losing the truth of it.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">05</div>
+      <h3 class="process-title">REST AND RETURN</h3>
+      <p class="process-body">Every piece sits for at least two weeks before it is declared finished. Natnael returns with fresh eyes. Sometimes the painting tells him it is done. Sometimes it asks for one more season of attention.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">06</div>
+      <h3 class="process-title">SIGNATURE AND COA</h3>
+      <p class="process-body">Signed, dated, photographed in the studio. A Certificate of Authenticity is prepared with the work, including the painting's title, dimensions, medium, and a personal note from the artist.</p>
+    </div>
+  </div>
+  <div class="process-cta">
+    <a href="#gallery" class="hero-btn hero-btn-gold" onclick="navigateTo('gallery')">VIEW THE FINISHED WORKS</a>
+  </div>
+</div>
+
+<!-- ========== PAGE: TRACK ORDER ========== -->
+<div class="page" id="page-track">
+  <div class="track-hero">
+    <p class="section-label">ORDER LOOKUP</p>
+    <h1 class="section-title">TRACK YOUR ORDER</h1>
+    <div class="section-bar"></div>
+    <p class="track-intro">Enter your order number and email below, or use the tracking link emailed to you at the time of shipment.</p>
+  </div>
+  <div class="track-grid">
+    <div class="track-form-wrap">
+      <form class="track-form" onsubmit="event.preventDefault(); trackOrderSubmit();">
+        <label class="track-label">ORDER NUMBER</label>
+        <input type="text" id="trackOrderInput" placeholder="e.g. 1024" required>
+        <label class="track-label">EMAIL ADDRESS</label>
+        <input type="email" id="trackEmailInput" placeholder="the email used at checkout" required>
+        <button type="submit" class="track-submit">LOOK UP ORDER</button>
+      </form>
+      <div class="track-result" id="trackResult" style="display:none"></div>
+    </div>
+    <div class="track-side">
+      <h3 class="track-side-title">PRODUCTION AND SHIPPING</h3>
+      <div class="track-step">
+        <div class="track-step-num">1</div>
+        <div>
+          <div class="track-step-title">ORDER RECEIVED</div>
+          <p class="track-step-body">Confirmation email within minutes of checkout.</p>
+        </div>
+      </div>
+      <div class="track-step">
+        <div class="track-step-num">2</div>
+        <div>
+          <div class="track-step-title">PRODUCTION</div>
+          <p class="track-step-body">Prints are made to order, 3 to 5 business days. Originals ship from the studio within 2 days.</p>
+        </div>
+      </div>
+      <div class="track-step">
+        <div class="track-step-num">3</div>
+        <div>
+          <div class="track-step-title">SHIPPED</div>
+          <p class="track-step-body">UPS Ground, typically 3 to 7 business days in the US. Tracking number sent by email when the package leaves the facility.</p>
+        </div>
+      </div>
+      <div class="track-step">
+        <div class="track-step-num">4</div>
+        <div>
+          <div class="track-step-title">DELIVERED</div>
+          <p class="track-step-body">Signature not required. Originals over $50,000 ship with insurance and require an adult signature.</p>
+        </div>
+      </div>
+      <div class="track-help">
+        <p>Need help? Email <a href="mailto:info@natberhegallery.com">info@natberhegallery.com</a> with your order number.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE: PRESS ========== -->
+<div class="page" id="page-press">
+  <div class="press-hero">
+    <p class="section-label">FOR JOURNALISTS AND CURATORS</p>
+    <h1 class="section-title">PRESS</h1>
+    <div class="section-bar"></div>
+    <p class="press-intro">Natnael Berhe, former NFL safety turned figurative abstract expressionist, is available for select interviews, gallery features, and editorial opportunities.</p>
+  </div>
+
+  <div class="press-bio-block">
+    <h2 class="press-section-title">ARTIST STATEMENT</h2>
+    <p class="press-body">Natnael Berhe is an Eritrean American figurative abstract expressionist based in Los Angeles. After a six year career as a safety in the National Football League with the New York Giants and Pittsburgh Steelers, Berhe turned full time to oil painting in 2022. His work investigates identity, memory, and the body in motion, drawing on his lived experience between two cultures and two careers. His first solo auction takes place July 6, 2026.</p>
+  </div>
+
+  <div class="press-quickfacts">
+    <h2 class="press-section-title">FAST FACTS</h2>
+    <div class="press-facts-grid">
+      <div class="press-fact"><span class="press-fact-label">Full name</span><span class="press-fact-value">Natnael Berhe</span></div>
+      <div class="press-fact"><span class="press-fact-label">Based</span><span class="press-fact-value">Los Angeles, California</span></div>
+      <div class="press-fact"><span class="press-fact-label">Discipline</span><span class="press-fact-value">Figurative Abstract Expressionism, oil on canvas</span></div>
+      <div class="press-fact"><span class="press-fact-label">Heritage</span><span class="press-fact-value">Eritrean American</span></div>
+      <div class="press-fact"><span class="press-fact-label">NFL career</span><span class="press-fact-value">Safety, NY Giants and Pittsburgh Steelers, 2014 to 2019</span></div>
+      <div class="press-fact"><span class="press-fact-label">Studio output</span><span class="press-fact-value">69 originals, 78 canvas prints to date</span></div>
+      <div class="press-fact"><span class="press-fact-label">First auction</span><span class="press-fact-value">July 6, 2026, 7:00 PM PST, 7 lots</span></div>
+      <div class="press-fact"><span class="press-fact-label">Instagram</span><span class="press-fact-value">@natberhe</span></div>
+    </div>
+  </div>
+
+  <div class="press-contact-block">
+    <h2 class="press-section-title">PRESS CONTACT</h2>
+    <p class="press-body">For interviews, image requests, studio visits, or feature inquiries, please reach out directly.</p>
+    <div class="press-contact-info">
+      <div><span class="press-fact-label">Email</span><a href="mailto:info@natberhegallery.com">info@natberhegallery.com</a></div>
+      <div><span class="press-fact-label">Studio</span><span>1845 Business Center Drive, Suite 208, San Bernardino, CA 92408</span></div>
+      <div><span class="press-fact-label">Instagram</span><a href="https://instagram.com/natberhe" target="_blank" rel="noopener">@natberhe</a></div>
+    </div>
+  </div>
+
+  <div class="press-coverage-block">
+    <h2 class="press-section-title">COVERAGE AND RECOGNITION</h2>
+    <p class="press-body press-body-muted">Recent appearances and features will be listed here as they are published. To request inclusion or coverage rights, please contact the studio.</p>
+  </div>
+</div>
+
+<!-- ========== OVERLAY ========== -->
+<div class="overlay" id="overlay">
+  <div class="overlay-close" onclick="closeOverlay()">&times;</div>
+  <div class="overlay-nav overlay-prev" onclick="overlayNav(-1)">&#8249;</div>
+  <div class="overlay-nav overlay-next" onclick="overlayNav(1)">&#8250;</div>
+  <div class="overlay-inner">
+    <img class="overlay-img" id="overlayImg" src="" alt="">
+    <div class="overlay-details">
+      <h2 class="overlay-title" id="overlayTitle"></h2>
+      <p class="overlay-medium" id="overlayMedium"></p>
+      <p class="overlay-quote" id="overlayQuote"></p>
+      <p class="overlay-quote-attr" id="overlayQuoteAttr"></p>
+      <p class="overlay-desc" id="overlayDesc"></p>
+      <div id="overlaySizeWrap" style="display:none;margin-bottom:16px">
+        <div id="overlaySizeButtons" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+      <p class="overlay-price" id="overlayPrice"></p>
+      <p class="overlay-scarcity" id="overlayScarcity"></p>
+      <div class="overlay-exhibited" id="overlayExhibited" style="display:none"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span id="overlayExhibitedText"></span></div>
+      <p class="overlay-payment" id="overlayPayment" style="display:none"></p>
+      <a class="overlay-acquire" id="overlayAcquire" href="#" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      <div class="overlay-trust">
+        <div class="overlay-trust-item">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Certificate of Authenticity
+        </div>
+        <div class="overlay-trust-item">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Secure &amp; Insured Shipping
+        </div>
+        <div class="overlay-trust-item">
+          <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          14-Day Return Policy
+        </div>
+      </div>
+      <div class="reco-section" id="recoSection" style="display:none">
+        <div class="reco-title">YOU MIGHT ALSO LIKE</div>
+        <div class="reco-grid" id="recoGrid"></div>
+      </div>
+      <button class="ar-btn" id="arBtn" onclick="openARViewer()"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>VIEW IN YOUR ROOM</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== AR ROOM VISUALIZER ========== -->
+<div class="ar-viewer" id="arViewer">
+  <video id="arVideo" autoplay playsinline muted></video>
+  <img class="ar-room-bg" id="arRoomBg" style="display:none" alt="Room background for AR painting viewer">
+  <div class="ar-upload-prompt" id="arUploadPrompt" style="display:none">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    <p>Upload a photo of your wall to see the painting in your space</p>
+    <button class="ar-upload-btn" onclick="document.getElementById('arRoomUpload').click()">UPLOAD WALL PHOTO</button>
+    <p style="font-size:12px;color:#555">Or use your camera on mobile</p>
+    <input type="file" id="arRoomUpload" accept="image/*" style="display:none" onchange="loadRoomPhoto(event)">
+  </div>
+  <div class="ar-topbar">
+    <button class="ar-close" onclick="closeARViewer()">&times;</button>
+    <div class="ar-topbar-title" id="arTitle"></div>
+    <button class="ar-change-photo" id="arChangePhoto" style="display:none" onclick="document.getElementById('arRoomUpload').click()">CHANGE PHOTO</button>
+    <div class="ar-topbar-spacer"></div>
+  </div>
+  <div class="ar-size-presets" id="arSizePresets">
+    <button class="ar-size-preset" onclick="setARSize('S')">S</button>
+    <button class="ar-size-preset" onclick="setARSize('M')">M</button>
+    <button class="ar-size-preset active" onclick="setARSize('L')">L</button>
+    <button class="ar-size-preset" onclick="setARSize('XL')">XL</button>
+  </div>
+  <div class="ar-canvas-area" id="arCanvasArea">
+    <div class="ar-painting-wrap" id="arPaintingWrap">
+      <img class="ar-painting-img" id="arPaintingImg" src="" alt="">
+      <span class="ar-painting-size" id="arPaintingSize"></span>
+    </div>
+  </div>
+  <div class="ar-bottom">
+    <div class="ar-hint" id="arHint">Drag to position, pinch to resize, or use S/M/L/XL</div>
+    <button class="ar-capture-btn" id="arCaptureBtn" onclick="captureARPhoto()"></button>
+    <span class="ar-capture-label">TAKE PHOTO</span>
+  </div>
+  <div class="ar-fallback" id="arFallback" style="display:none">
+    <div class="ar-fallback-icon">📷</div>
+    <p class="ar-fallback-text">Camera access required. Please allow camera permissions and try again.</p>
+    <button class="ar-fallback-close" onclick="closeARViewer()">CLOSE</button>
+  </div>
+  <div class="ar-flash" id="arFlash"></div>
+</div>
+<canvas id="arCaptureCanvas" style="display:none"></canvas>
+
+<!-- ========== FOOTER ========== -->
+<!-- SEO CONTENT BLOCK -->
+<section style="max-width:900px;margin:0 auto;padding:60px 40px;text-align:center;border-top:1px solid #1a1a1a">
+  <h2 style="font-family:var(--oswald);font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text);margin-bottom:16px">About Nat Berhe Gallery</h2>
+  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">Nat Berhe Gallery is a Los Angeles contemporary art gallery featuring original oil paintings and affordable canvas prints for sale by Natnael "Nat" Berhe, a former NFL player turned artist. Browse 69 original oil paintings for sale starting from $15,000 and 78 museum quality canvas prints for sale starting from $55. Each original comes with a Certificate of Authenticity.</p>
+  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">Nat Berhe is the first Eritrean American player drafted in NFL history. After five seasons as a safety with the New York Giants and Pittsburgh Steelers (2014 to 2018), he transitioned to Figurative Abstract Expressionism, creating large scale oil on canvas works that explore identity, power, and transcendence. His paintings have been exhibited at the Sasse Museum of Art in Pomona, California.</p>
+  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">The Inaugural Auction takes place July 6, 2026 at 7:00 PM PST, featuring 7 museum quality original oil paintings with estimates from $70,000 to $220,000. Register to bid at natberhegallery.com. Whether you are looking to buy original art online, find affordable art prints, or collect contemporary expressionist paintings, Nat Berhe Gallery offers works at every price point. Based in Los Angeles, shipping worldwide.</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo-main">NAT BERHE GALLERY</div>
+      <div class="footer-tagline">Figurative Abstract Expressionism</div>
+      <div class="footer-copy">Based in Los Angeles, California<br>&copy; 2024 to 2026 Nat Berhe Gallery</div>
+      <div class="footer-utility-links">
+        <a href="#track" onclick="navigateTo('track')">Track Order</a>
+        <a href="#process" onclick="navigateTo('process')">Studio Process</a>
+        <a href="#press" onclick="navigateTo('press')">Press Kit</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-nav">
+        <a href="#gallery" onclick="navigateTo('gallery')">The Collection</a>
+        <a href="#prints" onclick="navigateTo('prints')">Prints</a>
+        <a href="#auction" onclick="navigateTo('auction')">The Auction</a>
+        <a href="#artist" onclick="navigateTo('artist')">The Artist</a>
+        <a href="#process" onclick="navigateTo('process')">Process</a>
+        <a href="#press" onclick="navigateTo('press')">Press</a>
+        <a href="#track" onclick="navigateTo('track')">Track Order</a>
+        <a href="#contact" onclick="navigateTo('contact')">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:info@natberhegallery.com" target="_blank" rel="noopener noreferrer">info@natberhegallery.com</a><br>
+        <a href="https://instagram.com/natberhe" target="_blank" rel="noopener noreferrer">@natberhe</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 to 2026 Nat Berhe Gallery &middot; <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+  </div>
+</footer>
+
+<script>
+// ============ SELF-HEALING SYSTEM ============
+// The site must never be down or non-operational under any circumstance.
+
+// 1. Catch ALL JavaScript errors silently
+window.onerror = function(msg, src, line, col, err) {
+  console.warn('Gallery error caught:', msg, 'at', src, line);
+  // If a critical function failed, attempt recovery
+  try { selfHeal(); } catch(e) {}
+  return true;
+};
+window.addEventListener('unhandledrejection', function(e) {
+  console.warn('Unhandled promise:', e.reason);
+  e.preventDefault();
+});
+
+// 2. Self-healing: if core elements are missing or broken, rebuild them
+function selfHeal() {
+  // Check if navigation works
+  if (!document.querySelector('.page.active')) {
+    var home = document.getElementById('page-home');
+    if (home) { home.classList.add('active'); home.style.opacity = '1'; }
+  }
+  // Check if overlay is stuck open blocking the page
+  var overlay = document.getElementById('overlay');
+  if (overlay && overlay.classList.contains('open')) {
+    // If body has been locked for more than 30 seconds with no user interaction, force close
+    if (!window._overlayOpenTime) {
+      window._overlayOpenTime = Date.now();
+    } else if (Date.now() - window._overlayOpenTime > 30000) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      window._overlayOpenTime = null;
+    }
+  } else {
+    window._overlayOpenTime = null;
+  }
+  // Check if mobile menu is stuck open
+  var menu = document.getElementById('mobileMenu');
+  if (menu && menu.classList.contains('open') && !document.querySelector('.hamburger')) {
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Check if body overflow is stuck
+  if (document.body.style.overflow === 'hidden') {
+    var overlayOpen = overlay && overlay.classList.contains('open');
+    var menuOpen = menu && menu.classList.contains('open');
+    var arOpen = document.querySelector('.ar-viewer.open');
+    if (!overlayOpen && !menuOpen && !arOpen) {
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+// 3. Periodic health check every 10 seconds
+setInterval(function() {
+  try { selfHeal(); } catch(e) {}
+}, 10000);
+
+// 4. Safe function wrapper: any function wrapped in this won't crash the site
+function safe(fn) {
+  return function() {
+    try { return fn.apply(this, arguments); } catch(e) {
+      console.warn('Safe function caught error:', e.message);
+      try { selfHeal(); } catch(e2) {}
+    }
+  };
+}
+
+// 5. CDN fallback: if GSAP fails to load, the site still works
+window.addEventListener('load', function() {
+  if (typeof gsap === 'undefined') {
+    console.warn('GSAP not loaded, site running without animations');
+    // Make all reveal elements visible
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    // Make hero elements visible
+    document.querySelectorAll('.hero-pill,.hero-subtitle,.hero-title,.hero-tagline,.hero-buttons,.scroll-indicator').forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+});
+
+// 6. Global error handler, prevents uncaught exceptions from breaking interactivity
+window.addEventListener('error', function(e) {
+  try {
+    console.warn('Global error:', (e && e.message) ? e.message : 'Unknown error');
+    try { selfHeal(); } catch(_) {}
+  } catch(_) {}
+});
+window.addEventListener('unhandledrejection', function(e) {
+  try {
+    console.warn('Unhandled promise rejection:', e && e.reason ? e.reason : 'Unknown reason');
+    try { selfHeal(); } catch(_) {}
+  } catch(_) {}
+});
+
+// 7. Touch safe controls, avoids inline onclick for key buttons
+window.addEventListener('DOMContentLoaded', function() {
+  var navLogo = document.querySelector('.nav-logo');
+  if (navLogo) {
+    navLogo.addEventListener('touchend', function(e) { e.preventDefault(); if (typeof navigateTo === 'function') navigateTo('home'); }, { passive: false });
+    navLogo.addEventListener('click', function() { if (typeof navigateTo === 'function') navigateTo('home'); });
+    navLogo.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (typeof navigateTo === 'function') navigateTo('home'); } });
+  }
+  var ambientToggle = document.getElementById('ambientToggle');
+  if (ambientToggle) {
+    ambientToggle.addEventListener('touchend', function(e) { e.preventDefault(); if (typeof toggleAmbient === 'function') toggleAmbient(); }, { passive: false });
+    ambientToggle.addEventListener('click', function() { if (typeof toggleAmbient === 'function') toggleAmbient(); });
+    ambientToggle.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (typeof toggleAmbient === 'function') toggleAmbient(); } });
+  }
+});
+
+// 8. Image error fallback: if a product image fails, try reloading it once
+document.addEventListener('error', function(e) {
+  if (e.target.tagName === 'IMG' && e.target.dataset.retried !== 'true') {
+    e.target.dataset.retried = 'true';
+    var src = e.target.src;
+    e.target.src = '';
+    setTimeout(function() { e.target.src = src; }, 1000);
+  }
+}, true);
+
+// 7. Navigation failsafe: if navigateTo breaks, at least show the home page
+var _originalNavigateTo;
+function wrapNavigateTo() {
+  if (typeof navigateTo === 'function' && !navigateTo._wrapped) {
+    _originalNavigateTo = navigateTo;
+    navigateTo = function(page) {
+      try {
+        _originalNavigateTo(page);
+      } catch(e) {
+        console.warn('Navigation failed, showing home:', e.message);
+        document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); p.style.opacity = '0'; });
+        var home = document.getElementById('page-home');
+        if (home) { home.classList.add('active'); home.style.opacity = '1'; }
+      }
+    };
+    navigateTo._wrapped = true;
+  }
+}
+setTimeout(wrapNavigateTo, 100);
+
+// ============ TRACK ORDER LOOKUP ============
+function trackOrderSubmit(){
+  var orderInput = document.getElementById('trackOrderInput');
+  var emailInput = document.getElementById('trackEmailInput');
+  var resultDiv = document.getElementById('trackResult');
+  if(!orderInput || !emailInput || !resultDiv) return;
+  var orderNum = (orderInput.value||'').trim().replace(/^#/, '');
+  var email = (emailInput.value||'').trim();
+  if(!orderNum || !email){
+    resultDiv.className = 'track-result error';
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = 'Please enter both your order number and the email used at checkout.';
+    return;
+  }
+  resultDiv.className = 'track-result';
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = 'We received your request for order #' + orderNum + '. ' +
+    'For the fastest response, please email <a href="mailto:info@natberhegallery.com?subject=Order%20Status%20%23' + encodeURIComponent(orderNum) + '" style="color:var(--gold)">info@natberhegallery.com</a> ' +
+    'with your order number. Tracking links are also automatically emailed to you the moment your package ships.';
+}
+window.trackOrderSubmit = trackOrderSubmit;
+
+// ============ HASH ROUTER SAFETY NET ============
+// Catches any link with href="#page-name" that doesn't have an explicit onclick.
+// Auto-routes to the matching SPA page via navigateTo().
+var HASH_PAGES = ['home','gallery','prints','auction','artist','contact','process','press','track'];
+var _lastRoutedHash = null;
+function handleHashRoute(){
+  var hash = (location.hash || '').replace(/^#/, '').split('?')[0];
+  // Skip if we just routed to this same hash (avoids double-navigate from onclick + hashchange)
+  if(hash === _lastRoutedHash) return;
+  if(hash && HASH_PAGES.indexOf(hash) !== -1 && typeof navigateTo === 'function'){
+    _lastRoutedHash = hash;
+    navigateTo(hash);
+  }
+}
+window.addEventListener('hashchange', handleHashRoute);
+// Run once on load in case page opened with #gallery in URL
+if(location.hash) setTimeout(handleHashRoute, 200);
+// Delegated handler, catches ANY link with href="#page-name" or data-nav="page-name"
+// (mobile menu, footer, hero buttons). Uses touchend on mobile so navigation fires
+// BEFORE the menu closes and steals the click. Falls back to click on desktop.
+function _handleNavEvent(e){
+  var a = e.target.closest && e.target.closest('a[href^="#"], a[data-nav]');
+  if(!a) return;
+  var hash = (a.getAttribute('data-nav') || (a.getAttribute('href') || '').replace(/^#/, '')).split('?')[0];
+  if(HASH_PAGES.indexOf(hash) === -1) return;
+  e.preventDefault();
+  e.stopPropagation();
+  if(typeof navigateTo === 'function'){
+    _lastRoutedHash = hash;
+    navigateTo(hash);
+  }
+}
+// Touchend fires before the menu-close logic can change the click target.
+document.addEventListener('touchend', _handleNavEvent, true);
+// Click fallback for desktop and non-touch browsers.
+document.addEventListener('click', _handleNavEvent, true);
+
+// ============ CATALOG DATA ============
+// CATALOG and DESCRIPTIONS loaded from /assets/catalog.js (v=10x prices)
+
+// ============ AUCTION INIT ============
+function aucInit(){
+  try { if(typeof aucRenderCards==='function') aucRenderCards(); } catch(e){}
+  try { if(typeof aucInitRegistration==='function') aucInitRegistration(); } catch(e){}
+}
+
+// ============ SCROLL ANIMATIONS ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ AR ROOM VISUALIZER ============
+let arCurrentPainting = null;
+let arStream = null;
+let arDragState = { dragging: false, startX: 0, startY: 0, paintX: 0, paintY: 0 };
+let arPinchState = { pinching: false, startDist: 0, startScale: 1 };
+let arScale = 1;
+let arPosX = 0;
+let arPosY = 0;
+
+var arIsDesktop = false;
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ('ontouchstart' in window && window.innerWidth < 1024);
+}
+
+function openARViewer() {
+  const p = filteredProducts[overlayIndex];
+  if (!p) return;
+  arCurrentPainting = p;
+  const viewer = document.getElementById('arViewer');
+  const fallback = document.getElementById('arFallback');
+  const video = document.getElementById('arVideo');
+  const uploadPrompt = document.getElementById('arUploadPrompt');
+  const roomBg = document.getElementById('arRoomBg');
+  const sizePresets = document.getElementById('arSizePresets');
+  fallback.style.display = 'none';
+  uploadPrompt.style.display = 'none';
+  roomBg.style.display = 'none';
+  video.style.display = 'none';
+  document.getElementById('arTitle').textContent = p.title.replace(/\n/g, ' ');
+  document.getElementById('arPaintingImg').src = p.image;
+  document.getElementById('arPaintingImg').alt = p.title;
+  document.getElementById('arPaintingSize').textContent = p.size || '';
+  // Reset position and scale
+  arScale = 1;
+  arPosX = window.innerWidth / 2;
+  arPosY = window.innerHeight / 2;
+  updateARPaintingPosition();
+  viewer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Reset size presets
+  var btns = sizePresets.querySelectorAll('.ar-size-preset');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btns[2].classList.add('active'); // L default
+  setARSize('L');
+  arIsDesktop = !isMobileDevice();
+  var hint = document.getElementById('arHint');
+  if (arIsDesktop) {
+    // Desktop: show upload prompt, hide video
+    video.style.display = 'none';
+    uploadPrompt.style.display = 'flex';
+    sizePresets.style.display = 'flex';
+    document.getElementById('arPaintingWrap').style.display = 'none';
+    if (hint) hint.textContent = 'Drag to position, scroll to resize, or use S/M/L/XL';
+  } else {
+    // Mobile: use camera
+    video.style.display = 'block';
+    sizePresets.style.display = 'flex';
+    document.getElementById('arPaintingWrap').style.display = 'block';
+    if (hint) hint.textContent = 'Drag to position, pinch to resize, or use S/M/L/XL';
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false })
+        .then(function(stream) {
+          arStream = stream;
+          video.srcObject = stream;
+        })
+        .catch(function() {
+          fallback.style.display = 'flex';
+        });
+    } else {
+      fallback.style.display = 'flex';
+    }
+  }
+  setupAREvents();
+}
+
+function loadRoomPhoto(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var roomBg = document.getElementById('arRoomBg');
+    roomBg.src = e.target.result;
+    roomBg.style.display = 'block';
+    document.getElementById('arUploadPrompt').style.display = 'none';
+    document.getElementById('arVideo').style.display = 'none';
+    document.getElementById('arPaintingWrap').style.display = 'block';
+    // Show change photo button
+    var changeBtn = document.getElementById('arChangePhoto');
+    if (changeBtn) changeBtn.style.display = 'block';
+    // Center painting
+    arPosX = window.innerWidth / 2;
+    arPosY = window.innerHeight / 2;
+    updateARPaintingPosition();
+  };
+  reader.readAsDataURL(file);
+}
+
+function setARSize(size) {
+  var sizes = { 'S': 0.2, 'M': 0.35, 'L': 0.55, 'XL': 0.8 };
+  var factor = sizes[size] || 0.55;
+  // Calculate scale based on viewport
+  var vw = window.innerWidth;
+  var vh = window.innerHeight;
+  var minDim = Math.min(vw, vh);
+  var targetWidth = minDim * factor;
+  var img = document.getElementById('arPaintingImg');
+  // Use natural image ratio to determine painting width
+  var naturalW = img.naturalWidth || 300;
+  var naturalH = img.naturalHeight || 400;
+  var imgRatio = naturalW / naturalH;
+  // Set arScale so the painting appears at the right visual size
+  // The painting img is constrained to max-height: 35vh by CSS, so base scale = 1 is about 35vh
+  var baseHeight = vh * 0.35;
+  var targetHeight = vh * factor * 0.7;
+  arScale = targetHeight / baseHeight;
+  arScale = Math.max(0.3, Math.min(3, arScale));
+  updateARPaintingPosition();
+  // Update active button
+  var btns = document.querySelectorAll('.ar-size-preset');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btns.forEach(function(b) { if (b.textContent.trim() === size) b.classList.add('active'); });
+}
+
+function closeARViewer() {
+  const viewer = document.getElementById('arViewer');
+  const video = document.getElementById('arVideo');
+  viewer.classList.remove('open');
+  if (arStream) {
+    arStream.getTracks().forEach(function(t) { t.stop(); });
+    arStream = null;
+  }
+  video.srcObject = null;
+  // Reset room photo state
+  document.getElementById('arRoomBg').style.display = 'none';
+  document.getElementById('arRoomBg').src = '';
+  document.getElementById('arUploadPrompt').style.display = 'none';
+  document.getElementById('arRoomUpload').value = '';
+  var changeBtn = document.getElementById('arChangePhoto');
+  if (changeBtn) changeBtn.style.display = 'none';
+  arIsDesktop = false;
+  document.body.style.overflow = 'hidden'; // Keep body locked since overlay is still open
+  teardownAREvents();
+}
+
+function updateARPaintingPosition() {
+  var wrap = document.getElementById('arPaintingWrap');
+  wrap.style.left = arPosX + 'px';
+  wrap.style.top = arPosY + 'px';
+  wrap.style.transform = 'translate(-50%,-50%) scale(' + arScale + ')';
+}
+
+function arTouchStart(e) {
+  if (e.touches.length === 2) {
+    e.preventDefault();
+    arDragState.dragging = false;
+    arPinchState.pinching = true;
+    arPinchState.startDist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    arPinchState.startScale = arScale;
+  } else if (e.touches.length === 1) {
+    var wrap = document.getElementById('arPaintingWrap');
+    var rect = wrap.getBoundingClientRect();
+    var tx = e.touches[0].clientX;
+    var ty = e.touches[0].clientY;
+    if (tx >= rect.left && tx <= rect.right && ty >= rect.top && ty <= rect.bottom) {
+      e.preventDefault();
+      arDragState.dragging = true;
+      arDragState.startX = tx;
+      arDragState.startY = ty;
+      arDragState.paintX = arPosX;
+      arDragState.paintY = arPosY;
+    }
+  }
+}
+
+function arTouchMove(e) {
+  if (arPinchState.pinching && e.touches.length === 2) {
+    e.preventDefault();
+    var dist = Math.hypot(
+      e.touches[0].clientX - e.touches[1].clientX,
+      e.touches[0].clientY - e.touches[1].clientY
+    );
+    arScale = Math.max(0.3, Math.min(3, arPinchState.startScale * (dist / arPinchState.startDist)));
+    updateARPaintingPosition();
+  } else if (arDragState.dragging && e.touches.length === 1) {
+    e.preventDefault();
+    var dx = e.touches[0].clientX - arDragState.startX;
+    var dy = e.touches[0].clientY - arDragState.startY;
+    arPosX = arDragState.paintX + dx;
+    arPosY = arDragState.paintY + dy;
+    updateARPaintingPosition();
+  }
+}
+
+function arTouchEnd(e) {
+  if (e.touches.length < 2) arPinchState.pinching = false;
+  if (e.touches.length < 1) arDragState.dragging = false;
+}
+
+// Mouse fallback for desktop testing
+function arMouseDown(e) {
+  var wrap = document.getElementById('arPaintingWrap');
+  var rect = wrap.getBoundingClientRect();
+  if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+    e.preventDefault();
+    arDragState.dragging = true;
+    arDragState.startX = e.clientX;
+    arDragState.startY = e.clientY;
+    arDragState.paintX = arPosX;
+    arDragState.paintY = arPosY;
+  }
+}
+function arMouseMove(e) {
+  if (arDragState.dragging) {
+    e.preventDefault();
+    var dx = e.clientX - arDragState.startX;
+    var dy = e.clientY - arDragState.startY;
+    arPosX = arDragState.paintX + dx;
+    arPosY = arDragState.paintY + dy;
+    updateARPaintingPosition();
+  }
+}
+function arMouseUp() {
+  arDragState.dragging = false;
+}
+
+function arWheel(e) {
+  e.preventDefault();
+  var delta = e.deltaY > 0 ? -0.05 : 0.05;
+  arScale = Math.max(0.15, Math.min(3, arScale + delta));
+  updateARPaintingPosition();
+  // Clear active state from size buttons since user is free-scrolling
+  document.querySelectorAll('.ar-size-preset').forEach(function(b) { b.classList.remove('active'); });
+}
+
+function setupAREvents() {
+  var area = document.getElementById('arCanvasArea');
+  area.addEventListener('touchstart', arTouchStart, { passive: false });
+  area.addEventListener('touchmove', arTouchMove, { passive: false });
+  area.addEventListener('touchend', arTouchEnd);
+  area.addEventListener('mousedown', arMouseDown);
+  window.addEventListener('mousemove', arMouseMove);
+  window.addEventListener('mouseup', arMouseUp);
+  area.addEventListener('wheel', arWheel, { passive: false });
+}
+function teardownAREvents() {
+  var area = document.getElementById('arCanvasArea');
+  area.removeEventListener('touchstart', arTouchStart);
+  area.removeEventListener('touchmove', arTouchMove);
+  area.removeEventListener('touchend', arTouchEnd);
+  area.removeEventListener('mousedown', arMouseDown);
+  window.removeEventListener('mousemove', arMouseMove);
+  window.removeEventListener('mouseup', arMouseUp);
+  area.removeEventListener('wheel', arWheel);
+}
+
+function captureARPhoto() {
+  var video = document.getElementById('arVideo');
+  var roomBg = document.getElementById('arRoomBg');
+  var canvas = document.getElementById('arCaptureCanvas');
+  var ctx = canvas.getContext('2d');
+  var vw = window.innerWidth;
+  var vh = window.innerHeight;
+  canvas.width = vw;
+  canvas.height = vh;
+  // Draw background: room photo or video frame
+  if (roomBg.style.display !== 'none' && roomBg.src) {
+    // Room photo background
+    var iRatio = roomBg.naturalWidth / roomBg.naturalHeight;
+    var sRatio = vw / vh;
+    var dw, dh, dx, dy;
+    if (iRatio > sRatio) {
+      dh = vh; dw = vh * iRatio; dx = (vw - dw) / 2; dy = 0;
+    } else {
+      dw = vw; dh = vw / iRatio; dx = 0; dy = (vh - dh) / 2;
+    }
+    ctx.drawImage(roomBg, dx, dy, dw, dh);
+  } else if (video.srcObject) {
+    // Video frame
+    var vRatio = video.videoWidth / video.videoHeight;
+    var sRatio = vw / vh;
+    var sw, sh, sx, sy;
+    if (vRatio > sRatio) {
+      sh = video.videoHeight;
+      sw = sh * sRatio;
+      sx = (video.videoWidth - sw) / 2;
+      sy = 0;
+    } else {
+      sw = video.videoWidth;
+      sh = sw / sRatio;
+      sx = 0;
+      sy = (video.videoHeight - sh) / 2;
+    }
+    ctx.drawImage(video, sx, sy, sw, sh, 0, 0, vw, vh);
+  } else {
+    // Black background fallback
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, vw, vh);
+  }
+  // Draw the painting image on top
+  var paintImg = document.getElementById('arPaintingImg');
+  var wrap = document.getElementById('arPaintingWrap');
+  var rect = paintImg.getBoundingClientRect();
+  // Draw white border (frame)
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(rect.left - 4, rect.top - 4, rect.width + 8, rect.height + 8);
+  // Draw shadow
+  ctx.shadowColor = 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = 24;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 6;
+  ctx.fillRect(rect.left - 4, rect.top - 4, rect.width + 8, rect.height + 8);
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
+  ctx.drawImage(paintImg, rect.left, rect.top, rect.width, rect.height);
+  // Draw size label
+  var sizeLabel = document.getElementById('arPaintingSize').textContent;
+  if (sizeLabel) {
+    ctx.font = '500 11px Inter, sans-serif';
+    var tm = ctx.measureText(sizeLabel);
+    var lx = rect.left + rect.width / 2 - tm.width / 2 - 12;
+    var ly = rect.bottom + 14;
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    var pillW = tm.width + 24;
+    var pillH = 22;
+    ctx.beginPath();
+    ctx.roundRect(lx, ly, pillW, pillH, 11);
+    ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(sizeLabel, lx + 12, ly + 15);
+  }
+  // Flash effect
+  var flash = document.getElementById('arFlash');
+  flash.classList.add('active');
+  setTimeout(function() { flash.classList.remove('active'); }, 150);
+  // Download
+  canvas.toBlob(function(blob) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = (arCurrentPainting ? arCurrentPainting.title.replace(/[^a-zA-Z0-9]/g, '_') : 'room_view') + '_AR.jpg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+  }, 'image/jpeg', 0.92);
+}
+
+// ============ INIT ============
+function renderPrints() {
+  const grid = document.getElementById('printsGrid');
+  if (!grid) return;
+  const allPrints = CATALOG.filter(p => p.is_print);
+  // Separate prints that have matching originals from print-only pieces
+  const originalTitles = new Set(CATALOG.filter(o => !o.is_print).map(o => o.title.toLowerCase().replace(/[\u2019']/g, '').trim()));
+  const originalHandles = new Set(CATALOG.filter(o => !o.is_print).map(o => o.handle));
+  function hasOriginal(p) {
+    var pTitle = p.title.toLowerCase().replace(/[\u2019']/g, '').trim();
+    if (originalTitles.has(pTitle)) return true;
+    var clean = p.handle.replace(/-print$/, '');
+    if (clean.match(/-\d+$/)) clean = clean.replace(/-\d+$/, '');
+    return originalHandles.has(clean);
+  }
+  var withOrig = allPrints.filter(function(p) { return hasOriginal(p); });
+  var printOnly = allPrints.filter(function(p) { return !hasOriginal(p); });
+  var prints = withOrig.concat(printOnly);
+  grid.innerHTML = prints.map((p, i) => {
+    const title = p.title.replace(/\n/g, ' ').toUpperCase();
+    const priceStr = 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
+    const sizeRange = (p.sizes && p.sizes.length > 0) ? p.sizes[0].label.split(' (')[0] + ' to ' + p.sizes[p.sizes.length-1].label.split(' (')[0] : '';
+    const medium = 'CANVAS PRINT' + (sizeRange ? '<br>' + sizeRange : '');
+    // Find the index in the full CATALOG for overlay
+    const catIdx = CATALOG.indexOf(p);
+    return '<div class="gallery-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">' +
+      '<div class="gallery-card-img-wrap">' +
+      '<img class="gallery-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g,'&quot;') + ', canvas print by Nat Berhe" loading="lazy">' +
+      '</div>' +
+      '<div class="gallery-card-info">' +
+      '<div class="gallery-card-title">' + title + '</div>' +
+      '<div class="gallery-card-meta">' + medium + '</div>' +
+      '<div class="gallery-card-price">' + priceStr + '</div>' +
+      '<button class="gallery-card-btn" onclick="event.stopPropagation();filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">SELECT SIZE</button>' +
+      '</div></div>';
+  }).join('');
+}
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = a[i]; a[i] = a[j]; a[j] = temp;
+  }
+  return a;
+}
+
+function setHero() {
+  var originals = CATALOG.filter(function(p) { return !p.is_print && !p.sold_out; });
+  if (originals.length === 0) return;
+  var painting = originals[Math.floor(Math.random() * originals.length)];
+  var heroImg = document.getElementById('heroBgImg');
+  if (heroImg) {
+    heroImg.src = painting.image;
+    heroImg.alt = painting.title + ', original oil painting by Nat Berhe, figurative abstract expressionism';
+  }
+  var subtitle = document.getElementById('heroSubtitle');
+  if (subtitle) {
+    var sizeStr = painting.size ? ' \u00B7 ' + painting.size : '';
+    subtitle.innerHTML = painting.title.toUpperCase() + sizeStr + ' \u00B7 OIL ON CANVAS';
+  }
+}
+
+function renderFeaturedWorks() {
+  var originals = shuffle(CATALOG.filter(function(p) { return !p.is_print && !p.sold_out; }));
+  // Pick 7: 1 hero + 6 bottom grid
+  var picks = originals.slice(0, 7);
+  var heroGrid = document.getElementById('featuredHero');
+  var bottomGrid = document.getElementById('featuredBottom');
+  if (!heroGrid || !bottomGrid) return;
+  // Hero card (full width)
+  var h = picks[0];
+  heroGrid.innerHTML = '<div class="featured-card" onclick="openOverlay(\'' + h.handle + '\')" style="grid-column:1/-1">' +
+    '<img class="featured-card-img" src="' + h.image + '" alt="' + h.title + ', original oil on canvas by Nat Berhe" loading="lazy">' +
+    '<span class="featured-badge">' + (h.sold_out ? 'SOLD' : 'ORIGINAL') + '</span>' +
+    '<div class="featured-card-info"><div class="featured-card-title">' + h.title.toUpperCase() + '</div>' +
+    '<div class="featured-card-price">$' + h.price.toLocaleString('en-US',{maximumFractionDigits:0}) + '</div></div></div>';
+  // Bottom 6 cards
+  bottomGrid.innerHTML = picks.slice(1, 7).map(function(p) {
+    return '<div class="featured-card" onclick="openOverlay(\'' + p.handle + '\')">' +
+      '<img class="featured-card-img" src="' + p.image + '" alt="' + p.title + ', original oil on canvas by Nat Berhe" loading="lazy">' +
+      '<span class="featured-badge">' + (p.sold_out ? 'SOLD' : 'ORIGINAL') + '</span>' +
+      '<div class="featured-card-info"><div class="featured-card-title">' + p.title.toUpperCase() + '</div>' +
+      '<div class="featured-card-price">$' + p.price.toLocaleString('en-US',{maximumFractionDigits:0}) + '</div></div></div>';
+  }).join('');
+}
+
+function renderPrintsShowcase() {
+  var grid = document.getElementById('printsShowcase');
+  if (!grid) return;
+  var prints = CATALOG.filter(function(p) { return p.is_print && !p.sold_out && p.sizes && p.sizes.length > 0; });
+  var exclude = ['blurred-messages-print'];
+  var filtered = prints.filter(function(p) { return exclude.indexOf(p.handle) === -1; });
+  // Randomize and pick 6
+  var picks = shuffle(filtered).slice(0, 6);
+  picks.sort(function(a, b) { return a.price - b.price; });
+  grid.innerHTML = picks.map(function(p) {
+    var catIdx = CATALOG.indexOf(p);
+    var maxSize = p.sizes[p.sizes.length - 1].label.split(' (')[0];
+    return '<div class="prints-showcase-card" onclick="navigateTo(\'prints\');setTimeout(function(){filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')},300)">' +
+      '<img class="prints-showcase-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + ' canvas print by Nat Berhe" loading="lazy">' +
+      '<div class="prints-showcase-info">' +
+      '<div class="prints-showcase-title">' + p.title.toUpperCase() + '</div>' +
+      '<div class="prints-showcase-meta">Up to ' + maxSize + '</div>' +
+      '<div class="prints-showcase-price">From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function init() {
+  const hash = window.location.hash.replace('#','') || 'home';
+  setHero();
+  renderFeaturedWorks();
+  renderGallery();
+  renderPrints();
+  renderPrintsShowcase();
+  aucInit();
+  navigateTo(hash);
+}
+
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#','') || 'home';
+  navigateTo(hash);
+});
+
+init();
+
+
+
+
+// Disable Lenis when overlay or AR viewer is open
+var _origOpenOverlayByIndex = openOverlayByIndex;
+openOverlayByIndex = function(idx) {
+  // FLIP: find clicked card image before overlay opens
+  var clickedImg = null;
+  var cards = document.querySelectorAll('.gallery-card, .featured-card');
+  var p = filteredProducts[idx];
+  if (p) {
+    cards.forEach(function(card) {
+      var img = card.querySelector('img');
+      if (img && img.src === p.image) clickedImg = img;
+    });
+  }
+  _origOpenOverlayByIndex(idx);
+  // Recommendations
+  if (p) showRecommendations(p);
+  // FLIP animation
+  var overlayImg = document.getElementById('overlayImg');
+  if (clickedImg && overlayImg) {
+    overlayImg.style.transition = 'none';
+    overlayImg.style.transform = 'scale(0.8)';
+    overlayImg.style.opacity = '0';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        overlayImg.style.transition = 'transform 0.5s cubic-bezier(.23,1,.32,1), opacity 0.4s ease';
+        overlayImg.style.transform = 'scale(1)';
+        overlayImg.style.opacity = '1';
+      });
+    });
+  }
+};
+var _origCloseOverlay = closeOverlay;
+closeOverlay = function() {
+  _origCloseOverlay();
+};
+var _origOpenAR = openARViewer;
+openARViewer = function() {
+  _origOpenAR();
+};
+var _origCloseAR = closeARViewer;
+closeARViewer = function() {
+  _origCloseAR();
+};
+
+// ============ GSAP SCROLL ANIMATIONS ============
+gsap.registerPlugin(ScrollTrigger);
+
+// Cinematic hero entrance
+function heroEntrance() {
+  var tl = gsap.timeline({ delay: 0.3 });
+  tl.to('.hero-pill', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+    .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-title', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .to('.hero-buttons', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+    .to('.scroll-indicator', { opacity: 0.5, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3');
+}
+
+// Dynamic hero title text scramble
+function heroTitleScramble() {
+  var el = document.querySelector('.hero-title');
+  if (!el) return;
+  var finalText = el.textContent;
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var iterations = 0;
+  var interval = setInterval(function() {
+    el.textContent = finalText.split('').map(function(c, i) {
+      if (c === ' ') return ' ';
+      if (i < iterations) return finalText[i];
+      return chars[Math.floor(Math.random() * chars.length)];
+    }).join('');
+    iterations += 1/3;
+    if (iterations >= finalText.length) {
+      el.textContent = finalText;
+      clearInterval(interval);
+    }
+  }, 30);
+}
+
+// Reveal animations for all .reveal, .reveal-left, .reveal-right elements
+function setupRevealAnimations() {
+  gsap.utils.toArray('.reveal').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.reveal-left').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+  gsap.utils.toArray('.reveal-right').forEach(function(el) {
+    gsap.to(el, {
+      opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+}
+
+// Image clip-reveal for featured cards
+function setupImageReveals() {
+  gsap.utils.toArray('.featured-card-img').forEach(function(img) {
+    gsap.fromTo(img, 
+      { clipPath: 'inset(100% 0 0 0)' },
+      { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'power3.inOut',
+        scrollTrigger: { trigger: img, start: 'top 85%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+}
+
+// Gallery card stagger reveal when page becomes active
+function setupGalleryCardReveals() {
+  // Use MutationObserver to detect when gallery page becomes visible
+  var observer = new MutationObserver(function() {
+    var galleryPage = document.getElementById('page-gallery');
+    if (galleryPage && galleryPage.classList.contains('active')) {
+      var cards = galleryPage.querySelectorAll('.gallery-card');
+      gsap.fromTo(cards, 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.05, overwrite: true }
+      );
+    }
+    var printsPage = document.getElementById('page-prints');
+    if (printsPage && printsPage.classList.contains('active')) {
+      var pCards = printsPage.querySelectorAll('.gallery-card');
+      gsap.fromTo(pCards,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.05, overwrite: true }
+      );
+    }
+  });
+  document.querySelectorAll('.page').forEach(function(page) {
+    observer.observe(page, { attributes: true, attributeFilter: ['class'] });
+  });
+}
+
+// Parallax on hero background
+function setupParallax() {
+  gsap.to('.hero-bg img', {
+    yPercent: 20, ease: 'none',
+    scrollTrigger: {
+      trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true
+    }
+  });
+  // Subtle parallax on featured section title
+  gsap.to('.section-title', {
+    y: -20, ease: 'none',
+    scrollTrigger: {
+      trigger: '.section', start: 'top bottom', end: 'bottom top', scrub: true
+    }
+  });
+}
+
+
+// ============ AMBIENT SOUND ============
+var ambientAudio = null;
+var ambientPlaying = false;
+
+function createAmbientAudio() {
+  // Create ambient texture using Web Audio API (no external file needed)
+  var ctx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Brown noise for warm studio atmosphere
+  var bufferSize = ctx.sampleRate * 4;
+  var buffer = ctx.createBuffer(2, bufferSize, ctx.sampleRate);
+  for (var ch = 0; ch < 2; ch++) {
+    var data = buffer.getChannelData(ch);
+    var lastOut = 0;
+    for (var i = 0; i < bufferSize; i++) {
+      var white = Math.random() * 2 - 1;
+      data[i] = (lastOut + (0.02 * white)) / 1.02;
+      lastOut = data[i];
+      data[i] *= 3.5;
+    }
+  }
+  
+  var source = ctx.createBufferSource();
+  source.buffer = buffer;
+  source.loop = true;
+  
+  // Filter to make it warmer
+  var filter = ctx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = 200;
+  filter.Q.value = 0.7;
+  
+  var gain = ctx.createGain();
+  gain.gain.value = 0;
+  
+  source.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+  source.start(0);
+  
+  return { ctx: ctx, gain: gain };
+}
+
+function toggleAmbient() {
+  var btn = document.getElementById('ambientToggle');
+  if (!ambientAudio) {
+    ambientAudio = createAmbientAudio();
+  }
+  if (ambientPlaying) {
+    // Fade out
+    ambientAudio.gain.gain.linearRampToValueAtTime(0, ambientAudio.ctx.currentTime + 0.5);
+    ambientPlaying = false;
+    btn.classList.remove('playing');
+  } else {
+    // Fade in
+    if (ambientAudio.ctx.state === 'suspended') ambientAudio.ctx.resume();
+    ambientAudio.gain.gain.linearRampToValueAtTime(0.3, ambientAudio.ctx.currentTime + 1);
+    ambientPlaying = true;
+    btn.classList.add('playing');
+  }
+}
+
+// ============ RECOMMENDATIONS ============
+function showRecommendations(currentProduct) {
+  var recoSection = document.getElementById('recoSection');
+  var recoGrid = document.getElementById('recoGrid');
+  if (!recoSection || !recoGrid) return;
+  
+  // Get similar products (same type, different piece, similar price range)
+  var candidates = CATALOG.filter(function(p) {
+    return p.is_print === currentProduct.is_print && 
+           p.handle !== currentProduct.handle && 
+           !p.sold_out;
+  });
+  
+  // Score by price proximity
+  candidates.sort(function(a, b) {
+    return Math.abs(a.price - currentProduct.price) - Math.abs(b.price - currentProduct.price);
+  });
+  
+  // Take top 6, then randomize and pick 3
+  var top = candidates.slice(0, 6);
+  for (var i = top.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = top[i]; top[i] = top[j]; top[j] = temp;
+  }
+  var picks = top.slice(0, 3);
+  
+  if (picks.length < 3) { recoSection.style.display = 'none'; return; }
+  
+  recoGrid.innerHTML = picks.map(function(p) {
+    var catIdx = CATALOG.indexOf(p);
+    return '<div class="reco-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">' +
+      '<img class="reco-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy">' +
+      '<div class="reco-card-title">' + p.title + '</div>' +
+      '<div class="reco-card-price">$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) + '</div>' +
+    '</div>';
+  }).join('');
+  recoSection.style.display = '';
+  
+  // Cursor hover setup removed (custom cursor disabled for performance)
+}
+
+// Recommendations and FLIP consolidated into main overlay override above
+
+// ============ INIT ALL CUTTING EDGE FEATURES ============
+function initCuttingEdge() {
+  // Only enable animation-hidden styles if GSAP is actually loaded.
+  // Otherwise leave content fully visible so the page is never blank.
+  if (typeof gsap !== 'undefined') {
+    document.documentElement.classList.add('js-anim');
+    var heroEl = document.querySelector('.hero');
+    if (heroEl) heroEl.classList.add('hero-anim-pending');
+    try { heroEntrance(); } catch(e) { console.warn('heroEntrance failed', e); }
+    // After the hero animates in, drop the pending class so styles don't fight us if the user navigates back.
+    setTimeout(function(){ if(heroEl) heroEl.classList.remove('hero-anim-pending'); }, 2500);
+    setTimeout(heroTitleScramble, 800);
+  }
+  try { setupRevealAnimations(); } catch(e){}
+  try { setupImageReveals(); } catch(e){}
+  try { setupGalleryCardReveals(); } catch(e){}
+  try { setupParallax(); } catch(e){}
+}
+
+// Run after main init
+setTimeout(initCuttingEdge, 100);
+
+// Safety: if for any reason hero is still invisible 3 seconds in, force it visible.
+setTimeout(function(){
+  var heroEl = document.querySelector('.hero');
+  if(heroEl) heroEl.classList.remove('hero-anim-pending');
+  ['.hero-pill','.hero-subtitle','.hero-title','.hero-tagline','.hero-buttons','.scroll-indicator'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      var cs = getComputedStyle(el);
+      if(cs.opacity === '0'){ el.style.opacity = ''; el.style.transform = ''; }
+    });
+  });
+}, 3000);
+
+// ============ CATALOG SEARCH + FILTER ============
+(function(){
+  // Helpers to read painting data from rendered cards
+  function getCardData(card){
+    var t = card.querySelector('.card-title, .product-title, h3, h4');
+    var p = card.querySelector('.card-price, .product-price, [class*="price"]');
+    var s = card.querySelector('.card-size, .product-size, [class*="size"]');
+    var title = t ? t.textContent.trim() : '';
+    var priceText = p ? p.textContent.replace(/[^0-9.]/g,'') : '0';
+    var price = parseFloat(priceText) || 0;
+    var sizeText = s ? s.textContent : (card.getAttribute('data-size') || '');
+    var imgEl = card.querySelector('img');
+    var sizeNums = sizeText.match(/\d+/g) || [];
+    var w = parseFloat(sizeNums[0]) || 0;
+    var h = parseFloat(sizeNums[1]) || w;
+    var maxDim = Math.max(w,h);
+    var ratio = w && h ? Math.max(w,h)/Math.min(w,h) : 1;
+    var isPortrait = h > w * 1.05;
+    var isLandscape = w > h * 1.05;
+    var isSquare = !isPortrait && !isLandscape;
+    return {title: title.toLowerCase(), price: price, maxDim: maxDim,
+            shape: isSquare ? 'square' : (isPortrait ? 'portrait' : 'landscape')};
+  }
+
+  var state = {galleryGrid: {search:'', filter:'all'}, printsGrid: {search:'', filter:'all'}};
+
+  function applyFilters(gridId){
+    var grid = document.getElementById(gridId);
+    if(!grid) return;
+    var s = state[gridId] || {search:'', filter:'all'};
+    var query = s.search.toLowerCase().trim();
+    var filter = s.filter;
+    var shown = 0;
+    Array.prototype.forEach.call(grid.children, function(card){
+      var d = getCardData(card);
+      var matchSearch = !query || d.title.indexOf(query) !== -1;
+      var matchFilter = true;
+      if(filter === 'all'){ matchFilter = true; }
+      else if(filter === 'price-under-25k'){ matchFilter = d.price < 25000; }
+      else if(filter === 'price-25k-75k'){ matchFilter = d.price >= 25000 && d.price <= 75000; }
+      else if(filter === 'price-over-75k'){ matchFilter = d.price > 75000; }
+      else if(filter === 'price-under-100'){ matchFilter = d.price < 100; }
+      else if(filter === 'price-100-200'){ matchFilter = d.price >= 100 && d.price <= 200; }
+      else if(filter === 'price-over-200'){ matchFilter = d.price > 200; }
+      else if(filter === 'size-small'){ matchFilter = d.maxDim > 0 && d.maxDim < 30; }
+      else if(filter === 'size-large'){ matchFilter = d.maxDim >= 60; }
+      else if(filter === 'shape-square'){ matchFilter = d.shape === 'square'; }
+      else if(filter === 'shape-portrait'){ matchFilter = d.shape === 'portrait'; }
+      else if(filter === 'shape-landscape'){ matchFilter = d.shape === 'landscape'; }
+      var visible = matchSearch && matchFilter;
+      card.style.display = visible ? '' : 'none';
+      if(visible) shown++;
+    });
+    // Empty state
+    var emptyId = gridId === 'galleryGrid' ? 'galleryEmpty' : 'printsEmpty';
+    var empty = document.getElementById(emptyId);
+    if(empty) empty.style.display = shown === 0 ? 'block' : 'none';
+    // Update count if gallery
+    var countEl = document.getElementById('galleryCount');
+    if(countEl && gridId === 'galleryGrid'){
+      countEl.textContent = shown + (shown === 1 ? ' work' : ' works');
+    }
+  }
+  window.applyCatalogFilters = applyFilters;
+
+  window.resetCatalogFilters = function(gridId){
+    state[gridId] = {search:'', filter:'all'};
+    var inputId = gridId === 'galleryGrid' ? 'gallerySearch' : 'printsSearch';
+    var input = document.getElementById(inputId);
+    if(input) input.value = '';
+    var clearBtn = document.getElementById(inputId + 'Clear');
+    if(clearBtn) clearBtn.classList.remove('visible');
+    document.querySelectorAll('[data-filter-grid="'+gridId+'"]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-filter') === 'all');
+    });
+    applyFilters(gridId);
+  };
+
+  function bindControls(){
+    // Wire up search inputs
+    ['gallerySearch', 'printsSearch'].forEach(function(id){
+      var input = document.getElementById(id);
+      if(!input || input.dataset.bound) return;
+      input.dataset.bound = '1';
+      var gridId = id === 'gallerySearch' ? 'galleryGrid' : 'printsGrid';
+      var clearBtn = document.getElementById(id + 'Clear');
+      input.addEventListener('input', function(){
+        state[gridId].search = input.value;
+        if(clearBtn) clearBtn.classList.toggle('visible', input.value.length > 0);
+        applyFilters(gridId);
+      });
+      if(clearBtn){
+        clearBtn.addEventListener('click', function(){
+          input.value = '';
+          state[gridId].search = '';
+          clearBtn.classList.remove('visible');
+          applyFilters(gridId);
+        });
+      }
+    });
+    // Wire up filter chips
+    document.querySelectorAll('.filter-chip').forEach(function(btn){
+      if(btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', function(){
+        var gridId = btn.getAttribute('data-filter-grid');
+        var filter = btn.getAttribute('data-filter');
+        state[gridId].filter = filter;
+        document.querySelectorAll('[data-filter-grid="'+gridId+'"]').forEach(function(b){
+          b.classList.toggle('active', b === btn);
+        });
+        applyFilters(gridId);
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bindControls);
+  } else {
+    bindControls();
+  }
+  // Re-bind in case grids render after initial DOM ready
+  setTimeout(bindControls, 500);
+  setTimeout(bindControls, 1500);
+})();
+
+// ============ EXIT-INTENT MODAL ============
+(function(){
+  if(localStorage.getItem('nbg_modal_dismissed') === '1') return;
+  var shown = false;
+  function showModal(){
+    if(shown) return;
+    var m = document.getElementById('exitModal');
+    if(!m) return;
+    shown = true;
+    m.classList.add('show');
+  }
+  // Trigger on exit intent (desktop): mouse leaves toward top
+  document.addEventListener('mouseleave', function(e){
+    if(e.clientY < 5) showModal();
+  });
+  // Trigger on mobile: after 30 seconds OR on scroll past 60%
+  setTimeout(showModal, 30000);
+  window.addEventListener('scroll', function(){
+    if((window.scrollY + window.innerHeight) / document.body.scrollHeight > 0.6) showModal();
+  }, {passive: true});
+  // Wire up close
+  document.addEventListener('click', function(e){
+    if(e.target.closest('#exitModalClose') || e.target.id === 'exitModalOverlay'){
+      var m = document.getElementById('exitModal');
+      if(m){ m.classList.remove('show'); localStorage.setItem('nbg_modal_dismissed','1'); }
+    }
+  });
+  // Wire up form submit (stores in localStorage; integrate with Klaviyo/Shopify later)
+  document.addEventListener('submit', function(e){
+    if(e.target.id !== 'exitModalForm') return;
+    e.preventDefault();
+    var email = document.getElementById('exitModalEmail').value.trim();
+    if(!email) return;
+    var subs = [];
+    try { subs = JSON.parse(localStorage.getItem('nbg_subscribers') || '[]'); } catch(_){}
+    subs.push({email: email, at: new Date().toISOString(), source: 'exit_modal'});
+    localStorage.setItem('nbg_subscribers', JSON.stringify(subs));
+    localStorage.setItem('nbg_modal_dismissed','1');
+    document.getElementById('exitModalContent').style.display = 'none';
+    document.getElementById('exitModalSuccess').classList.add('show');
+    setTimeout(function(){
+      var m = document.getElementById('exitModal');
+      if(m) m.classList.remove('show');
+    }, 2500);
+  });
+})();
+</script>
+
+<!-- ========== EXIT-INTENT MODAL ========== -->
+<div class="exit-modal-overlay" id="exitModal">
+  <div class="exit-modal">
+    <button class="exit-modal-close" id="exitModalClose" aria-label="Close">&times;</button>
+    <div id="exitModalContent">
+      <div class="exit-modal-eyebrow">COLLECTOR'S CIRCLE</div>
+      <h2 class="exit-modal-title">Auction previews,<br>by email first.</h2>
+      <p class="exit-modal-sub">Get the July 6 auction preview pack seven days before it goes public. Lot details, estimate ranges, and a private viewing invitation.</p>
+      <form class="exit-modal-form" id="exitModalForm">
+        <input type="email" class="exit-modal-input" id="exitModalEmail" placeholder="Your email address" required>
+        <button type="submit" class="exit-modal-submit">Join the Circle</button>
+      </form>
+      <p class="exit-modal-fineprint">No spam. Unsubscribe anytime. We send 2 to 4 emails a month around new work and auctions.</p>
+    </div>
+    <div class="exit-modal-success" id="exitModalSuccess">
+      <div class="exit-modal-success-icon">&#10003;</div>
+      <h3 style="font-family:var(--display);font-size:24px;color:var(--text);margin-bottom:8px">You're in.</h3>
+      <p class="exit-modal-sub">Watch your inbox for the auction preview.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
