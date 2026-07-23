@@ -285,7 +285,7 @@ def main():
                             try:
                                 code_fo, body_fo = http_request(
                                     "GET",
-                                    f"https://{SHOPIFY_SHOP}/admin/api/2024-01/orders/{sid}/fulfillment_orders.json",
+                                    f"https://{SHOP}/admin/api/2024-01/orders/{sid}/fulfillment_orders.json",
                                     headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN},
                                 )
                                 if code_fo == 200:
@@ -308,7 +308,7 @@ def main():
                                         }
                                         code_f, body_f = http_request(
                                             "POST",
-                                            f"https://{SHOPIFY_SHOP}/admin/api/2024-01/fulfillments.json",
+                                            f"https://{SHOP}/admin/api/2024-01/fulfillments.json",
                                             headers={
                                                 "X-Shopify-Access-Token": SHOPIFY_TOKEN,
                                                 "Content-Type": "application/json",
