@@ -1,4 +1,4 @@
-{%- comment -%}Cart={{ cart.item_count }} cache-bust-cleanup-1783552109{%- endcomment -%}
+{%- comment -%}Cart={{ cart.item_count }} cache-bust-3-upgrades-1785391800{%- endcomment -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,6 +138,35 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
   .credential-bar{flex-direction:column;gap:4px;padding:12px 20px}
 }
 
+/* ============ KINETIC SPLIT HERO ============ */
+.hero-split{min-height:100vh;padding:0;display:block;text-align:left;overflow:hidden}
+@media(min-width:900px){
+  .hero-split{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:100vh}
+  .hero-split .hero-bg{position:relative;inset:auto;z-index:0;height:100%;min-height:100vh;overflow:hidden}
+  .hero-split .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:1}
+  .hero-split .hero-bg::after{display:none}
+  .hero-split .hero-content{position:relative;z-index:1;max-width:520px;margin:0;padding:60px 60px;background:#EDE7DD;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;grid-column:2}
+}
+@media(max-width:899px){
+  .hero-split{display:flex;flex-direction:column}
+  .hero-split .hero-bg{position:relative;inset:auto;height:60vh;min-height:360px}
+  .hero-split .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:1}
+  .hero-split .hero-bg::after{display:none}
+  .hero-split .hero-content{position:relative;background:#EDE7DD;padding:48px 24px 56px;text-align:left;max-width:none}
+}
+.hero-eyebrow{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#7A1B1B;margin-bottom:18px}
+.hero-split .hero-subtitle{color:#7a7060}
+.hero-split .hero-title{font-family:var(--playfair);font-weight:600;font-size:clamp(48px,8vw,96px);line-height:0.98;letter-spacing:normal;text-transform:none;color:#1a1613;margin-bottom:14px}
+.hero-role-line{font-family:var(--inter);font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a4238;margin-bottom:0}
+.hero-split .hero-tagline{display:none}
+.hero-credibility-badge{display:inline-block;margin-top:24px;margin-bottom:28px;border:1px solid #7A1B1B;padding:8px 16px;font-family:var(--inter);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7A1B1B}
+.hero-split .hero-buttons{justify-content:flex-start}
+.hero-split .hero-btn{border-color:rgba(26,22,19,0.35);color:#1a1613}
+.hero-split .hero-btn:hover{background:rgba(26,22,19,0.06);border-color:#1a1613}
+.hero-split .hero-btn-gold{background:#7A1B1B;color:#fff;border-color:#7A1B1B}
+.hero-split .hero-btn-gold:hover{background:#601515;border-color:#601515}
+.hero-split .scroll-indicator{display:none}
+
 /* ============ MARQUEE ============ */
 .marquee{overflow:hidden;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0a0a0a}
 .marquee-track{display:flex;animation:marqueeScroll 30s linear infinite;width:max-content}
@@ -271,6 +300,38 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .exit-modal-success-icon{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+/* ============ CERTIFICATE OF AUTHENTICITY MODAL ============ */
+.cert-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px}
+.cert-modal-backdrop{position:absolute;inset:0;background:rgba(10,8,6,0.85);animation:fadeIn .25s ease}
+.cert-modal-content{position:relative;background:#f9f5eb;max-width:820px;width:100%;max-height:90vh;overflow-y:auto;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.cert-modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#2a2018;font-size:30px;cursor:pointer;line-height:1;padding:4px 10px;z-index:2}
+.cert-modal-close:hover{color:#7A1B1B}
+.cert-doc{background:#f9f5eb;border:2px solid #7A1B1B;padding:48px 56px;font-family:var(--inter);color:#2a2018}
+.cert-doc-header{text-align:center;margin-bottom:32px}
+.cert-signature-svg{width:160px;height:auto;color:#2a2018;margin:0 auto 16px;display:block}
+.cert-doc-title{font-family:var(--playfair);font-weight:700;font-size:22px;letter-spacing:6px;text-transform:uppercase;color:#7A1B1B;margin:0}
+.cert-doc-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:32px}
+.cert-doc-thumb{aspect-ratio:4/5;background:repeating-linear-gradient(45deg,#efe8d8,#efe8d8 10px,#f4eee0 10px,#f4eee0 20px);border:1px solid #d8cdb8;display:flex;align-items:center;justify-content:center}
+.cert-doc-thumb-placeholder{font-family:var(--inter);font-size:11px;letter-spacing:2px;color:#a89a7d;text-align:center;text-transform:uppercase}
+.cert-doc-meta{display:flex;flex-direction:column;gap:14px}
+.cert-meta-row{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid #e5ddc8;padding-bottom:10px}
+.cert-meta-label{font-family:var(--inter);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#7A1B1B;font-weight:600}
+.cert-meta-value{font-family:var(--inter);font-size:14px;color:#2a2018}
+.cert-stamp-placeholder{font-style:italic;color:#8a7f6a}
+.cert-doc-footnote{font-family:var(--inter);font-size:11px;line-height:1.7;color:#7a6f5c;text-align:center;border-top:1px solid #e5ddc8;padding-top:20px;margin:0}
+@media(max-width:640px){
+  .cert-doc{padding:32px 24px}
+  .cert-doc-body{grid-template-columns:1fr;gap:24px}
+}
+@media print{
+  body *{visibility:hidden}
+  .cert-modal,.cert-modal *{visibility:visible}
+  .cert-modal{position:absolute;inset:auto;padding:0;background:#fff}
+  .cert-modal-backdrop,.cert-modal-close{display:none}
+  .cert-modal-content{box-shadow:none;max-height:none;overflow:visible;max-width:100%}
+  .cert-doc{border:2px solid #7A1B1B}
+}
+
 /* How-to-bid section */
 .auc-howto{max-width:1100px;margin:80px auto 60px;padding:0 40px;text-align:center}
 .auc-howto-title{font-family:var(--display);font-size:36px;font-weight:900;color:var(--text);margin-bottom:14px;letter-spacing:-.01em}
@@ -294,28 +355,38 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .sort-option:hover{background:#1a1a1a;color:var(--gold)}
 @media(max-width:768px){.gallery-sort{padding:0 16px}}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1400px;margin:0 auto;padding:0 40px 80px}
-.gallery-card{background:var(--card-bg);border:1px solid var(--border);overflow:hidden;transition:transform 0.3s,border-color 0.3s;cursor:pointer;position:relative}
-.gallery-card:hover{transform:translateY(-3px);border-color:#333}
+.gallery-card{background:#ffffff;border:1px solid #e5e0d6;overflow:hidden;transition:transform 0.3s ease;cursor:pointer;position:relative;padding:0}
+.gallery-card:hover{transform:translateY(-4px)}
 .gallery-card-img-wrap{position:relative;overflow:hidden}
-.gallery-card-img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.5s}
+.gallery-card-img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 0.5s;display:block}
 .gallery-card:hover .gallery-card-img{transform:scale(1.04)}
 .gallery-card .featured-badge{position:absolute;top:8px;left:8px}
 .sold-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,10,0.85);color:var(--text);font-family:var(--oswald);font-size:18px;letter-spacing:4px;padding:10px 24px;z-index:2}
-.gallery-card-info{padding:14px}
-.gallery-card-title{font-family:var(--oswald);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gallery-card-price{font-family:var(--inter);font-size:13px;color:var(--gold);font-weight:500;margin-bottom:2px}
-.gallery-card-meta{font-family:var(--inter);font-size:10px;color:var(--text-muted);letter-spacing:0.5px;margin-bottom:3px;text-transform:uppercase}
-.gallery-card-scarcity{font-family:var(--inter);font-size:10px;color:var(--red-light);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px}
+.gallery-card-info{padding:16px 18px 40px;position:relative}
+.gallery-card-title{font-family:var(--playfair);font-size:17px;font-weight:500;letter-spacing:0.3px;line-height:1.3;text-transform:none;color:#1a1613;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:text-decoration-color 0.2s;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px}
+.gallery-card:hover .gallery-card-title{text-decoration-color:#7A1B1B}
+.gallery-card-meta{font-family:var(--inter);font-size:11px;color:#7a7060;letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase}
+.gallery-card-price-row{display:flex;justify-content:flex-end;align-items:baseline;gap:4px;margin-bottom:4px}
+.gallery-card-price{font-family:var(--inter);font-variant-numeric:tabular-nums;font-size:14px;color:#1a1613;font-weight:600;text-align:right}
+.gallery-card-price-suffix{font-family:var(--inter);font-size:10px;color:#b0a695;letter-spacing:0.5px}
+.gallery-card-scarcity{font-family:var(--inter);font-size:10px;color:var(--red-light);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;text-align:right}
 .gallery-card-btn{display:block;width:100%;padding:10px;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;background:transparent;border:1px solid var(--border);color:var(--text);transition:all 0.3s}
 .gallery-card-btn:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+.gallery-card-provenance{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#7a7060}
+.provenance-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.gallery-card-provenance-original .provenance-dot{background:#4a7c3a}
+.gallery-card-provenance-print .provenance-dot{background:#3a5f7c}
+.gallery-card-view-pill{position:absolute;right:12px;bottom:12px;padding:6px 14px;background:#1a1613;color:#fff;font-family:var(--inter);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0;transition:opacity 0.3s ease;pointer-events:none}
+.gallery-card:hover .gallery-card-view-pill{opacity:1}
 
 @media(max-width:1024px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
   .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px 60px}
   .gallery-header{padding:100px 20px 30px}
-  .gallery-card-info{padding:10px}
-  .gallery-card-title{font-size:12px}
+  .gallery-card-info{padding:10px 10px 34px}
+  .gallery-card-title{font-size:13px}
   .gallery-card-price{font-size:12px}
+  .gallery-card-view-pill{display:none}
 }
 @media(max-width:390px){
   .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 12px 60px}
@@ -428,6 +499,18 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .footer-brand .nav-logo-sub{font-size:9px}
 .footer-tagline{font-family:var(--playfair);font-style:italic;font-size:14px;color:var(--text-muted);margin-top:8px}
 .footer-copy{font-family:var(--inter);font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.6}
+.footer-signature{text-align:center;padding:40px 20px 20px;color:#2a2018}
+.footer-signature svg{width:180px;height:auto;display:inline-block;color:#c9b89a}
+.footer-signature-caption{font-family:var(--playfair);font-style:italic;font-size:13px;color:#5a5045;margin-top:8px;letter-spacing:0.3px}
+.footer-signature-link{display:inline-block;margin-top:10px;font-family:var(--inter);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,168,76,0.4);transition:color 0.3s,border-color 0.3s}
+.footer-signature-link:hover{color:#d4b45a;border-color:#d4b45a}
+
+/* ============ SIGNED BY THE ARTIST PANEL (product pages) ============ */
+.signature-panel{background:#faf7f2;border:1px solid #e5e0d6;padding:32px;margin:40px 0;text-align:center}
+.signature-panel-inner{max-width:420px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.signature-mark{width:140px;height:auto;color:#2a2018;margin-bottom:12px}
+.signature-panel-label{font-family:var(--inter);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#7A1B1B;margin-bottom:10px}
+.signature-panel-text{font-family:var(--inter);font-size:13px;line-height:1.7;color:#5a5045;margin:0}
 .footer-right{text-align:right}
 .footer-nav{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
 .footer-nav a{font-family:var(--inter);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s}
@@ -832,15 +915,18 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 
 <!-- ========== PAGE: HOME ========== -->
 <div class="page active" id="page-home">
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO: KINETIC SPLIT -->
+  <section class="hero hero-split">
     <div class="hero-bg">
       <img id="heroBgImg" src="https://cdn.shopify.com/s/files/1/0871/6959/7740/files/18888867-af17-4b5e-9582-828174e13e92.png?v=1773859259" alt="Original oil painting by Nat Berhe, figurative abstract expressionism" loading="eager">
     </div>
     <div class="hero-content">
+      <p class="hero-eyebrow">NAT BERHE GALLERY</p>
       <p class="hero-subtitle" id="heroSubtitle">FEATURED WORK &middot; OIL ON CANVAS</p>
       <h1 class="hero-title">NAT BERHE</h1>
+      <p class="hero-role-line">FIGURATIVE ABSTRACT EXPRESSIONIST &middot; LOS ANGELES</p>
       <p class="hero-tagline">Figurative Abstract Expressionism</p>
+      <div class="hero-credibility-badge">2ND PLACE &middot; THE PEOPLE'S ARTIST 2026</div>
       <div class="hero-buttons">
         <a href="#gallery" class="hero-btn" onclick="navigateTo('gallery')">ENTER THE COLLECTION</a>
         <a href="#prints" class="hero-btn hero-btn-gold" onclick="navigateTo('prints')">BROWSE PRINTS</a>
@@ -1386,6 +1472,21 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
     <div class="footer-brand">
       <div class="nav-logo-main">NAT BERHE GALLERY</div>
       <div class="footer-tagline">Figurative Abstract Expressionism</div>
+      <div class="footer-signature">
+        <svg class="footer-signature-svg" viewBox="0 0 400 120" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Nat Berhe signature">
+          <path d="M 15 90 C 15 90, 22 40, 25 35 C 27 32, 30 48, 35 60 C 45 82, 55 55, 58 40 C 60 32, 62 45, 65 60 C 68 72, 72 82, 75 88"/>
+          <path d="M 88 70 C 82 65, 78 72, 80 82 C 82 90, 92 90, 96 82 C 98 76, 98 70, 96 65 M 96 65 L 98 90"/>
+          <path d="M 108 50 L 108 88 C 108 92, 112 92, 116 88 M 102 68 L 116 66"/>
+          <path d="M 140 30 L 140 92 M 140 30 C 155 30, 168 34, 168 46 C 168 55, 158 60, 148 60 C 160 60, 175 66, 175 78 C 175 90, 158 92, 140 92"/>
+          <path d="M 188 78 C 200 78, 205 72, 202 66 C 199 62, 190 62, 188 70 C 186 78, 192 90, 205 87"/>
+          <path d="M 215 65 L 215 90 M 215 72 C 219 65, 226 63, 232 68"/>
+          <path d="M 245 30 L 245 92 M 245 68 C 250 62, 262 62, 265 70 L 265 92"/>
+          <path d="M 278 78 C 290 78, 295 72, 292 66 C 289 62, 280 62, 278 70 C 276 78, 282 90, 295 87"/>
+          <path d="M 305 90 C 320 92, 340 88, 358 85 C 365 84, 370 82, 370 78" stroke-width="1.5"/>
+        </svg>
+        <p class="footer-signature-caption">Every original comes with a certificate of authenticity, hand signed.</p>
+        <a href="#" class="footer-signature-link" onclick="openCertificateModal(event)">View sample certificate</a>
+      </div>
       <div class="footer-copy">Based in Los Angeles, California<br>&copy; 2024 to 2026 Nat Berhe Gallery</div>
       <div class="footer-utility-links">
         <a href="#track" onclick="navigateTo('track')">Track Order</a>
@@ -2005,7 +2106,7 @@ function renderPrints() {
     const title = p.title.replace(/\n/g, ' ').toUpperCase();
     const priceStr = 'From $' + p.price.toLocaleString('en-US', {maximumFractionDigits:0});
     const sizeRange = (p.sizes && p.sizes.length > 0) ? p.sizes[0].label.split(' (')[0] + ' to ' + p.sizes[p.sizes.length-1].label.split(' (')[0] : '';
-    const medium = 'CANVAS PRINT' + (sizeRange ? '<br>' + sizeRange : '');
+    const medium = 'CANVAS PRINT' + (sizeRange ? ' &middot; ' + sizeRange : '');
     // Find the index in the full CATALOG for overlay
     const catIdx = CATALOG.indexOf(p);
     return '<div class="gallery-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">' +
@@ -2015,8 +2116,10 @@ function renderPrints() {
       '<div class="gallery-card-info">' +
       '<div class="gallery-card-title">' + title + '</div>' +
       '<div class="gallery-card-meta">' + medium + '</div>' +
-      '<div class="gallery-card-price">' + priceStr + '</div>' +
+      '<div class="gallery-card-price-row"><span class="gallery-card-price">' + priceStr + '</span><span class="gallery-card-price-suffix">USD</span></div>' +
       '<button class="gallery-card-btn" onclick="event.stopPropagation();filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">SELECT SIZE</button>' +
+      '<div class="gallery-card-provenance gallery-card-provenance-print"><span class="provenance-dot"></span>PRINT</div>' +
+      '<div class="gallery-card-view-pill">VIEW</div>' +
       '</div></div>';
   }).join('');
 }
@@ -2170,25 +2273,11 @@ function heroEntrance() {
     .to('.scroll-indicator', { opacity: 0.5, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3');
 }
 
-// Dynamic hero title text scramble
+// Hero title scramble disabled: name renders immediately, never scrambles.
 function heroTitleScramble() {
   var el = document.querySelector('.hero-title');
   if (!el) return;
-  var finalText = el.textContent;
-  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  var iterations = 0;
-  var interval = setInterval(function() {
-    el.textContent = finalText.split('').map(function(c, i) {
-      if (c === ' ') return ' ';
-      if (i < iterations) return finalText[i];
-      return chars[Math.floor(Math.random() * chars.length)];
-    }).join('');
-    iterations += 1/3;
-    if (iterations >= finalText.length) {
-      el.textContent = finalText;
-      clearInterval(interval);
-    }
-  }, 30);
+  el.textContent = el.textContent;
 }
 
 // Reveal animations for all .reveal, .reveal-left, .reveal-right elements
@@ -2385,7 +2474,6 @@ function initCuttingEdge() {
     try { heroEntrance(); } catch(e) { console.warn('heroEntrance failed', e); }
     // After the hero animates in, drop the pending class so styles don't fight us if the user navigates back.
     setTimeout(function(){ if(heroEl) heroEl.classList.remove('hero-anim-pending'); }, 2500);
-    setTimeout(heroTitleScramble, 800);
   }
   try { setupRevealAnimations(); } catch(e){}
   try { setupImageReveals(); } catch(e){}
@@ -2533,6 +2621,24 @@ setTimeout(function(){
   setTimeout(bindControls, 1500);
 })();
 
+// ============ CERTIFICATE OF AUTHENTICITY MODAL ============
+function openCertificateModal(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  var m = document.getElementById('certificateModal');
+  if (!m) return;
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCertificateModal() {
+  var m = document.getElementById('certificateModal');
+  if (!m) return;
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeCertificateModal();
+});
+
 // ============ EXIT-INTENT MODAL ============
 (function(){
   if(localStorage.getItem('nbg_modal_dismissed') === '1') return;
@@ -2599,6 +2705,45 @@ setTimeout(function(){
       <div class="exit-modal-success-icon">&#10003;</div>
       <h3 style="font-family:var(--display);font-size:24px;color:var(--text);margin-bottom:8px">You're in.</h3>
       <p class="exit-modal-sub">Watch your inbox for new release previews.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CERTIFICATE OF AUTHENTICITY MODAL ========== -->
+<div id="certificateModal" class="cert-modal" style="display:none">
+  <div class="cert-modal-backdrop" onclick="closeCertificateModal()"></div>
+  <div class="cert-modal-content">
+    <button class="cert-modal-close" onclick="closeCertificateModal()">&times;</button>
+    <div class="cert-doc" id="certDoc">
+      <div class="cert-doc-header">
+        <svg class="cert-signature-svg" viewBox="0 0 400 120" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Nat Berhe signature">
+          <path d="M 15 90 C 15 90, 22 40, 25 35 C 27 32, 30 48, 35 60 C 45 82, 55 55, 58 40 C 60 32, 62 45, 65 60 C 68 72, 72 82, 75 88"/>
+          <path d="M 88 70 C 82 65, 78 72, 80 82 C 82 90, 92 90, 96 82 C 98 76, 98 70, 96 65 M 96 65 L 98 90"/>
+          <path d="M 108 50 L 108 88 C 108 92, 112 92, 116 88 M 102 68 L 116 66"/>
+          <path d="M 140 30 L 140 92 M 140 30 C 155 30, 168 34, 168 46 C 168 55, 158 60, 148 60 C 160 60, 175 66, 175 78 C 175 90, 158 92, 140 92"/>
+          <path d="M 188 78 C 200 78, 205 72, 202 66 C 199 62, 190 62, 188 70 C 186 78, 192 90, 205 87"/>
+          <path d="M 215 65 L 215 90 M 215 72 C 219 65, 226 63, 232 68"/>
+          <path d="M 245 30 L 245 92 M 245 68 C 250 62, 262 62, 265 70 L 265 92"/>
+          <path d="M 278 78 C 290 78, 295 72, 292 66 C 289 62, 280 62, 278 70 C 276 78, 282 90, 295 87"/>
+          <path d="M 305 90 C 320 92, 340 88, 358 85 C 365 84, 370 82, 370 78" stroke-width="1.5"/>
+        </svg>
+        <h2 class="cert-doc-title">CERTIFICATE OF AUTHENTICITY</h2>
+      </div>
+      <div class="cert-doc-body">
+        <div class="cert-doc-thumb">
+          <div class="cert-doc-thumb-placeholder">PAINTING<br>THUMBNAIL</div>
+        </div>
+        <div class="cert-doc-meta">
+          <div class="cert-meta-row"><span class="cert-meta-label">TITLE</span><span class="cert-meta-value">Sample Work</span></div>
+          <div class="cert-meta-row"><span class="cert-meta-label">DIMENSIONS</span><span class="cert-meta-value">36 x 36 in</span></div>
+          <div class="cert-meta-row"><span class="cert-meta-label">MEDIUM</span><span class="cert-meta-value">Oil on Canvas</span></div>
+          <div class="cert-meta-row"><span class="cert-meta-label">EDITION</span><span class="cert-meta-value">1 of 1</span></div>
+          <div class="cert-meta-row"><span class="cert-meta-label">DATE</span><span class="cert-meta-value">2026</span></div>
+          <div class="cert-meta-row"><span class="cert-meta-label">ARTIST SIGNATURE</span><span class="cert-meta-value">Nat Berhe</span></div>
+          <div class="cert-meta-row"><span class="cert-meta-label">GALLERY STAMP</span><span class="cert-meta-value cert-stamp-placeholder">NAT BERHE GALLERY, LOS ANGELES</span></div>
+        </div>
+      </div>
+      <p class="cert-doc-footnote">This certificate confirms the authenticity of an original artwork by Nat Berhe, hand signed by the artist on the back of the canvas. This is a sample layout, each collector receives a certificate specific to their piece.</p>
     </div>
   </div>
 </div>
