@@ -313,7 +313,7 @@ def main():
                                                 "X-Shopify-Access-Token": SHOPIFY_TOKEN,
                                                 "Content-Type": "application/json",
                                             },
-                                            body=json.dumps(fulfillment_body).encode(),
+                                            body=fulfillment_body,
                                         )
                                         if code_f in (200, 201):
                                             fulfilled_in_shopify = True
