@@ -1629,6 +1629,32 @@ window.addEventListener('DOMContentLoaded', function() {
     ambientToggle.addEventListener('click', function() { if (typeof toggleAmbient === 'function') toggleAmbient(); });
     ambientToggle.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (typeof toggleAmbient === 'function') toggleAmbient(); } });
   }
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var lastHamburgerTouch = 0;
+  function toggleMobileMenu(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (!hamburger || !mobileMenu) return;
+    var isOpen = mobileMenu.classList.toggle('open');
+    document.body.classList.toggle('menu-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  if (hamburger) {
+    hamburger.addEventListener('touchend', function(e) {
+      lastHamburgerTouch = Date.now();
+      toggleMobileMenu(e);
+    }, { passive: false });
+    hamburger.addEventListener('click', function(e) {
+      if (Date.now() - lastHamburgerTouch < 500) return;
+      toggleMobileMenu(e);
+    });
+    hamburger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') toggleMobileMenu(e);
+    });
+  }
 });
 
 // 8. Image error fallback: if a product image fails, try reloading it once
