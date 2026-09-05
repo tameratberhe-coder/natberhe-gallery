@@ -14,7 +14,7 @@ for img in local_refs:
 SHOP = "fbea3c-0e.myshopify.com"
 TOKEN = os.environ.get("SHOPIFY_TOKEN", "")
 HEADERS = {"X-Shopify-Access-Token": TOKEN, "Content-Type": "application/json"}
-for tid in [182801662252, 182801858860]:
+for tid in [183912333612, 183911973164, 182801858860, 182801662252]:
     url = f"https://{SHOP}/admin/api/2024-01/themes/{tid}/assets.json"
     r = requests.put(url, headers=HEADERS, json={"asset": {"key": "templates/index.liquid", "value": shopify_html}})
     print(f"Theme {tid}: {'OK' if r.status_code == 200 else f'FAIL'}")
