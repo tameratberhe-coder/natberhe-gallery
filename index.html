@@ -55,6 +55,8 @@ body{background:#0a0a0a;color:#f5f0e8;font-family:'Inter',sans-serif;font-size:1
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 input,textarea{font-family:inherit;font-size:inherit}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#0a0a0a}
@@ -77,7 +79,8 @@ input,textarea{font-family:inherit;font-size:inherit}
 }
 
 /* ============ NAV ============ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.3s}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);transition:background .3s,border-color .3s,box-shadow .3s}
+.nav.is-scrolled{background:rgba(10,10,10,.96);border-bottom-color:rgba(201,168,76,.2);box-shadow:0 10px 30px rgba(0,0,0,.2)}
 .nav-logo{display:flex;flex-direction:column;align-items:flex-start;cursor:pointer}
 .nav-logo-main{font-family:var(--oswald);font-weight:700;font-size:22px;letter-spacing:4px;color:var(--gold);line-height:1.1;text-transform:uppercase}
 .nav-logo-sub{font-family:var(--oswald);font-weight:400;font-size:10px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;opacity:0.8}
@@ -91,9 +94,9 @@ input,textarea{font-family:inherit;font-size:inherit}
 body.menu-open .hamburger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--gold)}
 body.menu-open .hamburger span:nth-child(2){opacity:0}
 body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--gold)}
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:#0a0a0a;z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;transition:opacity .25s ease}
-.mobile-menu.open{display:flex;opacity:1}
-.mobile-menu a{font-family:var(--oswald);font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s;padding:8px 20px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.mobile-menu{display:flex;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(10,10,10,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease,visibility 0s linear .25s}
+.mobile-menu.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition-delay:0s}
+.mobile-menu a{font-family:var(--oswald);font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted);transition:color 0.3s;padding:10px 20px;min-height:48px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .mobile-menu a:hover,.mobile-menu a.active{color:var(--gold)}
 
 @media(max-width:768px){
@@ -103,7 +106,7 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 }
 
 /* ============ PAGES ============ */
-.page{display:none;opacity:0;transition:opacity 0.5s ease}
+.page{display:none;opacity:0;transition:opacity 0.3s ease}
 .page.active{display:block;opacity:1}
 
 /* ============ HERO ============ */
@@ -156,10 +159,12 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 }
 .hero-eyebrow{font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#7A1B1B;margin-bottom:18px}
 .hero-split .hero-subtitle{color:#7a7060}
-.hero-split .hero-title{font-family:var(--playfair);font-weight:600;font-size:clamp(48px,8vw,96px);line-height:0.98;letter-spacing:normal;text-transform:none;color:#1a1613;margin-bottom:14px}
+.hero-split .hero-title{font-family:var(--oswald);font-weight:600;font-size:clamp(44px,7vw,84px);line-height:0.98;letter-spacing:2px;text-transform:uppercase;color:#1a1613;margin-bottom:14px}
 .hero-role-line{font-family:var(--inter);font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a4238;margin-bottom:0}
 .hero-split .hero-tagline{display:none}
-.hero-credibility-badge{display:inline-block;margin-top:24px;margin-bottom:28px;border:1px solid #7A1B1B;padding:8px 16px;font-family:var(--inter);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7A1B1B}
+.hero-role-line{margin-bottom:16px}
+.hero-credibility-badge{display:inline-flex;align-items:center;gap:8px;margin-top:0;margin-bottom:26px;border:none;border-left:2px solid #7A1B1B;padding:2px 0 2px 12px;font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#7a6f5c}
+.hero-credibility-badge svg{flex-shrink:0;color:#7A1B1B}
 .hero-split .hero-buttons{justify-content:flex-start}
 .hero-split .hero-btn{border-color:rgba(26,22,19,0.35);color:#1a1613}
 .hero-split .hero-btn:hover{background:rgba(26,22,19,0.06);border-color:#1a1613}
@@ -170,6 +175,7 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 /* ============ MARQUEE ============ */
 .marquee{overflow:hidden;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0a0a0a}
 .marquee-track{display:flex;animation:marqueeScroll 30s linear infinite;width:max-content}
+.marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-text{font-family:var(--inter);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;padding-right:0}
 @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
@@ -183,7 +189,9 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 /* ============ FEATURED WORKS ============ */
 .featured-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:20px}
 .featured-grid-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.featured-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s}
+.featured-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s}
+.featured-card:hover{box-shadow:0 16px 32px rgba(0,0,0,0.35)}
+.featured-card:focus-visible,.reco-card:focus-visible,.prints-showcase-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .featured-card:hover{transform:translateY(-4px);border-color:#333}
 .featured-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 0.6s}
 .featured-card:hover .featured-card-img{transform:scale(1.03)}
@@ -259,14 +267,14 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .catalog-search{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:14px 44px 14px 44px;font-family:var(--inter);font-size:14px;letter-spacing:.02em;border-radius:0;transition:border-color .2s,background .2s;outline:none}
 .catalog-search:focus{border-color:var(--gold);background:rgba(255,255,255,.07)}
 .catalog-search::placeholder{color:var(--text-muted);opacity:.7}
-.catalog-search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;display:none}
-.catalog-search-clear.visible{display:block}
+.catalog-search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;width:44px;height:44px;line-height:1;display:none;align-items:center;justify-content:center}
+.catalog-search-clear.visible{display:flex}
 .catalog-search-clear:hover{color:var(--gold)}
 .catalog-filter-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
-.filter-chip{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text-muted);padding:8px 16px;font-family:var(--inter);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:0}
+.filter-chip{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--text-muted);padding:10px 16px;min-height:44px;font-family:var(--inter);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius:0}
 .filter-chip:hover{border-color:var(--gold);color:var(--gold)}
 .filter-chip.active{background:var(--gold);border-color:var(--gold);color:var(--bg)}
-@media(max-width:768px){.catalog-controls{padding:0 16px}.filter-chip{font-size:10px;padding:7px 12px}}
+@media(max-width:768px){.catalog-controls{padding:0 16px}.filter-chip{font-size:11px;padding:10px 12px}.catalog-filter-row{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}.catalog-filter-row::-webkit-scrollbar{display:none}.catalog-filter-row .filter-chip{flex:0 0 auto}}
 
 /* Trust strip */
 .trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32px;padding:16px 24px;border-top:1px solid rgba(218,165,32,.18);border-bottom:1px solid rgba(218,165,32,.18)}
@@ -284,7 +292,7 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .exit-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease}
 .exit-modal-overlay.show{display:flex}
 .exit-modal{background:var(--bg);max-width:480px;width:100%;padding:48px 32px;border:1px solid rgba(218,165,32,.25);position:relative;text-align:center;font-family:var(--inter)}
-.exit-modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text-muted);font-size:28px;cursor:pointer;line-height:1;padding:4px 8px}
+.exit-modal-close{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--text-muted);font-size:28px;cursor:pointer;line-height:1;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
 .exit-modal-close:hover{color:var(--gold)}
 .exit-modal-eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;text-transform:uppercase}
 .exit-modal-title{font-family:var(--display);font-size:32px;font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.15;letter-spacing:-.01em}
@@ -301,7 +309,7 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* ============ CERTIFICATE OF AUTHENTICITY MODAL ============ */
-.cert-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px}
+.cert-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;animation:fadeIn .2s ease}
 .cert-modal-backdrop{position:absolute;inset:0;background:rgba(10,8,6,0.85);animation:fadeIn .25s ease}
 .cert-modal-content{position:relative;background:#f9f5eb;max-width:820px;width:100%;max-height:90vh;overflow-y:auto;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .cert-modal-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#2a2018;font-size:30px;cursor:pointer;line-height:1;padding:4px 10px;z-index:2}
@@ -344,21 +352,28 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 @media(max-width:768px){.auc-howto-grid{grid-template-columns:1fr;gap:20px}.auc-howto{padding:0 20px;margin:60px auto 40px}}
 .gallery-count{font-family:var(--inter);font-size:12px;color:var(--text-muted);letter-spacing:1px}
 .sort-wrap{position:relative}
-.sort-toggle{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2px;color:var(--text-muted);background:none;border:1px solid #333;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s}
+.sort-toggle{font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:2px;color:var(--text-muted);background:none;border:1px solid #333;padding:10px 16px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s}
 .sort-toggle:hover,.sort-toggle.open{color:var(--gold);border-color:var(--gold)}
 .sort-toggle svg{transition:transform 0.2s}
 .sort-toggle.open svg{transform:rotate(180deg)}
 .sort-menu{display:none;position:absolute;top:calc(100% + 4px);right:0;background:#111;border:1px solid #333;min-width:200px;z-index:100}
 .sort-menu.open{display:block}
-.sort-option{display:block;width:100%;text-align:left;font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--text-muted);background:none;border:none;border-bottom:1px solid #1a1a1a;padding:12px 16px;cursor:pointer;transition:all 0.15s}
+.sort-option{display:block;width:100%;min-height:44px;text-align:left;font-family:var(--inter);font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--text-muted);background:none;border:none;border-bottom:1px solid #1a1a1a;padding:12px 16px;cursor:pointer;transition:all 0.15s}
 .sort-option:last-child{border-bottom:none}
 .sort-option:hover{background:#1a1a1a;color:var(--gold)}
 @media(max-width:768px){.gallery-sort{padding:0 16px}}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1400px;margin:0 auto;padding:0 40px 80px}
 .gallery-card{background:#ffffff;border:1px solid #e5e0d6;overflow:hidden;transition:transform 0.3s ease;cursor:pointer;position:relative;padding:0}
-.gallery-card:hover{transform:translateY(-4px)}
+.gallery-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.35)}
 .gallery-card-img-wrap{position:relative;overflow:hidden}
-.gallery-card-img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 0.5s;display:block}
+.gallery-card-img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 0.5s,opacity 0.4s ease;display:block;opacity:0}
+.gallery-card-img.img-loaded{opacity:1}
+.featured-card-img{opacity:0;transition:transform 0.6s,opacity 0.4s ease}
+.featured-card-img.img-loaded{opacity:1}
+.overlay-img{opacity:0;transition:opacity 0.35s ease}
+.overlay-img.img-loaded{opacity:1}
+.prints-showcase-img.img-loaded,.reco-card-img.img-loaded{opacity:1}
+.prints-showcase-img,.reco-card-img{opacity:0;transition:opacity 0.4s ease}
 .gallery-card:hover .gallery-card-img{transform:scale(1.04)}
 .gallery-card .featured-badge{position:absolute;top:8px;left:8px}
 .sold-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,10,0.85);color:var(--text);font-family:var(--oswald);font-size:18px;letter-spacing:4px;padding:10px 24px;z-index:2}
@@ -366,12 +381,14 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .gallery-card-title{font-family:var(--playfair);font-size:17px;font-weight:500;letter-spacing:0.3px;line-height:1.3;text-transform:none;color:#1a1613;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:text-decoration-color 0.2s;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px}
 .gallery-card:hover .gallery-card-title{text-decoration-color:#7A1B1B}
 .gallery-card-meta{font-family:var(--inter);font-size:11px;color:#7a7060;letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase}
-.gallery-card-price-row{display:flex;justify-content:flex-end;align-items:baseline;gap:4px;margin-bottom:4px}
+.gallery-card-price-row{display:flex;justify-content:flex-end;align-items:baseline;gap:4px;margin-bottom:4px;min-height:17px}
+.gallery-card-scarcity{min-height:14px}
 .gallery-card-price{font-family:var(--inter);font-variant-numeric:tabular-nums;font-size:14px;color:#1a1613;font-weight:600;text-align:right}
-.gallery-card-price-suffix{font-family:var(--inter);font-size:10px;color:#b0a695;letter-spacing:0.5px}
+.gallery-card-price-suffix{font-family:var(--inter);font-size:10px;color:#756b5a;letter-spacing:0.5px}
 .gallery-card-scarcity{font-family:var(--inter);font-size:10px;color:var(--red-light);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;text-align:right}
-.gallery-card-btn{display:block;width:100%;padding:10px;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;background:transparent;border:1px solid var(--border);color:var(--text);transition:all 0.3s}
-.gallery-card-btn:hover{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+.gallery-card-btn{display:block;width:100%;min-height:44px;padding:11px 12px;font-family:var(--inter);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;background:#1a1613;border:1px solid #1a1613;color:#fff;transition:background .25s,border-color .25s,color .25s}
+.gallery-card-btn:hover,.gallery-card-btn:focus-visible{background:#7A1B1B;color:#fff;border-color:#7A1B1B}
+.gallery-card-btn:active{background:#601515;border-color:#601515}
 .gallery-card-provenance{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#7a7060}
 .provenance-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
 .gallery-card-provenance-original .provenance-dot{background:#4a7c3a}
@@ -424,6 +441,8 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .artist-gallery-item:hover img{transform:scale(1.05);filter:brightness(0.7)}
 .artist-gallery-item .ag-caption{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,0.85));font-family:var(--inter);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);opacity:0;transition:opacity 0.3s}
 .artist-gallery-item:hover .ag-caption{opacity:1}
+.artist-gallery-item-poster{background:#000}
+.artist-gallery-item-poster img{aspect-ratio:1;object-fit:contain;background:#000}
 @media(max-width:768px){
   .artist-gallery{padding:0 16px 60px}
   .artist-gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
@@ -450,7 +469,7 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 
 /* ============ OVERLAY ============ */
 .overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,10,10,0.95);display:none;align-items:center;justify-content:center;overflow-y:auto;padding:40px}
-.overlay.open{display:flex}
+.overlay.open{display:flex;animation:fadeIn .25s ease}
 .overlay-inner{display:grid;grid-template-columns:1fr 1fr;max-width:1100px;width:100%;background:#111;border:1px solid var(--border);max-height:90vh;overflow-y:auto}
 .overlay-img{width:100%;height:100%;object-fit:contain;background:#0a0a0a;max-height:80vh;pointer-events:none}
 .overlay-details{padding:40px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto}
@@ -477,7 +496,7 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .overlay-trust{display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid var(--border)}
 .overlay-trust-item{display:flex;align-items:center;gap:8px;font-family:var(--inter);font-size:11px;color:var(--text-muted)}
 .overlay-trust-item svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5}
-.overlay-close{position:fixed;top:20px;right:24px;z-index:2001;font-size:28px;color:var(--text);cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.6);border-radius:50%;transition:background 0.3s}
+.overlay-close{position:fixed;top:20px;right:24px;z-index:2001;font-size:28px;color:var(--text);cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.6);border-radius:50%;transition:background 0.3s}
 .overlay-close:hover{background:rgba(255,255,255,0.1)}
 .overlay-nav{position:fixed;top:50%;z-index:2001;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.6);border-radius:50%;cursor:pointer;color:var(--text);font-size:20px;transition:background 0.3s;transform:translateY(-50%)}
 .overlay-nav:hover{background:rgba(255,255,255,0.1)}
@@ -534,7 +553,8 @@ body.menu-open .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(
 .prints-banner-text{font-family:var(--inter);font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:12px;max-width:600px;margin-left:auto;margin-right:auto}
 .prints-banner-price-hook{font-family:var(--oswald);font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:32px}
 .prints-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
-.prints-showcase-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s}
+.prints-showcase-card{position:relative;background:var(--card-bg);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s}
+.prints-showcase-card:hover{box-shadow:0 16px 32px rgba(0,0,0,0.35)}
 .prints-showcase-card:hover{transform:translateY(-4px);border-color:var(--gold)}
 .prints-showcase-img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 0.6s}
 .prints-showcase-card:hover .prints-showcase-img{transform:scale(1.03)}
@@ -655,17 +675,19 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 .reco-section{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
 .reco-title{font-family:var(--inter);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
 .reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.reco-card{cursor:pointer;border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+.reco-card{cursor:pointer;border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s}
+.reco-card:hover{box-shadow:0 12px 24px rgba(0,0,0,0.3)}
 .reco-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .reco-card-img{width:100%;aspect-ratio:3/4;object-fit:cover}
 .reco-card-title{font-family:var(--inter);font-size:11px;font-weight:500;padding:8px;color:var(--text);text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .reco-card-price{font-family:var(--inter);font-size:12px;color:var(--gold);padding:0 8px 8px;font-weight:500}
 
 .ar-viewer{position:fixed;inset:0;z-index:3000;background:#000;display:none;flex-direction:column}
+.ar-viewer.open{animation:fadeIn .2s ease}
 .ar-viewer.open{display:flex}
 .ar-viewer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ar-topbar{position:absolute;top:0;left:0;right:0;z-index:3001;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.ar-close{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;border:none;transition:background 0.2s}
+.ar-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;border:none;transition:background 0.2s}
 .ar-close:hover{background:rgba(255,255,255,0.25)}
 .ar-topbar-title{font-family:var(--oswald);font-size:14px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#fff;flex:1;text-align:center;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ar-topbar-spacer{width:40px}
@@ -902,7 +924,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
     <a href="#artist" data-page="artist" onclick="navigateTo('artist')">The Artist</a>
     <a href="#contact" data-page="contact" onclick="navigateTo('contact')">Contact</a>
   </div>
-  <div class="hamburger" id="hamburgerBtn">
+  <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -926,7 +948,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
       <h1 class="hero-title">NAT BERHE</h1>
       <p class="hero-role-line">FIGURATIVE ABSTRACT EXPRESSIONIST &middot; LOS ANGELES</p>
       <p class="hero-tagline">Figurative Abstract Expressionism</p>
-      <div class="hero-credibility-badge">2ND PLACE &middot; THE PEOPLE'S ARTIST 2026</div>
+      <div class="hero-credibility-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-5.5 3 1-6-4.5-4h6l2-6 2 6h6l-4.5 4 1 6z"/></svg>2ND PLACE &middot; THE PEOPLE'S ARTIST 2026</div>
       <div class="hero-buttons">
         <a href="#gallery" class="hero-btn" onclick="navigateTo('gallery')">ENTER THE COLLECTION</a>
         <a href="#prints" class="hero-btn hero-btn-gold" onclick="navigateTo('prints')">BROWSE PRINTS</a>
@@ -1022,10 +1044,14 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
   <section class="collectors">
     <h2 class="collectors-title">JOIN THE COLLECTOR&rsquo;S CIRCLE</h2>
     <p class="collectors-sub">Be first to know about new works, private viewings, and studio releases.</p>
-    <div class="collectors-form">
-      <input type="email" class="collectors-input" placeholder="Your email address">
-      <button class="collectors-submit">SUBSCRIBE</button>
-    </div>
+    <form class="collectors-form" method="post" action="/contact#collectorsCircle" accept-charset="UTF-8" id="collectorsCircle">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="newsletter, collectors-circle">
+      <label class="sr-only" for="collectorsEmail">Email address</label>
+      <input type="email" class="collectors-input" id="collectorsEmail" name="contact[email]" autocomplete="email" placeholder="Your email address" required>
+      <button type="submit" class="collectors-submit">SUBSCRIBE</button>
+    </form>
   </section>
 </div>
 
@@ -1184,7 +1210,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
         <img src="{{ 'IMG_8698.jpeg' | asset_url }}" alt="Nat Berhe profile at Steelers practice" loading="lazy">
         <div class="ag-caption">Steelers Practice</div>
       </div>
-      <div class="artist-gallery-item">
+      <div class="artist-gallery-item artist-gallery-item-poster">
         <img src="{{ 'IMG_8443.jpeg' | asset_url }}" alt="Nat Berhe at the 2018 DC Eritrean Festival, Pittsburgh Steelers" loading="lazy">
         <div class="ag-caption">DC Eritrean Festival, 2018</div>
       </div>
@@ -1216,10 +1242,15 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
         </div>
       </div>
       <div>
-        <form class="contact-form" onsubmit="event.preventDefault()">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
+        <form class="contact-form" method="post" action="/contact#contactForm" accept-charset="UTF-8" id="contactForm">
+          <input type="hidden" name="form_type" value="contact">
+          <input type="hidden" name="utf8" value="✓">
+          <label class="sr-only" for="contactName">Your name</label>
+          <input type="text" id="contactName" name="contact[name]" autocomplete="name" placeholder="Your Name" required>
+          <label class="sr-only" for="contactEmail">Your email</label>
+          <input type="email" id="contactEmail" name="contact[email]" autocomplete="email" placeholder="Your Email" required>
+          <label class="sr-only" for="contactMessage">Your message</label>
+          <textarea id="contactMessage" name="contact[body]" placeholder="Your Message" required></textarea>
           <button type="submit" class="contact-submit">SEND MESSAGE</button>
         </form>
       </div>
@@ -1373,9 +1404,9 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 
 <!-- ========== OVERLAY ========== -->
 <div class="overlay" id="overlay">
-  <div class="overlay-close" onclick="closeOverlay()">&times;</div>
-  <div class="overlay-nav overlay-prev" onclick="overlayNav(-1)">&#8249;</div>
-  <div class="overlay-nav overlay-next" onclick="overlayNav(1)">&#8250;</div>
+  <button class="overlay-close" type="button" aria-label="Close artwork details" onclick="closeOverlay()">&times;</button>
+  <button class="overlay-nav overlay-prev" type="button" aria-label="Previous artwork" onclick="overlayNav(-1)">&#8249;</button>
+  <button class="overlay-nav overlay-next" type="button" aria-label="Next artwork" onclick="overlayNav(1)">&#8250;</button>
   <div class="overlay-inner">
     <img class="overlay-img" id="overlayImg" src="" alt="">
     <div class="overlay-details">
@@ -1427,7 +1458,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
     <input type="file" id="arRoomUpload" accept="image/*" style="display:none" onchange="loadRoomPhoto(event)">
   </div>
   <div class="ar-topbar">
-    <button class="ar-close" onclick="closeARViewer()">&times;</button>
+    <button class="ar-close" aria-label="Close room preview" onclick="closeARViewer()">&times;</button>
     <div class="ar-topbar-title" id="arTitle"></div>
     <button class="ar-change-photo" id="arChangePhoto" style="display:none" onclick="document.getElementById('arRoomUpload').click()">CHANGE PHOTO</button>
     <div class="ar-topbar-spacer"></div>
@@ -1446,7 +1477,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
   </div>
   <div class="ar-bottom">
     <div class="ar-hint" id="arHint">Drag to position, pinch to resize, or use S/M/L/XL</div>
-    <button class="ar-capture-btn" id="arCaptureBtn" onclick="captureARPhoto()"></button>
+    <button class="ar-capture-btn" id="arCaptureBtn" aria-label="Capture room preview" onclick="captureARPhoto()"></button>
     <span class="ar-capture-label">TAKE PHOTO</span>
   </div>
   <div class="ar-fallback" id="arFallback" style="display:none">
@@ -1462,9 +1493,7 @@ html.js-anim .img-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path;trans
 <!-- SEO CONTENT BLOCK -->
 <section style="max-width:900px;margin:0 auto;padding:60px 40px;text-align:center;border-top:1px solid #1a1a1a">
   <h2 style="font-family:var(--oswald);font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text);margin-bottom:16px">About Nat Berhe Gallery</h2>
-  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">Nat Berhe Gallery is a Los Angeles contemporary art gallery featuring original oil paintings and affordable canvas prints for sale by Natnael "Nat" Berhe, a former NFL player turned artist. Browse 69 original oil paintings for sale starting from $15,000 and 78 museum quality canvas prints for sale starting from $55. Each original comes with a Certificate of Authenticity.</p>
-  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">Nat Berhe is the first Eritrean American player drafted in NFL history. After five seasons as a safety with the New York Giants and Pittsburgh Steelers (2014 to 2018), he transitioned to Figurative Abstract Expressionism, creating large scale oil on canvas works that explore identity, power, and transcendence. His paintings have been exhibited at the Sasse Museum of Art in Pomona, California.</p>
-  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">Whether you are looking to buy original art online, find affordable art prints, or collect contemporary expressionist paintings, Nat Berhe Gallery offers works at every price point. Based in Los Angeles, shipping worldwide.</p>
+  <p style="font-family:var(--inter);font-size:14px;line-height:1.8;color:var(--text-muted);margin-bottom:16px">Nat Berhe Gallery is a Los Angeles contemporary art gallery offering original oil paintings starting from $15,000 and museum quality canvas prints starting from $55, each original backed by a Certificate of Authenticity, from Natnael "Nat" Berhe, an Eritrean American former NFL player whose Figurative Abstract Expressionism paintings have been exhibited at the Sasse Museum of Art. Based in Los Angeles, with worldwide shipping.</p>
 </section>
 
 <footer class="footer">
@@ -1641,20 +1670,37 @@ window.addEventListener('DOMContentLoaded', function() {
     var isOpen = mobileMenu.classList.toggle('open');
     document.body.classList.toggle('menu-open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
   }
   if (hamburger) {
-    hamburger.addEventListener('touchend', function(e) {
-      lastHamburgerTouch = Date.now();
-      toggleMobileMenu(e);
-    }, { passive: false });
-    hamburger.addEventListener('click', function(e) {
-      if (Date.now() - lastHamburgerTouch < 500) return;
-      toggleMobileMenu(e);
-    });
+    if (hamburger.dataset.fixBound !== '1') {
+      hamburger.dataset.fixBound = '1';
+      hamburger.addEventListener('touchend', function(e) {
+        lastHamburgerTouch = Date.now();
+        toggleMobileMenu(e);
+      }, { passive: false });
+      hamburger.addEventListener('click', function(e) {
+        if (Date.now() - lastHamburgerTouch < 500) return;
+        toggleMobileMenu(e);
+      });
+    }
     hamburger.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') toggleMobileMenu(e);
     });
+    var syncMenuState = function() {
+      var isOpen = mobileMenu && mobileMenu.classList.contains('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    };
+    if (mobileMenu) new MutationObserver(syncMenuState).observe(mobileMenu, { attributes: true, attributeFilter: ['class'] });
   }
+  var nav = document.querySelector('.nav');
+  function syncStickyNav() {
+    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  syncStickyNav();
+  window.addEventListener('scroll', syncStickyNav, { passive: true });
 });
 
 // 8. Image error fallback: if a product image fails, try reloading it once
@@ -2184,14 +2230,14 @@ function renderFeaturedWorks() {
   if (!heroGrid || !bottomGrid) return;
   // Hero card (full width)
   var h = picks[0];
-  heroGrid.innerHTML = '<div class="featured-card" onclick="openOverlay(\'' + h.handle + '\')" style="grid-column:1/-1">' +
+  heroGrid.innerHTML = '<div class="featured-card" onclick="openOverlay(\'' + h.handle + '\')" role="button" tabindex="0" aria-label="View ' + h.title.replace(/"/g,'&quot;') + '" onkeydown="cardKeyActivate(event)" style="grid-column:1/-1">' +
     '<img class="featured-card-img" src="' + h.image + '" alt="' + h.title + ', original oil on canvas by Nat Berhe" loading="lazy">' +
     '<span class="featured-badge">' + (h.sold_out ? 'SOLD' : 'ORIGINAL') + '</span>' +
     '<div class="featured-card-info"><div class="featured-card-title">' + h.title.toUpperCase() + '</div>' +
     '<div class="featured-card-price">$' + h.price.toLocaleString('en-US',{maximumFractionDigits:0}) + '</div></div></div>';
   // Bottom 6 cards
   bottomGrid.innerHTML = picks.slice(1, 7).map(function(p) {
-    return '<div class="featured-card" onclick="openOverlay(\'' + p.handle + '\')">' +
+    return '<div class="featured-card" onclick="openOverlay(\'' + p.handle + '\')" role="button" tabindex="0" aria-label="View ' + p.title.replace(/"/g,'&quot;') + '" onkeydown="cardKeyActivate(event)">' +
       '<img class="featured-card-img" src="' + p.image + '" alt="' + p.title + ', original oil on canvas by Nat Berhe" loading="lazy">' +
       '<span class="featured-badge">' + (p.sold_out ? 'SOLD' : 'ORIGINAL') + '</span>' +
       '<div class="featured-card-info"><div class="featured-card-title">' + p.title.toUpperCase() + '</div>' +
@@ -2211,7 +2257,7 @@ function renderPrintsShowcase() {
   grid.innerHTML = picks.map(function(p) {
     var catIdx = CATALOG.indexOf(p);
     var maxSize = p.sizes[p.sizes.length - 1].label.split(' (')[0];
-    return '<div class="prints-showcase-card" onclick="navigateTo(\'prints\');setTimeout(function(){filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')},300)">' +
+    return '<div class="prints-showcase-card" onclick="navigateTo(\'prints\');setTimeout(function(){filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')},300)" role="button" tabindex="0" aria-label="View ' + p.title.replace(/"/g,'&quot;') + '" onkeydown="cardKeyActivate(event)">' +
       '<img class="prints-showcase-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + ' canvas print by Nat Berhe" loading="lazy">' +
       '<div class="prints-showcase-info">' +
       '<div class="prints-showcase-title">' + p.title.toUpperCase() + '</div>' +
@@ -2476,7 +2522,7 @@ function showRecommendations(currentProduct) {
   
   recoGrid.innerHTML = picks.map(function(p) {
     var catIdx = CATALOG.indexOf(p);
-    return '<div class="reco-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')">' +
+    return '<div class="reco-card" onclick="filteredProducts=CATALOG;openOverlayByIndex(' + catIdx + ')" role="button" tabindex="0" aria-label="View ' + p.title.replace(/"/g,'&quot;') + '" onkeydown="cardKeyActivate(event)">' +
       '<img class="reco-card-img" src="' + p.image + '" alt="' + p.title.replace(/"/g, '&quot;') + '" loading="lazy">' +
       '<div class="reco-card-title">' + p.title + '</div>' +
       '<div class="reco-card-price">$' + p.price.toLocaleString('en-US', {maximumFractionDigits:0}) + '</div>' +
@@ -2522,13 +2568,47 @@ setTimeout(function(){
   });
 }, 3000);
 
+// ============ ACCESSIBLE CARD ACTIVATION ============
+function cardKeyActivate(e){
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.click(); }
+}
+
+// ============ IMAGE FADE-IN ============
+(function(){
+  var FADE_SELECTOR = '.gallery-card-img,.featured-card-img,.overlay-img,.prints-showcase-img,.reco-card-img';
+  function markLoaded(img){ img.classList.add('img-loaded'); }
+  function initImg(img){
+    if (img.complete && img.naturalWidth > 0) { markLoaded(img); return; }
+    if (img.complete) { markLoaded(img); return; }
+    img.addEventListener('load', function(){ markLoaded(img); }, {once:true});
+    img.addEventListener('error', function(){ markLoaded(img); }, {once:true});
+  }
+  function scan(root){
+    if (!root) return;
+    if (root.matches && root.matches(FADE_SELECTOR)) initImg(root);
+    if (root.querySelectorAll) root.querySelectorAll(FADE_SELECTOR).forEach(initImg);
+  }
+  scan(document);
+  var mo = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      if (m.type === 'childList') {
+        m.addedNodes.forEach(function(n){ if (n.nodeType === 1) scan(n); });
+      } else if (m.type === 'attributes' && m.target && m.target.matches && m.target.matches(FADE_SELECTOR)) {
+        m.target.classList.remove('img-loaded');
+        initImg(m.target);
+      }
+    });
+  });
+  mo.observe(document.documentElement, {childList:true, subtree:true, attributes:true, attributeFilter:['src']});
+})();
+
 // ============ CATALOG SEARCH + FILTER ============
 (function(){
   // Helpers to read painting data from rendered cards
   function getCardData(card){
-    var t = card.querySelector('.card-title, .product-title, h3, h4');
-    var p = card.querySelector('.card-price, .product-price, [class*="price"]');
-    var s = card.querySelector('.card-size, .product-size, [class*="size"]');
+    var t = card.querySelector('.gallery-card-title, .card-title, .product-title, h3, h4');
+    var p = card.querySelector('.gallery-card-price, .card-price, .product-price, [class*="price"]');
+    var s = card.querySelector('.gallery-card-meta, .card-size, .product-size, [class*="size"]');
     var title = t ? t.textContent.trim() : '';
     var priceText = p ? p.textContent.replace(/[^0-9.]/g,'') : '0';
     var price = parseFloat(priceText) || 0;
@@ -2667,48 +2747,27 @@ document.addEventListener('keydown', function(e){
 
 // ============ EXIT-INTENT MODAL ============
 (function(){
-  if(localStorage.getItem('nbg_modal_dismissed') === '1') return;
   var shown = false;
+  var dismissed = false;
   function showModal(){
-    if(shown) return;
+    if(shown || dismissed || window.innerWidth < 900) return;
+    var home = document.getElementById('page-home');
+    if(!home || !home.classList.contains('active')) return;
     var m = document.getElementById('exitModal');
     if(!m) return;
     shown = true;
     m.classList.add('show');
   }
-  // Trigger on exit intent (desktop): mouse leaves toward top
+  // Exit intent only, and only on the homepage, so browsing stays uninterrupted.
   document.addEventListener('mouseleave', function(e){
     if(e.clientY < 5) showModal();
   });
-  // Trigger on mobile: after 30 seconds OR on scroll past 60%
-  setTimeout(showModal, 30000);
-  window.addEventListener('scroll', function(){
-    if((window.scrollY + window.innerHeight) / document.body.scrollHeight > 0.6) showModal();
-  }, {passive: true});
   // Wire up close
   document.addEventListener('click', function(e){
-    if(e.target.closest('#exitModalClose') || e.target.id === 'exitModalOverlay'){
+    if(e.target.closest('#exitModalClose') || e.target.id === 'exitModal'){
       var m = document.getElementById('exitModal');
-      if(m){ m.classList.remove('show'); localStorage.setItem('nbg_modal_dismissed','1'); }
+      if(m){ m.classList.remove('show'); dismissed = true; }
     }
-  });
-  // Wire up form submit (stores in localStorage; integrate with Klaviyo/Shopify later)
-  document.addEventListener('submit', function(e){
-    if(e.target.id !== 'exitModalForm') return;
-    e.preventDefault();
-    var email = document.getElementById('exitModalEmail').value.trim();
-    if(!email) return;
-    var subs = [];
-    try { subs = JSON.parse(localStorage.getItem('nbg_subscribers') || '[]'); } catch(_){}
-    subs.push({email: email, at: new Date().toISOString(), source: 'exit_modal'});
-    localStorage.setItem('nbg_subscribers', JSON.stringify(subs));
-    localStorage.setItem('nbg_modal_dismissed','1');
-    document.getElementById('exitModalContent').style.display = 'none';
-    document.getElementById('exitModalSuccess').classList.add('show');
-    setTimeout(function(){
-      var m = document.getElementById('exitModal');
-      if(m) m.classList.remove('show');
-    }, 2500);
   });
 })();
 </script>
@@ -2721,8 +2780,12 @@ document.addEventListener('keydown', function(e){
       <div class="exit-modal-eyebrow">COLLECTOR'S CIRCLE</div>
       <h2 class="exit-modal-title">New works,<br>by email first.</h2>
       <p class="exit-modal-sub">Get new release previews before they go public. Piece details, pricing, and a private viewing invitation.</p>
-      <form class="exit-modal-form" id="exitModalForm">
-        <input type="email" class="exit-modal-input" id="exitModalEmail" placeholder="Your email address" required>
+      <form class="exit-modal-form" id="exitModalForm" method="post" action="/contact#collectorsCircle" accept-charset="UTF-8">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter, collectors-circle, exit-intent">
+        <label class="sr-only" for="exitModalEmail">Email address</label>
+        <input type="email" class="exit-modal-input" id="exitModalEmail" name="contact[email]" autocomplete="email" placeholder="Your email address" required>
         <button type="submit" class="exit-modal-submit">Join the Circle</button>
       </form>
       <p class="exit-modal-fineprint">No spam. Unsubscribe anytime. We send 2 to 4 emails a month around new work and studio releases.</p>
@@ -2739,7 +2802,7 @@ document.addEventListener('keydown', function(e){
 <div id="certificateModal" class="cert-modal" style="display:none">
   <div class="cert-modal-backdrop" onclick="closeCertificateModal()"></div>
   <div class="cert-modal-content">
-    <button class="cert-modal-close" onclick="closeCertificateModal()">&times;</button>
+    <button class="cert-modal-close" aria-label="Close certificate" onclick="closeCertificateModal()">&times;</button>
     <div class="cert-doc" id="certDoc">
       <div class="cert-doc-header">
         <svg class="cert-signature-svg" viewBox="0 0 400 120" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Nat Berhe signature">

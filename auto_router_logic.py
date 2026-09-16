@@ -55,7 +55,20 @@ def save_state(state):
     os.makedirs(STATE_DIR, exist_ok=True)
     state["last_run"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
     with open(STATE_FILE, "w") as f:
-        json.dump(state, f, indent=2)
+        json.dump(state, f, indent=2, default=str)
+
+
+def shopify_get_order_status(order_id):
+    """Light re-check of an order's current cancellation/refund state before acting on it."""
+    url = f"https://{SHOP}/admin/api/2024-01/orders/{order_id}.json?fields=id,cancelled_at,financial_status,fulfillment_status"
+    headers = {"X-Shopify-Access-Token": SHOPIFY_TOKEN}
+    code, body = http_request("GET", url, headers=headers)
+    if code != 200:
+        return None
+    try:
+        return json.loads(body).get("order", {})
+    except json.JSONDecodeError:
+        return None
 
 
 def load_sku_map():
@@ -132,11 +145,14 @@ def build_prodigi_payload(order, sku_map):
 
     items = []
     skipped = []
+    routed_line_item_ids = []
+    non_print_line_item_ids = []
     for li in order.get("line_items", []):
         if not product_is_print(li.get("product_id"), li):
             skipped.append(
                 f"line {li.get('id')} '{li.get('title')}' (variant: {li.get('variant_title')!r}) not a recognized print"
             )
+            non_print_line_item_ids.append(li.get("id"))
             continue
         size = normalize_size(li.get("variant_title") or "")
         if size not in sku_map:
@@ -154,13 +170,14 @@ def build_prodigi_payload(order, sku_map):
             "attributes": {"wrap": "ImageWrap"},  # NO WHITE BORDER
             "assets": [{"printArea": "default", "url": image_url}],
         })
+        routed_line_item_ids.append(li.get("id"))
 
     return {
         "shippingMethod": "Budget",
         "merchantReference": f"shopify-{order.get('name')}-auto",
         "recipient": recipient,
         "items": items,
-    }, skipped
+    }, skipped, routed_line_item_ids, non_print_line_item_ids
 
 
 def submit_to_prodigi(payload):
@@ -176,6 +193,60 @@ def submit_to_prodigi(payload):
         return code, {"raw": body}
 
 
+def attempt_shopify_fulfillment(sid, tracking, url, carrier, line_item_ids):
+    """Fulfill only the specific routed line items (not the whole order), so a print
+    shipping never falsely marks an accompanying original painting as shipped.
+    Returns (fulfilled_ok, fulfillment_id, error_message)."""
+    code_fo, body_fo = http_request(
+        "GET",
+        f"https://{SHOP}/admin/api/2024-01/orders/{sid}/fulfillment_orders.json",
+        headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN},
+    )
+    if code_fo != 200:
+        return False, None, f"GET fulfillment_orders HTTP {code_fo}"
+
+    fos = json.loads(body_fo).get("fulfillment_orders", [])
+    line_item_ids = set(line_item_ids or [])
+    fo_line_items_by_fo = {}
+    for fo in fos:
+        if fo.get("status") not in ("open", "in_progress"):
+            continue
+        matches = [
+            {"id": foli["id"], "quantity": foli.get("quantity", 1)}
+            for foli in fo.get("line_items", [])
+            if (not line_item_ids) or (foli.get("line_item_id") in line_item_ids)
+        ]
+        if matches:
+            fo_line_items_by_fo[fo["id"]] = matches
+
+    if not fo_line_items_by_fo:
+        return False, None, "no open fulfillment_orders matched the routed line items (already fulfilled or cancelled?)"
+
+    all_fo_line_items = [item for items in fo_line_items_by_fo.values() for item in items]
+    fulfillment_body = {
+        "fulfillment": {
+            "message": f"Shipped from Prodigi production. Tracking: {tracking}",
+            "notify_customer": True,
+            "tracking_info": {
+                "number": tracking,
+                "url": url or f"https://www.ups.com/track?loc=en_US&tracknum={tracking}",
+                "company": carrier or "UPS",
+            },
+            "fulfillment_order_line_items": all_fo_line_items,
+        }
+    }
+    code_f, body_f = http_request(
+        "POST",
+        f"https://{SHOP}/admin/api/2024-01/fulfillments.json",
+        headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN, "Content-Type": "application/json"},
+        body=fulfillment_body,
+    )
+    if code_f in (200, 201):
+        f_data = json.loads(body_f)
+        return True, f_data.get("fulfillment", {}).get("id"), None
+    return False, None, f"HTTP {code_f}: {body_f[:200]}"
+
+
 def main():
     sku_map = load_sku_map()
     state = load_state()
@@ -187,6 +258,9 @@ def main():
         "failures": 0,
         "new_orders": [],
         "failure_details": [],
+        "skipped_needs_review": [],
+        "cancelled_needs_review": [],
+        "recovered_fulfillments": [],
     }
 
     try:
@@ -195,7 +269,7 @@ def main():
         result["failures"] = 1
         result["failure_details"].append({"error": f"shopify_fetch: {e}"})
         save_state(state)
-        print(json.dumps(result))
+        print(json.dumps(result, default=str))
         return
 
     result["orders_checked"] = len(orders)
@@ -207,16 +281,26 @@ def main():
         if order_id in routed:
             continue  # idempotent skip
 
-        payload, skipped = build_prodigi_payload(order, sku_map)
+        payload, skipped, routed_line_item_ids, non_print_line_item_ids = build_prodigi_payload(order, sku_map)
 
         if not payload["items"]:
-            # Order has no routable items; mark as skipped (not failed) so we don't retry
+            # Order has no routable items. Most of the time this is a normal original-painting
+            # order (correctly out of scope for this router). Flag it for a human to glance at
+            # once, rather than silently disappearing forever, in case it's actually a print
+            # product this heuristic doesn't recognize (e.g. a single fixed-size listing with
+            # no size variant).
             routed[order_id] = {
                 "name": order_name,
                 "status": "skipped_no_print_items",
                 "reasons": skipped,
                 "at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                "flagged": True,
             }
+            result["skipped_needs_review"].append({
+                "shopify_name": order_name,
+                "shopify_id": order_id,
+                "reasons": skipped,
+            })
             continue
 
         code, response = submit_to_prodigi(payload)
@@ -236,6 +320,7 @@ def main():
                 "prodigi_id": prodigi_id,
                 "total": total,
                 "at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                "line_item_ids": routed_line_item_ids,
             }
             result["newly_routed"] += 1
             result["new_orders"].append({
@@ -243,6 +328,8 @@ def main():
                 "prodigi_id": prodigi_id,
                 "total": total,
             })
+            if outcome == "CreatedWithIssues":
+                result["new_orders"][-1]["warning"] = "Prodigi accepted this order WITH ISSUES (e.g. low image resolution). Worth a manual look before it ships."
         else:
             result["failures"] += 1
             result["failure_details"].append({
@@ -250,9 +337,20 @@ def main():
                 "shopify_id": order_id,
                 "http_code": code,
                 "outcome": outcome,
-                "response": response if len(json.dumps(response)) < 800 else "(truncated)",
+                "response": response if len(json.dumps(response, default=str)) < 800 else "(truncated)",
             })
 
+    # Re-surface any older skipped orders that were never explicitly reviewed yet
+    # (covers orders skipped by earlier versions of this script, before this flag existed).
+    for sid, info in routed.items():
+        if info.get("status") == "skipped_no_print_items" and not info.get("flagged"):
+            info["flagged"] = True
+            result["skipped_needs_review"].append({
+                "shopify_name": info.get("name"),
+                "shopify_id": sid,
+                "reasons": info.get("reasons", []),
+                "note": "previously skipped before review-alerting existed",
+            })
 
     # Check Prodigi for newly-shipped orders (tracking writeback notification)
     newly_shipped = []
@@ -262,6 +360,23 @@ def main():
         pid = info.get('prodigi_id')
         if not pid or info.get('notified_shipped'):
             continue
+
+        # Refund/cancellation guard: don't auto-fulfill (and don't let the customer
+        # think it shipped) if the Shopify order was cancelled or refunded after routing.
+        order_status = shopify_get_order_status(sid)
+        if order_status and (order_status.get("cancelled_at") or order_status.get("financial_status") in ("refunded", "partially_refunded", "voided")):
+            result["cancelled_needs_review"].append({
+                "shopify_name": info.get("name"),
+                "shopify_id": sid,
+                "prodigi_id": pid,
+                "financial_status": order_status.get("financial_status"),
+                "cancelled_at": order_status.get("cancelled_at"),
+                "note": "Order was cancelled/refunded after being routed to Prodigi. Check whether the Prodigi order needs manual cancellation.",
+            })
+            info["notified_shipped"] = True  # stop re-checking; a human is now looking at it
+            info["cancelled_after_routing"] = True
+            continue
+
         try:
             code_p, body_p = http_request(
                 "GET",
@@ -277,55 +392,14 @@ def main():
                         url = (s.get('tracking') or {}).get('url')
                         carrier = (s.get('carrier') or {}).get('name', 'UPS')
                         if tracking:
-                            # Auto-push fulfillment to Shopify with tracking number.
-                            # This marks the order fulfilled and triggers Shopify's standard
-                            # customer shipping email with the carrier tracking link.
-                            fulfilled_in_shopify = False
-                            shopify_error = None
                             try:
-                                code_fo, body_fo = http_request(
-                                    "GET",
-                                    f"https://{SHOP}/admin/api/2024-01/orders/{sid}/fulfillment_orders.json",
-                                    headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN},
+                                fulfilled_in_shopify, fulfillment_id, shopify_error = attempt_shopify_fulfillment(
+                                    sid, tracking, url, carrier, info.get('line_item_ids')
                                 )
-                                if code_fo == 200:
-                                    fos = json.loads(body_fo).get('fulfillment_orders', [])
-                                    open_fos = [fo for fo in fos if fo.get('status') in ('open', 'in_progress')]
-                                    if open_fos:
-                                        fulfillment_body = {
-                                            "fulfillment": {
-                                                "message": f"Shipped from Prodigi production. Tracking: {tracking}",
-                                                "notify_customer": True,
-                                                "tracking_info": {
-                                                    "number": tracking,
-                                                    "url": url or f"https://www.ups.com/track?loc=en_US&tracknum={tracking}",
-                                                    "company": carrier or "UPS",
-                                                },
-                                                "line_items_by_fulfillment_order": [
-                                                    {"fulfillment_order_id": fo['id']} for fo in open_fos
-                                                ],
-                                            }
-                                        }
-                                        code_f, body_f = http_request(
-                                            "POST",
-                                            f"https://{SHOP}/admin/api/2024-01/fulfillments.json",
-                                            headers={
-                                                "X-Shopify-Access-Token": SHOPIFY_TOKEN,
-                                                "Content-Type": "application/json",
-                                            },
-                                            body=fulfillment_body,
-                                        )
-                                        if code_f in (200, 201):
-                                            fulfilled_in_shopify = True
-                                            f_data = json.loads(body_f)
-                                            info['shopify_fulfillment_id'] = f_data.get('fulfillment', {}).get('id')
-                                        else:
-                                            shopify_error = f"HTTP {code_f}: {body_f[:200]}"
-                                    else:
-                                        shopify_error = "no open fulfillment_orders (already fulfilled?)"
-                                else:
-                                    shopify_error = f"GET fulfillment_orders HTTP {code_fo}"
+                                if fulfillment_id:
+                                    info['shopify_fulfillment_id'] = fulfillment_id
                             except Exception as e:
+                                fulfilled_in_shopify = False
                                 shopify_error = f"exception: {e}"
 
                             newly_shipped.append({
@@ -350,10 +424,42 @@ def main():
         except Exception as e:
             pass  # Don't fail the whole run on a single order lookup
 
+    # Retry pass: orders where we already know they shipped (notified_shipped=True) but the
+    # Shopify fulfillment call itself failed last time (fulfilled_in_shopify=False). Previously
+    # this state was permanent and silent; now we retry every run until it succeeds or the
+    # order is flagged cancelled above.
+    for sid, info in routed.items():
+        if info.get('status') != 'routed':
+            continue
+        if not info.get('notified_shipped') or info.get('fulfilled_in_shopify') or info.get('cancelled_after_routing'):
+            continue
+        tracking = info.get('tracking')
+        if not tracking:
+            continue
+        try:
+            fulfilled_ok, fulfillment_id, shopify_error = attempt_shopify_fulfillment(
+                sid, tracking, info.get('tracking_url'), info.get('carrier'), info.get('line_item_ids')
+            )
+        except Exception as e:
+            fulfilled_ok, fulfillment_id, shopify_error = False, None, f"exception: {e}"
+        info['fulfilled_in_shopify'] = fulfilled_ok
+        if fulfillment_id:
+            info['shopify_fulfillment_id'] = fulfillment_id
+        if fulfilled_ok:
+            info.pop('shopify_fulfillment_error', None)
+            result['recovered_fulfillments'].append({
+                'shopify_name': info.get('name'),
+                'shopify_id': sid,
+                'tracking': tracking,
+                'note': 'Shopify fulfillment had previously failed and just succeeded on retry. Customer is being notified now.',
+            })
+        else:
+            info['shopify_fulfillment_error'] = shopify_error
+
     result['newly_shipped'] = newly_shipped
 
     save_state(state)
-    print(json.dumps(result))
+    print(json.dumps(result, default=str))
 
 
 if __name__ == "__main__":

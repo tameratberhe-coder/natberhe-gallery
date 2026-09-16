@@ -95,17 +95,26 @@ function navigateTo(page) {
   // Close mobile menu if open
   var mobileMenu = document.getElementById('mobileMenu');
   if (mobileMenu && mobileMenu.classList.contains('open')) mobileMenu.classList.remove('open');
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.remove('active');
-    p.style.opacity = '0';
-  });
-  const target = document.getElementById('page-' + page);
-  if (target) {
-    setTimeout(() => {
+  document.body.classList.remove('menu-open');
+  var hamburger = document.getElementById('hamburgerBtn');
+  if (hamburger) {
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation');
+  }
+  var currentPageEl = document.querySelector('.page.active');
+  if (currentPageEl) currentPageEl.style.opacity = '0';
+  var swapPage = function() {
+    document.querySelectorAll('.page').forEach(p => {
+      p.classList.remove('active');
+      p.style.opacity = '0';
+    });
+    const target = document.getElementById('page-' + page);
+    if (target) {
       target.classList.add('active');
       requestAnimationFrame(() => { target.style.opacity = '1'; });
-    }, 200);
-  }
+    }
+  };
+  if (currentPageEl) { setTimeout(swapPage, 150); } else { swapPage(); }
   currentPage = page;
   // Update nav active
   document.querySelectorAll('.nav-links a').forEach(a => {
@@ -145,7 +154,6 @@ function renderGallery() {
       '<div class="gallery-card-price-row"><span class="gallery-card-price">' + priceStr + '</span><span class="gallery-card-price-suffix">USD</span></div>' +
       scarcity +
       '<a href="' + btnHref + '" target="_blank" rel="noopener noreferrer" class="gallery-card-btn" onclick="event.stopPropagation()">' + btnText + '</a>' +
-      '<div class="gallery-card-provenance gallery-card-provenance-original"><span class="provenance-dot"></span>ORIGINAL</div>' +
       '<div class="gallery-card-view-pill">VIEW</div>' +
       '</div></div>';
   }).join('');
@@ -210,7 +218,6 @@ function sortGallery(sortBy) {
       '<div class="gallery-card-price-row"><span class="gallery-card-price">' + priceStr + '</span><span class="gallery-card-price-suffix">USD</span></div>' +
       scarcity +
       '<a href="' + btnHref + '" target="_blank" rel="noopener noreferrer" class="gallery-card-btn" onclick="event.stopPropagation()">' + btnText + '</a>' +
-      '<div class="gallery-card-provenance gallery-card-provenance-original"><span class="provenance-dot"></span>ORIGINAL</div>' +
       '<div class="gallery-card-view-pill">VIEW</div>' +
       '</div></div>';
   }).join('');
