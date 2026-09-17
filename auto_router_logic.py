@@ -103,13 +103,34 @@ def shopify_get_unfulfilled_orders():
     return json.loads(body).get("orders", [])
 
 
+# Hard price ceiling for anything this router is allowed to treat as a print.
+# Real print prices top out around $255-$400 across the whole catalog; every
+# genuine one-of-one original starts at $15,000. A same-shaped variant title
+# (e.g. an original painting's own '36" x 36"' dimension label) must never be
+# mistaken for a print's size variant just because both parse as "WxH" — that
+# would route a real original to Prodigi for canvas printing and ship a cheap
+# reproduction to the customer instead of the actual painting. This ceiling is
+# the primary guard against that failure mode, independent of any variant
+# title heuristic.
+PRINT_PRICE_CEILING = 1000.0
+
+
 def product_is_print(product_id, line_item):
-    """Heuristic: print if variant size matches a Prodigi-compatible size."""
+    """Heuristic: print if variant size matches a Prodigi-compatible size AND
+    the price is consistent with an actual print (never an original painting)."""
     variant_title = line_item.get("variant_title") or ""
     if not variant_title or variant_title == "Default Title":
         return False
     size = normalize_size(variant_title)
-    return size is not None
+    if size is None:
+        return False
+    try:
+        price = float(line_item.get("price") or 0)
+    except (TypeError, ValueError):
+        price = 0.0
+    if price > PRINT_PRICE_CEILING:
+        return False
+    return True
 
 
 def get_product_image_url(product_id):
