@@ -148,6 +148,19 @@ def get_product_image_url(product_id):
     return images[0].get("src") if images else None
 
 
+# The Starter Collection ($99) is a fixed bundle of three specific 12x12
+# canvas prints, not a single sized print like every other print product.
+# Its own Shopify product_id maps to three real print products' items so one
+# Shopify line item expands into three separate Prodigi print jobs.
+STARTER_COLLECTION_PRODUCT_ID = 10265890062636
+STARTER_COLLECTION_BUNDLE_ITEMS = [
+    {"title": "American Saint", "image": "https://cdn.shopify.com/s/files/1/0871/6959/7740/files/american-saint-clean_7430cd26-4171-4563-b8e5-8203bd732c6a.jpg?v=1785778266"},
+    {"title": "Heavy is the Gold", "image": "https://cdn.shopify.com/s/files/1/0871/6959/7740/files/heavy-is-the-gold-clean_afef453f-9e2b-4c2f-a3bf-6db8f31c414c.jpg?v=1787247396"},
+    {"title": "The Exchange", "image": "https://cdn.shopify.com/s/files/1/0871/6959/7740/files/the-exchange-final.jpg?v=1779947414"},
+]
+STARTER_COLLECTION_SIZE = "12x12"
+
+
 def build_prodigi_payload(order, sku_map):
     """Build a Prodigi order payload from a Shopify order."""
     addr = order.get("shipping_address") or order.get("billing_address") or {}
@@ -169,6 +182,22 @@ def build_prodigi_payload(order, sku_map):
     routed_line_item_ids = []
     non_print_line_item_ids = []
     for li in order.get("line_items", []):
+        if li.get("product_id") == STARTER_COLLECTION_PRODUCT_ID:
+            if STARTER_COLLECTION_SIZE not in sku_map:
+                skipped.append(f"line {li.get('id')} Starter Collection size {STARTER_COLLECTION_SIZE} not in SKU map")
+                continue
+            bundle_sku = sku_map[STARTER_COLLECTION_SIZE]["sku"]
+            qty = int(li.get("quantity", 1))
+            for bundle_item in STARTER_COLLECTION_BUNDLE_ITEMS:
+                items.append({
+                    "sku": bundle_sku,
+                    "copies": qty,
+                    "sizing": "fillPrintArea",
+                    "attributes": {"wrap": "ImageWrap"},  # NO WHITE BORDER
+                    "assets": [{"printArea": "default", "url": bundle_item["image"]}],
+                })
+            routed_line_item_ids.append(li.get("id"))
+            continue
         if not product_is_print(li.get("product_id"), li):
             skipped.append(
                 f"line {li.get('id')} '{li.get('title')}' (variant: {li.get('variant_title')!r}) not a recognized print"
